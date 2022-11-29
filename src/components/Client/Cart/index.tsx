@@ -26,6 +26,7 @@ export function Cart({
     setIsModalVisible(true);
   }
 
+
   const total = cartItems.reduce((acc, cartItem) => {
     return acc + cartItem.quantity * cartItem.product.price;
   }, 0);

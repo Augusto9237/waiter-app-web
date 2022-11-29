@@ -55,6 +55,11 @@ export function CartModal({
     };
   }, [onClose]);
 
+  function handleOk() {
+    onConfirmOrder();
+    onClose()
+  }
+
   const total = cartItems.reduce((acc, cartItem) => {
     return acc + cartItem.quantity * cartItem.product.price;
   }, 0);
@@ -110,7 +115,7 @@ export function CartModal({
             <strong>{formatCurrency(total)}</strong>
           </PriceContainer>
 
-          <button onClick={onClose}>Confirmar pedido</button>
+          <button onClick={handleOk}>Confirmar pedido</button>
         </FooterCart>
       </ModalBodyCart>
     </OverlayCartModal>
