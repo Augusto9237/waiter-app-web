@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Client } from "../components/Client";
 import { Cart } from "../components/Client/Cart";
-import { HeaderClient } from "../components/Client/Header ";
+import { HeaderClient } from "../components/Client/Header";
+
 import { GlobalStyles } from "../styles/GlobalStyles";
 import { CartItem } from "../types/CartItem";
 import { ProductType } from "../types/Products";
