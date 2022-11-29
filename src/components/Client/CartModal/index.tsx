@@ -26,6 +26,7 @@ interface CartModalProps {
   onClose: () => void;
   onAdd: (product: ProductType) => void;
   onDecrement: (product: ProductType) => void;
+  onConfirmOrder: () => void;
 }
 
 export function CartModal({
@@ -34,6 +35,7 @@ export function CartModal({
   cartItems,
   onAdd,
   onDecrement,
+  onConfirmOrder,
 }: CartModalProps) {
   if (!visible) {
     return null;

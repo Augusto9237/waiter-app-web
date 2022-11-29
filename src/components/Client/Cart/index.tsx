@@ -38,6 +38,7 @@ export function Cart({
         visible={isModalVisible}
         onAdd={onAdd}
         onDecrement={onDecrement}
+        onConfirmOrder={onConfirmOrder}
       />
       <CartContainer>
         <CartContent>
