@@ -58,6 +58,7 @@ export function CartModal({
   function handleOk() {
     onConfirmOrder();
     onClose()
+  
   }
 
   const total = cartItems.reduce((acc, cartItem) => {
