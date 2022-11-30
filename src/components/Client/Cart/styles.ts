@@ -4,7 +4,6 @@ interface CartProps {
   background: string;
 }
 
-
 export const CartContainer = styled.div`
   display: flex;
   width: 100%;
@@ -30,30 +29,33 @@ export const CartContent = styled.div`
   align-items: center;
   width: 100%;
   max-width: 1216px;
-
 `;
 
 export const CartTotal = styled.div`
-  .Cart-total {
-    flex: 1;
+  flex: 1;
+  font-weight: 400;
+  font-size: 16px;
+  color: #666666;
+
+  h1 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    color: #333333;
+  }
+
+  span {
     font-weight: 400;
     font-size: 16px;
-    color: #666666;
-
-    h1 {
-      font-weight: 600;
-      font-size: 20px;
-      line-height: 120%;
-      color: #333333;
-    }
+    line-height: 150%;
   }
 `;
 
 export const ButtonCart = styled.button<CartProps>`
-    flex: 1;
-    border: none;
-    background: ${(props) => props.background};
-    color: #ffffff;
-    padding: 14px 24px;
-    border-radius: 48px;
+  flex: 1;
+  border: none;
+  background: ${(props) => props.background};
+  color: #ffffff;
+  padding: 14px 24px;
+  border-radius: 48px;
 `;

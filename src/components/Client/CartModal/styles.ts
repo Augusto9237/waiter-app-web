@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-interface ImageProps {
-  image: string;
+interface ModalCartProps {
+  background: string;
 }
 
 export const OverlayCartModal = styled.div`
@@ -164,17 +164,17 @@ export const FooterCart = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+`;
 
-  button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 14px 24px;
-    background: #d73035;
-    border: none;
-    border-radius: 48px;
-    color: #ffffff;
-  }
+export const ButtonOkCart = styled.button<ModalCartProps>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 24px;
+  background: ${(props) => props.background};
+  border: none;
+  border-radius: 48px;
+  color: #ffffff;
 `;
 
 export const PriceContainer = styled.div`

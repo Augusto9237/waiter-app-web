@@ -5,7 +5,6 @@ import { ProductType } from "../../../types/Products";
 import { formatCurrency } from "../../../utils/formatCurrency";
 
 import {
-  ButtonCloseModal,
   ModalBodyCart,
   ModalContent,
   OverlayCartModal,
@@ -18,6 +17,7 @@ import {
   Actions,
   ImageItem,
   HeaderModalCart,
+  ButtonOkCart,
 } from "./styles";
 
 interface CartModalProps {
@@ -57,8 +57,8 @@ export function CartModal({
 
   function handleOk() {
     onConfirmOrder();
-    onClose()
-  
+    onClose();
+
   }
 
   const total = cartItems.reduce((acc, cartItem) => {
@@ -68,6 +68,7 @@ export function CartModal({
   return (
     <OverlayCartModal>
       <ModalBodyCart>
+
         <HeaderModalCart>
           <div />
           <strong>Itens do Pedido</strong>
@@ -76,47 +77,61 @@ export function CartModal({
             <img src={closeIcon} alt="Icone de fechar" />
           </button>
         </HeaderModalCart>
+
         <ModalContent>
-          {cartItems.map((cartItem) => (
+          {cartItems.length > 0 ? (
             <>
-              <Item>
-                <ProductContainer>
-                  <ImageItem>
-                    <img src={cartItem.product.imagePath} />
-                  </ImageItem>
-                  <QuantityContainer>
-                    <span>{cartItem.quantity}x</span>
-                  </QuantityContainer>
+              {cartItems.map((cartItem) => (
+                <>
+                  <Item>
+                    <ProductContainer>
+                      <ImageItem>
+                        <img src={cartItem.product.imagePath} />
+                      </ImageItem>
+                      <QuantityContainer>
+                        <span>{cartItem.quantity}x</span>
+                      </QuantityContainer>
 
-                  <ProductDetails>
-                    <strong>{cartItem.product.name}</strong>
-                    <span>{formatCurrency(cartItem.product.price)}</span>
-                  </ProductDetails>
-                </ProductContainer>
+                      <ProductDetails>
+                        <strong>{cartItem.product.name}</strong>
+                        <span>{formatCurrency(cartItem.product.price)}</span>
+                      </ProductDetails>
+                    </ProductContainer>
 
-                <Actions>
-                  <button type="button" onClick={() => onAdd(cartItem.product)}>
-                    <span>+</span>
-                  </button>
+                    <Actions>
+                      <button type="button" onClick={() => onAdd(cartItem.product)}>
+                        <span>+</span>
+                      </button>
 
-                  <button
-                    type="button"
-                    onClick={() => onDecrement(cartItem.product)}
-                  >
-                    <span>-</span>
-                  </button>
-                </Actions>
-              </Item>
+                      <button
+                        type="button"
+                        onClick={() => onDecrement(cartItem.product)}
+                      >
+                        <span>-</span>
+                      </button>
+                    </Actions>
+                  </Item>
+                </>
+              ))
+              }
             </>
-          ))}
+          ) : (
+            <span>Seu carrinho está vazio</span>
+          )}
         </ModalContent>
+
         <FooterCart>
           <PriceContainer>
             <span>Total</span>
             <strong>{formatCurrency(total)}</strong>
           </PriceContainer>
 
-          <button onClick={handleOk}>Confirmar pedido</button>
+          <ButtonOkCart
+            onClick={handleOk}
+            background={cartItems.length > 0 ? '#D73035' : '#999999'}
+            disabled={cartItems.length === 0}>
+            Confirmar pedido
+          </ButtonOkCart>
         </FooterCart>
       </ModalBodyCart>
     </OverlayCartModal>

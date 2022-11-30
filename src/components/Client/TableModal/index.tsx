@@ -4,28 +4,29 @@ import { useEffect, useState } from "react";
 import {
   ButtonCloseModal,
   Footer,
-  ModalBody,
+  FormModal,
+  ModalTableBody,
   ModalContent,
-  Overlay,
+  OverlayModal,
 } from "./styles";
 
 interface TableModalProps {
-  visible: boolean;
-  onClose: () => void;
+  visibleModalTable: boolean;
+  onCloseModalTable: () => void;
   onSave: (table: string) => void;
 }
 
-export function TableModal({ visible, onClose, onSave }: TableModalProps) {
-  const [table, setTable] = useState("");
+export function TableModal({ visibleModalTable, onCloseModalTable, onSave }: TableModalProps) {
 
-  if (!visible) {
+
+  if (!visibleModalTable) {
     return null;
   }
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
-        onClose();
+        onCloseModalTable();
       }
     }
 
@@ -34,37 +35,38 @@ export function TableModal({ visible, onClose, onSave }: TableModalProps) {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [onClose]);
+  }, [onCloseModalTable]);
 
 
-
+  const [table, setTable] = useState("");
+  
   function handleSave() {
     onSave(table);
     setTable('');
-    onClose();
+    onCloseModalTable();
   }
 
-
   return (
-    <Overlay>
-      <ModalBody>
+    <OverlayModal>
+      <ModalTableBody>
 
-        <ButtonCloseModal onClick={onClose}>X</ButtonCloseModal>
+        <ButtonCloseModal onClick={onCloseModalTable}>X</ButtonCloseModal>
 
         <ModalContent>
-          <input
-            placeholder="Numero da mesa"
-            type='text'
-
-
-            value={table}
-            onChange={(e) => setTable(e.target.value)}
-          />
+          <FormModal>
+            <input
+              required
+              placeholder="Numero da mesa"
+              type='text'
+              value={table}
+              onChange={(e) => setTable(e.target.value)}
+            />
+          </FormModal>
         </ModalContent>
         <Footer>
-          <button onClick={handleSave}></button>
+          <button onClick={handleSave}>Salvar</button>
         </Footer>
-      </ModalBody>
-    </Overlay>
+      </ModalTableBody>
+    </OverlayModal>
   );
 }

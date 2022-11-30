@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Client } from "../components/Client";
 import { Cart } from "../components/Client/Cart";
 import { HeaderClient } from "../components/Client/Header";
+import { TableModal } from "../components/Client/TableModal";
 
 import { GlobalStyles } from "../styles/GlobalStyles";
 import { CartItem } from "../types/CartItem";
@@ -9,7 +10,8 @@ import { ProductType } from "../types/Products";
 
 export function ClientPage() {
   const [isTableModalVisible, setIsTableModalVisible] = useState(false);
-  const [selectedTable, setSelectedTable] = useState("1");
+
+  const [selectedTable, setSelectedTable] = useState("");
   const [selectedClient, setSelectedClient] = useState("");
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
@@ -88,6 +90,11 @@ export function ClientPage() {
         onDecrement={handleDecrementCartItem}
         cartItems={cartItems}
         onConfirmOrder={handleResetOrder}
+      />
+      <TableModal
+        visibleModalTable={isTableModalVisible}
+        onCloseModalTable={() => setIsTableModalVisible(false)}
+        onSave={handleSaveTable}
       />
     </>
   );

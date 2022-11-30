@@ -48,15 +48,15 @@ export function Cart({
             <>
               {cartItems.length > 0 ? (
 
-                <CartTotal className="Cart-total">
-                  Total
+                <CartTotal >
+                  <span>Total</span>
                   <h1>{formatCurrency(total)}</h1>
                 </CartTotal>
 
               ) : (
 
-                <CartTotal className="Cart-total">
-                  <h1>Seu carrinho está vazio</h1>
+                <CartTotal >
+                  <span>Seu carrinho está vazio</span>
                 </CartTotal>
 
               )}

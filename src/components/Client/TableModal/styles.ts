@@ -4,7 +4,7 @@ interface ImageProps {
   image: string;
 }
 
-export const Overlay = styled.div`
+export const OverlayModal = styled.div`
   z-index: 50;
   flex: 1;
   left: 0px;
@@ -24,24 +24,12 @@ export const Overlay = styled.div`
   }
 `;
 
-export const ModalBody = styled.div`
+export const ModalTableBody = styled.div`
   position: relative;
   background: #fff;
   width: 480px;
   border-radius: 8px;
   overflow: hidden;
-`;
-
-export const ImageProduct = styled.div<ImageProps>`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  overflow: hidden;
-  height: 200px;
-  width: 100%;
-  background-image: url(${(props) => props.image});
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
 `;
 
 export const ButtonCloseModal = styled.button`
@@ -78,7 +66,7 @@ export const ModalContent = styled.div`
   }
 `;
 
-
+export const FormModal = styled.form``;
 
 export const Footer = styled.div`
   display: flex;
