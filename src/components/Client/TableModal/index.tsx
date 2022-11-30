@@ -55,11 +55,11 @@ export function TableModal({ visible, onClose, onSave }: TableModalProps) {
           <input
             placeholder="Numero da mesa"
             type='text'
-          //onChange={setTable}
+
+
+            value={table}
+            onChange={(e) => setTable(e.target.value)}
           />
-
-
-
         </ModalContent>
         <Footer>
           <button onClick={handleSave}></button>

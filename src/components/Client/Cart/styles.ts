@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+interface CartProps {
+  background: string;
+}
+
+
 export const CartContainer = styled.div`
   display: flex;
   width: 100%;
@@ -26,6 +31,9 @@ export const CartContent = styled.div`
   width: 100%;
   max-width: 1216px;
 
+`;
+
+export const CartTotal = styled.div`
   .Cart-total {
     flex: 1;
     font-weight: 400;
@@ -39,13 +47,13 @@ export const CartContent = styled.div`
       color: #333333;
     }
   }
+`;
 
-  button {
+export const ButtonCart = styled.button<CartProps>`
     flex: 1;
     border: none;
-    background: #d73035;
+    background: ${(props) => props.background};
     color: #ffffff;
     padding: 14px 24px;
     border-radius: 48px;
-  }
 `;
