@@ -25,61 +25,59 @@ export const OverlayModal = styled.div`
 `;
 
 export const ModalTableBody = styled.div`
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: #fff;
   width: 480px;
   border-radius: 8px;
   overflow: hidden;
   padding: 24px;
-`;
-
-export const ButtonCloseModal = styled.button`
-  border: none;
-  width: 32px;
-  height: 32px;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 16px;
-  margin: 24px;
-`;
-
-export const ModalContent = styled.div`
-  background: #fafafa;
-  width: 100%;
-  padding: 24px;
 
   header {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
 
-    h1 {
+    strong {
       font-weight: 600;
-      font-size: 24px;
-      line-height: 120%;
+      font-size: 16px;
     }
 
-    span {
-      font-weight: 400;
-      font-size: 16px;
-      color: #666;
-      margin-top: 8px;
+    button{
+      border: none;
+      background: none;
     }
   }
 `;
 
-export const FormModal = styled.form``;
+
+export const ModalTableContent = styled.div`
+  background: #fafafa;
+  width: 100%;
+  flex: 1;
+
+`;
+
+export const FormModal = styled.form`
+ display: flex;
+ flex: 1;
+ margin: 24px 0;
+
+ input{
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid rgba(204, 204, 204, 0.5);
+  border-radius: 8px;
+  padding: 16px;
+ }
+`;
 
 export const Footer = styled.div`
   display: flex;
-  min-height: 110px;
-  background: #fff;
-  padding: 16px 24px;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
 
   button {
     display: flex;
+    width: 100%;
     justify-content: center;
     align-items: center;
     padding: 14px 24px;
