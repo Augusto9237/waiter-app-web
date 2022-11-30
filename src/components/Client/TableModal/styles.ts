@@ -30,6 +30,7 @@ export const ModalTableBody = styled.div`
   width: 480px;
   border-radius: 8px;
   overflow: hidden;
+  padding: 24px;
 `;
 
 export const ButtonCloseModal = styled.button`

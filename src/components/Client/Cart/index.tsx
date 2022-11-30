@@ -67,7 +67,7 @@ export function Cart({
 
               )}
 
-              <ButtonCart onClick={handleOpenModal} background={cartItems.length > 0 ? '#D73035' : '#999999'} disabled={cartItems.length === 0}>Confirmar pedido</ButtonCart>
+              <ButtonCart onClick={handleOpenModal} background={cartItems.length > 0 ? '#D73035' : '#999999'} disabled={cartItems.length === 0}>Carrinho</ButtonCart>
             </>
           )}
         </CartContent>
