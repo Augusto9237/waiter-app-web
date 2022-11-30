@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CartItem } from "../../../types/CartItem";
-import { Order } from "../../../types/Order";
+
 import { ProductType } from "../../../types/Products";
 import { formatCurrency } from "../../../utils/formatCurrency";
 import { CartModal } from "../CartModal";
-import { ButtonCart, CartContainer, CartContent, CartTotal } from "./styles";
+import { ButtonCart, ButtonNewOrder, CartContainer, CartContent, CartTotal } from "./styles";
 
 interface CartProps {
   selectedTable: string;
@@ -12,6 +12,7 @@ interface CartProps {
   onAdd: (product: ProductType) => void;
   onDecrement: (product: ProductType) => void;
   onConfirmOrder: () => void;
+  onOpenModalTable: () => void;
 }
 export function Cart({
   cartItems,
@@ -19,6 +20,7 @@ export function Cart({
   onDecrement,
   onConfirmOrder,
   selectedTable,
+  onOpenModalTable
 }: CartProps) {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -43,7 +45,11 @@ export function Cart({
       />
       <CartContainer>
         <CartContent>
-          {!selectedTable && <button>Novo Pedido</button>}
+          {!selectedTable &&
+
+            <ButtonNewOrder onClick={onOpenModalTable}>Novo Pedido</ButtonNewOrder>}
+
+
           {selectedTable && (
             <>
               {cartItems.length > 0 ? (

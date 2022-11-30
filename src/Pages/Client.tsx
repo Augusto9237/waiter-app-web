@@ -90,6 +90,7 @@ export function ClientPage() {
         onDecrement={handleDecrementCartItem}
         cartItems={cartItems}
         onConfirmOrder={handleResetOrder}
+        onOpenModalTable={() => setIsTableModalVisible(true)}
       />
       <TableModal
         visibleModalTable={isTableModalVisible}

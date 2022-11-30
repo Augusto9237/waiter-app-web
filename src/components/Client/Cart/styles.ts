@@ -59,3 +59,12 @@ export const ButtonCart = styled.button<CartProps>`
   padding: 14px 24px;
   border-radius: 48px;
 `;
+
+export const ButtonNewOrder = styled.button`
+  flex: 1;
+  border: none;
+  background: #d73035;
+  color: #ffffff;
+  padding: 14px 24px;
+  border-radius: 48px;
+`;
