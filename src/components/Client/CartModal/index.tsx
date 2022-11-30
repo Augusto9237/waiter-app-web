@@ -26,6 +26,7 @@ interface CartModalProps {
   onClose: () => void;
   onAdd: (product: ProductType) => void;
   onDecrement: (product: ProductType) => void;
+  onConfirmOrder: () => void;
 }
 
 export function CartModal({
@@ -34,6 +35,7 @@ export function CartModal({
   cartItems,
   onAdd,
   onDecrement,
+  onConfirmOrder,
 }: CartModalProps) {
   if (!visible) {
     return null;
@@ -52,6 +54,12 @@ export function CartModal({
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [onClose]);
+
+  function handleOk() {
+    onConfirmOrder();
+    onClose()
+  
+  }
 
   const total = cartItems.reduce((acc, cartItem) => {
     return acc + cartItem.quantity * cartItem.product.price;
@@ -108,7 +116,7 @@ export function CartModal({
             <strong>{formatCurrency(total)}</strong>
           </PriceContainer>
 
-          <button onClick={onClose}>Confirmar pedido</button>
+          <button onClick={handleOk}>Confirmar pedido</button>
         </FooterCart>
       </ModalBodyCart>
     </OverlayCartModal>

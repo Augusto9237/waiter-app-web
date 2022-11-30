@@ -4,7 +4,7 @@ import { ProductType } from "../../types/Products";
 import { Categories } from "./Categories";
 import { ProductCard } from "./ProductCard";
 import { ProductModal } from "./ProductModal";
-import { Products } from "./Products";
+
 
 import { Container, ProductsContainer } from "./styles";
 

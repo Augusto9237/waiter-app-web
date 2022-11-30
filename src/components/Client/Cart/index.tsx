@@ -4,7 +4,7 @@ import { Order } from "../../../types/Order";
 import { ProductType } from "../../../types/Products";
 import { formatCurrency } from "../../../utils/formatCurrency";
 import { CartModal } from "../CartModal";
-import { CartContainer, CartContent } from "./styles";
+import { ButtonCart, CartContainer, CartContent, CartTotal } from "./styles";
 
 interface CartProps {
   selectedTable: string;
@@ -26,6 +26,7 @@ export function Cart({
     setIsModalVisible(true);
   }
 
+
   const total = cartItems.reduce((acc, cartItem) => {
     return acc + cartItem.quantity * cartItem.product.price;
   }, 0);
@@ -38,18 +39,29 @@ export function Cart({
         visible={isModalVisible}
         onAdd={onAdd}
         onDecrement={onDecrement}
+        onConfirmOrder={onConfirmOrder}
       />
       <CartContainer>
         <CartContent>
           {!selectedTable && <button>Novo Pedido</button>}
           {selectedTable && (
             <>
-              <div className="Cart-total">
-                Total
-                <h1>{formatCurrency(total)}</h1>
-              </div>
+              {cartItems.length > 0 ? (
 
-              <button onClick={handleOpenModal}>Confirmar pedido</button>
+                <CartTotal className="Cart-total">
+                  Total
+                  <h1>{formatCurrency(total)}</h1>
+                </CartTotal>
+
+              ) : (
+
+                <CartTotal className="Cart-total">
+                  <h1>Seu carrinho está vazio</h1>
+                </CartTotal>
+
+              )}
+
+              <ButtonCart onClick={handleOpenModal} background={cartItems.length > 0 ? '#D73035' : '#999999'} disabled={cartItems.length === 0}>Confirmar pedido</ButtonCart>
             </>
           )}
         </CartContent>
