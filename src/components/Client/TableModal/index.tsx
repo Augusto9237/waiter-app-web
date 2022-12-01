@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
+import { Button } from "../../Button";
 
 
 import {
   Footer,
   FormModal,
   ModalTableBody,
-  ModalTableContent,
   OverlayModal,
 } from "./styles";
 
@@ -66,7 +66,7 @@ export function TableModal({ visibleModalTable, onCloseModalTable, onSave }: Tab
         </FormModal>
 
         <Footer>
-          <button onClick={handleSave}>Salvar</button>
+          <Button onClick={handleSave}>Salvar</Button>
         </Footer>
       </ModalTableBody>
     </OverlayModal>

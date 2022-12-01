@@ -1,8 +1,5 @@
 import styled from "styled-components";
 
-interface ModalCartProps {
-  background: string;
-}
 
 export const OverlayCartModal = styled.div`
   z-index: 50;
@@ -43,7 +40,7 @@ export const HeaderModalCart = styled.div`
   }
   button {
     display: flex;
-    align: center;
+    align-items: center;
     border: none;
     background: none;
     margin: 8px;
@@ -166,16 +163,6 @@ export const FooterCart = styled.div`
   justify-content: space-between;
 `;
 
-export const ButtonOkCart = styled.button<ModalCartProps>`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 14px 24px;
-  background: ${(props) => props.background};
-  border: none;
-  border-radius: 48px;
-  color: #ffffff;
-`;
 
 export const PriceContainer = styled.div`
   display: flex;

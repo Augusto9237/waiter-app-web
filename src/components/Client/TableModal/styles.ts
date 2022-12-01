@@ -1,8 +1,5 @@
 import styled from "styled-components";
 
-interface ImageProps {
-  image: string;
-}
 
 export const OverlayModal = styled.div`
   z-index: 50;
@@ -51,12 +48,6 @@ export const ModalTableBody = styled.div`
 `;
 
 
-export const ModalTableContent = styled.div`
-  background: #fafafa;
-  width: 100%;
-  flex: 1;
-
-`;
 
 export const FormModal = styled.form`
  display: flex;
@@ -74,16 +65,4 @@ export const FormModal = styled.form`
 
 export const Footer = styled.div`
   display: flex;
-
-  button {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    padding: 14px 24px;
-    background: #d73035;
-    border: none;
-    border-radius: 48px;
-    color: #ffffff;
-  }
 `;
