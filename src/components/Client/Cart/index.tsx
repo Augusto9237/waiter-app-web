@@ -3,6 +3,7 @@ import { CartItem } from "../../../types/CartItem";
 
 import { ProductType } from "../../../types/Products";
 import { formatCurrency } from "../../../utils/formatCurrency";
+import { Button } from "../../Button";
 import { CartModal } from "../CartModal";
 import { ButtonCart, ButtonNewOrder, CartContainer, CartContent, CartTotal } from "./styles";
 
@@ -47,7 +48,7 @@ export function Cart({
         <CartContent>
           {!selectedTable &&
 
-            <ButtonNewOrder onClick={onOpenModalTable}>Novo Pedido</ButtonNewOrder>}
+            <Button onClick={onOpenModalTable}>Novo Pedido</Button>}
 
 
           {selectedTable && (
@@ -67,7 +68,7 @@ export function Cart({
 
               )}
 
-              <ButtonCart onClick={handleOpenModal} background={cartItems.length > 0 ? '#D73035' : '#999999'} disabled={cartItems.length === 0}>Carrinho</ButtonCart>
+              <Button onClick={handleOpenModal} disabled={cartItems.length === 0}>Carrinho</Button>
             </>
           )}
         </CartContent>
