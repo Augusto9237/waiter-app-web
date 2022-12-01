@@ -69,12 +69,10 @@ export function ProductModal({
 
               {product.ingredients.map((ingredient) => {
                 return (
-                  <>
-                    <IngredientItem key={ingredient._id}>
-                      <span>{ingredient.icon}</span>
-                      <span>{ingredient.name}</span>
-                    </IngredientItem>
-                  </>
+                  <IngredientItem key={ingredient._id}>
+                    <span>{ingredient.icon}</span>
+                    <span>{ingredient.name}</span>
+                  </IngredientItem>
                 );
               })}
             </IngredientsContainer>
