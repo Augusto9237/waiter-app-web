@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const ProductCardContainer = styled.div`
   border: none;
   background: none;
+  min-width: 320px;
   position: relative;
   display: flex;
   height: 98px;
@@ -17,6 +18,7 @@ export const ProductCardContainer = styled.div`
 
   @media (max-width: 450px) {
     padding: 12px 0px;
+    width: 100%;
     :hover {
       background: none;
       box-shadow: none;
