@@ -5,7 +5,7 @@ import { ProductType } from "../../../types/Products";
 import { formatCurrency } from "../../../utils/formatCurrency";
 import { Button } from "../../Button";
 import { CartModal } from "../CartModal";
-import { ButtonCart, ButtonNewOrder, CartContainer, CartContent, CartTotal } from "./styles";
+import { CartContainer, CartContent, CartTotal } from "./styles";
 
 interface CartProps {
   selectedTable: string;
