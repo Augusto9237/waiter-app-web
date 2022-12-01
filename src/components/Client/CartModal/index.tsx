@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { toast } from "react-toastify";
 import { CartItem } from "../../../types/CartItem";
 import { ProductType } from "../../../types/Products";
 import { formatCurrency } from "../../../utils/formatCurrency";
@@ -56,6 +57,16 @@ export function CartModal({
 
   function handleOk() {
     onConfirmOrder();
+    toast.success('Pedido confirmado',  {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    })
     onClose();
 
   }
