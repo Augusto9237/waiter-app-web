@@ -19,6 +19,8 @@ export const ProductCardContainer = styled.div`
   @media (max-width: 450px) {
     padding: 12px 0px;
     width: 100%;
+    min-width: 242px;
+
     :hover {
       background: none;
       box-shadow: none;

@@ -11,16 +11,21 @@ import { ProductType } from "../types/Products";
 import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
+import { Header } from "../components/Orders/Header";
 
 export function ClientPage() {
+
+  const tableInit = '1';
+
   const [isTableModalVisible, setIsTableModalVisible] = useState(false);
 
-  const [selectedTable, setSelectedTable] = useState("");
+  const [selectedTable, setSelectedTable] = useState('');
   const [selectedClient, setSelectedClient] = useState("");
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   function handleSaveTable(table: string) {
-    setSelectedTable(table);
+    setSelectedClient(table);
+    setSelectedTable(tableInit);
   }
 
   function handleResetOrder() {
@@ -83,10 +88,17 @@ export function ClientPage() {
   return (
     <>
       <GlobalStyles />
-      <HeaderClient
-        selectedTable={selectedTable}
-        onCancelOrder={handleResetOrder}
-      />
+      {!selectedTable && (
+        <Header />
+      )}
+      {selectedTable && (
+        <HeaderClient
+          selectedClient={selectedClient}
+          selectedTable={selectedTable}
+          onCancelOrder={handleResetOrder}
+        />
+      )}
+
       <Client onAddToCart={handleAddToCart} />
       <Cart
         selectedTable={selectedTable}

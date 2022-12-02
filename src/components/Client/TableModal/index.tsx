@@ -52,9 +52,7 @@ export function TableModal({ visibleModalTable, onCloseModalTable, onSave }: Tab
           <strong>Informe seu nome</strong>
           <button onClick={onCloseModalTable}>X</button>
         </header>
-
-
-
+        
         <FormModal>
           <input
             required

@@ -2,11 +2,12 @@
 import { Container, Content, ContentHeaderClient, LabelTable } from "./styles";
 
 interface HeaderProps {
+  selectedClient: string;
   selectedTable: string;
   onCancelOrder: () => void;
 }
 
-export function HeaderClient({ selectedTable, onCancelOrder }: HeaderProps) {
+export function HeaderClient({ selectedTable, selectedClient, onCancelOrder }: HeaderProps) {
   return (
     <Container>
       <Content>
@@ -23,7 +24,7 @@ export function HeaderClient({ selectedTable, onCancelOrder }: HeaderProps) {
 
       </Content>
       <LabelTable>
-        Cliente:
+        Cliente: {selectedClient}
       </LabelTable>
     </Container>
   );
