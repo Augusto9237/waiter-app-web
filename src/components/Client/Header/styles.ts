@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.header`
-  background: #d73035;
   display: flex;
   justify-content: center;
   height: 198px;
@@ -24,9 +23,9 @@ export const Content = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  .page-details {
+  .client-details {
     h1 {
-      color: #fff;
+      color: #333333;
       font-size: 32px;
 
       @media (max-width: 415px) {
@@ -35,7 +34,7 @@ export const Content = styled.div`
     }
 
     span {
-      color: #fff;
+      color: #333333;
       font-weight: 400;
       font-size: 16px;
       opacity: 0.9;
@@ -58,7 +57,7 @@ export const Content = styled.div`
     justify-content: center;
     align-items: center;
     padding: 8px 12px;
-    background-color: #fafafa;
+    background: transparent;
     border-radius: 48px;
     border: none;
 
@@ -74,7 +73,7 @@ export const ContentHeaderClient = styled.div`
   display: flex;
   flex-direction: column;
 
-  h1{
+  h1 {
     margin-bottom: 4px;
   }
 

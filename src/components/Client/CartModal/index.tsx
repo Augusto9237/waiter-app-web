@@ -57,7 +57,7 @@ export function CartModal({
 
   function handleOk() {
     onConfirmOrder();
-    toast.success('✅ Pedido confirmado',  {
+    toast.success('Pedido confirmado', {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -66,7 +66,8 @@ export function CartModal({
       draggable: true,
       progress: undefined,
       theme: "light",
-    })
+    });
+
     onClose();
 
   }
