@@ -57,10 +57,14 @@ export const ContentHeaderClient = styled.div`
   span {
     color: #333333;
     font-weight: 400;
-    font-size: 14px;
     line-height: 80%;
     opacity: 0.9;
     margin-bottom: 8px;
+
+    @media (max-width: 415px) {
+      font-size: 24px;
+      font-size: 14px;
+    }
   }
 `;
 
@@ -76,6 +80,6 @@ export const LabelTable = styled.div`
 
   @media (max-width: 415px) {
     padding: 6px 8px;
-    margin-top: 8px;
+    margin-top: 4px;
   }
 `;
