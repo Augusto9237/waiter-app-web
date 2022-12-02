@@ -108,23 +108,12 @@ export const Footer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
-  button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 14px 24px;
-    background: #d73035;
-    border: none;
-    border-radius: 48px;
-    color: #ffffff;
-  }
 `;
 
 export const PriceContainer = styled.div`
   display: flex;
-  flex: 1;
   flex-direction: column;
+  margin-right: 32px;
   span {
     font-weight: 400;
     font-size: 16px;

@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
+import { Button } from "../../Button";
 
 
 import {
-  ButtonCloseModal,
   Footer,
   FormModal,
   ModalTableBody,
-  ModalContent,
   OverlayModal,
 } from "./styles";
 
@@ -39,7 +38,7 @@ export function TableModal({ visibleModalTable, onCloseModalTable, onSave }: Tab
 
 
   const [table, setTable] = useState("");
-  
+
   function handleSave() {
     onSave(table);
     setTable('');
@@ -49,22 +48,25 @@ export function TableModal({ visibleModalTable, onCloseModalTable, onSave }: Tab
   return (
     <OverlayModal>
       <ModalTableBody>
+        <header>
+          <strong>Informe seu nome</strong>
+          <button onClick={onCloseModalTable}>X</button>
+        </header>
 
-        <ButtonCloseModal onClick={onCloseModalTable}>X</ButtonCloseModal>
 
-        <ModalContent>
-          <FormModal>
-            <input
-              required
-              placeholder="Numero da mesa"
-              type='text'
-              value={table}
-              onChange={(e) => setTable(e.target.value)}
-            />
-          </FormModal>
-        </ModalContent>
+
+        <FormModal>
+          <input
+            required
+            placeholder="Numero da mesa"
+            type='text'
+            value={table}
+            onChange={(e) => setTable(e.target.value)}
+          />
+        </FormModal>
+
         <Footer>
-          <button onClick={handleSave}>Salvar</button>
+          <Button onClick={handleSave}>Salvar</Button>
         </Footer>
       </ModalTableBody>
     </OverlayModal>

@@ -7,7 +7,7 @@ export const Container = styled.header`
   height: 198px;
   align-items: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1220px) {
     padding: 0 40px;
   }
 
@@ -58,7 +58,7 @@ export const Content = styled.div`
     justify-content: center;
     align-items: center;
     padding: 8px 12px;
-    background: #99999;
+    background-color: #fafafa;
     border-radius: 48px;
     border: none;
 

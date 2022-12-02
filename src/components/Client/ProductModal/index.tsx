@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { ProductType } from "../../../types/Products";
 import { formatCurrency } from "../../../utils/formatCurrency";
+import { Button } from "../../Button";
 
 import {
   ButtonCloseModal,
@@ -68,12 +69,10 @@ export function ProductModal({
 
               {product.ingredients.map((ingredient) => {
                 return (
-                  <>
-                    <IngredientItem key={ingredient._id}>
-                      <span>{ingredient.icon}</span>
-                      <span>{ingredient.name}</span>
-                    </IngredientItem>
-                  </>
+                  <IngredientItem key={ingredient._id}>
+                    <span>{ingredient.icon}</span>
+                    <span>{ingredient.name}</span>
+                  </IngredientItem>
                 );
               })}
             </IngredientsContainer>
@@ -85,7 +84,7 @@ export function ProductModal({
             <strong>{formatCurrency(product.price)}</strong>
           </PriceContainer>
 
-          <button onClick={handleAddToCart}>Adicionar ao pedido</button>
+          <Button onClick={handleAddToCart}>Adicionar ao pedido</Button>
         </Footer>
       </ModalBody>
     </Overlay>

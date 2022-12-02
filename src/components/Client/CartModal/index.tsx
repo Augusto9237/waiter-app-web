@@ -1,8 +1,9 @@
 import { useEffect } from "react";
-import closeIcon from "../../../assets/images/close-icon.svg";
+import { toast } from "react-toastify";
 import { CartItem } from "../../../types/CartItem";
 import { ProductType } from "../../../types/Products";
 import { formatCurrency } from "../../../utils/formatCurrency";
+import { Button } from "../../Button";
 
 import {
   ModalBodyCart,
@@ -17,7 +18,6 @@ import {
   Actions,
   ImageItem,
   HeaderModalCart,
-  ButtonOkCart,
 } from "./styles";
 
 interface CartModalProps {
@@ -57,6 +57,16 @@ export function CartModal({
 
   function handleOk() {
     onConfirmOrder();
+    toast.success('✅ Pedido confirmado',  {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    })
     onClose();
 
   }
@@ -74,7 +84,7 @@ export function CartModal({
           <strong>Itens do Pedido</strong>
 
           <button type="button" onClick={onClose}>
-            <img src={closeIcon} alt="Icone de fechar" />
+            X
           </button>
         </HeaderModalCart>
 
@@ -126,12 +136,11 @@ export function CartModal({
             <strong>{formatCurrency(total)}</strong>
           </PriceContainer>
 
-          <ButtonOkCart
+          <Button
             onClick={handleOk}
-            background={cartItems.length > 0 ? '#D73035' : '#999999'}
             disabled={cartItems.length === 0}>
             Confirmar pedido
-          </ButtonOkCart>
+          </Button>
         </FooterCart>
       </ModalBodyCart>
     </OverlayCartModal>

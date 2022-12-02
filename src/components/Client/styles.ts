@@ -30,6 +30,12 @@ export const ProductsContainer = styled.div`
   flex: 1;
   gap: 24px;
 
+  @media (max-width: 850px) {
+    flex-direction: column;
+    margin-bottom: 80px;
+    overflow-y: scroll;
+  }
+
   @media (max-width: 600px) {
     flex-direction: column;
     margin-bottom: 80px;

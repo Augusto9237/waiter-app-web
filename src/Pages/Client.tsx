@@ -8,6 +8,10 @@ import { GlobalStyles } from "../styles/GlobalStyles";
 import { CartItem } from "../types/CartItem";
 import { ProductType } from "../types/Products";
 
+import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+
 export function ClientPage() {
   const [isTableModalVisible, setIsTableModalVisible] = useState(false);
 
@@ -97,6 +101,7 @@ export function ClientPage() {
         onCloseModalTable={() => setIsTableModalVisible(false)}
         onSave={handleSaveTable}
       />
+      <ToastContainer />
     </>
   );
 }
