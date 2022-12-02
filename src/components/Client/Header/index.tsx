@@ -1,5 +1,5 @@
-import logo from "../../../assets/images/logo.svg";
-import { Container, Content, ContentHeaderClient } from "./styles";
+
+import { Container, Content, ContentHeaderClient, LabelTable } from "./styles";
 
 interface HeaderProps {
   selectedTable: string;
@@ -22,6 +22,9 @@ export function HeaderClient({ selectedTable, onCancelOrder }: HeaderProps) {
         </button>
 
       </Content>
+      <LabelTable>
+        Cliente:
+      </LabelTable>
     </Container>
   );
 }

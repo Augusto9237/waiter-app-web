@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.header`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   height: 198px;
   align-items: center;
@@ -12,7 +13,7 @@ export const Container = styled.header`
 
   @media (max-width: 415px) {
     padding: 0 20px;
-    height: 120px;
+    height: 124px;
   }
 `;
 
@@ -22,35 +23,6 @@ export const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  .client-details {
-    h1 {
-      color: #333333;
-      font-size: 32px;
-
-      @media (max-width: 415px) {
-        font-size: 18px;
-      }
-    }
-
-    span {
-      color: #333333;
-      font-weight: 400;
-      font-size: 16px;
-      opacity: 0.9;
-      margin-top: 6px;
-
-      @media (max-width: 415px) {
-        font-size: 12px;
-      }
-    }
-  }
-
-  img {
-    @media (max-width: 415px) {
-      width: 190px;
-    }
-  }
 
   button {
     display: flex;
@@ -74,12 +46,36 @@ export const ContentHeaderClient = styled.div`
   flex-direction: column;
 
   h1 {
+    color: #333333;
     margin-bottom: 4px;
+
+    @media (max-width: 415px) {
+      font-size: 24px;
+    }
   }
 
   span {
+    color: #333333;
     font-weight: 400;
     font-size: 14px;
-    line-height: 70%;
+    line-height: 80%;
+    opacity: 0.9;
+    margin-bottom: 8px;
+  }
+`;
+
+export const LabelTable = styled.div`
+  display: flex;
+  width: 100%;
+  max-width: 1216px;
+  background: #ffffff;
+  border: 1px solid rgba(204, 204, 204, 0.3);
+  border-radius: 8px;
+  padding: 15px 16px;
+  margin-top: 16px;
+
+  @media (max-width: 415px) {
+    padding: 6px 8px;
+    margin-top: 8px;
   }
 `;
