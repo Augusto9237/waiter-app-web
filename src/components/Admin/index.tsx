@@ -1,11 +1,19 @@
-import React from 'react';
-
-import { Container } from './styles';
+import { CardContainer, CardOrders, Container } from "./styles";
 
 export default function Admin() {
   return (
-    <Container >
-         admin
+    <Container>
+      <CardContainer>
+        <CardOrders>
+          <span>💲 Receita</span>
+        </CardOrders>
+        <CardOrders>
+          <span>🧾 Pedidos</span>
+        </CardOrders>
+        <CardOrders>
+          <span>🙍‍♂️ Clientes</span>
+        </CardOrders>
+      </CardContainer>
     </Container>
   );
 }
