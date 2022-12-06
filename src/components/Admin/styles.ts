@@ -78,6 +78,7 @@ export const ListOrders = styled.div`
 export const TableOrders = styled.div`
   display: flex;
   flex: 1;
+  margin-top: 16px;
 
   table {
     width: 100%;
