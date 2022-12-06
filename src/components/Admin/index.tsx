@@ -28,6 +28,11 @@ export default function Admin() {
           <span>Clientes</span>
           <h1>8</h1>
         </CardOrders>
+        <CardOrders>
+          <span className="icon-customers">🪑</span>
+          <span>Mesas</span>
+          <h1>10/20</h1>
+        </CardOrders>
       </CardContainer>
       <ListOrders>
         <strong>Relatorio de Pedidos</strong>
