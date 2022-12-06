@@ -68,8 +68,31 @@ export const CardOrders = styled.div`
 
 export const ListOrders = styled.div`
   display: flex;
+  flex-direction: column;
   padding: 20px;
   background: #fff;
   border: 1px solid rgba(204, 204, 204, 0.3);
   border-radius: 8px;
+`;
+
+export const TableOrders = styled.div`
+  display: flex;
+  flex: 1;
+
+  table {
+    width: 100%;
+
+    thead {
+     
+    }
+
+    th {
+      text-align: center;
+      border-bottom: 1px solid rgba(204, 204, 204, 0.3);
+    }
+
+    td {
+      text-align: center;
+    }
+  }
 `;

@@ -1,5 +1,11 @@
 import { formatCurrency } from "../../utils/formatCurrency";
-import { CardContainer, CardOrders, Container, ListOrders } from "./styles";
+import {
+  CardContainer,
+  CardOrders,
+  Container,
+  ListOrders,
+  TableOrders,
+} from "./styles";
 
 export default function Admin() {
   return (
@@ -23,6 +29,26 @@ export default function Admin() {
       </CardContainer>
       <ListOrders>
         <strong>Relatorio de Pedidos</strong>
+        <TableOrders>
+          <table>
+            <thead>
+              <tr>
+                <th>Cliente</th>
+                <th>Pedido</th>
+                <th>Valor</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>The table body</td>
+                <td>The table body</td>
+                <td>The table body</td>
+                <td>The table body</td>
+              </tr>
+            </tbody>
+          </table>
+        </TableOrders>
       </ListOrders>
     </Container>
   );
