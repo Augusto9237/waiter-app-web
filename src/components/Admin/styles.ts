@@ -73,6 +73,12 @@ export const ListOrders = styled.div`
   background: #fff;
   border: 1px solid rgba(204, 204, 204, 0.3);
   border-radius: 8px;
+
+  strong {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 140%;
+  }
 `;
 
 export const TableOrders = styled.div`
@@ -84,7 +90,6 @@ export const TableOrders = styled.div`
     width: 100%;
 
     thead {
-     
     }
 
     th {
