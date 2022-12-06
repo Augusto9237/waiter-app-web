@@ -1,3 +1,4 @@
+import { formatCurrency } from "../../utils/formatCurrency";
 import { CardContainer, CardOrders, Container } from "./styles";
 
 export default function Admin() {
@@ -5,13 +6,19 @@ export default function Admin() {
     <Container>
       <CardContainer>
         <CardOrders>
-          <span>💲 Receita</span>
+          <span className="icon-avenue">💲</span>
+          <span>Receita</span>
+          <h1>{formatCurrency(100)}</h1>
         </CardOrders>
         <CardOrders>
-          <span>🧾 Pedidos</span>
+          <span className="icon-orders">🧾</span>
+          <span>Pedidos</span>
+          <h1>10</h1>
         </CardOrders>
         <CardOrders>
-          <span>🙍‍♂️ Clientes</span>
+          <span className="icon-customers">🙍‍♂️</span>
+          <span>Clientes</span>
+          <h1>8</h1>
         </CardOrders>
       </CardContainer>
     </Container>
