@@ -99,6 +99,32 @@ export const TableOrders = styled.div`
 
     td {
       text-align: center;
+      padding: 12px;
+
+      .client-info{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+      }
     }
   }
+`;
+
+export const IconClient = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 209, 255, 0.25);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+`;
+
+export const StatusOrder = styled.div`
+    background: rgba(107, 226, 190, 0.24);
+    border-radius: 30px;
+    padding: 4px 12px;
+    max-width: 200px;
+    margin: 0 auto;
 `;

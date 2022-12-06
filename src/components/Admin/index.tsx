@@ -3,7 +3,9 @@ import {
   CardContainer,
   CardOrders,
   Container,
+  IconClient,
   ListOrders,
+  StatusOrder,
   TableOrders,
 } from "./styles";
 
@@ -41,10 +43,15 @@ export default function Admin() {
             </thead>
             <tbody>
               <tr>
+                <td>
+                  <div className="client-info">
+                    <IconClient>🙎‍♂️</IconClient>
+                    <span>Client Name</span>
+                  </div>
+                </td>
                 <td>The table body</td>
                 <td>The table body</td>
-                <td>The table body</td>
-                <td>The table body</td>
+                <td><StatusOrder>🕑 Fila de espera</StatusOrder></td>
               </tr>
             </tbody>
           </table>
