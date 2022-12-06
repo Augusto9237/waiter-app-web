@@ -62,5 +62,6 @@ export const CardOrders = styled.div`
     font-size: 28px;
     line-height: 140%;
     color: #333333;
+    margin-top: 8px;
   }
 `;
