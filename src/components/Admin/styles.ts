@@ -65,3 +65,11 @@ export const CardOrders = styled.div`
     margin-top: 8px;
   }
 `;
+
+export const ListOrders = styled.div`
+  display: flex;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid rgba(204, 204, 204, 0.3);
+  border-radius: 8px;
+`;

@@ -1,5 +1,5 @@
 import { formatCurrency } from "../../utils/formatCurrency";
-import { CardContainer, CardOrders, Container } from "./styles";
+import { CardContainer, CardOrders, Container, ListOrders } from "./styles";
 
 export default function Admin() {
   return (
@@ -21,6 +21,9 @@ export default function Admin() {
           <h1>8</h1>
         </CardOrders>
       </CardContainer>
+      <ListOrders>
+        <strong>Relatorio de Pedidos</strong>
+      </ListOrders>
     </Container>
   );
 }
