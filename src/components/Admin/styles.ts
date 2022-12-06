@@ -89,19 +89,19 @@ export const TableOrders = styled.div`
   table {
     width: 100%;
 
-    thead {
-    }
-
     th {
-      text-align: center;
       border-bottom: 1px solid rgba(204, 204, 204, 0.3);
+      font-weight: 600;
+      font-size: 14px;
     }
 
     td {
-      text-align: center;
+     text-align: center;
       padding: 12px;
+      font-weight: 400;
+      font-size: 14px;
 
-      .client-info{
+      .client-info {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -122,9 +122,9 @@ export const IconClient = styled.div`
 `;
 
 export const StatusOrder = styled.div`
-    background: rgba(255, 181, 114, 0.2);
-    border-radius: 30px;
-    padding: 4px 12px;
-    max-width: 200px;
-    margin: 0 auto;
+  background: rgba(255, 181, 114, 0.2);
+  border-radius: 30px;
+  padding: 4px 12px;
+  max-width: 200px;
+  margin: 0 auto;
 `;

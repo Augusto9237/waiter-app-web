@@ -38,6 +38,7 @@ export default function Admin() {
                 <th>Cliente</th>
                 <th>Pedido</th>
                 <th>Valor</th>
+                <th>Atendente</th>
                 <th>Status</th>
               </tr>
             </thead>
@@ -49,8 +50,9 @@ export default function Admin() {
                     <span>Client Name</span>
                   </div>
                 </td>
-                <td>The table body</td>
-                <td>The table body</td>
+                <td>coca ks</td>
+                <td>{formatCurrency(100)}</td>
+                <td>Fulano</td>
                 <td><StatusOrder>🕑 Fila de espera</StatusOrder></td>
               </tr>
             </tbody>
