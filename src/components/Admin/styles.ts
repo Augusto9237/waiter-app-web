@@ -93,6 +93,7 @@ export const TableOrders = styled.div`
       border-bottom: 1px solid rgba(204, 204, 204, 0.3);
       font-weight: 600;
       font-size: 14px;
+      padding-bottom: 8px;
     }
 
     td {
