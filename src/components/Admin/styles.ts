@@ -122,7 +122,7 @@ export const IconClient = styled.div`
 `;
 
 export const StatusOrder = styled.div`
-    background: rgba(107, 226, 190, 0.24);
+    background: rgba(255, 181, 114, 0.2);
     border-radius: 30px;
     padding: 4px 12px;
     max-width: 200px;
