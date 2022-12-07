@@ -4,11 +4,11 @@ import { ButtonOpen, Container, HeaderSideBar, SideBarBody } from "./styles";
 export default function SideBar() {
   const [sidebarVisible, setSidebarVisible] = useState(false);
   return (
-    <Container>
+    <Container sidebarVisible={sidebarVisible}>
       {sidebarVisible ? (
-        <ButtonOpen onClick={() => setSidebarVisible(false)}>{"<"}</ButtonOpen>
+        <ButtonOpen onClick={() => setSidebarVisible(false)}>{'<'}</ButtonOpen>
       ) : (
-        <ButtonOpen onClick={() => setSidebarVisible(true)}>{">"}</ButtonOpen>
+        <ButtonOpen onClick={() => setSidebarVisible(true)}>{'>'}</ButtonOpen>
       )}
 
       <HeaderSideBar>

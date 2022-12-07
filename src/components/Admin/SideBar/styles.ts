@@ -25,15 +25,18 @@ export const ButtonOpen = styled.button`
   justify-content: center;
   align-items: center;
   position: absolute;
-  width: 24px;
-  height: 24px;
+  width: 25px;
+  height: 25px;
   top: 18px;
-  right: -10px;
+  right: -14px;
   border: none;
-  background: #999999;
+  background: #CCCCCC;
   border-radius: 50%;
-  transform: rotate(-180deg);
   color: #ffff;
+
+  @media (min-width: 1620px) {
+    display: none;
+  }
 `;
 
 export const HeaderSideBar = styled.header`
