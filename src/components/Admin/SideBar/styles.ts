@@ -9,8 +9,14 @@ export const Container = styled.div`
   background: #ffff;
   box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.2);
 
-  @media (min-width: 1700px) {
+  @media (min-width: 1620px) {
     width: 200px;
+  }
+
+  @media (max-width: 1620px) {
+    strong {
+      display: none;
+    }
   }
 `;
 
@@ -38,10 +44,14 @@ export const SideBarBody = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  
+  @media (max-width: 1620px) {
+    align-items: center;
+  }
 
   .sidebarIconItem {
     display: flex;
-    padding: 12px;
+    padding: 12px 24px;
     gap: 6px;
   }
   .sidebarIconItem:hover {
