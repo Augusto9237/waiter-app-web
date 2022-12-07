@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+interface sidebarProps {
+  sidebarVisible: boolean;
+}
+
+export const Container = styled.div<sidebarProps>`
   position: fixed;
   width: 60px;
   min-height: 100vh;
