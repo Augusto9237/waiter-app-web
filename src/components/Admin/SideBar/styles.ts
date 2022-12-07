@@ -22,6 +22,10 @@ export const Container = styled.div<sidebarProps>`
       display: none;
     }
   }
+
+  @media (max-width: 600px) {
+   width: 46px;
+  }
 `;
 
 export const ButtonOpen = styled.button`

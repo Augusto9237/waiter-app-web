@@ -31,6 +31,10 @@ export const CardContainer = styled.div`
   @media (max-width: 1350px) {
     padding-left: 26px;
   }
+
+  @media (max-width: 850px) {
+    padding-left: 40px;
+  }
 `;
 
 export const CardOrders = styled.div`
@@ -80,6 +84,10 @@ export const ListOrders = styled.div`
 
   @media (max-width: 1350px) {
     margin-left: 26px;
+  }
+
+  @media (max-width: 850px) {
+    margin-left: 40px;
   }
 
   strong {
