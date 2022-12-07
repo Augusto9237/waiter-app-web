@@ -5,7 +5,12 @@ export default function SideBar() {
   const [sidebarVisible, setSidebarVisible] = useState(false);
   return (
     <Container>
-      <ButtonOpen onClick={() => setSidebarVisible(true)}>{'>'}</ButtonOpen>
+      {sidebarVisible ? (
+        <ButtonOpen onClick={() => setSidebarVisible(false)}>{"<"}</ButtonOpen>
+      ) : (
+        <ButtonOpen onClick={() => setSidebarVisible(true)}>{">"}</ButtonOpen>
+      )}
+
       <HeaderSideBar>
         <span>👨‍💻</span>
         <strong>Admin</strong>
