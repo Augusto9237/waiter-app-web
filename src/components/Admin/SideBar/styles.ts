@@ -9,8 +9,8 @@ export const Container = styled.div`
   background: #ffff;
   box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.2);
 
-  @media (min-width: 1733px) {
-    width: 250px;
+  @media (min-width: 1700px) {
+    width: 200px;
   }
 `;
 
@@ -40,7 +40,12 @@ export const SideBarBody = styled.div`
   gap: 8px;
 
   .sidebarIconItem {
-    padding: 6px;
+    display: flex;
+    padding: 12px;
+    gap: 6px;
+  }
+  .sidebarIconItem:hover {
     background: #cccccc;
+    cursor: pointer;
   }
 `;

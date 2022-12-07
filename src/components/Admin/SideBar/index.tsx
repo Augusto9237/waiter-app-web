@@ -17,6 +17,16 @@ export default function SideBar() {
           <span>🧾</span>
           <strong>Pedidos</strong>
         </div>
+
+        <div className="sidebarIconItem">
+          <span>🪑</span>
+          <strong>Pedidos</strong>
+        </div>
+
+        <div className="sidebarIconItem">
+          <span>🤵</span>
+          <strong>Atendentes</strong>
+        </div>
       </SideBarBody>
     </Container>
   );
