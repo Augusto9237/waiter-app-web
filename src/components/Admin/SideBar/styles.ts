@@ -66,6 +66,7 @@ export const HeaderSideBar = styled.header`
 export const SideBarBody = styled.div`
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   gap: 6px;
 
   @media (max-width: 1620px) {
