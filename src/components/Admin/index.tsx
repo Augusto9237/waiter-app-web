@@ -24,11 +24,6 @@ export default function Admin() {
           <h1>10</h1>
         </CardOrders>
         <CardOrders>
-          <span className="icon-customers">🙍‍♂️</span>
-          <span>Clientes</span>
-          <h1>8</h1>
-        </CardOrders>
-        <CardOrders>
           <span className="icon-customers">🪑</span>
           <span>Mesas</span>
           <h1>10/20</h1>
