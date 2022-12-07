@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Container, HeaderSideBar, SideBarBody } from "./styles";
 
 export default function SideBar() {
+  const [sidebarVisible, setSidebarVisible] = useState(false);
   return (
     <Container>
       <HeaderSideBar>
