@@ -20,6 +20,22 @@ export const Container = styled.div`
   }
 `;
 
+export const ButtonOpen = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 18px;
+  right: -10px;
+  border: none;
+  background: #999999;
+  border-radius: 50%;
+  transform: rotate(-180deg);
+  color: #ffff;
+`;
+
 export const HeaderSideBar = styled.header`
   display: flex;
   gap: 12px;

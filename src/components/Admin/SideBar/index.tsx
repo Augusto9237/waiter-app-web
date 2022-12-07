@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Container, HeaderSideBar, SideBarBody } from "./styles";
+import { ButtonOpen, Container, HeaderSideBar, SideBarBody } from "./styles";
 
 export default function SideBar() {
   const [sidebarVisible, setSidebarVisible] = useState(false);
   return (
     <Container>
+      <ButtonOpen onClick={() => setSidebarVisible(true)}>{'>'}</ButtonOpen>
       <HeaderSideBar>
         <span>👨‍💻</span>
         <strong>Admin</strong>
