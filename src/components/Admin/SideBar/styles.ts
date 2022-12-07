@@ -66,7 +66,7 @@ export const HeaderSideBar = styled.header`
 export const SideBarBody = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 
   @media (max-width: 1620px) {
     align-items: center;
