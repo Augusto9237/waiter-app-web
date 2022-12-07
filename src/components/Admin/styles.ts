@@ -27,6 +27,10 @@ export const CardContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   gap: 24px;
+
+  @media (max-width: 1350px) {
+    padding-left: 26px;
+  }
 `;
 
 export const CardOrders = styled.div`
@@ -74,6 +78,10 @@ export const ListOrders = styled.div`
   border: 1px solid rgba(204, 204, 204, 0.3);
   border-radius: 8px;
 
+  @media (max-width: 1350px) {
+    margin-left: 26px;
+  }
+
   strong {
     font-weight: 600;
     font-size: 20px;
@@ -97,7 +105,7 @@ export const TableOrders = styled.div`
     }
 
     td {
-     text-align: center;
+      text-align: center;
       padding: 12px;
       font-weight: 400;
       font-size: 14px;
