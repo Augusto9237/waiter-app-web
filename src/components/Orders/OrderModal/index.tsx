@@ -92,6 +92,7 @@ export function OrderModal({ visible, order, onClose, onCancelOrder, isLoading, 
         </OrderDetails>
 
         <Actions>
+          
           {order.status !== 'DONE' && (
             <button type="button" className="primary" disabled={isLoading} onClick={onChangeOrderStatus}>
 
@@ -104,6 +105,7 @@ export function OrderModal({ visible, order, onClose, onCancelOrder, isLoading, 
               </strong>
             </button>
           )}
+
           <button
             type="button"
             className="secondary"
