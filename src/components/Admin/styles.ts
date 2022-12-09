@@ -165,6 +165,14 @@ export const TableOrders = styled.div`
       font-weight: 400;
       font-size: 14px;
 
+      @media (max-width: 850px) {
+        padding: 8px;
+      }
+
+      @media (max-width: 450px) {
+        padding: 6px;
+      }
+
       .client-info {
         display: flex;
         align-items: center;
