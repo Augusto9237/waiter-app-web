@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ButtonOpen, Container, HeaderSideBar, SideBarBody } from "./styles";
 
 export default function SideBar() {
-  const [sidebarVisible, setSidebarVisible] = useState(false);
+  const [sidebarVisible, setSidebarVisible] = useState(true);
   return (
     <Container sidebarVisible={sidebarVisible}>
       {sidebarVisible ? (

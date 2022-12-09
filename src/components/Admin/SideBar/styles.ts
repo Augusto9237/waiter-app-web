@@ -18,13 +18,14 @@ export const Container = styled.div<sidebarProps>`
   }
 
   @media (max-width: 1620px) {
+    width: ${(props) => (props.sidebarVisible ? "60px" : "200px")};
     strong {
       display: ${(props) => (props.sidebarVisible ? "none" : "flex")};
     }
   }
 
   @media (max-width: 600px) {
-    width: 46px;
+    width: ${(props) => (props.sidebarVisible ? "45px" : "200px")};
   }
 `;
 
@@ -77,13 +78,14 @@ export const SideBarBody = styled.div<sidebarProps>`
     display: flex;
     width: 100%;
     align-items: center;
-    justify-content: ${(props) =>props.sidebarVisible ? "center" : 'flex-start'};
+    justify-content: ${(props) =>
+    props.sidebarVisible ? "center" : "flex-start"};
     padding: 12px 24px;
     gap: 6px;
 
     @media (min-width: 1620px) {
-    justify-content: flex-start;
-  }
+      justify-content: flex-start;
+    }
 
     strong {
       font-weight: 500;

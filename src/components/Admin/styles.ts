@@ -88,15 +88,18 @@ export const CardOrders = styled.div`
 
   h1 {
     font-weight: 600;
-    font-size: 28px;
+    font-size: 24px;
     line-height: 140%;
     color: #333333;
     margin-top: 8px;
 
     @media (max-width: 850px) {
       font-weight: 600;
-      font-size: 24px;
       line-height: 120%;
+    }
+
+    @media (max-width: 650px) {
+      font-size: 16px;
     }
   }
 `;
@@ -115,13 +118,17 @@ export const ListOrders = styled.div`
 
   @media (max-width: 850px) {
     margin-left: 5%;
+    padding: 18px;
   }
-
 
   strong {
     font-weight: 600;
     font-size: 20px;
     line-height: 140%;
+
+    @media (max-width: 650px) {
+      font-size: 16px;
+    }
   }
 `;
 
