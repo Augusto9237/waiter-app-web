@@ -6,7 +6,7 @@ interface sidebarProps {
 
 export const Container = styled.div<sidebarProps>`
   position: fixed;
-  width: 60px;
+  width: ${(props) => (props.sidebarVisible ? "60px" : "200px")};
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -19,12 +19,12 @@ export const Container = styled.div<sidebarProps>`
 
   @media (max-width: 1620px) {
     strong {
-      display: none;
+      display: ${(props) => (props.sidebarVisible ? "none" : "flex")};
     }
   }
 
   @media (max-width: 600px) {
-   width: 46px;
+    width: 46px;
   }
 `;
 
@@ -38,7 +38,7 @@ export const ButtonOpen = styled.button`
   top: 18px;
   right: -14px;
   border: none;
-  background: #CCCCCC;
+  background: #cccccc;
   border-radius: 50%;
   color: #ffff;
 
@@ -67,20 +67,23 @@ export const HeaderSideBar = styled.header`
   }
 `;
 
-export const SideBarBody = styled.div`
+export const SideBarBody = styled.div<sidebarProps>`
   display: flex;
   flex-direction: column;
   overflow: hidden;
   gap: 6px;
 
-  @media (max-width: 1620px) {
-    align-items: center;
-  }
-
   .sidebarIconItem {
     display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: ${(props) =>props.sidebarVisible ? "center" : 'flex-start'};
     padding: 12px 24px;
     gap: 6px;
+
+    @media (min-width: 1620px) {
+    justify-content: flex-start;
+  }
 
     strong {
       font-weight: 500;

@@ -7,6 +7,10 @@ export const Container = styled.header`
   height: 198px;
   align-items: center;
 
+  @media (max-width: 1220px) {
+    padding: 0 40px;
+  }
+
   @media (max-width: 768px) {
     padding: 0 40px;
   }

@@ -6,16 +6,16 @@ export default function SideBar() {
   return (
     <Container sidebarVisible={sidebarVisible}>
       {sidebarVisible ? (
-        <ButtonOpen onClick={() => setSidebarVisible(false)}>{'<'}</ButtonOpen>
+        <ButtonOpen onClick={() => setSidebarVisible(false)}>{'>'}</ButtonOpen>
       ) : (
-        <ButtonOpen onClick={() => setSidebarVisible(true)}>{'>'}</ButtonOpen>
+        <ButtonOpen onClick={() => setSidebarVisible(true)}>{'<'}</ButtonOpen>
       )}
 
       <HeaderSideBar>
         <span>👨‍💻</span>
         <strong>Admin</strong>
       </HeaderSideBar>
-      <SideBarBody>
+      <SideBarBody sidebarVisible={sidebarVisible}>
         <div className="sidebarIconItem">
           <span>📊</span>
           <strong>Dashboard</strong>
