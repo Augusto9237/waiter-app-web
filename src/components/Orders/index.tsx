@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import sockectIo from "socket.io-client";
 import { Order } from "../../types/Order";
 import { api } from "../../utils/api";
@@ -15,6 +16,16 @@ export function Orders() {
 
     sokect.on('orders@new', (order) => {
       setOrders(prevState => prevState.concat(order));
+      toast.success('Novo pedido recebido', {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     });
   }, []);
 
