@@ -15,7 +15,7 @@ export const Container = styled.header`
     padding: 0 40px;
   }
 
-  @media (max-width: 415px) {
+  @media (max-width: 500px) {
     padding: 0 20px;
     height: 120px;
   }
@@ -33,7 +33,7 @@ export const Content = styled.div`
       color: #fff;
       font-size: 32px;
 
-      @media (max-width: 415px) {
+      @media (max-width: 500px) {
         font-size: 18px;
       }
     }
@@ -45,14 +45,14 @@ export const Content = styled.div`
       opacity: 0.9;
       margin-top: 6px;
 
-      @media (max-width: 415px) {
-        font-size: 12px;
+      @media (max-width: 500px) {
+        font-size: 14px;
       }
     }
   }
 
   img {
-    @media (max-width: 415px) {
+    @media (max-width: 500px) {
       width: 190px;
     }
   }

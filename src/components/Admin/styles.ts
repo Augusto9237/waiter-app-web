@@ -16,10 +16,13 @@ export const Container = styled.div`
 
   @media (max-width: 620px) {
     padding: 0 30px;
+    gap: 24px;
+    margin: 32px auto;
   }
 
   @media (max-width: 415px) {
     padding: 0 20px;
+    gap: 16px;
   }
 `;
 
@@ -36,6 +39,11 @@ export const CardContainer = styled.div`
   @media (max-width: 850px) {
     padding-left: 5%;
     gap: 16px;
+  }
+
+  @media (max-width: 450px) {
+    padding-left: 7%;
+    gap: 8px;
   }
 `;
 
@@ -123,6 +131,7 @@ export const ListOrders = styled.div`
 
   @media (max-width: 450px) {
     overflow: hidden;
+    margin-left: 7%;
   }
 
   strong {
