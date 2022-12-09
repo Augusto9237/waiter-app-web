@@ -121,6 +121,10 @@ export const ListOrders = styled.div`
     padding: 18px;
   }
 
+  @media (max-width: 450px) {
+    overflow: hidden;
+  }
+
   strong {
     font-weight: 600;
     font-size: 20px;
@@ -137,6 +141,10 @@ export const TableOrders = styled.div`
   flex: 1;
   margin-top: 16px;
 
+  @media (max-width: 550px) {
+    overflow: scroll;
+  }
+
   table {
     width: 100%;
 
@@ -145,6 +153,10 @@ export const TableOrders = styled.div`
       font-weight: 600;
       font-size: 14px;
       padding-bottom: 8px;
+
+      @media (max-width: 650px) {
+        text-align: center;
+      }
     }
 
     td {
@@ -171,6 +183,10 @@ export const IconClient = styled.div`
   border-radius: 50%;
   width: 32px;
   height: 32px;
+
+  @media (max-width: 650px) {
+    display: none;
+  }
 `;
 
 export const StatusOrder = styled.div`
@@ -179,4 +195,10 @@ export const StatusOrder = styled.div`
   padding: 4px 12px;
   max-width: 200px;
   margin: 0 auto;
+
+  @media (max-width: 650px) {
+    span {
+      display: none;
+    }
+  }
 `;

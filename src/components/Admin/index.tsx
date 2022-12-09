@@ -47,13 +47,17 @@ export default function Admin() {
                 <td>
                   <div className="client-info">
                     <IconClient>🙎‍♂️</IconClient>
-                    <span>Client Name</span>
+                    <span>Client</span>
                   </div>
                 </td>
-                <td>coca ks</td>
+                <td><span>Product </span></td>
                 <td>{formatCurrency(100)}</td>
-                <td>Fulano</td>
-                <td><StatusOrder>🕑 Fila de espera</StatusOrder></td>
+                <td><span>Waiter </span></td>
+                <td>
+                  <StatusOrder>
+                    🕑 <span>Fila de espera</span>
+                  </StatusOrder>
+                </td>
               </tr>
             </tbody>
           </table>
