@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Client } from "../components/Client";
 import { Cart } from "../components/Client/Cart";
 import { HeaderClient } from "../components/Client/Header";
@@ -12,6 +12,8 @@ import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 import { Header } from "../components/Orders/Header";
+import { CategoryType } from "../types/Category";
+import { api } from "../utils/api";
 
 export function ClientPage() {
 
@@ -22,6 +24,32 @@ export function ClientPage() {
   const [selectedTable, setSelectedTable] = useState('');
   const [selectedClient, setSelectedClient] = useState("");
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [categories, setCategories] = useState<CategoryType[]>([]);
+  const [products, setProducts] = useState<ProductType[]>([]);
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingProducts, setIsLoadingProducts] = useState(false);
+
+  useEffect(() => {
+    Promise.all([
+      api.get('/categories'),
+      api.get('/products'),
+    ]).then(([categoriesResponse, productsResponse]) => {
+      setCategories(categoriesResponse.data);
+      setProducts(productsResponse.data);
+      setIsLoading(false);
+    });
+  }, []);
+
+  async function handleSelectCategory(categoryId: string) {
+    const route = !categoryId ? '/products' : `/categories/${categoryId}/products`;
+
+    setIsLoadingProducts(true);
+
+    const { data } = await api.get(route);
+    setProducts(data);
+    setIsLoadingProducts(false);
+  }
 
   function handleSaveTable(table: string) {
     setSelectedClient(table);
@@ -99,7 +127,12 @@ export function ClientPage() {
         />
       )}
 
-      <Client onAddToCart={handleAddToCart} />
+      <Client
+        onAddToCart={handleAddToCart}
+        categories={categories}
+        onSelectCategory={handleSelectCategory}
+      />
+
       <Cart
         selectedTable={selectedTable}
         onAdd={handleAddToCart}

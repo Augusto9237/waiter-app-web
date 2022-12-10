@@ -1,13 +1,19 @@
 import { useState } from "react";
-import { categories } from "../../../mocks/categories";
+import { CategoryType } from "../../../types/Category";
 import { Category } from "../Category";
 import { ButtonCategory, CategoriesContainer } from "./styles";
 
-export function Categories() {
+interface CategoriesProps {
+  categories: CategoryType[];
+  onSelectCategory: (categoryId: string) => Promise<void>;
+}
+
+export function Categories({ categories, onSelectCategory }: CategoriesProps) {
   const [selectedCategory, setSelectedCategory] = useState("");
 
   function handleSelectCategory(categoryId: string) {
     const category = selectedCategory === categoryId ? "" : categoryId;
+    onSelectCategory(category);
     setSelectedCategory(category);
   }
 

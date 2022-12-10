@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { products } from "../../mocks/products";
+import { CategoryType } from "../../types/Category";
 import { ProductType } from "../../types/Products";
 import { Categories } from "./Categories";
 import { ProductCard } from "./ProductCard";
@@ -10,9 +11,11 @@ import { Container, ProductsContainer } from "./styles";
 
 interface ClientProps {
   onAddToCart: (product: ProductType) => void;
+  categories: CategoryType[];
+  onSelectCategory: (categoryId: string) => Promise<void>;
 }
 
-export function Client({ onAddToCart }: ClientProps) {
+export function Client({ onAddToCart, categories, onSelectCategory }: ClientProps) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<null | ProductType>(
     null
@@ -31,7 +34,7 @@ export function Client({ onAddToCart }: ClientProps) {
         product={selectedProduct}
         onAddToCart={onAddToCart}
       />
-      <Categories />
+      <Categories  categories={categories} onSelectCategory={onSelectCategory}/>
       <ProductsContainer>
         {products.map((product) => {
           return (

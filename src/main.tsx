@@ -6,6 +6,6 @@ import { ClientPage } from "./Pages/Client";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   // <React.StrictMode>
-  <AdminPage />
+  <ClientPage/>
   //  </React.StrictMode>
 );

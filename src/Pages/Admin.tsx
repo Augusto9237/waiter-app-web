@@ -1,8 +1,4 @@
 import { useState } from "react";
-import { Client } from "../components/Client";
-import { Cart } from "../components/Client/Cart";
-import { HeaderClient } from "../components/Client/Header";
-import { TableModal } from "../components/Client/TableModal";
 
 import { GlobalStyles } from "../styles/GlobalStyles";
 import { CartItem } from "../types/CartItem";
