@@ -23,7 +23,8 @@ export const Container = styled.div`
 
 export const SigInBody = styled.div`
   display: flex;
-  width: 1060px;
+  width: 100%;
+  max-width: 1060px;
   border: 1px solid rgba(204, 204, 204, 0.4);
   border-radius: 16px;
   overflow: hidden;
@@ -40,6 +41,10 @@ export const ImageContainer = styled.div`
   img {
     width: 100%;
   }
+
+  @media (max-width: 700px) {
+    display: none;
+  }
 `;
 
 export const SigInContent = styled.div`
@@ -49,16 +54,38 @@ export const SigInContent = styled.div`
   justify-content: center;
   background: #ffffff;
   padding: 32px;
+
+  @media (max-width: 700px) {
+    padding: 0;
+  }
 `;
 
 export const SigInHeader = styled.header`
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+
+  @media (max-width: 700px) {
+    background: #d73035;
+  }
 
   h1 {
     font-weight: 600;
     font-size: 24px;
     color: #333333;
+
+    @media (max-width: 700px) {
+      color: #ffffff;
+    }
+  }
+
+  img {
+    display: none;
+
+    @media (max-width: 700px) {
+      display: flex;
+    }
   }
 `;
 
@@ -73,6 +100,10 @@ export const SigInInputContainer = styled.div`
     margin-bottom: 6px;
     color: #333333;
     opacity: 0.9;
+
+    @media (max-width: 700px) {
+      margin-left: 24px;
+    }
   }
 
   input {
@@ -80,5 +111,9 @@ export const SigInInputContainer = styled.div`
     border: 1px solid rgba(204, 204, 204, 0.4);
     border-radius: 8px;
     margin-bottom: 12px;
+
+    @media (max-width: 700px) {
+      margin: 0 24px;
+    }
   }
 `;
