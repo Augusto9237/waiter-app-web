@@ -1,6 +1,6 @@
 import logo from "../../assets/images/logo.svg";
 import { Button } from "../Button";
-import { Container, SigInBody, ImageContainer, SigInContent, SigInHeader, SigInInputContainer } from './styles';
+import { Container, SigInBody, ImageContainer, SigInContent, SigInHeader, SigInInputContainer, FooterSigIn} from './styles';
 
 export default function SigIn() {
   return (
@@ -21,7 +21,9 @@ export default function SigIn() {
             <span>Senha</span>
             <input placeholder="Digite sua senha" />
           </SigInInputContainer>
-          <Button onClick={() => alert('entrar')}>Entrar</Button>
+          <FooterSigIn>
+            <Button onClick={() => alert('entrar')}>Entrar</Button>
+          </FooterSigIn>
         </SigInContent>
       </SigInBody>
     </Container>

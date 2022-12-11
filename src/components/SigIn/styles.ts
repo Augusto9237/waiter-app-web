@@ -11,9 +11,14 @@ export const Container = styled.div`
   max-width: 1216px;
   margin: auto;
 
-  @media (max-width: 768px) {
+  @media (max-width: 860px) {
     flex-direction: column;
     padding: 0 40px;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 0 30px;
   }
 
   @media (max-width: 415px) {
@@ -68,6 +73,8 @@ export const SigInHeader = styled.header`
 
   @media (max-width: 700px) {
     background: #d73035;
+    padding: 18px;
+    gap: 12px;
   }
 
   h1 {
@@ -85,6 +92,7 @@ export const SigInHeader = styled.header`
 
     @media (max-width: 700px) {
       display: flex;
+      width: 300px;
     }
   }
 `;
@@ -114,6 +122,17 @@ export const SigInInputContainer = styled.div`
 
     @media (max-width: 700px) {
       margin: 0 24px;
+      margin-bottom: 12px;
     }
   }
+`;
+
+export const FooterSigIn = styled.footer`
+   width: 100%;
+   display: flex;
+
+   @media (max-width: 700px) {
+     padding: 0 24px;
+     margin-bottom: 24px;
+    }
 `;
