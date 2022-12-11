@@ -48,7 +48,7 @@ export const SigInContent = styled.div`
   flex-direction: column;
   justify-content: center;
   background: #ffffff;
-  padding: 24px;
+  padding: 32px;
 `;
 
 export const SigInHeader = styled.header`
@@ -65,12 +65,20 @@ export const SigInHeader = styled.header`
 export const SigInInputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 12px;
   margin: 24px 0;
+
+  span {
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #333333;
+    opacity: 0.9;
+  }
 
   input {
     padding: 12px;
     border: 1px solid rgba(204, 204, 204, 0.4);
-    border-radius: 5.91319px;
+    border-radius: 8px;
+    margin-bottom: 12px;
   }
 `;

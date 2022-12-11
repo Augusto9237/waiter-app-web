@@ -11,7 +11,7 @@ export default function SigIn() {
         </ImageContainer>
         <SigInContent>
           <SigInHeader>
-            <h1>SignUp</h1>
+            <h1>Acessar sua conta</h1>
           </SigInHeader>
           <SigInInputContainer>
             <span>E-mail</span>
