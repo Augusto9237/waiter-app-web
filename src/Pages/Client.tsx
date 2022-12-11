@@ -131,6 +131,7 @@ export function ClientPage() {
         onAddToCart={handleAddToCart}
         categories={categories}
         onSelectCategory={handleSelectCategory}
+        products={products}
       />
 
       <Cart

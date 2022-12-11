@@ -23,7 +23,7 @@ export function ProductCard({
     <>
       <ProductCardContainer>
         <ProductImage onClick={() => onOpenModal(product!)}>
-          <img src={product?.imagePath} alt={product?.name} />
+          <img src={`http://192.168.100.41:3001/uploads/${product?.imagePath}`} alt={product?.name} />
         </ProductImage>
 
         <ProductDetails>

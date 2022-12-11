@@ -54,7 +54,7 @@ export function ProductModal({
   return (
     <Overlay>
       <ModalBody>
-        <ImageProduct image={product.imagePath}>
+        <ImageProduct image={`http://192.168.100.41:3001/uploads/${product.imagePath}`}>
           <ButtonCloseModal onClick={onClose}>X</ButtonCloseModal>
         </ImageProduct>
         <ModalContent>
