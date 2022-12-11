@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { Order } from "../../types/Order";
+import { api } from "../../utils/api";
 import { formatCurrency } from "../../utils/formatCurrency";
 import {
   CardContainer,
@@ -10,6 +13,16 @@ import {
 } from "./styles";
 
 export default function Admin() {
+
+  const [orders, setOrders] = useState<Order[]>([]);
+
+  useEffect(() => {
+    api.get('/orders')
+      .then(({ data }) => {
+        setOrders(data);
+      });
+  }, []);
+
   return (
     <Container>
       <CardContainer>
@@ -43,22 +56,28 @@ export default function Admin() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  <div className="client-info">
-                    <IconClient>🙎‍♂️</IconClient>
-                    <span>Client</span>
-                  </div>
-                </td>
-                <td><span>Product </span></td>
-                <td>{formatCurrency(100)}</td>
-                <td><span>Waiter </span></td>
-                <td>
-                  <StatusOrder>
-                    🕑 <span>Fila de espera</span>
-                  </StatusOrder>
-                </td>
-              </tr>
+              {orders.map((order) => (
+                <>
+                  <tr key={order._id}>
+                    <td>
+                      <div className="client-info">
+                        <IconClient>🙎‍♂️</IconClient>
+                        <span>Client</span>
+                      </div>
+                    </td>
+                    <td><span>Product </span></td>
+                    <td>{formatCurrency(100)}</td>
+                    <td><span>Waiter </span></td>
+                    <td>
+                      <StatusOrder>
+                        🕑 <span>{order.status === "WAITING" && "  Fila de espera"}
+                          {order.status === "IN_PRODUCTION" && "Em produção"}
+                          {order.status === "DONE" && "Pronto"}</span>
+                      </StatusOrder>
+                    </td>
+                  </tr>
+                </>
+              ))}
             </tbody>
           </table>
         </TableOrders>
