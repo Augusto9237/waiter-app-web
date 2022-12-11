@@ -4,8 +4,28 @@ import { App } from "./App";
 import { AdminPage } from "./Pages/Admin";
 import { ClientPage } from "./Pages/Client";
 
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App/>,
+  },
+  {
+    path: "/Admin",
+    element: <AdminPage/>,
+  },
+  {
+    path: "/client/:tableNumber",
+    element: <ClientPage/>,
+  },
+]);
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   // <React.StrictMode>
-  <App/>
+  <RouterProvider router={router} />
   //  </React.StrictMode>
 );

@@ -15,10 +15,12 @@ import { Header } from "../components/Orders/Header";
 import { CategoryType } from "../types/Category";
 import { api } from "../utils/api";
 import LoadingSpinner from "../components/LoadingSpinner";
+import { useParams } from "react-router-dom";
 
 export function ClientPage() {
 
-  const tableInit = '1';
+  const { tableNumber } = useParams();
+  const tablestring = tableNumber?.toString();
 
   const [isTableModalVisible, setIsTableModalVisible] = useState(false);
 
@@ -54,7 +56,7 @@ export function ClientPage() {
 
   function handleSaveTable(table: string) {
     setSelectedClient(table);
-    setSelectedTable(tableInit);
+    setSelectedTable(tablestring!);
   }
 
   function handleResetOrder() {
