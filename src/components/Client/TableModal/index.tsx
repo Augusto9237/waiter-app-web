@@ -56,7 +56,7 @@ export function TableModal({ visibleModalTable, onCloseModalTable, onSave }: Tab
         <FormModal>
           <input
             required
-            placeholder="Numero da mesa"
+            placeholder="Seu nome"
             type='text'
             value={table}
             onChange={(e) => setTable(e.target.value)}

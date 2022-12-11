@@ -59,7 +59,7 @@ export function CartModal({
   }, [onClose]);
 
   async function handleConfirmOrder() {
-  //  setIsLoading(true);
+    //  setIsLoading(true);
 
     await api.post('/orders', {
       table: selectedTable,
@@ -85,7 +85,7 @@ export function CartModal({
       progress: undefined,
       theme: "light",
     });
-    
+
     onConfirmOrder();
     onClose();
 
@@ -116,11 +116,9 @@ export function CartModal({
                   <Item>
                     <ProductContainer>
                       <ImageItem>
-                        <img src={cartItem.product.imagePath} />
+                        <img src={`http://192.168.100.41:3001/uploads/${cartItem.product.imagePath}`} />
                       </ImageItem>
-                      <QuantityContainer>
-                        <span>{cartItem.quantity}x</span>
-                      </QuantityContainer>
+
 
                       <ProductDetails>
                         <strong>{cartItem.product.name}</strong>
@@ -132,6 +130,10 @@ export function CartModal({
                       <button type="button" onClick={() => onAdd(cartItem.product)}>
                         <span>+</span>
                       </button>
+
+                      <QuantityContainer>
+                        <span>{cartItem.quantity}</span>
+                      </QuantityContainer>
 
                       <button
                         type="button"

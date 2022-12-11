@@ -99,6 +99,7 @@ export const ImageItem = styled.div`
   height: 40px;
   border-radius: 6px;
   overflow: hidden;
+  margin-right: 12px;
 
   img {
     width: 100%;
