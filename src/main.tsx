@@ -8,11 +8,12 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import { SigInPage } from "./Pages/SigIn";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>,
+    element: <SigInPage/>,
   },
   {
     path: "/Admin",
