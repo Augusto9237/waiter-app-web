@@ -43,6 +43,7 @@ export function Cart({
         onAdd={onAdd}
         onDecrement={onDecrement}
         onConfirmOrder={onConfirmOrder}
+        selectedTable={selectedTable}
       />
       <CartContainer>
         <CartContent>

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { CartItem } from "../../../types/CartItem";
 import { ProductType } from "../../../types/Products";
+import { api } from "../../../utils/api";
 import { formatCurrency } from "../../../utils/formatCurrency";
 import { Button } from "../../Button";
 
@@ -23,6 +24,7 @@ import {
 interface CartModalProps {
   visible: boolean;
   cartItems: CartItem[];
+  selectedTable: string;
   onClose: () => void;
   onAdd: (product: ProductType) => void;
   onDecrement: (product: ProductType) => void;
@@ -36,6 +38,7 @@ export function CartModal({
   onAdd,
   onDecrement,
   onConfirmOrder,
+  selectedTable
 }: CartModalProps) {
   if (!visible) {
     return null;
@@ -55,8 +58,23 @@ export function CartModal({
     };
   }, [onClose]);
 
+  async function handleConfirmOrder() {
+  //  setIsLoading(true);
+
+    await api.post('/orders', {
+      table: selectedTable,
+      products: cartItems.map((cartItem) => ({
+        product: cartItem.product._id,
+        quantity: cartItem.quantity
+      }))
+    });
+
+    // setIsLoading(false);
+    //setIsModalVisible(true);
+  }
+
   function handleOk() {
-    onConfirmOrder();
+    handleConfirmOrder();
     toast.success('Pedido confirmado', {
       position: "top-right",
       autoClose: 5000,
@@ -67,7 +85,8 @@ export function CartModal({
       progress: undefined,
       theme: "light",
     });
-
+    
+    onConfirmOrder();
     onClose();
 
   }
