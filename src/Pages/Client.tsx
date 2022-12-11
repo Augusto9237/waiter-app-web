@@ -14,6 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Header } from "../components/Orders/Header";
 import { CategoryType } from "../types/Category";
 import { api } from "../utils/api";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 export function ClientPage() {
 
@@ -127,21 +128,30 @@ export function ClientPage() {
         />
       )}
 
-      <Client
-        onAddToCart={handleAddToCart}
-        categories={categories}
-        onSelectCategory={handleSelectCategory}
-        products={products}
-      />
+      {isLoading && (
+        <LoadingSpinner />
+      )}
 
-      <Cart
-        selectedTable={selectedTable}
-        onAdd={handleAddToCart}
-        onDecrement={handleDecrementCartItem}
-        cartItems={cartItems}
-        onConfirmOrder={handleResetOrder}
-        onOpenModalTable={() => setIsTableModalVisible(true)}
-      />
+      {!isLoading && (
+        <>
+          <Client
+            onAddToCart={handleAddToCart}
+            categories={categories}
+            onSelectCategory={handleSelectCategory}
+            products={products}
+          />
+
+
+          <Cart
+            selectedTable={selectedTable}
+            onAdd={handleAddToCart}
+            onDecrement={handleDecrementCartItem}
+            cartItems={cartItems}
+            onConfirmOrder={handleResetOrder}
+            onOpenModalTable={() => setIsTableModalVisible(true)}
+          />
+        </>
+      )}
       <TableModal
         visibleModalTable={isTableModalVisible}
         onCloseModalTable={() => setIsTableModalVisible(false)}
