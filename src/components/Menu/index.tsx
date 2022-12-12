@@ -18,7 +18,7 @@ export function Menu() {
                             <ItemCategory key={category._id}>
                                 <Category icon={category.icon} name={category.name} />
                                 <div className="edit-category">
-                                    <button>✏</button>
+                                    <button>🖍</button>
                                     <button>🗑</button>
                                 </div>
                             </ItemCategory>
