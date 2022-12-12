@@ -31,10 +31,12 @@ export default function SideBar() {
           </div>
         </Link>
 
-        <div className="sidebarIconItem">
-          <span>🪑</span>
-          <strong>Pedidos</strong>
-        </div>
+        <Link to='/admin/menu'>
+          <div className="sidebarIconItem">
+            <span>🍛</span>
+            <strong>Cardapio</strong>
+          </div>
+        </Link>
 
         <div className="sidebarIconItem">
           <span>🤵</span>

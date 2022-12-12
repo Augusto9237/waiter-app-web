@@ -12,6 +12,7 @@ import { SigInPage } from "./Pages/SigIn";
 import { OrdersPage } from "./Pages/Orders";
 import Admin from "./components/Admin";
 import { Orders } from "./components/Orders";
+import { Menu } from "./components/Menu";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "orders",
         element: <Orders />,
+      },
+      {
+        path: "menu",
+        element: <Menu/>,
       }
     ]
   },
