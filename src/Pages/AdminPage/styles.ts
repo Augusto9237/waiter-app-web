@@ -10,18 +10,15 @@ export const ContainerAdmin = styled.div`
   margin: 40px auto;
   gap: 32px;
 
-  @media (max-width: 1350px) {
-    
-    padding-left: 5%;
-  }
+
 
   @media (max-width: 1250px) {
-    padding: 0px 20px  20px ;
+    padding: 0px 40px ;
     padding-left: 6%;
   }
 
   @media (max-width: 450px) {
-    padding: 0px 20px  20px ;
+    padding: 0px 0px 20px  20px ;
     padding-left: 50px;
   }
 
