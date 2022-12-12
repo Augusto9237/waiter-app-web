@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import { AdminPage } from "./Pages/Admin";
+import { AdminPage } from "./Pages/AdminPage";
 import { ClientPage } from "./Pages/Client";
 
 import {

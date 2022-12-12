@@ -1,48 +1,16 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  width: 100%;
-  max-width: 1216px;
-  margin: 40px auto;
-  gap: 32px;
-
-  @media (max-width: 1300px) {
-    padding-left: 4%;
-    padding: 0 40px;
-  }
-
-  @media (max-width: 620px) {
-    padding: 0 30px;
-    gap: 24px;
-    margin: 32px auto;
-  }
-
-  @media (max-width: 415px) {
-    padding: 0 20px;
-    gap: 16px;
-  }
-`;
-
 export const CardContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   gap: 24px;
 
-  @media (max-width: 1350px) {
-    padding-left: 26px;
-  }
-
   @media (max-width: 850px) {
-    padding-left: 5%;
     gap: 16px;
   }
 
   @media (max-width: 450px) {
-    padding-left: 7%;
     gap: 8px;
   }
 `;
@@ -120,18 +88,15 @@ export const ListOrders = styled.div`
   border: 1px solid rgba(204, 204, 204, 0.3);
   border-radius: 8px;
 
-  @media (max-width: 1350px) {
-    margin-left: 26px;
-  }
+  
 
   @media (max-width: 850px) {
-    margin-left: 5%;
     padding: 18px;
   }
 
   @media (max-width: 450px) {
     overflow: hidden;
-    margin-left: 7%;
+    
   }
 
   strong {

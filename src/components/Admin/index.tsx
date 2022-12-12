@@ -5,7 +5,6 @@ import { formatCurrency } from "../../utils/formatCurrency";
 import {
   CardContainer,
   CardOrders,
-  Container,
   IconClient,
   ListOrders,
   StatusOrder,
@@ -24,7 +23,7 @@ export default function Admin() {
   }, []);
 
   return (
-    <Container>
+    <>
       <CardContainer>
         <CardOrders>
           <span className="icon-avenue">💲</span>
@@ -82,6 +81,6 @@ export default function Admin() {
           </table>
         </TableOrders>
       </ListOrders>
-    </Container>
+    </>
   );
 }

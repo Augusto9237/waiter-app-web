@@ -1,14 +1,15 @@
 
-import { GlobalStyles } from "../styles/GlobalStyles";
+import { GlobalStyles } from "../../styles/GlobalStyles";
 
 
 import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
-import { Header } from "../components/Orders/Header";
-import Admin from "../components/Admin";
-import SideBar from "../components/Admin/SideBar";
+import { Header } from "../../components/Orders/Header";
+import SideBar from "../../components/Admin/SideBar";
 import { Outlet, useParams } from "react-router-dom";
+
+import { ContainerAdmin } from "./styles";
 
 export function AdminPage() {
 
@@ -19,7 +20,9 @@ export function AdminPage() {
       <GlobalStyles />
       <Header />
       <SideBar />
-        <Outlet/>
+      <ContainerAdmin>
+        <Outlet />
+      </ContainerAdmin>
       <ToastContainer />
     </>
   );
