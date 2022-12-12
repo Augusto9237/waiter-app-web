@@ -1,13 +1,13 @@
-import { Header } from "./components/Orders/Header";
+import { Header } from "../components/Orders/Header";
 
-import { Orders } from "./components/Orders";
-import { GlobalStyles } from "./styles/GlobalStyles";
+import { Orders } from "../components/Orders";
+import { GlobalStyles } from "../styles/GlobalStyles";
 
 import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 
-export function App() {
+export function OrdersPage() {
   return (
     <>
       <GlobalStyles />

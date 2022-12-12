@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { App } from "./App";
+
 import { AdminPage } from "./Pages/Admin";
 import { ClientPage } from "./Pages/Client";
 
@@ -9,19 +9,24 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { SigInPage } from "./Pages/SigIn";
+import { OrdersPage } from "./Pages/Orders";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <SigInPage/>,
+    element: <SigInPage />,
   },
   {
-    path: "/Admin",
-    element: <AdminPage/>,
+    path: "/orders",
+    element: <OrdersPage />,
+  },
+  {
+    path: "/admin",
+    element: <AdminPage />,
   },
   {
     path: "/client/:tableNumber",
-    element: <ClientPage/>,
+    element: <ClientPage />,
   },
 ]);
 
