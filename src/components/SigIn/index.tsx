@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
 import { Button } from "../Button";
 import { Container, SigInBody, ImageContainer, SigInContent, SigInHeader, SigInInputContainer, FooterSigIn} from './styles';
 
 export default function SigIn() {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <SigInBody>
@@ -22,7 +25,7 @@ export default function SigIn() {
             <input placeholder="Digite sua senha" />
           </SigInInputContainer>
           <FooterSigIn>
-            <Button onClick={() => alert('entrar')}>Entrar</Button>
+            <Button onClick={() => navigate('/admin')}>Entrar</Button>
           </FooterSigIn>
         </SigInContent>
       </SigInBody>

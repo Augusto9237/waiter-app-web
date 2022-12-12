@@ -29,6 +29,7 @@ export const Container = styled.div`
 export const SigInBody = styled.div`
   display: flex;
   width: 100%;
+  height: 500px;
   max-width: 1060px;
   border: 1px solid rgba(204, 204, 204, 0.4);
   border-radius: 16px;
@@ -41,7 +42,7 @@ export const ImageContainer = styled.div`
   flex: 1;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 42px;
 
   img {
     width: 100%;
@@ -56,7 +57,7 @@ export const SigInContent = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   background: #ffffff;
   padding: 32px;
 
