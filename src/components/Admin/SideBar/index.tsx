@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ButtonOpen, Container, HeaderSideBar, SideBarBody } from "./styles";
 
 export default function SideBar() {
@@ -16,15 +17,19 @@ export default function SideBar() {
         <strong>Admin</strong>
       </HeaderSideBar>
       <SideBarBody sidebarVisible={sidebarVisible}>
-        <div className="sidebarIconItem">
-          <span>📊</span>
-          <strong>Dashboard</strong>
-        </div>
+        <Link to='/admin'>
+          <div className="sidebarIconItem">
+            <span>📊</span>
+            <strong>Dashboard</strong>
+          </div>
+        </Link>
 
-        <div className="sidebarIconItem">
-          <span>🧾</span>
-          <strong>Pedidos</strong>
-        </div>
+        <Link to='/admin/orders'>
+          <div className="sidebarIconItem">
+            <span>🧾</span>
+            <strong>Pedidos</strong>
+          </div>
+        </Link>
 
         <div className="sidebarIconItem">
           <span>🪑</span>
