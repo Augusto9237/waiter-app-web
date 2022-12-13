@@ -74,6 +74,11 @@ export const SideBarBody = styled.div<sidebarProps>`
   overflow: hidden;
   gap: 6px;
 
+  a{
+    text-decoration: none;
+    outline: none;
+  }
+
   .sidebarIconItem {
     display: flex;
     width: 100%;

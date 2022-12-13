@@ -10,6 +10,8 @@ import {
 } from "react-router-dom";
 import { SigInPage } from "./Pages/SigIn";
 import { OrdersPage } from "./Pages/Orders";
+import { Orders } from "./components/Orders";
+import Admin from "./components/Admin";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,16 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: <AdminPage />,
+    children: [
+      {
+        path: "dashboard",
+        element: <Admin/>,
+      },
+      {
+        path: "orders",
+        element: <Orders/>,
+      },
+    ],
   },
   {
     path: "/client/:tableNumber",

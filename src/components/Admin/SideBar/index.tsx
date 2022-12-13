@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ButtonOpen, Container, HeaderSideBar, SideBarBody } from "./styles";
 
 export default function SideBar() {
@@ -15,20 +16,26 @@ export default function SideBar() {
         <span>👨‍💻</span>
         <strong>Admin</strong>
       </HeaderSideBar>
+
+
       <SideBarBody sidebarVisible={sidebarVisible}>
-        <div className="sidebarIconItem">
-          <span>📊</span>
-          <strong>Dashboard</strong>
-        </div>
+        <Link to='/admin/dashboard'>
+          <div className="sidebarIconItem">
+            <span>📊</span>
+            <strong>Dashboard</strong>
+          </div>
+        </Link>
+
+        <Link to='/admin/orders'>
+          <div className="sidebarIconItem">
+            <span>🧾</span>
+            <strong>Pedidos</strong>
+          </div>
+        </Link>
 
         <div className="sidebarIconItem">
-          <span>🧾</span>
-          <strong>Pedidos</strong>
-        </div>
-
-        <div className="sidebarIconItem">
-          <span>🪑</span>
-          <strong>Pedidos</strong>
+          <span>🍽️</span>
+          <strong>Cardapio</strong>
         </div>
 
         <div className="sidebarIconItem">
@@ -36,6 +43,6 @@ export default function SideBar() {
           <strong>Atendentes</strong>
         </div>
       </SideBarBody>
-    </Container>
+    </Container >
   );
 }
