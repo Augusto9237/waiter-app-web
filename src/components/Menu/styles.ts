@@ -127,6 +127,7 @@ export const ItemProduct = styled.div`
     width: 40px;
     height: 40px;
     overflow: hidden;
+    border-radius: 8px;
 
     img {
       width: 100%;
