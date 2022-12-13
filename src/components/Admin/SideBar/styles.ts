@@ -74,9 +74,9 @@ export const SideBarBody = styled.div<sidebarProps>`
   overflow: hidden;
   gap: 6px;
 
-  a{
+  a {
     text-decoration: none;
-    outline: none;
+    color: #333333;
   }
 
   .sidebarIconItem {

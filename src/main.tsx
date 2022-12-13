@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import { AdminPage } from "./Pages/Admin";
+import { AdminPage } from "./Pages/AdminPage";
 import { ClientPage } from "./Pages/Client";
 
 import {
@@ -10,8 +10,9 @@ import {
 } from "react-router-dom";
 import { SigInPage } from "./Pages/SigIn";
 import { OrdersPage } from "./Pages/Orders";
-import { Orders } from "./components/Orders";
 import Admin from "./components/Admin";
+import { Orders } from "./components/Orders";
+import { Menu } from "./components/Menu";
 
 const router = createBrowserRouter([
   {
@@ -27,14 +28,18 @@ const router = createBrowserRouter([
     element: <AdminPage />,
     children: [
       {
-        path: "dashboard",
-        element: <Admin/>,
+        path: "",
+        element: <Admin />,
       },
       {
         path: "orders",
-        element: <Orders/>,
+        element: <Orders />,
       },
-    ],
+      {
+        path: "menu",
+        element: <Menu/>,
+      }
+    ]
   },
   {
     path: "/client/:tableNumber",

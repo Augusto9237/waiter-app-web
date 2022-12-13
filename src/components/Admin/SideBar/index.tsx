@@ -16,10 +16,8 @@ export default function SideBar() {
         <span>👨‍💻</span>
         <strong>Admin</strong>
       </HeaderSideBar>
-
-
       <SideBarBody sidebarVisible={sidebarVisible}>
-        <Link to='/admin/dashboard'>
+        <Link to='/admin'>
           <div className="sidebarIconItem">
             <span>📊</span>
             <strong>Dashboard</strong>
@@ -33,16 +31,18 @@ export default function SideBar() {
           </div>
         </Link>
 
-        <div className="sidebarIconItem">
-          <span>🍽️</span>
-          <strong>Cardapio</strong>
-        </div>
+        <Link to='/admin/menu'>
+          <div className="sidebarIconItem">
+            <span>🍛</span>
+            <strong>Cardapio</strong>
+          </div>
+        </Link>
 
         <div className="sidebarIconItem">
           <span>🤵</span>
           <strong>Atendentes</strong>
         </div>
       </SideBarBody>
-    </Container >
+    </Container>
   );
 }
