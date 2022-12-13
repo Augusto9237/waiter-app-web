@@ -28,18 +28,17 @@ export const ButtonCategories = styled.button`
   align-items: center;
   border: none;
   background: #333333;
-  border-radius: 48px;
-  padding: 12px;
+  border-radius: 50px;
+  padding: 8px 12px;
   color: #fff;
   gap: 8px;
 
   @media (max-width: 500px) {
-    padding: 10px;
+    padding: 6px 10px;
   }
 
   span {
-    font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 100%;
   }
 `;
@@ -116,7 +115,12 @@ export const ItemProduct = styled.div`
 
   @media (max-width: 500px) {
     gap: 6px;
+
+      span {
+        font-size: 14px
+    }
   }
+
   span {
     display: flex;
     flex: 1;
