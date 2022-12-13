@@ -6,6 +6,7 @@ interface sidebarProps {
 
 export const Container = styled.div<sidebarProps>`
   position: fixed;
+  z-index: 10;
   width: ${(props) => (props.sidebarVisible ? "60px" : "200px")};
   min-height: 100vh;
   display: flex;
