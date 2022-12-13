@@ -26,7 +26,7 @@ export const Container = styled.div<sidebarProps>`
   }
 
   @media (max-width: 600px) {
-    width: ${(props) => (props.sidebarVisible ? "45px" : "200px")};
+    width: ${(props) => (props.sidebarVisible ? "45px" : "180px")};
   }
 `;
 
