@@ -110,8 +110,6 @@ export const FormCategory = styled.form`
 `;
 
 
-
-
 export const FooterCart = styled.div`
   display: flex;
   min-height: 110px;
