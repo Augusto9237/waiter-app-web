@@ -4,6 +4,7 @@ import { categories } from "../../mocks/categories";
 import { products } from "../../mocks/products";
 import { formatCurrency } from "../../utils/formatCurrency";
 import { FormCategoryModal } from "../Admin/FormCategoryModal";
+import { FormProductModal } from "../Admin/FormProductModal ";
 
 import { Category } from "../Client/Category";
 import {
@@ -17,18 +18,22 @@ import {
 } from "./styles";
 
 export function Menu() {
-    const [isVisible, setIsVisible] = useState(false);
+    const [isVisibleFormCategory, setIsVisibleFormCategory] = useState(false);
+    const [isVisibleFormProduct, setIsVisibleFormProduct] = useState(false);
 
     function onClose() {
-        setIsVisible(false);
+        setIsVisibleFormCategory(false);
+        setIsVisibleFormProduct(false);
     }
     return (
         <>
-            <FormCategoryModal visible={isVisible} onClose={onClose} />
+            <FormCategoryModal visible={isVisibleFormCategory} onClose={onClose} />
+            <FormProductModal visible={isVisibleFormProduct} onClose={onClose} />
+
             <MenuContainer>
                 <MenuButtons>
                     <strong>Categorias</strong>
-                    <ButtonCategories onClick={() => setIsVisible(true)}>
+                    <ButtonCategories onClick={() => setIsVisibleFormCategory(true)}>
                         <PlusCircle size={20} /><span>Categoria</span>
                     </ButtonCategories>
                 </MenuButtons>
@@ -50,7 +55,7 @@ export function Menu() {
                 </ListCategories>
                 <MenuButtons>
                     <strong>Produtos</strong>
-                    <ButtonCategories>
+                    <ButtonCategories onClick={() => setIsVisibleFormProduct(true)}>
                         <PlusCircle size={20} /><span>Produto</span>
                     </ButtonCategories>
                 </MenuButtons>
