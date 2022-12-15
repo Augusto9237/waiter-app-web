@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { toast } from "react-toastify";
+
 import { Button } from "../../Button";
 
 import {
@@ -61,7 +61,7 @@ export function FormProductModal({
 
         <ModalContent>
           <FormCategory>
-          <div className="input-container">
+            <div className="input-container">
               <span>Categoria</span>
               <input placeholder="Digite um nome" type='text' />
             </div>
@@ -88,7 +88,7 @@ export function FormProductModal({
 
             <div className="input-container">
               <span>Imagem</span>
-              <input placeholder="Digite um nome" type='file'/>
+              <input placeholder="Digite um nome" type='file' />
             </div>
           </FormCategory>
         </ModalContent>
