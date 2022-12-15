@@ -1,12 +1,12 @@
 import { PencilSimple, PlusCircle, Trash } from "phosphor-react";
 import { useState } from "react";
-import { categories } from "../../mocks/categories";
-import { products } from "../../mocks/products";
-import { formatCurrency } from "../../utils/formatCurrency";
-import { FormCategoryModal } from "../Admin/FormCategoryModal";
-import { FormProductModal } from "../Admin/FormProductModal ";
+import { categories } from "../../../mocks/categories";
+import { products } from "../../../mocks/products";
+import { formatCurrency } from "../../../utils/formatCurrency";
+import { FormCategoryModal } from "../FormCategoryModal";
+import { FormProductModal } from "../FormProductModal ";
 
-import { Category } from "../Client/Category";
+import { Category } from "../../Client/Category";
 import {
     MenuContainer,
     MenuButtons,
