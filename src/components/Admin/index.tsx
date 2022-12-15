@@ -1,3 +1,4 @@
+import { ClipboardText, CurrencyDollar} from "phosphor-react";
 import { useEffect, useState } from "react";
 import { Order } from "../../types/Order";
 import { api } from "../../utils/api";
@@ -26,12 +27,12 @@ export default function Admin() {
     <>
       <CardContainer>
         <CardOrders>
-          <span className="icon-avenue">💲</span>
+          <span className="icon-avenue"><CurrencyDollar size={24} /></span>
           <span>Receita</span>
           <h1>{formatCurrency(100)}</h1>
         </CardOrders>
         <CardOrders>
-          <span className="icon-orders">🧾</span>
+          <span className="icon-orders"><ClipboardText size={24} /></span>
           <span>Pedidos</span>
           <h1>10</h1>
         </CardOrders>
