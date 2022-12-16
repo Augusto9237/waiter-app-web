@@ -27,10 +27,10 @@ export default function Admin() {
     <>
       <CardContainer>
         <CardOrders>
-        <div className="headerCard">
-          <span className="icon-avenue"><CurrencyDollar size={24} /></span>
-          <span>Receita</span>
-        </div>
+          <div className="headerCard">
+            <span className="icon-avenue"><CurrencyDollar size={24} /></span>
+            <span>Receita</span>
+          </div>
           <h1>{formatCurrency(100)}</h1>
         </CardOrders>
         <CardOrders>
