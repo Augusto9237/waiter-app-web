@@ -16,7 +16,7 @@ import {
     ItemProduct,
 } from "./styles";
 import { FormCategoryModal } from "../FormCategoryModal";
-import { FormProductModal } from "../FormProductModal ";
+
 
 export function Menu() {
     const [isVisibleFormCategory, setIsVisibleFormCategory] = useState(false);
@@ -29,8 +29,7 @@ export function Menu() {
     return (
         <>
             <FormCategoryModal visible={isVisibleFormCategory} onClose={onClose} />
-            <FormProductModal visible={isVisibleFormProduct} onClose={onClose} />
-
+          
             <MenuContainer>
                 <MenuButtons>
                     <strong>Categorias</strong>
