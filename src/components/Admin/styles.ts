@@ -29,6 +29,12 @@ export const CardOrders = styled.div`
     padding: 12px;
   }
 
+  .headerCard{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
   .icon-avenue {
     padding: 8px;
     background: rgba(136, 224, 145, 0.24);
@@ -41,6 +47,9 @@ export const CardOrders = styled.div`
   }
 
   .icon-orders {
+    display: flex;
+    max-width: 40px;
+    align-items: center; 
     padding: 8px;
     background: rgba(255, 181, 114, 0.2);
     border-radius: 8px;

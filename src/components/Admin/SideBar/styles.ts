@@ -26,7 +26,7 @@ export const Container = styled.div<sidebarProps>`
   }
 
   @media (max-width: 600px) {
-    width: ${(props) => (props.sidebarVisible ? "45px" : "200px")};
+    width: ${(props) => (props.sidebarVisible ? "45px" : "180px")};
   }
 `;
 
@@ -54,18 +54,19 @@ export const HeaderSideBar = styled.header`
   gap: 12px;
   justify-content: center;
   align-items: center;
-  padding: 16px;
+  padding: 12px;
   border-bottom: 1px solid rgba(204, 204, 204, 0.3);
 
   span {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 28px;
-    height: 28px;
+    width: 34px;
+    height: 34px;
+    color: #fff;
 
     background: #d73035;
-    border-radius: 4px;
+    border-radius: 8px;
   }
 `;
 
@@ -97,9 +98,14 @@ export const SideBarBody = styled.div<sidebarProps>`
       font-weight: 500;
       font-size: 16px;
     }
+    span {
+      display: flex;
+      align-items: center;
+    }
   }
   .sidebarIconItem:hover {
     background: #cccccc;
     cursor: pointer;
+    color: #d73035;
   }
 `;
