@@ -3,8 +3,7 @@ import { useState } from "react";
 import { categories } from "../../../mocks/categories";
 import { products } from "../../../mocks/products";
 import { formatCurrency } from "../../../utils/formatCurrency";
-import { FormCategoryModal } from "../FormCategoryModal";
-import { FormProductModal } from "../FormProductModal ";
+
 
 import { Category } from "../../Client/Category";
 import {
@@ -16,6 +15,8 @@ import {
     ListProducts,
     ItemProduct,
 } from "./styles";
+import { FormCategoryModal } from "../FormCategoryModal";
+import { FormProductModal } from "../FormProductModal ";
 
 export function Menu() {
     const [isVisibleFormCategory, setIsVisibleFormCategory] = useState(false);
