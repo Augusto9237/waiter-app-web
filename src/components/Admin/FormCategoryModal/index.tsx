@@ -1,9 +1,4 @@
 import { useEffect } from "react";
-import { toast } from "react-toastify";
-import { CartItem } from "../../../types/CartItem";
-import { ProductType } from "../../../types/Products";
-import { api } from "../../../utils/api";
-import { formatCurrency } from "../../../utils/formatCurrency";
 import { Button } from "../../Button";
 
 import {
