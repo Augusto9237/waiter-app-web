@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
+
 export const CardContainer = styled.div`
   display: flex;
+  width: 100%;
+  flex: 1;
   flex-direction: row;
   justify-content: space-between;
   gap: 24px;
@@ -33,11 +36,18 @@ export const CardOrders = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+
+    @media (max-width: 850px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   }
 
   .icon-avenue {
     padding: 8px;
     background: rgba(136, 224, 145, 0.24);
+    max-width: 40px;
     border-radius: 8px;
     margin-right: 12px;
 

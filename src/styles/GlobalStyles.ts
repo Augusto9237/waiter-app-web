@@ -53,6 +53,7 @@ export const GlobalStyles = createGlobalStyle`
     color: #333;
   }
 
+  
 
   button {
     cursor: pointer;
@@ -65,3 +66,5 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
 `;
+
+

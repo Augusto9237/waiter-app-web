@@ -13,7 +13,6 @@ import { ContainerAdmin } from "./styles";
 
 export function AdminPage() {
 
-  const params = useParams();
 
   return (
     <>
