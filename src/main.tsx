@@ -9,10 +9,10 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { SigInPage } from "./Pages/SigIn";
-import { OrdersPage } from "./Pages/Orders";
+import { OrdersPage } from "./Pages/OrdersPage";
 import Admin from "./components/Admin";
 import { Orders } from "./components/Orders";
-import { Menu } from "./components/Menu";
+import { Menu } from "./components/Admin/Menu";
 
 const router = createBrowserRouter([
   {
