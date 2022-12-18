@@ -37,7 +37,7 @@ export const ButtonOpen = styled.button`
   position: absolute;
   width: 25px;
   height: 25px;
-  top: 12px;
+  top: 16px;
   right: -14px;
   border: none;
   background: #cccccc;
@@ -46,6 +46,10 @@ export const ButtonOpen = styled.button`
 
   @media (min-width: 1620px) {
     display: none;
+  }
+
+  @media (max-width: 600px) {
+    top: 12px;
   }
 `;
 

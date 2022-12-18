@@ -121,7 +121,7 @@ export function ClientPage() {
     <>
       <GlobalStyles />
       {!selectedTable && (
-        <Header title="Bem vindo(a)!" subtitle=""/>
+        <Header title="Bem-vindo(a)" subtitle=""/>
       )}
       {selectedTable && (
         <HeaderClient

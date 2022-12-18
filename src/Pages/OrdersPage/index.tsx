@@ -12,7 +12,7 @@ export function OrdersPage() {
   return (
     <>
       <GlobalStyles />
-      <Header title="Pedidos" />
+      <Header title="Pedidos" subtitle="Acompanhe os pedidos dos clientes" />
       <ContainerOrdersPage>
         <Orders />
       </ContainerOrdersPage>

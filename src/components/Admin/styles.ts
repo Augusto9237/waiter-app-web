@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface adminProps {
+  status: "WAITING" | "IN_PRODUCTION" | "DONE";
+}
+
 export const CardContainer = styled.div`
   display: flex;
   width: 100%;
@@ -192,8 +196,11 @@ export const IconClient = styled.div`
   }
 `;
 
-export const StatusOrder = styled.div`
-  background: rgba(255, 181, 114, 0.2);
+export const StatusOrder = styled.div<adminProps>`
+  background: ${(props) =>
+    (props.status === "WAITING" && "rgba(255, 181, 114, 0.2)") ||
+    (props.status === "IN_PRODUCTION" && "rgba(0, 209, 255, 0.25)") ||
+    (props.status === "DONE" && "rgba(136, 224, 145, 0.24)")};
   border-radius: 30px;
   padding: 4px 12px;
   max-width: 200px;
