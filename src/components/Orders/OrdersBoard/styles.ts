@@ -27,7 +27,7 @@ export const OrdersContainer = styled.div`
   button {
     background: #fff;
     border: 1px solid rgba(204, 204, 204, 0.4);
-    height: 128px;
+    height: 100px;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -49,10 +49,6 @@ export const OrdersContainer = styled.div`
 
     & + button {
       margin-top: 24px;
-
-      @media (max-width: 415px) {
-        margin-top: 16px;
-      }
     }
 
     @media (max-width: 415px) {

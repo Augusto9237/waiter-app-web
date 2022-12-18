@@ -79,6 +79,7 @@ export function OrdersBoard({ icon, title, orders, onCancelOrder, onChangeOrderS
               onClick={() => handleOpenModal(order)}
             >
               <strong>Mesa {order.table}</strong>
+              <span>Cliente: {order.client}</span>
               <span>{order.products.length} itens</span>
             </button>
           ))}
