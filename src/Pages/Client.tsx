@@ -60,6 +60,7 @@ export function ClientPage() {
   }
 
   function handleResetOrder() {
+    setSelectedClient('');
     setCartItems([]);
   }
 
