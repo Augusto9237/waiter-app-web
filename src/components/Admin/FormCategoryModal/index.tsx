@@ -1,14 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../../Button";
 
 import {
   ModalBodyCart,
   ModalContent,
-  OverlayCartModal,
   FormCategory,
   FooterCart,
   HeaderModalCart,
+  OverlayFormModal,
 } from "./styles";
+import { api } from "../../../utils/api";
+import { toast } from "react-toastify";
 
 interface CartModalProps {
   visible: boolean;
@@ -20,6 +22,7 @@ export function FormCategoryModal({
   visible,
   onClose,
 }: CartModalProps) {
+
   if (!visible) {
     return null;
   }
@@ -38,16 +41,22 @@ export function FormCategoryModal({
     };
   }, [onClose]);
 
+  const [icon, setIcon] = useState('');
+  const [name, setName] = useState('');
 
 
-  function handleOk() {
+  async function handleOk() {
+    await api.post('/categories', {
+      icon: icon,
+      name: name,
+    });
+    toast.success('Categoria criada com sucesso!');
     onClose();
-
   }
 
 
   return (
-    <OverlayCartModal>
+    <OverlayFormModal>
       <ModalBodyCart>
 
         <HeaderModalCart>
@@ -63,12 +72,20 @@ export function FormCategoryModal({
           <FormCategory>
             <div className="input-container">
               <span>Icone</span>
-              <input placeholder="Insira um icone" />
+              <input
+                placeholder="Insira um icone"
+                value={icon}
+                onChange={(e) => setIcon(e.target.value)}
+              />
             </div>
 
             <div className="input-container">
               <span>Nome</span>
-              <input placeholder="Digite um nome" />
+              <input
+                placeholder="Digite um nome"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
             </div>
           </FormCategory>
         </ModalContent>
@@ -82,6 +99,6 @@ export function FormCategoryModal({
           </Button>
         </FooterCart>
       </ModalBodyCart>
-    </OverlayCartModal>
+    </OverlayFormModal>
   );
 }

@@ -1,7 +1,5 @@
 import { PencilSimple, PlusCircle, Trash } from "phosphor-react";
-import { useState } from "react";
-import { categories } from "../../../mocks/categories";
-import { products } from "../../../mocks/products";
+import { useEffect, useState } from "react";
 import { formatCurrency } from "../../../utils/formatCurrency";
 
 
@@ -17,10 +15,36 @@ import {
 } from "./styles";
 import { FormCategoryModal } from "../FormCategoryModal";
 import { FormProductModal } from "../FormProductModal";
+import { api } from "../../../utils/api";
+import { CategoryType } from "../../../types/Category";
+import { ProductType } from "../../../types/Products";
+import { toast } from "react-toastify";
 
 export function Menu() {
     const [isVisibleFormCategory, setIsVisibleFormCategory] = useState(false);
     const [isVisibleFormProduct, setIsVisibleFormProduct] = useState(false);
+    const [categories, setCategories] = useState<CategoryType[]>([]);
+    const [products, setProducts] = useState<ProductType[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        Promise.all([
+            api.get('/categories'),
+            api.get('/products'),
+        ]).then(([categoriesResponse, productsResponse]) => {
+            setCategories(categoriesResponse.data);
+            setProducts(productsResponse.data);
+            setIsLoading(false);
+        });
+    }, [categories, products]);
+
+    async function handleDeleteCategory(categoryId: string) {
+        await api.delete(`/categories/${categoryId}`);
+    }
+
+    async function handleDeleteProduct(productId: string) {
+        await api.delete(`/products/${productId}`);
+    }
 
     function onClose() {
         setIsVisibleFormCategory(false);
@@ -45,7 +69,10 @@ export function Menu() {
                                     <Category icon={category.icon} name={category.name} />
                                     <div className="edit-category">
                                         <button className="edit-button"><PencilSimple size={20} /></button>
-                                        <button className="delete-button"><Trash size={20} /></button>
+                                        <button
+                                            className="delete-button"
+                                            onClick={() => handleDeleteCategory(category._id)}
+                                        ><Trash size={20} /></button>
                                     </div>
                                 </ItemCategory>
                             </>
@@ -65,13 +92,15 @@ export function Menu() {
                             <>
                                 <ItemProduct key={product._id}>
                                     <div className="image-product">
-                                        <img src={product.imagePath} alt="" />
+                                        <img src={`http://192.168.100.41:3001/uploads/${product.imagePath}`} alt="" />
                                     </div>
                                     <span>{product.name}</span>
                                     <strong>{formatCurrency(product.price)}</strong>
                                     <div className="edit-product">
                                         <button className="edit-button"><PencilSimple size={20} /></button>
-                                        <button className="delete-button"><Trash size={20} /></button>
+                                        <button className="delete-button"
+                                            onClick={() => handleDeleteProduct(product._id)}
+                                        ><Trash size={20} /></button>
                                     </div>
                                 </ItemProduct>
                             </>

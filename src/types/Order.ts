@@ -1,6 +1,7 @@
 export interface Order {
   _id: string;
   table: string;
+  client: string;
   status: "WAITING" | "IN_PRODUCTION" | "DONE";
   products: {
     _id: string;

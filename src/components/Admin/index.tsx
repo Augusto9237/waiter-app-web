@@ -12,9 +12,21 @@ import {
   TableOrders,
 } from "./styles";
 
+import sockectIo from "socket.io-client";
+
 export default function Admin() {
 
   const [orders, setOrders] = useState<Order[]>([]);
+
+  useEffect(() => {
+    const sokect = sockectIo('http://localhost:3001', {
+      transports: ['websocket'],
+    });
+
+    sokect.on('orders@new', (order) => {
+      setOrders(prevState => prevState.concat(order));
+    });
+  }, []);
 
   useEffect(() => {
     api.get('/orders')
@@ -22,6 +34,7 @@ export default function Admin() {
         setOrders(data);
       });
   }, []);
+
 
   return (
     <>
@@ -53,35 +66,42 @@ export default function Admin() {
             <thead>
               <tr>
                 <th>Cliente</th>
-                <th>Pedido</th>
+                <th>Nº da Mesa</th>
                 <th>Valor</th>
                 <th>Atendente</th>
                 <th>Status</th>
               </tr>
             </thead>
             <tbody>
-              {orders.map((order) => (
-                <>
-                  <tr key={order._id}>
-                    <td>
-                      <div className="client-info">
-                        <IconClient>🙎‍♂️</IconClient>
-                        <span>Client</span>
-                      </div>
-                    </td>
-                    <td><span>Product </span></td>
-                    <td>{formatCurrency(100)}</td>
-                    <td><span>Waiter </span></td>
-                    <td>
-                      <StatusOrder>
-                        🕑 <span>{order.status === "WAITING" && "  Fila de espera"}
-                          {order.status === "IN_PRODUCTION" && "Em produção"}
-                          {order.status === "DONE" && "Pronto"}</span>
-                      </StatusOrder>
-                    </td>
-                  </tr>
-                </>
-              ))}
+              {orders.map((order) => {
+
+                const total = order.products.reduce((total, { product, quantity }) => {
+                  return total + product.price * quantity;
+                }, 0);
+
+                return (
+                  <>
+                    <tr key={order._id}>
+                      <td>
+                        <div className="client-info">
+                          <IconClient>🙎‍♂️</IconClient>
+                          <span>{order.client}</span>
+                        </div>
+                      </td>
+                      <td><span>{order.table}</span></td>
+                      <td>{formatCurrency(total)}</td>
+                      <td><span>Waiter </span></td>
+                      <td>
+                        <StatusOrder>
+                          🕑 <span>{order.status === "WAITING" && "  Fila de espera"}
+                            {order.status === "IN_PRODUCTION" && "Em produção"}
+                            {order.status === "DONE" && "Pronto"}</span>
+                        </StatusOrder>
+                      </td>
+                    </tr>
+                  </>
+                );
+              })}
             </tbody>
           </table>
         </TableOrders>

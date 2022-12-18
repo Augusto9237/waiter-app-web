@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-export const OverlayCartModal = styled.div`
+export const OverlayFormModal = styled.div`
   z-index: 50;
   flex: 1;
   left: 0px;

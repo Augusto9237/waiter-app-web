@@ -120,7 +120,7 @@ export function ClientPage() {
     <>
       <GlobalStyles />
       {!selectedTable && (
-        <Header />
+        <Header title="Bem vindo(a)!" />
       )}
       {selectedTable && (
         <HeaderClient
@@ -146,6 +146,7 @@ export function ClientPage() {
 
           <Cart
             selectedTable={selectedTable}
+            selectedClient={selectedClient}
             onAdd={handleAddToCart}
             onDecrement={handleDecrementCartItem}
             cartItems={cartItems}

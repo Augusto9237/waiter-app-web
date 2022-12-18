@@ -9,6 +9,7 @@ import { CartContainer, CartContent, CartTotal } from "./styles";
 
 interface CartProps {
   selectedTable: string;
+  selectedClient: string;
   cartItems: CartItem[];
   onAdd: (product: ProductType) => void;
   onDecrement: (product: ProductType) => void;
@@ -21,6 +22,7 @@ export function Cart({
   onDecrement,
   onConfirmOrder,
   selectedTable,
+  selectedClient,
   onOpenModalTable
 }: CartProps) {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -44,6 +46,7 @@ export function Cart({
         onDecrement={onDecrement}
         onConfirmOrder={onConfirmOrder}
         selectedTable={selectedTable}
+        selectedClient={selectedClient}
       />
       <CartContainer>
         <CartContent>

@@ -25,6 +25,7 @@ interface CartModalProps {
   visible: boolean;
   cartItems: CartItem[];
   selectedTable: string;
+  selectedClient: string;
   onClose: () => void;
   onAdd: (product: ProductType) => void;
   onDecrement: (product: ProductType) => void;
@@ -38,7 +39,8 @@ export function CartModal({
   onAdd,
   onDecrement,
   onConfirmOrder,
-  selectedTable
+  selectedTable,
+  selectedClient
 }: CartModalProps) {
   if (!visible) {
     return null;
@@ -59,18 +61,16 @@ export function CartModal({
   }, [onClose]);
 
   async function handleConfirmOrder() {
-    //  setIsLoading(true);
-
+ 
     await api.post('/orders', {
       table: selectedTable,
+      client: selectedClient,
       products: cartItems.map((cartItem) => ({
         product: cartItem.product._id,
         quantity: cartItem.quantity
       }))
     });
 
-    // setIsLoading(false);
-    //setIsModalVisible(true);
   }
 
   function handleOk() {
