@@ -1,4 +1,4 @@
-import { Header } from "../../components/Orders/Header";
+import { Header } from "../../components/Header";
 
 import { Orders } from "../../components/Orders";
 import { GlobalStyles } from "../../styles/GlobalStyles";

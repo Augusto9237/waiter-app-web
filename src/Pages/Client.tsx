@@ -11,7 +11,7 @@ import { ProductType } from "../types/Products";
 import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
-import { Header } from "../components/Orders/Header";
+import { Header } from "../components/Header";
 import { CategoryType } from "../types/Category";
 import { api } from "../utils/api";
 import LoadingSpinner from "../components/LoadingSpinner";

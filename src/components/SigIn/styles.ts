@@ -6,7 +6,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 98vh;
+  height: 100vh;
   flex: 1;
   max-width: 1216px;
   margin: auto;
@@ -39,6 +39,7 @@ export const SigInBody = styled.div`
 export const ImageContainer = styled.div`
   background: #d73035;
   display: flex;
+  height: 100%;
   flex: 1;
   align-items: center;
   justify-content: center;

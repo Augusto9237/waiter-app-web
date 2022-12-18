@@ -7,26 +7,27 @@ interface sidebarProps {
 export const Container = styled.div<sidebarProps>`
   position: fixed;
   z-index: 1;
-  width: ${(props) => (props.sidebarVisible ? "60px" : "200px")};
+  width: ${(props) => (props.sidebarVisible ? "-12rem" : "12rem")};
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   background: #ffff;
   box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.2);
+  transition: transform 300ms ease-in;
 
   @media (min-width: 1620px) {
-    width: 200px;
+    width: 12rem;
   }
 
   @media (max-width: 1620px) {
-    width: ${(props) => (props.sidebarVisible ? "60px" : "200px")};
+    width: ${(props) => (props.sidebarVisible ? "-12rem" : "12rem")};
     strong {
       display: ${(props) => (props.sidebarVisible ? "none" : "flex")};
     }
   }
 
   @media (max-width: 600px) {
-    width: ${(props) => (props.sidebarVisible ? "45px" : "180px")};
+    width: ${(props) => (props.sidebarVisible ? "45px" : "160px")};
   }
 `;
 
@@ -70,7 +71,7 @@ export const HeaderSideBar = styled.header`
   }
 `;
 
-export const SideBarBody = styled.div<sidebarProps>`
+export const SideBarBody = styled.main<sidebarProps>`
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -86,12 +87,18 @@ export const SideBarBody = styled.div<sidebarProps>`
     width: 100%;
     align-items: center;
     justify-content: ${(props) =>
-    props.sidebarVisible ? "center" : "flex-start"};
-    padding: 12px 24px;
+      props.sidebarVisible ? "flex-start" : "flex-start"};
+    padding: 12px;
+    padding-left: 18px;
     gap: 6px;
 
     @media (min-width: 1620px) {
       justify-content: flex-start;
+    }
+
+    @media (max-width: 600px) {
+      padding: 8px;
+      padding-left: 10px;
     }
 
     strong {

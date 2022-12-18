@@ -40,7 +40,7 @@ export default function SideBar() {
         </Link>
 
         <div className="sidebarIconItem">
-          <span><UsersThree size={32} /></span>
+          <span><UsersThree size={24} /></span>
           <strong>Atendentes</strong>
         </div>
       </SideBarBody>
