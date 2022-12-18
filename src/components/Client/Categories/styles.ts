@@ -5,7 +5,6 @@ export const CategoriesContainer = styled.div`
   gap: 24px;
 
   @media (max-width: 415px) {
-    justify-content: space-between;
     padding: 12px 8px;
     overflow-x: scroll;
   }

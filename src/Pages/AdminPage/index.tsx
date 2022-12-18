@@ -17,7 +17,7 @@ export function AdminPage() {
   return (
     <>
       <GlobalStyles />
-      <Header title="Admin"/>
+      <Header title="Administrador" subtitle=""/>
       <SideBar />
       <ContainerAdmin>
         <Outlet />

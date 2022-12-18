@@ -13,7 +13,6 @@ export const Container = styled.div<sidebarProps>`
   flex-direction: column;
   background: #ffff;
   box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.2);
-  transition: transform 300ms ease-in;
 
   @media (min-width: 1620px) {
     width: 12rem;
@@ -38,7 +37,7 @@ export const ButtonOpen = styled.button`
   position: absolute;
   width: 25px;
   height: 25px;
-  top: 18px;
+  top: 12px;
   right: -14px;
   border: none;
   background: #cccccc;
@@ -50,20 +49,26 @@ export const ButtonOpen = styled.button`
   }
 `;
 
-export const HeaderSideBar = styled.header`
+export const HeaderSideBar = styled.header<sidebarProps>`
   display: flex;
   gap: 12px;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   padding: 12px;
+  padding-left: 16px;
   border-bottom: 1px solid rgba(204, 204, 204, 0.3);
+
+  @media (max-width: 600px) {
+      padding: 8px;
+      padding-left: 8px;
+    }
 
   span {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 34px;
-    height: 34px;
+    width: 32px;
+    height: 32px;
     color: #fff;
 
     background: #d73035;

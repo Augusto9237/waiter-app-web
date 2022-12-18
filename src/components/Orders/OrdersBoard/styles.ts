@@ -22,12 +22,12 @@ export const OrdersContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: 24px;
+  margin-top: 14px;
 
   button {
     background: #fff;
     border: 1px solid rgba(204, 204, 204, 0.4);
-    height: 100px;
+    height: 84px;
     border-radius: 8px;
     display: flex;
     flex-direction: column;

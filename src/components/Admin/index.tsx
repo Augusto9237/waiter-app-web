@@ -54,8 +54,10 @@ export default function Admin() {
           <h1>10</h1>
         </CardOrders>
         <CardOrders>
-          <span className="icon-customers">🪑</span>
-          <span>Mesas</span>
+          <div className="headerCard">
+            <span className="icon-customers">🪑</span>
+            <span>Mesas</span>
+          </div>
           <h1>10/20</h1>
         </CardOrders>
       </CardContainer>

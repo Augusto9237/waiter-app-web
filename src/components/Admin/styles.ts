@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const CardContainer = styled.div`
   display: flex;
   width: 100%;
@@ -32,19 +31,22 @@ export const CardOrders = styled.div`
     padding: 12px;
   }
 
-  .headerCard{
+  .headerCard {
     display: flex;
     flex-direction: row;
     align-items: center;
 
     @media (max-width: 850px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   .icon-avenue {
+    display: flex;
+    max-width: 40px;
+    align-items: center;
     padding: 8px;
     background: rgba(136, 224, 145, 0.24);
     max-width: 40px;
@@ -59,7 +61,7 @@ export const CardOrders = styled.div`
   .icon-orders {
     display: flex;
     max-width: 40px;
-    align-items: center; 
+    align-items: center;
     padding: 8px;
     background: rgba(255, 181, 114, 0.2);
     border-radius: 8px;
@@ -71,6 +73,9 @@ export const CardOrders = styled.div`
   }
 
   .icon-customers {
+    display: flex;
+    max-width: 40px;
+    align-items: center;
     padding: 8px;
     background: rgba(0, 209, 255, 0.25);
     border-radius: 8px;
@@ -107,15 +112,12 @@ export const ListOrders = styled.div`
   border: 1px solid rgba(204, 204, 204, 0.3);
   border-radius: 8px;
 
-  
-
   @media (max-width: 850px) {
     padding: 18px;
   }
 
   @media (max-width: 450px) {
     overflow: hidden;
-    
   }
 
   strong {

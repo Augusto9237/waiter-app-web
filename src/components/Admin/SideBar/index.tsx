@@ -10,10 +10,10 @@ export default function SideBar() {
       {sidebarVisible ? (
         <ButtonOpen onClick={() => setSidebarVisible(false)}><CaretRight size={20} /></ButtonOpen>
       ) : (
-        <ButtonOpen onClick={() => setSidebarVisible(true)}><CaretLeft size={20}/></ButtonOpen>
+        <ButtonOpen onClick={() => setSidebarVisible(true)}><CaretLeft size={20} /></ButtonOpen>
       )}
 
-      <HeaderSideBar>
+      <HeaderSideBar sidebarVisible={sidebarVisible}>
         <span><UserCircleGear size={32} /></span>
         <strong>Admin</strong>
       </HeaderSideBar>
