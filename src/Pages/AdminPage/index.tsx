@@ -11,8 +11,9 @@ import { Outlet, useParams } from "react-router-dom";
 
 import { ContainerAdmin } from "./styles";
 
-export function AdminPage() {
 
+export function AdminPage() {
+ 
 
   return (
     <>
