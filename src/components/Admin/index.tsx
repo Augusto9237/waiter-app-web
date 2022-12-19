@@ -36,7 +36,7 @@ export default function Admin() {
         setOrders(data);
         setIsLoading(false);
       });
-  }, []);
+  }, [orders]);
 
 
   return (
@@ -69,6 +69,7 @@ export default function Admin() {
               <h1>10/20</h1>
             </CardOrders>
           </CardContainer>
+
           <ListOrders>
             <strong>Relatorio de Pedidos</strong>
             <TableOrders>
@@ -98,6 +99,7 @@ export default function Admin() {
                             <span>{order.client}</span>
                           </div>
                         </td>
+
                         <td><span>{order.table}</span></td>
                         <td>{formatCurrency(total)}</td>
                         <td><span>Waiter </span></td>

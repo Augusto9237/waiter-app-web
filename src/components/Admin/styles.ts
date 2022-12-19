@@ -159,10 +159,21 @@ export const TableOrders = styled.div`
     }
 
     td {
+
       text-align: center;
       padding: 12px;
       font-weight: 400;
       font-size: 14px;
+
+    
+      .client-info {
+        background: red;
+        display: flex;
+        align-items: center;
+        max-width: 10rem;
+        justify-content: flex-start;
+        gap: 16px;
+      }
 
       @media (max-width: 850px) {
         padding: 8px;
@@ -170,13 +181,6 @@ export const TableOrders = styled.div`
 
       @media (max-width: 450px) {
         padding: 6px;
-      }
-
-      .client-info {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 16px;
       }
     }
   }
