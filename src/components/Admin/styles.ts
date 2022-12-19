@@ -159,15 +159,12 @@ export const TableOrders = styled.div`
     }
 
     td {
-
       text-align: center;
       padding: 12px;
       font-weight: 400;
       font-size: 14px;
 
-    
       .client-info {
-        background: red;
         display: flex;
         align-items: center;
         max-width: 10rem;
