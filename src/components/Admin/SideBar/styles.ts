@@ -37,10 +37,10 @@ export const ButtonOpen = styled.button`
   position: absolute;
   width: 25px;
   height: 25px;
-  top: 16px;
+  top: 14px;
   right: -14px;
   border: none;
-  background: #cccccc;
+  background: #d73035;
   border-radius: 50%;
   color: #ffff;
 
@@ -49,36 +49,10 @@ export const ButtonOpen = styled.button`
   }
 
   @media (max-width: 600px) {
-    top: 12px;
+    top: 8px;
   }
 `;
 
-export const HeaderSideBar = styled.header<sidebarProps>`
-  display: flex;
-  gap: 12px;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 12px;
-  padding-left: 16px;
-  border-bottom: 1px solid rgba(204, 204, 204, 0.3);
-
-  @media (max-width: 600px) {
-      padding: 8px;
-      padding-left: 8px;
-    }
-
-  span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    color: #fff;
-
-    background: #d73035;
-    border-radius: 8px;
-  }
-`;
 
 export const SideBarBody = styled.main<sidebarProps>`
   display: flex;
@@ -123,5 +97,6 @@ export const SideBarBody = styled.main<sidebarProps>`
     background: #cccccc;
     cursor: pointer;
     color: #d73035;
+    
   }
 `;

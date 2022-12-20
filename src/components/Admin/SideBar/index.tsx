@@ -1,7 +1,7 @@
-import { CaretLeft, CaretRight, ChartPieSlice, ClipboardText, ListBullets, UserCircleGear, UsersThree } from "phosphor-react";
+import { CaretLeft, CaretRight, ChartPieSlice, ClipboardText, CookingPot, ListBullets, NotePencil, UserCircleGear, UsersThree } from "phosphor-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ButtonOpen, Container, HeaderSideBar, SideBarBody } from "./styles";
+import { ButtonOpen, Container, SideBarBody } from "./styles";
 
 export default function SideBar() {
   const [sidebarVisible, setSidebarVisible] = useState(true);
@@ -13,10 +13,6 @@ export default function SideBar() {
         <ButtonOpen onClick={() => setSidebarVisible(true)}><CaretLeft size={20} /></ButtonOpen>
       )}
 
-      <HeaderSideBar sidebarVisible={sidebarVisible}>
-        <span><UserCircleGear size={32} /></span>
-        <strong>Admin</strong>
-      </HeaderSideBar>
       <SideBarBody sidebarVisible={sidebarVisible}>
         <Link to='/admin'>
           <div className="sidebarIconItem">
@@ -27,14 +23,14 @@ export default function SideBar() {
 
         <Link to='/admin/orders'>
           <div className="sidebarIconItem">
-            <span><ClipboardText size={24} /></span>
+            <span><NotePencil size={24} /></span>
             <strong>Pedidos</strong>
           </div>
         </Link>
 
         <Link to='/admin/menu'>
           <div className="sidebarIconItem">
-            <span><ListBullets size={24} /></span>
+            <span><CookingPot size={24} /></span>
             <strong>Cardapio</strong>
           </div>
         </Link>
