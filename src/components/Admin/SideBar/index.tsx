@@ -1,4 +1,4 @@
-import { CaretLeft, CaretRight, ChartPieSlice, ClipboardText, CookingPot, ListBullets, NotePencil, UserCircleGear, UsersThree } from "phosphor-react";
+import { CaretLeft, CaretRight, ChartPieSlice, CookingPot, NotePencil, UsersThree } from "phosphor-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ButtonOpen, Container, SideBarBody } from "./styles";
