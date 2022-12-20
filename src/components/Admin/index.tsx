@@ -1,4 +1,4 @@
-import { ClipboardText, CurrencyDollar, SquaresFour } from "phosphor-react";
+import { ClipboardText, CurrencyDollar, NotePencil, SquaresFour } from "phosphor-react";
 import { useEffect, useState } from "react";
 import { Order } from "../../types/Order";
 import { api } from "../../utils/api";
@@ -56,7 +56,7 @@ export default function Admin() {
             </CardOrders>
             <CardOrders>
               <div className="headerCard">
-                <span className="icon-orders"><ClipboardText size={24} color="#fb8b77" /></span>
+                <span className="icon-orders"><NotePencil size={24} color="#fb8b77" /></span>
                 <span>Pedidos</span>
               </div>
               <h1>{orders.length}</h1>
