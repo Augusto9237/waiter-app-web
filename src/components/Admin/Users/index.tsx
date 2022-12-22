@@ -1,6 +1,5 @@
 import { PencilSimple, PlusCircle, Trash } from "phosphor-react";
 import { useEffect, useState } from "react";
-import { formatCurrency } from "../../../utils/formatCurrency";
 
 import {
     UsersContainer,
@@ -14,44 +13,25 @@ import { api } from "../../../utils/api";
 import { CategoryType } from "../../../types/Category";
 import { ProductType } from "../../../types/Products";
 import { toast } from "react-toastify";
+import { FormUserModal } from "../FormUserModal";
 
 export function Users() {
-    const [isVisibleFormCategory, setIsVisibleFormCategory] = useState(false);
-    const [isVisibleFormProduct, setIsVisibleFormProduct] = useState(false);
-    const [categories, setCategories] = useState<CategoryType[]>([]);
-    const [products, setProducts] = useState<ProductType[]>([]);
+    const [isVisibleFormUsers, setIsVisibleFormUsers] = useState(false);
+ 
     const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-        Promise.all([
-            api.get('/categories'),
-            api.get('/products'),
-        ]).then(([categoriesResponse, productsResponse]) => {
-            setCategories(categoriesResponse.data);
-            setProducts(productsResponse.data);
-            setIsLoading(false);
-        });
-    }, [categories, products]);
-
-    async function handleDeleteCategory(categoryId: string) {
-        await api.delete(`/categories/${categoryId}`);
-    }
-
-    async function handleDeleteProduct(productId: string) {
-        await api.delete(`/products/${productId}`);
-    }
 
     function onClose() {
-        setIsVisibleFormCategory(false);
-        setIsVisibleFormProduct(false);
+        setIsVisibleFormUsers(false);
     }
+
     return (
         <>
-            <FormCategoryModal visible={isVisibleFormCategory} onClose={onClose} />
+            <FormUserModal visible={isVisibleFormUsers} onClose={onClose} />
             <UsersContainer>
                 <UsersButtons>
                     <strong>Usuarios</strong>
-                    <ButtonUsers onClick={() => setIsVisibleFormProduct(true)}>
+                    <ButtonUsers onClick={() => setIsVisibleFormUsers(true)}>
                         <PlusCircle size={20} /><span>Usuario</span>
                     </ButtonUsers>
                 </UsersButtons>
