@@ -35,10 +35,12 @@ export default function SideBar() {
           </div>
         </Link>
 
-        <div className="sidebarIconItem">
-          <span><UsersThree size={24} /></span>
-          <strong>Atendentes</strong>
-        </div>
+        <Link to='/admin/users'>
+          <div className="sidebarIconItem">
+            <span><UsersThree size={24} /></span>
+            <strong>Usuarios</strong>
+          </div>
+        </Link>
       </SideBarBody>
     </Container>
   );

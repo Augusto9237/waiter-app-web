@@ -13,6 +13,7 @@ import { OrdersPage } from "./Pages/OrdersPage";
 import Admin from "./components/Admin";
 import { Orders } from "./components/Orders";
 import { Menu } from "./components/Admin/Menu";
+import { Users } from "./components/Admin/Users";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,11 @@ const router = createBrowserRouter([
       },
       {
         path: "menu",
-        element: <Menu/>,
+        element: <Menu />,
+      },
+      {
+        path: "users",
+        element: <Users />,
       }
     ]
   },
