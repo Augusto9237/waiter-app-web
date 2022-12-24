@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const SpinnerContainer = styled.div`
   display: flex;
-  height: 100vh;
+  flex: 1;
   justify-content: center;
   align-items: center;
 

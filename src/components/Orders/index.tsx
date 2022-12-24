@@ -4,12 +4,15 @@ import sockectIo from "socket.io-client";
 import { Order } from "../../types/Order";
 import { api } from "../../utils/api";
 import { OrdersBoard } from "./OrdersBoard";
-import { Container } from "./styles";
+import { Container, LoadingContainer } from "./styles";
+import LoadingSpinner from "../LoadingSpinner";
 
 export function Orders() {
   const [orders, setOrders] = useState<Order[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     const sokect = sockectIo('http://localhost:3001', {
       transports: ['websocket'],
     });
@@ -27,6 +30,7 @@ export function Orders() {
         theme: "colored",
       });
     });
+    setIsLoading(false);
   }, []);
 
 
@@ -35,6 +39,7 @@ export function Orders() {
       .then(({ data }) => {
         setOrders(data);
       });
+      setIsLoading(false);
   }, []);
 
   const waiting = orders.filter((order) => order.status === 'WAITING');
@@ -54,9 +59,18 @@ export function Orders() {
 
   return (
     <Container>
-      <OrdersBoard icon="🕑" title="Fila de espera" orders={waiting} onCancelOrder={handleCancelOrder} onChangeOrderStatus={handleOrderStatusChange} />
-      <OrdersBoard icon="👩‍🍳" title="Em preparação" orders={inProduction} onCancelOrder={handleCancelOrder} onChangeOrderStatus={handleOrderStatusChange} />
-      <OrdersBoard icon="✅" title="Finalizado!" orders={done} onCancelOrder={handleCancelOrder} onChangeOrderStatus={handleOrderStatusChange} />
+      {isLoading && (
+        <LoadingContainer>
+          <LoadingSpinner />
+        </LoadingContainer>
+      )}
+      {!isLoading && (
+        <>
+          <OrdersBoard icon="🕑" title="Fila de espera" orders={waiting} onCancelOrder={handleCancelOrder} onChangeOrderStatus={handleOrderStatusChange} />
+          <OrdersBoard icon="👩‍🍳" title="Em preparação" orders={inProduction} onCancelOrder={handleCancelOrder} onChangeOrderStatus={handleOrderStatusChange} />
+          <OrdersBoard icon="✅" title="Finalizado!" orders={done} onCancelOrder={handleCancelOrder} onChangeOrderStatus={handleOrderStatusChange} />
+        </>
+      )}
     </Container>
   );
 }

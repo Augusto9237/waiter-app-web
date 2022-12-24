@@ -8,6 +8,7 @@ import {
   CardOrders,
   IconClient,
   ListOrders,
+  LoadingContainer,
   StatusOrder,
   TableOrders,
 } from "./styles";
@@ -42,7 +43,9 @@ export default function Admin() {
   return (
     <>
       {isLoading && (
-        <LoadingSpinner />
+        <LoadingContainer>
+          <LoadingSpinner />
+        </LoadingContainer>
       )}
       {!isLoading && (
         <>

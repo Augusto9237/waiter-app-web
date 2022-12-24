@@ -10,6 +10,7 @@ import {
   FooterCart,
   HeaderModalCart,
 } from "./styles";
+import { X } from "phosphor-react";
 
 interface CartModalProps {
   visible: boolean;
@@ -55,7 +56,7 @@ export function FormProductModal({
           <strong>Novo produto</strong>
 
           <button type="button" onClick={onClose}>
-            X
+            <X size={20} />
           </button>
         </HeaderModalCart>
 

@@ -11,6 +11,7 @@ import {
 } from "./styles";
 import { api } from "../../../utils/api";
 import { toast } from "react-toastify";
+import { X } from "phosphor-react";
 
 interface CartModalProps {
   visible: boolean;
@@ -66,7 +67,7 @@ export function FormUserModal({
           <strong>Novo usuario</strong>
 
           <button type="button" onClick={onClose}>
-            X
+            <X size={20} />
           </button>
         </HeaderModalCart>
 

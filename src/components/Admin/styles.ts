@@ -4,6 +4,12 @@ interface adminProps {
   status: "WAITING" | "IN_PRODUCTION" | "DONE";
 }
 
+export const LoadingContainer = styled.div`
+  display: flex;
+  height: 98vh;
+  width: 100%;
+`;
+
 export const CardContainer = styled.div`
   display: flex;
   width: 100%;

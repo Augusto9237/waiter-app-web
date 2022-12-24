@@ -8,5 +8,10 @@ export const Container = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
   }
+`;
 
+export const LoadingContainer = styled.div`
+  display: flex;
+  height: 76vh;
+  width: 100%;
 `;
