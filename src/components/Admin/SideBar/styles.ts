@@ -14,6 +14,10 @@ export const Container = styled.div<sidebarProps>`
   background: #ffff;
   box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.2);
 
+  strong {
+    opacity: 0.7;
+  }
+
   @media (min-width: 1620px) {
     width: 12rem;
   }
@@ -53,7 +57,6 @@ export const ButtonOpen = styled.button`
   }
 `;
 
-
 export const SideBarBody = styled.main<sidebarProps>`
   display: flex;
   flex-direction: column;
@@ -88,15 +91,22 @@ export const SideBarBody = styled.main<sidebarProps>`
       font-weight: 500;
       font-size: 16px;
     }
+
+    
     span {
       display: flex;
       align-items: center;
     }
   }
   .sidebarIconItem:hover {
-    background: #cccccc;
+    background: rgba(255, 0, 0, 0.14);
     cursor: pointer;
     color: #d73035;
-    
+    border-left: 4px solid #d73035;
+    padding-left: 14px;
+
+    strong{
+      opacity: 1;
+    }
   }
 `;
