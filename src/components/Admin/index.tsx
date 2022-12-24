@@ -94,7 +94,6 @@ export default function Admin() {
                     }, 0);
 
                     return (
-
                       <tr key={order._id}>
                         <td>
                           <div className="client-info">

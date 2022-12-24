@@ -13,6 +13,8 @@ export const Container = styled.div<sidebarProps>`
   flex-direction: column;
   background: #ffff;
   box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.2);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 
   strong {
     opacity: 0.7;
@@ -23,7 +25,10 @@ export const Container = styled.div<sidebarProps>`
   }
 
   @media (max-width: 1620px) {
-    width: ${(props) => (props.sidebarVisible ? "-12rem" : "12rem")};
+    width: ${(props) => (props.sidebarVisible ? "60px" : "200px")};
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+
     strong {
       display: ${(props) => (props.sidebarVisible ? "none" : "flex")};
     }
@@ -41,7 +46,7 @@ export const ButtonOpen = styled.button`
   position: absolute;
   width: 25px;
   height: 25px;
-  top: 14px;
+  top: 12px;
   right: -14px;
   border: none;
   background: #d73035;
@@ -92,7 +97,6 @@ export const SideBarBody = styled.main<sidebarProps>`
       font-size: 16px;
     }
 
-    
     span {
       display: flex;
       align-items: center;
@@ -105,7 +109,7 @@ export const SideBarBody = styled.main<sidebarProps>`
     border-left: 4px solid #d73035;
     padding-left: 14px;
 
-    strong{
+    strong {
       opacity: 1;
     }
   }

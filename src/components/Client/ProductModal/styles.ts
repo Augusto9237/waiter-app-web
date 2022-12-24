@@ -37,7 +37,7 @@ export const ImageProduct = styled.div<ImageProps>`
   flex-direction: column;
   align-items: flex-end;
   overflow: hidden;
-  height: 200px;
+  height: 220px;
   width: 100%;
   background-image: url(${(props) => props.image});
   background-repeat: no-repeat;
