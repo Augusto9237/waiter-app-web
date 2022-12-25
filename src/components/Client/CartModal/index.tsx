@@ -60,6 +60,10 @@ export function CartModal({
     };
   }, [onClose]);
 
+  const total = cartItems.reduce((acc, cartItem) => {
+    return acc + cartItem.quantity * cartItem.product.price;
+  }, 0);
+
   async function handleConfirmOrder() {
  
     await api.post('/orders', {
@@ -68,7 +72,8 @@ export function CartModal({
       products: cartItems.map((cartItem) => ({
         product: cartItem.product._id,
         quantity: cartItem.quantity
-      }))
+      })),
+      total: total
     });
 
   }
@@ -91,9 +96,7 @@ export function CartModal({
 
   }
 
-  const total = cartItems.reduce((acc, cartItem) => {
-    return acc + cartItem.quantity * cartItem.product.price;
-  }, 0);
+  
 
   return (
     <OverlayCartModal>

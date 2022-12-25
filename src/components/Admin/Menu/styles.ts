@@ -51,6 +51,13 @@ export const ListCategories = styled.div`
   margin-bottom: 24px;
 `;
 
+export const LoadingContainerCategory = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+`;
+
 export const ItemCategory = styled.div`
   position: relative;
   padding: 8px;

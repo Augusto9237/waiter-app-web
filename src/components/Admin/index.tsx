@@ -1,4 +1,4 @@
-import { ClipboardText, CurrencyDollar, NotePencil, SquaresFour } from "phosphor-react";
+import { CurrencyDollar, NotePencil, SquaresFour } from "phosphor-react";
 import { useEffect, useState } from "react";
 import { Order } from "../../types/Order";
 import { api } from "../../utils/api";
@@ -15,6 +15,7 @@ import {
 
 import sockectIo from "socket.io-client";
 import LoadingSpinner from "../LoadingSpinner";
+import { toast } from "react-toastify";
 
 export default function Admin() {
 
@@ -22,24 +23,40 @@ export default function Admin() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     const sokect = sockectIo('http://localhost:3001', {
       transports: ['websocket'],
     });
 
     sokect.on('orders@new', (order) => {
       setOrders(prevState => prevState.concat(order));
+      toast.success('Novo pedido recebido', {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     });
+    setIsLoading(false);
   }, []);
+
 
   useEffect(() => {
     api.get('/orders')
       .then(({ data }) => {
         setOrders(data);
-        setIsLoading(false);
       });
-  }, [orders]);
+    setIsLoading(false);
+  }, []);
 
-
+  const totalRevenue = orders.reduce(function (accumulator, object) {
+    return accumulator + object.total;
+  }, 0);
+  
   return (
     <>
       {isLoading && (
@@ -55,7 +72,7 @@ export default function Admin() {
                 <span className="icon-avenue"><CurrencyDollar size={24} color=' #11d49a' /></span>
                 <span>Receita</span>
               </div>
-              <h1>{formatCurrency(100)}</h1>
+              <h1>{formatCurrency(totalRevenue)}</h1>
             </CardOrders>
             <CardOrders>
               <div className="headerCard">
@@ -103,7 +120,7 @@ export default function Admin() {
                         </td>
 
                         <td><span>{order.table}</span></td>
-                        <td>{formatCurrency(total)}</td>
+                        <td>{formatCurrency(order.total)}</td>
                         <td><span>Waiter </span></td>
                         <td>
                           <StatusOrder status={order.status}>

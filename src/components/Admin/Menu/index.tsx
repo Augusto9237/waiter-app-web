@@ -12,13 +12,14 @@ import {
     ItemCategory,
     ListProducts,
     ItemProduct,
+    LoadingContainerCategory,
 } from "./styles";
 import { FormCategoryModal } from "../FormCategoryModal";
 import { FormProductModal } from "../FormProductModal";
 import { api } from "../../../utils/api";
 import { CategoryType } from "../../../types/Category";
 import { ProductType } from "../../../types/Products";
-import { toast } from "react-toastify";
+import LoadingSpinner from "../../LoadingSpinner";
 
 export function Menu() {
     const [isVisibleFormCategory, setIsVisibleFormCategory] = useState(false);
@@ -36,10 +37,11 @@ export function Menu() {
             setProducts(productsResponse.data);
             setIsLoading(false);
         });
-    }, [categories, products]);
+    }, [isLoading]);
 
     async function handleDeleteCategory(categoryId: string) {
         await api.delete(`/categories/${categoryId}`);
+        setIsLoading(true);
     }
 
     async function handleDeleteProduct(productId: string) {
@@ -49,6 +51,7 @@ export function Menu() {
     function onClose() {
         setIsVisibleFormCategory(false);
         setIsVisibleFormProduct(false);
+        setIsLoading(true);
     }
     return (
         <>
@@ -62,23 +65,34 @@ export function Menu() {
                     </ButtonCategories>
                 </MenuButtons>
                 <ListCategories>
-                    {categories.map((category) => {
-                        return (
-                            <>
-                                <ItemCategory key={category._id}>
-                                    <Category icon={category.icon} name={category.name} />
-                                    <div className="edit-category">
-                                        <button className="edit-button"><PencilSimple size={20} /></button>
-                                        <button
-                                            className="delete-button"
-                                            onClick={() => handleDeleteCategory(category._id)}
-                                        ><Trash size={20} /></button>
-                                    </div>
-                                </ItemCategory>
-                            </>
-                        );
-                    })}
+                    {isLoading && (
+                        <LoadingContainerCategory>
+                            <LoadingSpinner />
+                        </LoadingContainerCategory>
+                    )}
 
+                    {!isLoading && (
+                        <>
+                            {
+                                categories.map((category) => {
+                                    return (
+                                        <>
+                                            <ItemCategory key={category._id}>
+                                                <Category icon={category.icon} name={category.name} />
+                                                <div className="edit-category">
+                                                    <button className="edit-button"><PencilSimple size={20} /></button>
+                                                    <button
+                                                        className="delete-button"
+                                                        onClick={() => handleDeleteCategory(category._id)}
+                                                    ><Trash size={20} /></button>
+                                                </div>
+                                            </ItemCategory>
+                                        </>
+                                    );
+                                })
+                            }
+                        </>
+                    )}
                 </ListCategories>
                 <MenuButtons>
                     <strong>Produtos</strong>

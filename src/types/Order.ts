@@ -3,6 +3,7 @@ export interface Order {
   table: string;
   client: string;
   status: "WAITING" | "IN_PRODUCTION" | "DONE";
+  total: number;
   products: {
     _id: string;
     quantity: number;
