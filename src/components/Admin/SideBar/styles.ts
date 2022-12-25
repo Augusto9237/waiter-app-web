@@ -109,6 +109,10 @@ export const SideBarBody = styled.main<sidebarProps>`
     border-left: 4px solid #d73035;
     padding-left: 14px;
 
+    @media (max-width: 600px) {
+      padding-left: 6px;
+    }
+
     strong {
       opacity: 1;
     }
