@@ -46,8 +46,8 @@ export const ButtonOpen = styled.button`
   justify-content: center;
   align-items: center;
   position: absolute;
-  width: 25px;
-  height: 25px;
+  width: 24px;
+  height: 24px;
   top: 12px;
   right: -14px;
   border: none;

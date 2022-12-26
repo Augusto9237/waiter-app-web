@@ -42,14 +42,13 @@ export function FormUserModal({
     };
   }, [onClose]);
 
-  const [icon, setIcon] = useState('');
+  const [userType, setUserType] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
 
 
   async function handleOk() {
     await api.post('/categories', {
-      icon: icon,
       name: name,
       password: password,
     });
@@ -74,12 +73,12 @@ export function FormUserModal({
         <ModalContent>
           <FormCategory>
             <div className="input-container">
-              <span>Icone</span>
-              <input
-                placeholder="Insira um icone"
-                value={icon}
-                onChange={(e) => setIcon(e.target.value)}
-              />
+              <span>Cargo</span>
+              <select name="type" id="cars">
+                <option value="volvo">Gerente</option>
+                <option value="saab">Atendente</option>
+                <option value="mercedes">Aux. Cozinha</option>
+              </select>
             </div>
 
             <div className="input-container">
