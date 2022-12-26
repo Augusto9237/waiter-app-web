@@ -10,10 +10,10 @@ import {
 } from "react-router-dom";
 import { SigInPage } from "./Pages/SigIn";
 import { OrdersPage } from "./Pages/OrdersPage";
-import Admin from "./components/Admin";
 import { Orders } from "./components/Orders";
 import { Menu } from "./components/Admin/Menu";
 import { Users } from "./components/Admin/Users";
+import Dashboard from "./components/Admin/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <Admin />,
+        element: <Dashboard />,
       },
       {
         path: "orders",

@@ -1,8 +1,8 @@
 import { CurrencyDollar, NotePencil, SquaresFour } from "phosphor-react";
 import { useEffect, useState } from "react";
-import { Order } from "../../types/Order";
-import { api } from "../../utils/api";
-import { formatCurrency } from "../../utils/formatCurrency";
+import { Order } from "../../../types/Order";
+import { api } from "../../../utils/api";
+import { formatCurrency } from "../../../utils/formatCurrency";
 import {
   CardContainer,
   CardOrders,
@@ -14,10 +14,10 @@ import {
 } from "./styles";
 
 import sockectIo from "socket.io-client";
-import LoadingSpinner from "../LoadingSpinner";
+import LoadingSpinner from "../../LoadingSpinner";
 import { toast } from "react-toastify";
 
-export default function Admin() {
+export default function Dashboard() {
 
   const [orders, setOrders] = useState<Order[]>([]);
   const [isLoading, setIsLoading] = useState(true);
