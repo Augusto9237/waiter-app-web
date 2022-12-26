@@ -17,6 +17,8 @@ export const Container = styled.div<sidebarProps>`
   transition: all 0.5s;
 
   strong {
+    font-weight: 600;
+    line-height: 150%;
     opacity: 0.7;
   }
 
@@ -53,6 +55,10 @@ export const ButtonOpen = styled.button`
   border-radius: 50%;
   color: #ffff;
 
+  :hover{
+    background: #8A1114;
+  }
+
   @media (min-width: 1620px) {
     display: none;
   }
@@ -78,7 +84,7 @@ export const SideBarBody = styled.main<sidebarProps>`
     width: 100%;
     align-items: center;
     justify-content: ${(props) =>
-      props.sidebarVisible ? "flex-start" : "flex-start"};
+    props.sidebarVisible ? "flex-start" : "flex-start"};
     padding: 12px;
     padding-left: 18px;
     gap: 6px;
@@ -103,7 +109,7 @@ export const SideBarBody = styled.main<sidebarProps>`
     }
   }
   .sidebarIconItem:hover {
-    background: rgba(255, 0, 0, 0.14);
+    background: #FFABAD;
     cursor: pointer;
     color: #d73035;
     border-left: 4px solid #d73035;

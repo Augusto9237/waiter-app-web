@@ -10,6 +10,10 @@ export const ContainerButton = styled.button`
   align-items: center;
   justify-content: center;
 
+  :hover{
+    background: #8A1114;
+  }
+
   span{
     font-weight: 600;
     font-size: 16px;
