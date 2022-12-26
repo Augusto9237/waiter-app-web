@@ -206,7 +206,7 @@ export const IconClient = styled.div`
 export const StatusOrder = styled.div<adminProps>`
   background: ${(props) =>
     (props.status === "WAITING" && "rgba(255, 181, 114, 0.2)") ||
-    (props.status === "IN_PRODUCTION" && "rgba(0, 209, 255, 0.25)") ||
+    (props.status === "IN_PRODUCTION" && "rgba(0, 209, 250, 0.15)") ||
     (props.status === "DONE" && "rgba(136, 224, 145, 0.24)")};
   border-radius: 30px;
   padding: 4px 12px;
