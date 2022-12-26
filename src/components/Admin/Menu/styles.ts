@@ -13,6 +13,15 @@ export const MenuContainer = styled.div`
   }
 `;
 
+export const LoadingContainerCategory = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+  min-height: 65vh;
+`;
+
 export const MenuButtons = styled.div`
   display: flex;
   align-items: center;
@@ -51,12 +60,7 @@ export const ListCategories = styled.div`
   margin-bottom: 24px;
 `;
 
-export const LoadingContainerCategory = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-`;
+
 
 export const ItemCategory = styled.div`
   position: relative;

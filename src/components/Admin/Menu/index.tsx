@@ -65,28 +65,31 @@ export function Menu() {
             <FormCategoryModal visible={isVisibleFormCategory} onClose={onClose} categoryId={categoryId} />
             <FormProductModal visible={isVisibleFormProduct} onClose={onClose} />
             <MenuContainer>
-                <MenuButtons>
-                    <strong>Categorias</strong>
-                    <ButtonCategories onClick={() => setIsVisibleFormCategory(true)}>
-                        <PlusCircle size={20} /><span>Categoria</span>
-                    </ButtonCategories>
-                </MenuButtons>
-                <ListCategories>
-                    {isLoading && (
-                        <LoadingContainerCategory>
-                            <LoadingSpinner />
-                        </LoadingContainerCategory>
-                    )}
+                {isLoading && (
+                    <LoadingContainerCategory>
+                        <LoadingSpinner />
+                    </LoadingContainerCategory>
+                )}
 
-                    {!isLoading && (
-                        <>
+                {!isLoading && (
+                    <>
+
+                        <MenuButtons>
+                            <strong>Categorias</strong>
+                            <ButtonCategories onClick={() => setIsVisibleFormCategory(true)}>
+                                <PlusCircle size={20} /><span>Categoria</span>
+                            </ButtonCategories>
+                        </MenuButtons>
+                        <ListCategories>
+
+
                             {
                                 categories.map((category) => {
                                     return (
                                         <ItemCategory key={category._id}>
                                             <Category icon={category.icon} name={category.name} />
                                             <div className="edit-category">
-                                                <button 
+                                                <button
                                                     className="edit-button"
                                                     onClick={() => handleEditCategory(category._id)}>
                                                     <PencilSimple size={20} />
@@ -95,42 +98,43 @@ export function Menu() {
                                                     className="delete-button"
                                                     onClick={() => handleDeleteCategory(category._id)}>
                                                     <Trash size={20} />
-                                               </button>
+                                                </button>
                                             </div>
                                         </ItemCategory>
                                     );
                                 })
                             }
-                        </>
-                    )}
-                </ListCategories>
-                <MenuButtons>
-                    <strong>Produtos</strong>
-                    <ButtonCategories onClick={() => setIsVisibleFormProduct(true)}>
-                        <PlusCircle size={20} /><span>Produto</span>
-                    </ButtonCategories>
-                </MenuButtons>
-                <ListProducts>
-                    {products.map((product) => {
-                        return (
 
-                            <ItemProduct key={product._id}>
-                                <div className="image-product">
-                                    <img src={`http://192.168.100.41:3001/uploads/${product.imagePath}`} alt="" />
-                                </div>
-                                <span>{product.name}</span>
-                                <strong>{formatCurrency(product.price)}</strong>
-                                <div className="edit-product">
-                                    <button className="edit-button"><PencilSimple size={20} /></button>
-                                    <button className="delete-button"
-                                        onClick={() => handleDeleteProduct(product._id)}
-                                    ><Trash size={20} /></button>
-                                </div>
-                            </ItemProduct>
+                        </ListCategories>
+                        <MenuButtons>
+                            <strong>Produtos</strong>
+                            <ButtonCategories onClick={() => setIsVisibleFormProduct(true)}>
+                                <PlusCircle size={20} /><span>Produto</span>
+                            </ButtonCategories>
+                        </MenuButtons>
+                        <ListProducts>
+                            {products.map((product) => {
+                                return (
 
-                        );
-                    })}
-                </ListProducts>
+                                    <ItemProduct key={product._id}>
+                                        <div className="image-product">
+                                            <img src={`http://192.168.100.41:3001/uploads/${product.imagePath}`} alt="" />
+                                        </div>
+                                        <span>{product.name}</span>
+                                        <strong>{formatCurrency(product.price)}</strong>
+                                        <div className="edit-product">
+                                            <button className="edit-button"><PencilSimple size={20} /></button>
+                                            <button className="delete-button"
+                                                onClick={() => handleDeleteProduct(product._id)}
+                                            ><Trash size={20} /></button>
+                                        </div>
+                                    </ItemProduct>
+
+                                );
+                            })}
+                        </ListProducts>
+                    </>
+                )}
             </MenuContainer>
         </>
     );
