@@ -27,6 +27,7 @@ export function Menu() {
     const [categories, setCategories] = useState<CategoryType[]>([]);
     const [products, setProducts] = useState<ProductType[]>([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [categoryId, setCategoryId] = useState('');
 
     useEffect(() => {
         Promise.all([
@@ -38,6 +39,11 @@ export function Menu() {
             setIsLoading(false);
         });
     }, [isLoading]);
+
+    async function handleEditCategory(categoryId: string) {
+        setCategoryId(categoryId);
+        setIsVisibleFormCategory(true);
+    }
 
     async function handleDeleteCategory(categoryId: string) {
         await api.delete(`/categories/${categoryId}`);
@@ -51,11 +57,12 @@ export function Menu() {
     function onClose() {
         setIsVisibleFormCategory(false);
         setIsVisibleFormProduct(false);
+        setCategoryId('');
         setIsLoading(true);
     }
     return (
         <>
-            <FormCategoryModal visible={isVisibleFormCategory} onClose={onClose} />
+            <FormCategoryModal visible={isVisibleFormCategory} onClose={onClose} categoryId={categoryId} />
             <FormProductModal visible={isVisibleFormProduct} onClose={onClose} />
             <MenuContainer>
                 <MenuButtons>
@@ -76,18 +83,21 @@ export function Menu() {
                             {
                                 categories.map((category) => {
                                     return (
-                                        <>
-                                            <ItemCategory key={category._id}>
-                                                <Category icon={category.icon} name={category.name} />
-                                                <div className="edit-category">
-                                                    <button className="edit-button"><PencilSimple size={20} /></button>
-                                                    <button
-                                                        className="delete-button"
-                                                        onClick={() => handleDeleteCategory(category._id)}
-                                                    ><Trash size={20} /></button>
-                                                </div>
-                                            </ItemCategory>
-                                        </>
+                                        <ItemCategory key={category._id}>
+                                            <Category icon={category.icon} name={category.name} />
+                                            <div className="edit-category">
+                                                <button 
+                                                    className="edit-button"
+                                                    onClick={() => handleEditCategory(category._id)}>
+                                                    <PencilSimple size={20} />
+                                                </button>
+                                                <button
+                                                    className="delete-button"
+                                                    onClick={() => handleDeleteCategory(category._id)}>
+                                                    <Trash size={20} />
+                                               </button>
+                                            </div>
+                                        </ItemCategory>
                                     );
                                 })
                             }
@@ -103,21 +113,21 @@ export function Menu() {
                 <ListProducts>
                     {products.map((product) => {
                         return (
-                            <>
-                                <ItemProduct key={product._id}>
-                                    <div className="image-product">
-                                        <img src={`http://192.168.100.41:3001/uploads/${product.imagePath}`} alt="" />
-                                    </div>
-                                    <span>{product.name}</span>
-                                    <strong>{formatCurrency(product.price)}</strong>
-                                    <div className="edit-product">
-                                        <button className="edit-button"><PencilSimple size={20} /></button>
-                                        <button className="delete-button"
-                                            onClick={() => handleDeleteProduct(product._id)}
-                                        ><Trash size={20} /></button>
-                                    </div>
-                                </ItemProduct>
-                            </>
+
+                            <ItemProduct key={product._id}>
+                                <div className="image-product">
+                                    <img src={`http://192.168.100.41:3001/uploads/${product.imagePath}`} alt="" />
+                                </div>
+                                <span>{product.name}</span>
+                                <strong>{formatCurrency(product.price)}</strong>
+                                <div className="edit-product">
+                                    <button className="edit-button"><PencilSimple size={20} /></button>
+                                    <button className="delete-button"
+                                        onClick={() => handleDeleteProduct(product._id)}
+                                    ><Trash size={20} /></button>
+                                </div>
+                            </ItemProduct>
+
                         );
                     })}
                 </ListProducts>

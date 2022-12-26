@@ -14,6 +14,7 @@ import { toast } from "react-toastify";
 import { X } from "phosphor-react";
 
 interface CartModalProps {
+  categoryId?: string;
   visible: boolean;
   onClose: () => void;
 
@@ -22,6 +23,7 @@ interface CartModalProps {
 export function FormCategoryModal({
   visible,
   onClose,
+  categoryId,
 }: CartModalProps) {
 
   if (!visible) {
@@ -45,13 +47,31 @@ export function FormCategoryModal({
   const [icon, setIcon] = useState('');
   const [name, setName] = useState('');
 
+  useEffect(() => {
+    if (categoryId) {
+      api.get(`/categories/${categoryId}`)
+        .then((Response) => {
+          setIcon(Response.data.icon);
+          setName(Response.data.name);
+        });
+    }
+
+  }, [categoryId]);
+
 
   async function handleOk() {
-    await api.post('/categories', {
+
+    const route = categoryId ? `/categories/${categoryId}` : '/categories';
+    const path = categoryId ? api.patch : api.post;
+
+    const message = categoryId ? 'Categoria atualizada com sucesso!' : 'Categoria criada com sucesso!';
+
+
+    await path(route, {
       icon: icon,
       name: name,
     });
-    toast.success('Categoria criada com sucesso!');
+    toast.success(message);
     onClose();
   }
 
