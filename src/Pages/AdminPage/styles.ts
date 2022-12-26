@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContainerAdmin = styled.div`
+export const ContainerAdmin = styled.main`
   display: flex;
   flex: 1;
   max-height: 79vh;

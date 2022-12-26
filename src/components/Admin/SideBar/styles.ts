@@ -4,7 +4,7 @@ interface sidebarProps {
   sidebarVisible: boolean;
 }
 
-export const Container = styled.div<sidebarProps>`
+export const Container = styled.section<sidebarProps>`
   position: fixed;
   z-index: 1;
   width: ${(props) => (props.sidebarVisible ? "-12rem" : "12rem")};
