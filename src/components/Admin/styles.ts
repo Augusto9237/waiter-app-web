@@ -213,6 +213,16 @@ export const StatusOrder = styled.div<adminProps>`
   max-width: 200px;
   margin: 0 auto;
 
+  span {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: ${(props) =>
+      (props.status === "WAITING" && "#FC410C") ||
+      (props.status === "IN_PRODUCTION" && " #529FF9") ||
+      (props.status === "DONE" && "#00C643")};
+  }
+
   @media (max-width: 650px) {
     span {
       display: none;
