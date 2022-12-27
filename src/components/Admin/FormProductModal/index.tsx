@@ -43,11 +43,15 @@ export function FormProductModal({
   }, [onClose]);
 
   const [imageProduct, setImageProduct] = useState<FileList | null>(null);
-  console.log(imageProduct);
+  const [inputCount, setInputCount] = useState(0);
 
-  const handleInputChange = (e: FormEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>  ): void => {
-    console.log('ok', e.currentTarget.value );
-    
+  function handleAddInput() {
+    setInputCount(inputCount + 1);
+  }
+
+  const handleInputChange = (e: FormEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>): void => {
+    console.log('ok', e.currentTarget.value);
+
   };
 
 
@@ -101,12 +105,22 @@ export function FormProductModal({
 
             <div className="input-container">
               <span>Ingredientes</span>
-              <input placeholder="Digite um nome" />
+              {Array.from(Array(inputCount)).map((_, index) => (
+                <div key={index}>
+                  <label htmlFor={`input-${index}`}>Input {index + 1}:</label>
+                  <input type="text" id={`input-${index}`} name={`input-${index}`} />
+                </div>
+              ))}
+
+              <button type="button" onClick={handleAddInput}>
+                Adicionar input
+              </button>
+
             </div>
 
             <div className="input-container">
               <span>Imagem</span>
-              <input placeholder="Digite um nome" type='file' onChange={e => setImageProduct(e.target.files)}/>
+              <input placeholder="Digite um nome" type='file' onChange={e => setImageProduct(e.target.files)} />
             </div>
           </FormCategory>
         </ModalContent>
