@@ -37,6 +37,7 @@ export const SigInBody = styled.div`
 export const ImageContainer = styled.div`
   background: #d73035;
   display: flex;
+  flex: 1;
   height: 100%;
   align-items: center;
   justify-content: center;
