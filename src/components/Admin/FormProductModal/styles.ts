@@ -10,9 +10,11 @@ export const OverlayFormProductModal = styled.div`
   width: 100%;
   height: 100vh;
   position: fixed;
+  padding: 16px 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: auto;
 
   @media (max-width: 415px) {
     padding: 2%;
@@ -104,6 +106,21 @@ export const FormCategory = styled.form`
         padding: 8px;
         margin-left: -8px;
       }
+    }
+
+    .button-add-ingredients{
+      border: none;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 8px 24px;
+      gap: 8px;
+      background: #333333;
+      border-radius: 48px;
+      max-width: 70%;
+      margin: 0 auto;
+      color: #FFFFFF;
     }
 
     span {

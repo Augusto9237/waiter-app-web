@@ -114,7 +114,7 @@ export function FormProductModal({
                 </div>
               ))}
 
-              <button type="button" onClick={handleAddInput}>
+              <button type="button" onClick={handleAddInput} className='button-add-ingredients'>
                 Adicionar ingredientes
               </button>
 
