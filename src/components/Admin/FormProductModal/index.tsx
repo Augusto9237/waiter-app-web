@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { FormEvent, InputHTMLAttributes, useEffect } from "react";
 
 import { Button } from "../../Button";
 
@@ -7,12 +7,14 @@ import {
   ModalContent,
   OverlayFormProductModal,
   FormCategory,
-  FooterCart,
+  FooterFormProduct,
   HeaderModalCart,
 } from "./styles";
 import { X } from "phosphor-react";
+import { CategoryType } from "../../../types/Category";
 
 interface CartModalProps {
+  categories: CategoryType[];
   visible: boolean;
   onClose: () => void;
 }
@@ -20,6 +22,7 @@ interface CartModalProps {
 export function FormProductModal({
   visible,
   onClose,
+  categories
 }: CartModalProps) {
   if (!visible) {
     return null;
@@ -39,6 +42,10 @@ export function FormProductModal({
     };
   }, [onClose]);
 
+  const handleInputChange = (e: FormEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>  ): void => {
+    console.log('change', e.currentTarget.value );
+    
+  };
 
 
   function handleOk() {
@@ -64,7 +71,14 @@ export function FormProductModal({
           <FormCategory>
             <div className="input-container">
               <span>Categoria</span>
-              <input placeholder="Digite um nome" type='text' />
+              <select name="category" onChange={handleInputChange}>
+                <option value='0'>Selecione uma categoria</option>
+                {categories.map((category) => {
+                  return (
+                    <option key={category._id} value={category._id}>{category.icon}{" "}{category.name}</option>
+                  );
+                })}
+              </select>
             </div>
 
             <div className="input-container">
@@ -74,12 +88,12 @@ export function FormProductModal({
 
             <div className="input-container">
               <span>Preço</span>
-              <input placeholder="Digite o preço" type='number' />
+              <input placeholder="Digite o preço" type='number' onChange={handleInputChange} />
             </div>
 
             <div className="input-container">
               <span>Descrição</span>
-              <input placeholder="Digite um nome" />
+              <input placeholder="Digite a descrição do produto" onChange={handleInputChange} />
             </div>
 
             <div className="input-container">
@@ -94,14 +108,14 @@ export function FormProductModal({
           </FormCategory>
         </ModalContent>
 
-        <FooterCart>
+        <FooterFormProduct>
 
           <Button
             onClick={handleOk}
           >
             Salvar
           </Button>
-        </FooterCart>
+        </FooterFormProduct>
       </ModalBodyCart>
     </OverlayFormProductModal>
   );

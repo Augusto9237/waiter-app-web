@@ -105,16 +105,16 @@ export const FormCategory = styled.form`
     border-radius: 8px;
     padding: 16px;
   }
+  
 }
 
 `;
 
 
-export const FooterCart = styled.div`
+export const FooterFormCategory = styled.div`
   display: flex;
-  min-height: 110px;
   background: #fff;
-  padding: 16px 24px;
+  padding: 20px 24px;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;

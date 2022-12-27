@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const OverlayFormProductModal = styled.div`
   z-index: 50;
   flex: 1;
@@ -91,7 +90,6 @@ export const FormCategory = styled.form`
     flex-direction: column;
     gap: 8px;
 
-  
     span {
       font-weight: 600;
       font-size: 16px;
@@ -99,24 +97,28 @@ export const FormCategory = styled.form`
     }
 
     input {
-    width: 100%;
-    background: #FFFFFF;
-    border: 1px solid rgba(204, 204, 204, 0.5);
-    border-radius: 8px;
-    padding: 16px;
-  }
-}
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid rgba(204, 204, 204, 0.5);
+      border-radius: 8px;
+      padding: 16px;
+    }
 
+    select {
+      width: 100%;
+      background: #FFFFFF;
+      border: 1px solid rgba(204, 204, 204, 0.5);
+      border-radius: 8px;
+      padding: 16px;
+    }
+  }
 `;
 
-
-export const FooterCart = styled.div`
+export const FooterFormProduct = styled.div`
   display: flex;
-  min-height: 110px;
   background: #fff;
-  padding: 16px 24px;
+  padding: 20px 24px;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 `;
-

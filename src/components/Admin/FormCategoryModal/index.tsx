@@ -5,7 +5,7 @@ import {
   ModalBodyCart,
   ModalContent,
   FormCategory,
-  FooterCart,
+  FooterFormCategory,
   HeaderModalCart,
   OverlayFormModal,
 } from "./styles";
@@ -111,14 +111,14 @@ export function FormCategoryModal({
           </FormCategory>
         </ModalContent>
 
-        <FooterCart>
+        <FooterFormCategory>
 
           <Button
             onClick={handleOk}
           >
             Salvar
           </Button>
-        </FooterCart>
+        </FooterFormCategory>
       </ModalBodyCart>
     </OverlayFormModal>
   );

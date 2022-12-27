@@ -4,6 +4,7 @@ import { Order } from "../../../types/Order";
 import { formatCurrency } from "../../../utils/formatCurrency";
 
 import { Actions, ModalBody, OrderDetails, Overlay } from "./styles";
+import { X } from "phosphor-react";
 
 interface OrderModalProps {
   visible: boolean;
@@ -43,7 +44,7 @@ export function OrderModal({ visible, order, onClose, onCancelOrder, isLoading, 
         <header>
           <strong>Mesa {order.table}</strong>
           <button type="button" onClick={onClose}>
-            <img src={closeIcon} alt="Icone de fechar" />
+            <X size={20} />
           </button>
         </header>
 
@@ -92,7 +93,7 @@ export function OrderModal({ visible, order, onClose, onCancelOrder, isLoading, 
         </OrderDetails>
 
         <Actions>
-          
+
           {order.status !== 'DONE' && (
             <button type="button" className="primary" disabled={isLoading} onClick={onChangeOrderStatus}>
 

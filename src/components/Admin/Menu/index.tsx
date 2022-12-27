@@ -63,7 +63,7 @@ export function Menu() {
     return (
         <>
             <FormCategoryModal visible={isVisibleFormCategory} onClose={onClose} categoryId={categoryId} />
-            <FormProductModal visible={isVisibleFormProduct} onClose={onClose} />
+            <FormProductModal visible={isVisibleFormProduct} onClose={onClose} categories={categories}/>
             <MenuContainer>
                 {isLoading && (
                     <LoadingContainerCategory>
