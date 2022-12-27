@@ -1647,7 +1647,7 @@
   "resolved" "https://registry.npmjs.org/object-keys/-/object-keys-1.1.1.tgz"
   "version" "1.1.1"
 
-"object-path@^0.11.8":
+"object-path@0.11.8":
   "integrity" "sha512-YJjNZrlXJFM42wTBn6zgOJVar9KFJvzx6sTWDte8sWZF//cnjl0BxHNpfZx+ZffXX63A9q0b1zsFiBX4g4X5KA=="
   "resolved" "https://registry.npmjs.org/object-path/-/object-path-0.11.8.tgz"
   "version" "0.11.8"
