@@ -26,7 +26,7 @@ export function Menu() {
     const [isVisibleFormProduct, setIsVisibleFormProduct] = useState(false);
     const [categories, setCategories] = useState<CategoryType[]>([]);
     const [products, setProducts] = useState<ProductType[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [categoryId, setCategoryId] = useState('');
 
     useEffect(() => {

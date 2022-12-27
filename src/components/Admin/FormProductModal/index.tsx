@@ -1,4 +1,4 @@
-import { FormEvent, InputHTMLAttributes, useEffect } from "react";
+import { FormEvent, InputHTMLAttributes, useEffect, useState } from "react";
 
 import { Button } from "../../Button";
 
@@ -41,6 +41,9 @@ export function FormProductModal({
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [onClose]);
+
+  const [imageProduct, setImageProduct] = useState<FileList | null>(null);
+  console.log(imageProduct);
 
   const handleInputChange = (e: FormEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>  ): void => {
     console.log('ok', e.currentTarget.value );
@@ -103,7 +106,7 @@ export function FormProductModal({
 
             <div className="input-container">
               <span>Imagem</span>
-              <input placeholder="Digite um nome" type='file' />
+              <input placeholder="Digite um nome" type='file' onChange={e => setImageProduct(e.target.files)}/>
             </div>
           </FormCategory>
         </ModalContent>
