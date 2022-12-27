@@ -106,14 +106,16 @@ export function FormProductModal({
             <div className="input-container">
               <span>Ingredientes</span>
               {Array.from(Array(inputCount)).map((_, index) => (
-                <div key={index}>
-                  <label htmlFor={`input-${index}`}>Input {index + 1}:</label>
-                  <input type="text" id={`input-${index}`} name={`input-${index}`} />
+                <div key={index} className="input-container-ingredients">
+                  <label htmlFor={`input-${index}`}>Icone</label>
+                  <input type="text" id={`input-${index}`} name='icon' />
+                  <label htmlFor={`input-${index}`}>nome</label>
+                  <input type="text" id={`input-${index}`} name='name' />
                 </div>
               ))}
 
               <button type="button" onClick={handleAddInput}>
-                Adicionar input
+                Adicionar ingredientes
               </button>
 
             </div>

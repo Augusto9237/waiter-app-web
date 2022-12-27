@@ -90,6 +90,22 @@ export const FormCategory = styled.form`
     flex-direction: column;
     gap: 8px;
 
+    .input-container-ingredients {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
+
+      input{
+        max-width: 80%;
+        background: #ffffff;
+        border: 1px solid rgba(204, 204, 204, 0.5);
+        border-radius: 8px;
+        padding: 8px;
+        margin-left: -8px;
+      }
+    }
+
     span {
       font-weight: 600;
       font-size: 16px;
