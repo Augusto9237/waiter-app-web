@@ -43,7 +43,7 @@ export function FormProductModal({
   }, [onClose]);
 
   const handleInputChange = (e: FormEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>  ): void => {
-    console.log('change', e.currentTarget.value );
+    console.log('ok', e.currentTarget.value );
     
   };
 
