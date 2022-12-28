@@ -10,7 +10,7 @@ import {
   FooterFormProduct,
   HeaderModalCart,
 } from "./styles";
-import { X } from "phosphor-react";
+import { MinusCircle, PlusCircle, X } from "phosphor-react";
 import { CategoryType } from "../../../types/Category";
 
 interface CartModalProps {
@@ -47,6 +47,10 @@ export function FormProductModal({
 
   function handleAddInput() {
     setInputCount(inputCount + 1);
+  }
+
+  function handleDelInput() {
+    setInputCount(inputCount - 1);
   }
 
   const handleInputChange = (e: FormEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>): void => {
@@ -108,15 +112,21 @@ export function FormProductModal({
               {Array.from(Array(inputCount)).map((_, index) => (
                 <div key={index} className="input-container-ingredients">
                   <label htmlFor={`input-${index}`}>Icone</label>
-                  <input type="text" id={`input-${index}`} name='icon' />
+                  <input className="icon-ingredient" type="text" id={`input-${index}`} name='icon' />
                   <label htmlFor={`input-${index}`}>nome</label>
                   <input type="text" id={`input-${index}`} name='name' />
                 </div>
               ))}
 
-              <button type="button" onClick={handleAddInput} className='button-add-ingredients'>
-                Adicionar ingredientes
-              </button>
+              <div className="button-ingredients-container">
+                <button type="button" onClick={handleAddInput} className='button-ingredients'>
+                  <PlusCircle size={20} />
+                </button>
+
+                <button type="button" onClick={handleDelInput} className='button-ingredients' disabled={inputCount > 0 ? false : true}>
+                  <MinusCircle size={20} />
+                </button>
+              </div>
 
             </div>
 

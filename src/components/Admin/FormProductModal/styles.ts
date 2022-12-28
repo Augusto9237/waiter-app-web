@@ -99,29 +99,42 @@ export const FormCategory = styled.form`
       gap: 16px;
 
       input{
-        max-width: 80%;
         background: #ffffff;
         border: 1px solid rgba(204, 204, 204, 0.5);
         border-radius: 8px;
         padding: 8px;
         margin-left: -8px;
       }
+
+      input.icon-ingredient{
+        width: 20%;
+      };
     }
 
-    .button-add-ingredients{
+    .button-ingredients-container{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      padding: 0 40%;
+      gap: 12px;
+
+      .button-ingredients{
       border: none;
+      width: 26px;
+      height: 26px;
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      padding: 8px 24px;
-      gap: 8px;
       background: #333333;
       border-radius: 48px;
-      max-width: 70%;
       margin: 0 auto;
       color: #FFFFFF;
     }
+
+    }
+
+  
 
     span {
       font-weight: 600;
