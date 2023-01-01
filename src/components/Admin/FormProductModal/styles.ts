@@ -82,7 +82,7 @@ export const ModalContent = styled.div`
   }
 `;
 
-export const FormCategory = styled.form`
+export const FormProduct = styled.form`
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -92,13 +92,24 @@ export const FormCategory = styled.form`
     flex-direction: column;
     gap: 8px;
 
+    .button-ingredients {
+      border: none;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      background: #333333;
+      border-radius: 18px;
+      color: #ffffff;
+    }
+
     .input-container-ingredients {
       display: flex;
       flex-direction: row;
       align-items: center;
       gap: 16px;
 
-      input{
+      input {
         background: #ffffff;
         border: 1px solid rgba(204, 204, 204, 0.5);
         border-radius: 8px;
@@ -106,35 +117,23 @@ export const FormCategory = styled.form`
         margin-left: -8px;
       }
 
-      input.icon-ingredient{
+      input.icon-ingredient {
         width: 20%;
-      };
+      }
     }
 
-    .button-ingredients-container{
+    .button-ingredients-container {
       display: flex;
-      flex-direction: row;
-      justify-content: center;
-      padding: 0 40%;
-      gap: 12px;
+      justify-content: flex-start;
+      width: 100%;
 
-      .button-ingredients{
-      border: none;
-      width: 26px;
-      height: 26px;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      background: #333333;
-      border-radius: 48px;
-      margin: 0 auto;
-      color: #FFFFFF;
+      button{
+        opacity: 0.5;
+      }
+      button:hover{
+        opacity: 1;;
+      }
     }
-
-    }
-
-  
 
     span {
       font-weight: 600;
@@ -152,7 +151,7 @@ export const FormCategory = styled.form`
 
     select {
       width: 100%;
-      background: #FFFFFF;
+      background: #ffffff;
       border: 1px solid rgba(204, 204, 204, 0.5);
       border-radius: 8px;
       padding: 16px;

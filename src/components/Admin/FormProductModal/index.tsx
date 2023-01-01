@@ -6,18 +6,35 @@ import {
   ModalBodyCart,
   ModalContent,
   OverlayFormProductModal,
-  FormCategory,
+  FormProduct,
   FooterFormProduct,
   HeaderModalCart,
 } from "./styles";
 import { MinusCircle, PlusCircle, X } from "phosphor-react";
 import { CategoryType } from "../../../types/Category";
+import { api } from "../../../utils/api";
+import { toast } from "react-toastify";
 
 interface CartModalProps {
   categories: CategoryType[];
   visible: boolean;
   onClose: () => void;
 }
+
+interface Ingredients {
+  icon: string;
+  name: string;
+}
+
+interface ModalFormProps {
+  name: string,
+  description: string,
+  image: File | null,
+  price: number,
+  category: string
+}
+
+
 
 export function FormProductModal({
   visible,
@@ -42,8 +59,18 @@ export function FormProductModal({
     };
   }, [onClose]);
 
+  const [ingredients, setIngedients] = useState<Ingredients[]>([]);
   const [imageProduct, setImageProduct] = useState<FileList | null>(null);
   const [inputCount, setInputCount] = useState(0);
+  const [formData, setFormData] = useState<ModalFormProps>({
+    name: "",
+    description: "",
+    image: null,
+    price: 0,
+    category: '',
+  },);
+
+  console.log(ingredients);
 
   function handleAddInput() {
     setInputCount(inputCount + 1);
@@ -53,16 +80,42 @@ export function FormProductModal({
     setInputCount(inputCount - 1);
   }
 
-  const handleInputChange = (e: FormEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>): void => {
-    console.log('ok', e.currentTarget.value);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement> | any) => {
+    const { name, value, files } = event.target;
 
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: files ? files[0] : value,
+    }));
   };
 
 
-  function handleOk() {
-    onClose();
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-  }
+    const route = '/products';
+    const path = api.post;
+    const headers = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    };
+
+    const message = 'Produto adicionado com sucesso!';
+
+
+    await path(route, {
+      name: formData.name,
+      description: formData.description,
+      price: formData.price,
+      category: formData.category,
+      ingredients: JSON.stringify(ingredients),
+      image: formData.image
+    }, headers);
+    toast.success(message);
+    onClose();
+  };
+
 
 
   return (
@@ -79,10 +132,12 @@ export function FormProductModal({
         </HeaderModalCart>
 
         <ModalContent>
-          <FormCategory>
+          <FormProduct
+            onSubmit={handleSubmit} encType="multipart/form-data"
+          >
             <div className="input-container">
               <span>Categoria</span>
-              <select name="category" onChange={handleInputChange}>
+              <select name="category" onChange={handleChange} >
                 <option value='0'>Selecione uma categoria</option>
                 {categories.map((category) => {
                   return (
@@ -94,27 +149,39 @@ export function FormProductModal({
 
             <div className="input-container">
               <span>Nome</span>
-              <input placeholder="Digite um nome" type='text' />
+              <input name="name" placeholder="Digite um nome" type='text' onChange={handleChange} />
             </div>
 
             <div className="input-container">
               <span>Preço</span>
-              <input placeholder="Digite o preço" type='number' onChange={handleInputChange} />
+              <input name="price" placeholder="Digite o preço" type='number' onChange={handleChange} />
             </div>
 
             <div className="input-container">
               <span>Descrição</span>
-              <input placeholder="Digite a descrição do produto" onChange={handleInputChange} />
+              <input name="description" placeholder="Digite a descrição do produto" onChange={handleChange} />
             </div>
 
             <div className="input-container">
               <span>Ingredientes</span>
               {Array.from(Array(inputCount)).map((_, index) => (
                 <div key={index} className="input-container-ingredients">
+                  <button type="button" onClick={handleAddInput} className='button-ingredients'>
+                    <PlusCircle size={20} />
+                  </button>
                   <label htmlFor={`input-${index}`}>Icone</label>
-                  <input className="icon-ingredient" type="text" id={`input-${index}`} name='icon' />
+                  <input className="icon-ingredient" type="text" id={`input-${index}`} name='icon' onChange={event => {
+                    setIngedients([...ingredients, { icon: event.target.value, name: '' }]);
+                  }} />
                   <label htmlFor={`input-${index}`}>nome</label>
-                  <input type="text" id={`input-${index}`} name='name' />
+                  <input type="text" id={`input-${index}`} name='name' onChange={event => {
+                    const newItems = [...ingredients];
+                    newItems[newItems.length - 1].name = event.target.value;
+                    setIngedients(newItems);
+                  }} />
+                  <button type="button" onClick={handleDelInput} className='button-ingredients' disabled={inputCount > 0 ? false : true}>
+                    <MinusCircle size={20} />
+                  </button>
                 </div>
               ))}
 
@@ -122,29 +189,21 @@ export function FormProductModal({
                 <button type="button" onClick={handleAddInput} className='button-ingredients'>
                   <PlusCircle size={20} />
                 </button>
-
-                <button type="button" onClick={handleDelInput} className='button-ingredients' disabled={inputCount > 0 ? false : true}>
-                  <MinusCircle size={20} />
-                </button>
               </div>
 
             </div>
 
             <div className="input-container">
               <span>Imagem</span>
-              <input placeholder="Digite um nome" type='file' onChange={e => setImageProduct(e.target.files)} />
+              <input name="image" placeholder="Digite um nome" type='file' onChange={handleChange} />
             </div>
-          </FormCategory>
+            <FooterFormProduct>
+
+              <button type='submit'>Salvar</button>
+            </FooterFormProduct>
+          </FormProduct>
         </ModalContent>
 
-        <FooterFormProduct>
-
-          <Button
-            onClick={handleOk}
-          >
-            Salvar
-          </Button>
-        </FooterFormProduct>
       </ModalBodyCart>
     </OverlayFormProductModal>
   );

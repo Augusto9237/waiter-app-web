@@ -10,7 +10,7 @@ interface ButtonProps {
 
 export function Button({ children, onClick, disabled }: ButtonProps) {
   return (
-    <ContainerButton onClick={onClick} disabled={disabled}>
+    <ContainerButton onClick={onClick} disabled={disabled} type='submit'>
       <span >
         {children}
       </span>
