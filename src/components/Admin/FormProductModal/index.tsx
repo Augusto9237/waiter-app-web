@@ -195,7 +195,7 @@ export function FormProductModal({
 
             <div className="input-container">
               <span>Imagem</span>
-              <input name="image" placeholder="Digite um nome" type='file' onChange={handleChange} />
+              <input name="image" placeholder="Digite um nome" type='file' onChange={handleChange}/>
             </div>
             <FooterFormProduct>
 

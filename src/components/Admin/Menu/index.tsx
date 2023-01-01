@@ -52,6 +52,7 @@ export function Menu() {
 
     async function handleDeleteProduct(productId: string) {
         await api.delete(`/products/${productId}`);
+        setIsLoading(true);
     }
 
     function onClose() {
@@ -63,7 +64,7 @@ export function Menu() {
     return (
         <>
             <FormCategoryModal visible={isVisibleFormCategory} onClose={onClose} categoryId={categoryId} />
-            <FormProductModal visible={isVisibleFormProduct} onClose={onClose} categories={categories}/>
+            <FormProductModal visible={isVisibleFormProduct} onClose={onClose} categories={categories} />
             <MenuContainer>
                 {isLoading && (
                     <LoadingContainerCategory>
