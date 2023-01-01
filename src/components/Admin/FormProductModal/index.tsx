@@ -70,6 +70,7 @@ export function FormProductModal({
     category: '',
   },);
 
+  console.log(ingredients);
 
   function handleAddInput() {
     setInputCount(inputCount + 1);
@@ -77,6 +78,9 @@ export function FormProductModal({
 
   function handleDelInput() {
     setInputCount(inputCount - 1);
+    const newArray = ingredients.slice(0, -1);
+   
+    setIngedients(newArray);
   }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement> | any) => {
@@ -194,7 +198,7 @@ export function FormProductModal({
 
             <div className="input-container">
               <span>Imagem</span>
-              <input name="image" placeholder="Digite um nome" type='file' onChange={handleChange}/>
+              <input name="image" placeholder="Digite um nome" type='file' onChange={handleChange} />
             </div>
             <FooterFormProduct>
 
