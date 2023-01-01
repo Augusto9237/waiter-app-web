@@ -70,7 +70,6 @@ export function FormProductModal({
     category: '',
   },);
 
-  console.log(ingredients);
 
   function handleAddInput() {
     setInputCount(inputCount + 1);
