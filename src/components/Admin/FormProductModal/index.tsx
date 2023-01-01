@@ -1,4 +1,4 @@
-import { FormEvent, InputHTMLAttributes, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Button } from "../../Button";
 
@@ -60,7 +60,7 @@ export function FormProductModal({
   }, [onClose]);
 
   const [ingredients, setIngedients] = useState<Ingredients[]>([]);
-  const [imageProduct, setImageProduct] = useState<FileList | null>(null);
+  //const [imageProduct, setImageProduct] = useState<FileList | null>(null);
   const [inputCount, setInputCount] = useState(0);
   const [formData, setFormData] = useState<ModalFormProps>({
     name: "",
