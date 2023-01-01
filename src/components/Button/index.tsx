@@ -4,7 +4,7 @@ import { ContainerButton } from "./styles";
 
 interface ButtonProps {
   children: string;
-  onClick: () => void;
+  onClick?: () => void;
   disabled?: boolean;
 }
 

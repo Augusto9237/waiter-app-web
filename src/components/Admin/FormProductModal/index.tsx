@@ -149,17 +149,17 @@ export function FormProductModal({
 
             <div className="input-container">
               <span>Nome</span>
-              <input name="name" placeholder="Digite um nome" type='text' onChange={handleChange} />
+              <input name="name" placeholder="Digite um nome" type='text' onChange={handleChange} value={formData.name} />
             </div>
 
             <div className="input-container">
               <span>Preço</span>
-              <input name="price" placeholder="Digite o preço" type='number' onChange={handleChange} />
+              <input name="price" placeholder="Digite o preço" type='number' onChange={handleChange} value={formData.price} />
             </div>
 
             <div className="input-container">
               <span>Descrição</span>
-              <input name="description" placeholder="Digite a descrição do produto" onChange={handleChange} />
+              <input name="description" placeholder="Digite a descrição do produto" onChange={handleChange} value={formData.description} />
             </div>
 
             <div className="input-container">
@@ -199,7 +199,7 @@ export function FormProductModal({
             </div>
             <FooterFormProduct>
 
-              <button type='submit'>Salvar</button>
+              <Button>Salvar</Button>
             </FooterFormProduct>
           </FormProduct>
         </ModalContent>
