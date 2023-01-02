@@ -79,6 +79,7 @@ export function FormProductModal({
         .then((Response) => {
           //setInputCount(Response.data.ingredients.length);
           setIngedientsUpdate(Response.data.ingredients);
+          setIngedients(Response.data.ingredients);
           setFormData(Response.data);
         });
     }
@@ -185,14 +186,16 @@ export function FormProductModal({
               {ingredientsUpdate.length > 0 && (
                 ingredientsUpdate.map((ingredient, i) =>
                   <div key={i} className="input-container-ingredientsUpdate">
-                    <div className="white"/>
+                    <button type="button" onClick={handleAddInput} className='button-ingredients'>
+                      <PlusCircle size={20} />
+                    </button>
                     <label >Icone</label>
-                    <input value={ingredient.icon} className="icon-ingredient" onChange={event => {
+                    <input value={ingredient.icon} className="icon-ingredient" disabled onChange={event => {
                       setIngedients([...ingredients, { icon: event.target.value, name: '' }]);
                     }} />
 
                     <label >nome</label>
-                    <input value={ingredient.name} type="text" name='name' onChange={event => {
+                    <input value={ingredient.name} type="text" name='name' disabled onChange={event => {
                       const newItems = [...ingredients];
                       newItems[newItems.length - 1].name = event.target.value;
                       setIngedients(newItems);

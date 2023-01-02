@@ -110,8 +110,8 @@ export const FormProduct = styled.form`
         width: 20%;
       }
 
-      div.white {
-        width: 3.2rem;
+      button {
+        opacity: 0.5;
       }
     }
 
@@ -141,13 +141,6 @@ export const FormProduct = styled.form`
       display: flex;
       justify-content: flex-start;
       width: 100%;
-
-      button {
-        opacity: 0.5;
-      }
-      button:hover {
-        opacity: 1;
-      }
     }
 
     span {
