@@ -63,8 +63,8 @@ export function FormProductModal({
   }, [onClose]);
 
   const [ingredients, setIngedients] = useState<Ingredients[]>([]);
-  //const [imageProduct, setImageProduct] = useState<FileList | null>(null);
-  const [inputCount, setInputCount] = useState(1);
+  const [ingredientsUpdate, setIngedientsUpdate] = useState<Ingredients[]>([]);
+  const [inputCount, setInputCount] = useState(0);
   const [formData, setFormData] = useState<ModalFormProps>({
     name: "",
     description: "",
@@ -78,14 +78,14 @@ export function FormProductModal({
       api.get(`/products/${selectedProduct._id}`)
         .then((Response) => {
           //setInputCount(Response.data.ingredients.length);
-          setIngedients(Response.data.ingredients);
+          setIngedientsUpdate(Response.data.ingredients);
           setFormData(Response.data);
         });
     }
 
   }, [selectedProduct]);
 
-
+  console.log(ingredients);
   function handleAddInput() {
     setInputCount(inputCount + 1);
   }
@@ -181,54 +181,49 @@ export function FormProductModal({
 
             <div className="input-container">
               <span>Ingredientes</span>
+
+              {ingredientsUpdate.length > 0 && (
+                ingredientsUpdate.map((ingredient, i) =>
+                  <div key={i} className="input-container-ingredientsUpdate">
+                    <div className="white"/>
+                    <label >Icone</label>
+                    <input value={ingredient.icon} className="icon-ingredient" onChange={event => {
+                      setIngedients([...ingredients, { icon: event.target.value, name: '' }]);
+                    }} />
+
+                    <label >nome</label>
+                    <input value={ingredient.name} type="text" name='name' onChange={event => {
+                      const newItems = [...ingredients];
+                      newItems[newItems.length - 1].name = event.target.value;
+                      setIngedients(newItems);
+                    }} />
+
+                    <button type="button" onClick={handleDelInput} className='button-ingredients' disabled={inputCount > 0 ? false : true}>
+                      <MinusCircle size={20} />
+                    </button>
+                  </div>
+                )
+              )}
+
               {Array.from(Array(inputCount)).map((_, index) => (
                 <div key={index} className="input-container-ingredients">
-                  {ingredients.length > 0 ? (
-                    <>
-                      {
-                        ingredients.map((ingredient) => (
-                          <div key={index}>
-                            <button type="button" onClick={handleAddInput} className='button-ingredients'>
-                              <PlusCircle size={20} />
-                            </button>
-                            <label htmlFor={`input-${index}`}>Icone</label>
-                            <input value={ingredient.icon} className="icon-ingredient" type="text" id={`input-${index}`} name='icon' onChange={event => {
-                              setIngedients([...ingredients, { icon: event.target.value, name: '' }]);
-                            }} />
-                            <label htmlFor={`input-${index}`}>nome</label>
-                            <input value={ingredient.name} type="text" id={`input-${index}`} name='name' onChange={event => {
-                              const newItems = [...ingredients];
-                              newItems[newItems.length - 1].name = event.target.value;
-                              setIngedients(newItems);
-                            }} />
-                            <button type="button" onClick={handleDelInput} className='button-ingredients' disabled={inputCount > 0 ? false : true}>
-                              <MinusCircle size={20} />
-                            </button>
-                          </div>
-                        )
-                        )
-                      }
-                    </>
-                  ) : (
-                    <>
-                      <button type="button" onClick={handleAddInput} className='button-ingredients'>
-                        <PlusCircle size={20} />
-                      </button>
-                      <label htmlFor={`input-${index}`}>Icone</label>
-                      <input value='' className="icon-ingredient" type="text" id={`input-${index}`} name='icon' onChange={event => {
-                        setIngedients([...ingredients, { icon: event.target.value, name: '' }]);
-                      }} />
-                      <label htmlFor={`input-${index}`}>nome</label>
-                      <input value='' type="text" id={`input-${index}`} name='name' onChange={event => {
-                        const newItems = [...ingredients];
-                        newItems[newItems.length - 1].name = event.target.value;
-                        setIngedients(newItems);
-                      }} />
-                      <button type="button" onClick={handleDelInput} className='button-ingredients' disabled={inputCount > 0 ? false : true}>
-                        <MinusCircle size={20} />
-                      </button>
-                    </>
-                  )}
+                  <button type="button" onClick={handleAddInput} className='button-ingredients'>
+                    <PlusCircle size={20} />
+                  </button>
+                  <label htmlFor={`input-${index}`}>Icone</label>
+                  <input className="icon-ingredient" type="text" id={`input-${index}`} name='icon' onChange={event => {
+                    setIngedients([...ingredients, { icon: event.target.value, name: '' }]);
+                  }} />
+
+                  <label htmlFor={`input-${index}`}>nome</label>
+                  <input type="text" id={`input-${index}`} name='name' onChange={event => {
+                    const newItems = [...ingredients];
+                    newItems[newItems.length - 1].name = event.target.value;
+                    setIngedients(newItems);
+                  }} />
+                  <button type="button" onClick={handleDelInput} className='button-ingredients' disabled={inputCount > 0 ? false : true}>
+                    <MinusCircle size={20} />
+                  </button>
                 </div>
               ))}
 

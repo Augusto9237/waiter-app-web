@@ -92,6 +92,29 @@ export const FormProduct = styled.form`
     flex-direction: column;
     gap: 8px;
 
+    input {
+      background: #ffffff;
+      border: 1px solid rgba(204, 204, 204, 0.5);
+      border-radius: 8px;
+      padding: 8px;
+      margin-left: -8px;
+    }
+
+    .input-container-ingredientsUpdate {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
+
+      input.icon-ingredient {
+        width: 20%;
+      }
+
+      div.white {
+        width: 3.2rem;
+      }
+    }
+
     .button-ingredients {
       border: none;
       display: flex;
@@ -108,22 +131,6 @@ export const FormProduct = styled.form`
       flex-direction: row;
       align-items: center;
       gap: 16px;
-
-      div {
-        display: flex;
-        width: 100%;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-      }
-
-      input {
-        background: #ffffff;
-        border: 1px solid rgba(204, 204, 204, 0.5);
-        border-radius: 8px;
-        padding: 8px;
-        margin-left: -8px;
-      }
 
       input.icon-ingredient {
         width: 20%;
