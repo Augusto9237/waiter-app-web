@@ -14,11 +14,13 @@ import { MinusCircle, PlusCircle, X } from "phosphor-react";
 import { CategoryType } from "../../../types/Category";
 import { api } from "../../../utils/api";
 import { toast } from "react-toastify";
+import { ProductType } from "../../../types/Products";
 
 interface CartModalProps {
   categories: CategoryType[];
   visible: boolean;
   onClose: () => void;
+  selectedProduct: ProductType | null;
 }
 
 interface Ingredients {
@@ -39,7 +41,8 @@ interface ModalFormProps {
 export function FormProductModal({
   visible,
   onClose,
-  categories
+  categories,
+  selectedProduct
 }: CartModalProps) {
   if (!visible) {
     return null;
@@ -61,7 +64,7 @@ export function FormProductModal({
 
   const [ingredients, setIngedients] = useState<Ingredients[]>([]);
   //const [imageProduct, setImageProduct] = useState<FileList | null>(null);
-  const [inputCount, setInputCount] = useState(0);
+  const [inputCount, setInputCount] = useState(1);
   const [formData, setFormData] = useState<ModalFormProps>({
     name: "",
     description: "",
@@ -70,7 +73,18 @@ export function FormProductModal({
     category: '',
   },);
 
-  console.log(ingredients);
+  useEffect(() => {
+    if (selectedProduct?._id) {
+      api.get(`/products/${selectedProduct._id}`)
+        .then((Response) => {
+          //setInputCount(Response.data.ingredients.length);
+          setIngedients(Response.data.ingredients);
+          setFormData(Response.data);
+        });
+    }
+
+  }, [selectedProduct]);
+
 
   function handleAddInput() {
     setInputCount(inputCount + 1);
@@ -79,7 +93,7 @@ export function FormProductModal({
   function handleDelInput() {
     setInputCount(inputCount - 1);
     const newArray = ingredients.slice(0, -1);
-   
+
     setIngedients(newArray);
   }
 
@@ -140,7 +154,7 @@ export function FormProductModal({
           >
             <div className="input-container">
               <span>Categoria</span>
-              <select name="category" onChange={handleChange} >
+              <select value={formData.category} name="category" onChange={handleChange} >
                 <option value='0'>Selecione uma categoria</option>
                 {categories.map((category) => {
                   return (
@@ -169,22 +183,52 @@ export function FormProductModal({
               <span>Ingredientes</span>
               {Array.from(Array(inputCount)).map((_, index) => (
                 <div key={index} className="input-container-ingredients">
-                  <button type="button" onClick={handleAddInput} className='button-ingredients'>
-                    <PlusCircle size={20} />
-                  </button>
-                  <label htmlFor={`input-${index}`}>Icone</label>
-                  <input className="icon-ingredient" type="text" id={`input-${index}`} name='icon' onChange={event => {
-                    setIngedients([...ingredients, { icon: event.target.value, name: '' }]);
-                  }} />
-                  <label htmlFor={`input-${index}`}>nome</label>
-                  <input type="text" id={`input-${index}`} name='name' onChange={event => {
-                    const newItems = [...ingredients];
-                    newItems[newItems.length - 1].name = event.target.value;
-                    setIngedients(newItems);
-                  }} />
-                  <button type="button" onClick={handleDelInput} className='button-ingredients' disabled={inputCount > 0 ? false : true}>
-                    <MinusCircle size={20} />
-                  </button>
+                  {ingredients.length > 0 ? (
+                    <>
+                      {
+                        ingredients.map((ingredient) => (
+                          <div key={index}>
+                            <button type="button" onClick={handleAddInput} className='button-ingredients'>
+                              <PlusCircle size={20} />
+                            </button>
+                            <label htmlFor={`input-${index}`}>Icone</label>
+                            <input value={ingredient.icon} className="icon-ingredient" type="text" id={`input-${index}`} name='icon' onChange={event => {
+                              setIngedients([...ingredients, { icon: event.target.value, name: '' }]);
+                            }} />
+                            <label htmlFor={`input-${index}`}>nome</label>
+                            <input value={ingredient.name} type="text" id={`input-${index}`} name='name' onChange={event => {
+                              const newItems = [...ingredients];
+                              newItems[newItems.length - 1].name = event.target.value;
+                              setIngedients(newItems);
+                            }} />
+                            <button type="button" onClick={handleDelInput} className='button-ingredients' disabled={inputCount > 0 ? false : true}>
+                              <MinusCircle size={20} />
+                            </button>
+                          </div>
+                        )
+                        )
+                      }
+                    </>
+                  ) : (
+                    <>
+                      <button type="button" onClick={handleAddInput} className='button-ingredients'>
+                        <PlusCircle size={20} />
+                      </button>
+                      <label htmlFor={`input-${index}`}>Icone</label>
+                      <input value='' className="icon-ingredient" type="text" id={`input-${index}`} name='icon' onChange={event => {
+                        setIngedients([...ingredients, { icon: event.target.value, name: '' }]);
+                      }} />
+                      <label htmlFor={`input-${index}`}>nome</label>
+                      <input value='' type="text" id={`input-${index}`} name='name' onChange={event => {
+                        const newItems = [...ingredients];
+                        newItems[newItems.length - 1].name = event.target.value;
+                        setIngedients(newItems);
+                      }} />
+                      <button type="button" onClick={handleDelInput} className='button-ingredients' disabled={inputCount > 0 ? false : true}>
+                        <MinusCircle size={20} />
+                      </button>
+                    </>
+                  )}
                 </div>
               ))}
 

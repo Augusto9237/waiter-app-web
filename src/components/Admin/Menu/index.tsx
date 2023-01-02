@@ -27,7 +27,9 @@ export function Menu() {
     const [categories, setCategories] = useState<CategoryType[]>([]);
     const [products, setProducts] = useState<ProductType[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+
     const [categoryId, setCategoryId] = useState('');
+    const [selectedProduct, setSeletectedProduct] = useState<null | ProductType>(null);
 
     useEffect(() => {
         Promise.all([
@@ -40,9 +42,14 @@ export function Menu() {
         });
     }, [isLoading]);
 
-    async function handleEditCategory(categoryId: string) {
+    function handleEditCategory(categoryId: string) {
         setCategoryId(categoryId);
         setIsVisibleFormCategory(true);
+    }
+
+    function handleEditProduct(product: ProductType) {
+        setSeletectedProduct(product);
+        setIsVisibleFormProduct(true);
     }
 
     async function handleDeleteCategory(categoryId: string) {
@@ -59,12 +66,13 @@ export function Menu() {
         setIsVisibleFormCategory(false);
         setIsVisibleFormProduct(false);
         setCategoryId('');
+        setSeletectedProduct(null);
         setIsLoading(true);
     }
     return (
         <>
             <FormCategoryModal visible={isVisibleFormCategory} onClose={onClose} categoryId={categoryId} />
-            <FormProductModal visible={isVisibleFormProduct} onClose={onClose} categories={categories} />
+            <FormProductModal visible={isVisibleFormProduct} onClose={onClose} categories={categories} selectedProduct={selectedProduct} />
             <MenuContainer>
                 {isLoading && (
                     <LoadingContainerCategory>
@@ -124,7 +132,9 @@ export function Menu() {
                                         <span>{product.name}</span>
                                         <strong>{formatCurrency(product.price)}</strong>
                                         <div className="edit-product">
-                                            <button className="edit-button"><PencilSimple size={20} /></button>
+                                            <button className="edit-button" onClick={() => handleEditProduct(product)}>
+                                                <PencilSimple size={20} />
+                                            </button>
                                             <button className="delete-button"
                                                 onClick={() => handleDeleteProduct(product._id)}
                                             ><Trash size={20} /></button>

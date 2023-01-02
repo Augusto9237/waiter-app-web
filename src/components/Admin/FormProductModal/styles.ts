@@ -109,6 +109,14 @@ export const FormProduct = styled.form`
       align-items: center;
       gap: 16px;
 
+      div {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
       input {
         background: #ffffff;
         border: 1px solid rgba(204, 204, 204, 0.5);
@@ -127,11 +135,11 @@ export const FormProduct = styled.form`
       justify-content: flex-start;
       width: 100%;
 
-      button{
+      button {
         opacity: 0.5;
       }
-      button:hover{
-        opacity: 1;;
+      button:hover {
+        opacity: 1;
       }
     }
 

@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import closeIcon from "../../../assets/images/close-icon.svg";
 import { Order } from "../../../types/Order";
 import { formatCurrency } from "../../../utils/formatCurrency";
 
