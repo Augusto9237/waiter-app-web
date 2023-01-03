@@ -28,7 +28,7 @@ export function Menu() {
     const [products, setProducts] = useState<ProductType[]>([]);
     const [isLoading, setIsLoading] = useState(false);
 
-    const [categoryId, setCategoryId] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState<null | CategoryType>(null);
     const [selectedProduct, setSeletectedProduct] = useState<null | ProductType>(null);
 
     useEffect(() => {
@@ -42,8 +42,8 @@ export function Menu() {
         });
     }, [isLoading]);
 
-    function handleEditCategory(categoryId: string) {
-        setCategoryId(categoryId);
+    function handleEditCategory(category: CategoryType) {
+        setSelectedCategory(category);
         setIsVisibleFormCategory(true);
     }
 
@@ -65,13 +65,13 @@ export function Menu() {
     function onClose() {
         setIsVisibleFormCategory(false);
         setIsVisibleFormProduct(false);
-        setCategoryId('');
+        setSelectedCategory(null);
         setSeletectedProduct(null);
         setIsLoading(true);
     }
     return (
         <>
-            <FormCategoryModal visible={isVisibleFormCategory} onClose={onClose} categoryId={categoryId} />
+            <FormCategoryModal visible={isVisibleFormCategory} onClose={onClose} category={selectedCategory} />
             <FormProductModal visible={isVisibleFormProduct} onClose={onClose} categories={categories} selectedProduct={selectedProduct} />
             <MenuContainer>
                 {isLoading && (
@@ -100,7 +100,7 @@ export function Menu() {
                                             <div className="edit-category">
                                                 <button
                                                     className="edit-button"
-                                                    onClick={() => handleEditCategory(category._id)}>
+                                                    onClick={() => handleEditCategory(category)}>
                                                     <PencilSimple size={20} />
                                                 </button>
                                                 <button

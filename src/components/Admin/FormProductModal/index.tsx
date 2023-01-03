@@ -75,11 +75,13 @@ export function FormProductModal({
 
   useEffect(() => {
     if (selectedProduct?._id) {
+      
+
       api.get(`/products/${selectedProduct._id}`)
         .then((Response) => {
           //setInputCount(Response.data.ingredients.length);
           setIngedientsUpdate(Response.data.ingredients);
-          setIngedients(Response.data.ingredients);
+          setIngedients(selectedProduct.ingredients);
           setFormData(Response.data);
         });
     }
