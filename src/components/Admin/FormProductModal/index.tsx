@@ -24,6 +24,7 @@ interface CartModalProps {
 }
 
 interface Ingredients {
+  _id?: string;
   icon: string;
   name: string;
 }
@@ -64,7 +65,7 @@ export function FormProductModal({
 
   const [ingredients, setIngedients] = useState<Ingredients[]>([]);
   const [ingredientsUpdate, setIngedientsUpdate] = useState<Ingredients[]>([]);
-  const [inputCount, setInputCount] = useState(0);
+  const [inputCount, setInputCount] = useState(1);
   const [formData, setFormData] = useState<ModalFormProps>({
     name: "",
     description: "",
@@ -75,26 +76,31 @@ export function FormProductModal({
 
   useEffect(() => {
     if (selectedProduct?._id) {
-      
 
       api.get(`/products/${selectedProduct._id}`)
         .then((Response) => {
-          //setInputCount(Response.data.ingredients.length);
           setIngedientsUpdate(Response.data.ingredients);
           setIngedients(selectedProduct.ingredients);
           setFormData(Response.data);
         });
     }
 
-  }, [selectedProduct]);
+  }, []);
 
-  console.log(ingredients);
   function handleAddInput() {
     setInputCount(inputCount + 1);
   }
 
   function handleDelInput() {
     setInputCount(inputCount - 1);
+    const newArray = ingredients.slice(1, -1);
+
+    setIngedients(newArray);
+  }
+ 
+  console.log(ingredients);
+
+  function handleDelInputUpdate() {
     const newArray = ingredients.slice(0, -1);
 
     setIngedients(newArray);
@@ -186,8 +192,8 @@ export function FormProductModal({
               <span>Ingredientes</span>
 
               {ingredientsUpdate.length > 0 && (
-                ingredientsUpdate.map((ingredient, i) =>
-                  <div key={i} className="input-container-ingredientsUpdate">
+                ingredientsUpdate.map((ingredient) =>
+                  <div key={ingredient._id} className="input-container-ingredientsUpdate">
                     <button type="button" onClick={handleAddInput} className='button-ingredients'>
                       <PlusCircle size={20} />
                     </button>
@@ -203,7 +209,7 @@ export function FormProductModal({
                       setIngedients(newItems);
                     }} />
 
-                    <button type="button" onClick={handleDelInput} className='button-ingredients' disabled={inputCount > 0 ? false : true}>
+                    <button type="button" onClick={handleDelInputUpdate} className='button-ingredients' disabled={inputCount > 0 ? false : true}>
                       <MinusCircle size={20} />
                     </button>
                   </div>
