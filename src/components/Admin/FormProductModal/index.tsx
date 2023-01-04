@@ -65,7 +65,7 @@ export function FormProductModal({
 
   const [ingredients, setIngedients] = useState<Ingredients[]>([]);
   const [ingredientsUpdate, setIngedientsUpdate] = useState<Ingredients[]>([]);
-  const [inputCount, setInputCount] = useState(1);
+  const [inputCount, setInputCount] = useState(0);
   const [formData, setFormData] = useState<ModalFormProps>({
     name: "",
     description: "",
@@ -74,18 +74,21 @@ export function FormProductModal({
     category: '',
   },);
 
+  const newIngredients = [...ingredients, ...ingredientsUpdate];
+
+  console.log(newIngredients);
   useEffect(() => {
     if (selectedProduct?._id) {
 
       api.get(`/products/${selectedProduct._id}`)
         .then((Response) => {
           setIngedientsUpdate(Response.data.ingredients);
-          setIngedients(selectedProduct.ingredients);
           setFormData(Response.data);
         });
     }
-
   }, []);
+
+
 
   function handleAddInput() {
     setInputCount(inputCount + 1);
@@ -93,17 +96,14 @@ export function FormProductModal({
 
   function handleDelInput() {
     setInputCount(inputCount - 1);
-    const newArray = ingredients.slice(1, -1);
+    const newArray = ingredients.slice(0, - 1);
 
     setIngedients(newArray);
   }
- 
-  console.log(ingredients);
 
   function handleDelInputUpdate() {
-    const newArray = ingredients.slice(0, -1);
-
-    setIngedients(newArray);
+    const newArray = ingredientsUpdate.slice(0, -1);
+    setIngedientsUpdate(newArray);
   }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement> | any) => {
@@ -135,7 +135,7 @@ export function FormProductModal({
       description: formData.description,
       price: formData.price,
       category: formData.category,
-      ingredients: JSON.stringify(ingredients),
+      ingredients: JSON.stringify(newIngredients),
       image: formData.image
     }, headers);
     toast.success(message);
@@ -193,7 +193,7 @@ export function FormProductModal({
 
               {ingredientsUpdate.length > 0 && (
                 ingredientsUpdate.map((ingredient) =>
-                  <div key={ingredient._id} className="input-container-ingredientsUpdate">
+                  <div key={ingredient._id} id={ingredient._id} className="input-container-ingredientsUpdate">
                     <button type="button" onClick={handleAddInput} className='button-ingredients'>
                       <PlusCircle size={20} />
                     </button>
@@ -209,7 +209,7 @@ export function FormProductModal({
                       setIngedients(newItems);
                     }} />
 
-                    <button type="button" onClick={handleDelInputUpdate} className='button-ingredients' disabled={inputCount > 0 ? false : true}>
+                    <button type="button" onClick={() => handleDelInputUpdate()} className='button-ingredients'>
                       <MinusCircle size={20} />
                     </button>
                   </div>
