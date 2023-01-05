@@ -76,7 +76,6 @@ export function FormProductModal({
 
   const newIngredients = [...ingredients, ...ingredientsUpdate];
 
-  console.log(newIngredients);
   useEffect(() => {
     if (selectedProduct?._id) {
 
@@ -119,15 +118,15 @@ export function FormProductModal({
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const route = '/products';
-    const path = api.post;
+    const route = selectedProduct?._id ? `/products/${selectedProduct._id}` : '/products';
+    const path = selectedProduct?._id ? api.patch : api.post;
     const headers = {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     };
 
-    const message = 'Produto adicionado com sucesso!';
+    const message = selectedProduct?._id ? 'Produto atualizado com sucesso!' : 'Produto adicionado com sucesso!';
 
 
     await path(route, {
