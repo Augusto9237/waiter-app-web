@@ -126,6 +126,12 @@ export function FormProductModal({
       },
     };
 
+    const headerUpdate = {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    };
+
     const message = selectedProduct?._id ? 'Produto atualizado com sucesso!' : 'Produto adicionado com sucesso!';
 
 
@@ -136,7 +142,7 @@ export function FormProductModal({
       category: formData.category,
       ingredients: JSON.stringify(newIngredients),
       image: formData.image
-    }, headers);
+    }, selectedProduct?._id ? headerUpdate : headers);
     toast.success(message);
     onClose();
   };
