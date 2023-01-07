@@ -126,12 +126,6 @@ export function FormProductModal({
       },
     };
 
-    const headerUpdate = {
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    };
-
     const message = selectedProduct?._id ? 'Produto atualizado com sucesso!' : 'Produto adicionado com sucesso!';
 
 
@@ -142,7 +136,7 @@ export function FormProductModal({
       category: formData.category,
       ingredients: JSON.stringify(newIngredients),
       image: formData.image
-    }, selectedProduct?._id ? headerUpdate : headers);
+    }, headers);
     toast.success(message);
     onClose();
   };
@@ -155,7 +149,7 @@ export function FormProductModal({
 
         <HeaderModalCart>
           <div />
-          <strong>Novo produto</strong>
+          <strong>{selectedProduct?._id ? 'Editar produto' : 'Novo produto'}</strong>
 
           <button type="button" onClick={onClose}>
             <X size={20} />
@@ -169,7 +163,7 @@ export function FormProductModal({
             <div className="input-container">
               <span>Categoria</span>
               <select value={formData.category} name="category" onChange={handleChange} >
-                <option value='0'>Selecione uma categoria</option>
+                <option value=''>Selecione uma categoria</option>
                 {categories.map((category) => {
                   return (
                     <option key={category._id} value={category._id}>{category.icon}{" "}{category.name}</option>
