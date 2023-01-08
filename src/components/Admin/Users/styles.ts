@@ -119,3 +119,12 @@ export const ItemUser = styled.div`
     }
   }
 `;
+
+export const LoadingContainerUsers = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+  min-height: 65vh;
+`;

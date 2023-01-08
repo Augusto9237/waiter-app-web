@@ -7,35 +7,52 @@ import {
     ButtonUsers,
     ListUsers,
     ItemUser,
+    LoadingContainerUsers,
 } from "./styles";
 import { api } from "../../../utils/api";
 import { FormUserModal } from "../FormUserModal";
 import { UserType } from "../../../types/Users";
+import { toast } from "react-toastify";
+import LoadingSpinner from "../../LoadingSpinner";
 
 export function Users() {
     const [isVisibleFormUsers, setIsVisibleFormUsers] = useState(false);
     const [users, setUsers] = useState<UserType[]>([]);
+    const [selectedUser, setSelectedUser] = useState<null | UserType>(null);
     const [isLoadingUsers, setIsLoadingUsers] = useState(true);
 
     useEffect(() => {
-           setIsLoadingUsers(true);
-        api.get("/users")
-            .then((Response) => {
-                setUsers(Response.data);
-            });
+        if (isLoadingUsers) {
+            api.get("/users")
+                .then((Response) => {
+                    setUsers(Response.data);
+                });
             setIsLoadingUsers(false);
+        }
 
     }, [isLoadingUsers]);
+
+    function handleEditUser(selectedUser: UserType) {
+        setSelectedUser(selectedUser);
+        setIsVisibleFormUsers(true);
+    }
+
+    async function handleDeleteUser(userId: string) {
+        await api.delete(`/users/${userId}`);
+        setIsLoadingUsers(true);
+        toast.success('Usuario deletado com sucesso!');
+    }
 
 
     function onClose() {
         setIsVisibleFormUsers(false);
+        setSelectedUser(null);
         setIsLoadingUsers(true);
     }
 
     return (
         <>
-            <FormUserModal visible={isVisibleFormUsers} onClose={onClose} />
+            <FormUserModal visible={isVisibleFormUsers} onClose={onClose} selectedUser={selectedUser} />
             <UsersContainer>
                 <UsersButtons>
                     <strong>Usuarios</strong>
@@ -44,6 +61,11 @@ export function Users() {
                     </ButtonUsers>
                 </UsersButtons>
                 <ListUsers>
+                    {isLoadingUsers && (
+                        <LoadingContainerUsers>
+                            <LoadingSpinner />
+                        </LoadingContainerUsers>
+                    )}
                     {!isLoadingUsers && (
                         <>
                             {users.map((user) => (
@@ -59,10 +81,13 @@ export function Users() {
                                         {user.office === 'MANANGER' && "Gerente"}</span>
                                     <span>*****</span>
                                     <div className="edit-product">
-                                        <button className="edit-button"><PencilSimple size={20} /></button>
-                                        <button className="delete-button"
-                                            onClick={() => alert()}
-                                        ><Trash size={20} /></button>
+                                        <button className="edit-button" onClick={() => handleEditUser(user)}>
+                                            <PencilSimple size={20} />
+                                        </button>
+
+                                        <button className="delete-button" onClick={() => handleDeleteUser(user._id)}>
+                                            <Trash size={20} />
+                                        </button>
                                     </div>
                                 </ItemUser>
                             )

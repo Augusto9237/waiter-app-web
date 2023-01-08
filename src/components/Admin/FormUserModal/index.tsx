@@ -12,8 +12,10 @@ import {
 import { api } from "../../../utils/api";
 import { toast } from "react-toastify";
 import { X } from "phosphor-react";
+import { UserType } from "../../../types/Users";
 
 interface CartModalProps {
+  selectedUser?: UserType | null;
   visible: boolean;
   onClose: () => void;
 
@@ -22,6 +24,7 @@ interface CartModalProps {
 export function FormUserModal({
   visible,
   onClose,
+  selectedUser
 }: CartModalProps) {
 
   if (!visible) {
@@ -32,6 +35,7 @@ export function FormUserModal({
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
         onClose();
+
       }
     }
 
@@ -46,14 +50,31 @@ export function FormUserModal({
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
 
+  const options = ['MANANGER', 'CLERK', 'KITCHEN_ASSISTANT'];
+
+  useEffect(() => {
+    if (selectedUser) {
+      setName(selectedUser.name);
+      setPassword(selectedUser.password);
+      setUserOffice(selectedUser.office);
+    }
+
+  }, [selectedUser]);
+
 
   async function handleOk() {
-    await api.post('/users', {
+    const route = selectedUser?._id ? `/users/${selectedUser._id}` : '/users';
+    const path = selectedUser?._id ? api.patch : api.post;
+
+    const message = selectedUser?._id ? 'Usuario atualizado com sucesso!' : 'Usuario criado com sucesso!';
+
+
+    await path(route, {
       name: name,
       password: password,
       office: userOffice
     });
-    toast.success('Usuario cadastrado com sucesso!');
+    toast.success(message);
     onClose();
   }
 
@@ -75,10 +96,15 @@ export function FormUserModal({
           <FormCategory>
             <div className="input-container">
               <span>Cargo</span>
-              <select name="type" id="office" onChange={(e) => setUserOffice(e.target.value)}>
-                <option value='MANANGER'>Gerente</option>
-                <option value='CLERK'>Atendente</option>
-                <option value='KITCHEN_ASSISTANT'>Aux. Cozinha</option>
+              <select name="office" id="office" value={userOffice} onChange={(e) => setUserOffice(e.target.value)}>
+                <option value=''>Selecione o cargo do usuario</option>
+                {options.map(option => (
+                  <option key={option} value={option}>
+                    {option === 'CLERK' && "Atendente"}
+                    {option === 'KITCHEN_ASSISTANT' && "Aux. de Cozinha"}
+                    {option === 'MANANGER' && "Gerente"}
+                  </option>
+                ))}
               </select>
             </div>
 
@@ -96,6 +122,7 @@ export function FormUserModal({
               <input
                 placeholder="Digite sua senha"
                 value={password}
+                type='password'
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
@@ -111,6 +138,6 @@ export function FormUserModal({
           </Button>
         </FooterCart>
       </ModalBodyCart>
-    </OverlayFormModal>
+    </OverlayFormModal >
   );
 }

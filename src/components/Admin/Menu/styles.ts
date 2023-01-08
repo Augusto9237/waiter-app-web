@@ -32,7 +32,7 @@ export const MenuButtons = styled.div`
   border-bottom: 1px solid rgba(204, 204, 204, 0.4);
 `;
 
-export const ButtonCategories = styled.button`
+export const ButtonAdd = styled.button`
   display: flex;
   align-items: center;
   border: none;

@@ -7,7 +7,7 @@ import { Category } from "../../Client/Category";
 import {
     MenuContainer,
     MenuButtons,
-    ButtonCategories,
+    ButtonAdd,
     ListCategories,
     ItemCategory,
     ListProducts,
@@ -85,9 +85,9 @@ export function Menu() {
 
                         <MenuButtons>
                             <strong>Categorias</strong>
-                            <ButtonCategories onClick={() => setIsVisibleFormCategory(true)}>
+                            <ButtonAdd onClick={() => setIsVisibleFormCategory(true)}>
                                 <PlusCircle size={20} /><span>Categoria</span>
-                            </ButtonCategories>
+                            </ButtonAdd>
                         </MenuButtons>
                         <ListCategories>
 
@@ -117,9 +117,9 @@ export function Menu() {
                         </ListCategories>
                         <MenuButtons>
                             <strong>Produtos</strong>
-                            <ButtonCategories onClick={() => setIsVisibleFormProduct(true)}>
+                            <ButtonAdd onClick={() => setIsVisibleFormProduct(true)}>
                                 <PlusCircle size={20} /><span>Produto</span>
-                            </ButtonCategories>
+                            </ButtonAdd>
                         </MenuButtons>
                         <ListProducts>
                             {products.map((product) => {
