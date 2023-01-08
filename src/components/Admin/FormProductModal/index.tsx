@@ -75,6 +75,7 @@ export function FormProductModal({
   },);
 
   const newIngredients = [...ingredients, ...ingredientsUpdate];
+  console.log(newIngredients);
 
   useEffect(() => {
     if (selectedProduct?._id) {
@@ -88,19 +89,20 @@ export function FormProductModal({
   }, []);
 
 
-
   function handleAddInput() {
     setInputCount(inputCount + 1);
   }
 
-  function handleDelInput() {
+  async function handleDelInput() {
     setInputCount(inputCount - 1);
+    await new Promise(resolve => setTimeout(resolve, 1000));
     const newArray = ingredients.slice(0, - 1);
 
     setIngedients(newArray);
   }
 
-  function handleDelInputUpdate() {
+  async function handleDelInputUpdate() {
+    await new Promise(resolve => setTimeout(resolve, 1000));
     const newArray = ingredientsUpdate.slice(0, -1);
     setIngedientsUpdate(newArray);
   }
@@ -193,7 +195,7 @@ export function FormProductModal({
               {ingredientsUpdate.length > 0 && (
                 ingredientsUpdate.map((ingredient) =>
                   <div key={ingredient._id} id={ingredient._id} className="input-container-ingredientsUpdate">
-                    <button type="button" onClick={handleAddInput} className='button-ingredients'>
+                    <button type="button" onClick={handleAddInput} className='button-ingredients' disabled={ingredient.icon.length > 0 ? true : false} >
                       <PlusCircle size={20} />
                     </button>
                     <label >Icone</label>
@@ -201,7 +203,7 @@ export function FormProductModal({
                       setIngedients([...ingredients, { icon: event.target.value, name: '' }]);
                     }} />
 
-                    <label >nome</label>
+                    <label >Nome</label>
                     <input value={ingredient.name} type="text" name='name' disabled onChange={event => {
                       const newItems = [...ingredients];
                       newItems[newItems.length - 1].name = event.target.value;
@@ -221,15 +223,20 @@ export function FormProductModal({
                     <PlusCircle size={20} />
                   </button>
                   <label htmlFor={`input-${index}`}>Icone</label>
-                  <input className="icon-ingredient" type="text" id={`input-${index}`} name='icon' onChange={event => {
-                    setIngedients([...ingredients, { icon: event.target.value, name: '' }]);
-                  }} />
+                  <input className="icon-ingredient" type="text" id={`input-${index}`} name='icon'
+                    onChange={event => {
+                      setTimeout(() => {
+                        setIngedients([...ingredients, { icon: event.target.value, name: '' }]);
+                      }, 2500);
+                    }} />
 
-                  <label htmlFor={`input-${index}`}>nome</label>
+                  <label htmlFor={`input-${index}`}>Nome</label>
                   <input type="text" id={`input-${index}`} name='name' onChange={event => {
                     const newItems = [...ingredients];
                     newItems[newItems.length - 1].name = event.target.value;
-                    setIngedients(newItems);
+                    setTimeout(() => {
+                      setIngedients(newItems);
+                    }, 2500);
                   }} />
                   <button type="button" onClick={handleDelInput} className='button-ingredients' disabled={inputCount > 0 ? false : true}>
                     <MinusCircle size={20} />

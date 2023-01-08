@@ -44,7 +44,7 @@ export function OrdersBoard({ icon, title, orders, onCancelOrder, onChangeOrderS
 
   async function handleCancelOrder() {
     setIsLoading(true);
-
+    
     await new Promise(resolve => setTimeout(resolve, 1000));
     await api.delete(`/orders/${selectedOrder?._id}`);
 
