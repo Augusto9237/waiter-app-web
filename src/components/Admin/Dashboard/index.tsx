@@ -1,4 +1,4 @@
-import { CurrencyDollar, NotePencil, SquaresFour } from "phosphor-react";
+import { CurrencyDollar, NotePencil, UsersFour } from "phosphor-react";
 import { useEffect, useState } from "react";
 import { Order } from "../../../types/Order";
 import { api } from "../../../utils/api";
@@ -22,6 +22,7 @@ export default function Dashboard() {
 
   const [orders, setOrders] = useState<Order[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [amountClient, setAmountClient] = useState(0);
 
   useEffect(() => {
     setIsLoading(true);
@@ -42,6 +43,7 @@ export default function Dashboard() {
         theme: "colored",
       });
     });
+
     setIsLoading(false);
   }, []);
 
@@ -84,10 +86,10 @@ export default function Dashboard() {
             </CardOrders>
             <CardOrders>
               <div className="headerCard">
-                <span className="icon-customers"><SquaresFour size={24} color='#2880f4' /></span>
-                <span>Mesas</span>
+                <span className="icon-customers"><UsersFour size={24} color='#2880f4' /></span>
+                <span>Clientes</span>
               </div>
-              <h1>10/20</h1>
+              <h1>{amountClient}</h1>
             </CardOrders>
           </CardContainer>
 
@@ -99,7 +101,7 @@ export default function Dashboard() {
                   <tr>
                     <th>Cliente</th>
                     <th>Data</th>
-                    <th>Nº da Mesa</th>
+                    <th>Mesa</th>
                     <th>Valor</th>
                     <th>Atendente</th>
                     <th>Status</th>

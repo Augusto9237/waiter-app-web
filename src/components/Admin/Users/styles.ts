@@ -34,12 +34,17 @@ export const ButtonUsers = styled.button`
   gap: 8px;
 
   @media (max-width: 500px) {
-    padding: 6px 10px;
+    padding: 0.3rem;
+    justify-content: center;
   }
 
   span {
     font-size: 14px;
     line-height: 100%;
+
+    @media (max-width: 500px) {
+      display: none;
+    }
   }
 `;
 

@@ -43,12 +43,17 @@ export const ButtonAdd = styled.button`
   gap: 8px;
 
   @media (max-width: 500px) {
-    padding: 6px 10px;
+    padding: 0.3rem;
+    justify-content: center;
   }
 
   span {
     font-size: 14px;
     line-height: 100%;
+
+    @media (max-width: 500px) {
+      display: none;
+    }
   }
 `;
 
@@ -59,8 +64,6 @@ export const ListCategories = styled.div`
   gap: 12px;
   margin-bottom: 24px;
 `;
-
-
 
 export const ItemCategory = styled.div`
   position: relative;
@@ -127,8 +130,8 @@ export const ItemProduct = styled.div`
   @media (max-width: 500px) {
     gap: 6px;
 
-      span {
-        font-size: 14px
+    span {
+      font-size: 14px;
     }
   }
 
