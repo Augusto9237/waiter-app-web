@@ -22,7 +22,6 @@ export default function Dashboard() {
 
   const [orders, setOrders] = useState<Order[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [amountClient, setAmountClient] = useState(0);
 
   useEffect(() => {
     setIsLoading(true);
@@ -89,7 +88,7 @@ export default function Dashboard() {
                 <span className="icon-customers"><UsersFour size={24} color='#2880f4' /></span>
                 <span>Clientes</span>
               </div>
-              <h1>{amountClient}</h1>
+              <h1>0</h1>
             </CardOrders>
           </CardContainer>
 
