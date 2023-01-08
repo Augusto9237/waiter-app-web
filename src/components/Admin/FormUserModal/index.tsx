@@ -42,17 +42,18 @@ export function FormUserModal({
     };
   }, [onClose]);
 
-  const [userType, setUserType] = useState('');
+  const [userOffice, setUserOffice] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
 
 
   async function handleOk() {
-    await api.post('/categories', {
+    await api.post('/users', {
       name: name,
       password: password,
+      office: userOffice
     });
-    toast.success('Categoria criada com sucesso!');
+    toast.success('Usuario cadastrado com sucesso!');
     onClose();
   }
 
@@ -74,10 +75,10 @@ export function FormUserModal({
           <FormCategory>
             <div className="input-container">
               <span>Cargo</span>
-              <select name="type" id="cars">
-                <option value="volvo">Gerente</option>
-                <option value="saab">Atendente</option>
-                <option value="mercedes">Aux. Cozinha</option>
+              <select name="type" id="office" onChange={(e) => setUserOffice(e.target.value)}>
+                <option value='MANANGER'>Gerente</option>
+                <option value='CLERK'>Atendente</option>
+                <option value='KITCHEN_ASSISTANT'>Aux. Cozinha</option>
               </select>
             </div>
 
@@ -94,8 +95,8 @@ export function FormUserModal({
               <span>Password</span>
               <input
                 placeholder="Digite sua senha"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
           </FormCategory>

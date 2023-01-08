@@ -16,6 +16,7 @@ import {
 import sockectIo from "socket.io-client";
 import LoadingSpinner from "../../LoadingSpinner";
 import { toast } from "react-toastify";
+import { formatDate } from "../../../utils/formatDate";
 
 export default function Dashboard() {
 
@@ -56,7 +57,7 @@ export default function Dashboard() {
   const totalRevenue = orders.reduce(function (accumulator, object) {
     return accumulator + object.total;
   }, 0);
-  
+
   return (
     <>
       {isLoading && (
@@ -97,6 +98,7 @@ export default function Dashboard() {
                 <thead>
                   <tr>
                     <th>Cliente</th>
+                    <th>Data</th>
                     <th>Nº da Mesa</th>
                     <th>Valor</th>
                     <th>Atendente</th>
@@ -106,10 +108,6 @@ export default function Dashboard() {
                 <tbody>
                   {orders.map((order) => {
 
-                    const total = order.products.reduce((total, { product, quantity }) => {
-                      return total + product.price * quantity;
-                    }, 0);
-
                     return (
                       <tr key={order._id}>
                         <td>
@@ -117,6 +115,9 @@ export default function Dashboard() {
                             <IconClient>🙎‍♂️</IconClient>
                             <span>{order.client}</span>
                           </div>
+                        </td>
+                        <td>
+                          {formatDate(new Date(order.createdAt))}
                         </td>
 
                         <td><span>{order.table}</span></td>
