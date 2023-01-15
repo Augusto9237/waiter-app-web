@@ -31,14 +31,14 @@ export default function SideBar() {
         <Link to='/admin/menu'>
           <div className="sidebarIconItem">
             <span><CookingPot size={24} /></span>
-            <strong>Cardapio</strong>
+            <strong>Cardápio</strong>
           </div>
         </Link>
 
         <Link to='/admin/users'>
           <div className="sidebarIconItem">
             <span><UsersThree size={24} /></span>
-            <strong>Usuarios</strong>
+            <strong>Usuários</strong>
           </div>
         </Link>
       </SideBarBody>
