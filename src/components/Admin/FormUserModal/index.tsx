@@ -73,6 +73,9 @@ export function FormUserModal({
       name: name,
       password: password,
       office: userOffice
+    }).catch(error => {
+      console.log(error.response);
+      toast.error(error.response.data.msg);
     });
     toast.success(message);
     onClose();
