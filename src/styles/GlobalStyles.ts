@@ -67,7 +67,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background: ${theme.colors.background};
+    background: #fafafa;
     color: #333;
   }
 
