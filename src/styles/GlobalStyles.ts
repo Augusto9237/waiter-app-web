@@ -10,7 +10,7 @@ import GeneralSansSemiboldWoff2 from "../assets/fonts/GeneralSans-Semibold.woff2
 import GeneralSansSemiboldWoff from "../assets/fonts/GeneralSans-Semibold.woff";
 import GeneralSansSemiboldTtf from "../assets/fonts/GeneralSans-Semibold.ttf";
 
-const theme = {
+ const theme = {
   colors: {
     primary: '#3f51b5',
     secondary: '#f50057',
@@ -67,7 +67,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background: #fafafa;
+    background: ${theme.colors.background};
     color: #333;
   }
 
