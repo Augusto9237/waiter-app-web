@@ -7,6 +7,7 @@ import { AdminPage } from "./Pages/AdminPage";
 import { ClientPage } from "./Pages/Client";
 import { OrdersPage } from "./Pages/OrdersPage";
 import { SigInPage } from "./Pages/SigIn";
+import { GlobalStyles } from "./styles/GlobalStyles";
 
 
 export function Routes() {
@@ -48,6 +49,7 @@ export function Routes() {
     ]);
     return (
         <>
+            <GlobalStyles />
             <RouterProvider router={router} />
         </>
     );

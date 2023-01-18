@@ -6,7 +6,6 @@ import { GlobalStyles } from "../styles/GlobalStyles";
 export function SigInPage() {
   return (
     <>
-      <GlobalStyles />
       <SigIn />
     </>
   );
