@@ -10,6 +10,24 @@ import GeneralSansSemiboldWoff2 from "../assets/fonts/GeneralSans-Semibold.woff2
 import GeneralSansSemiboldWoff from "../assets/fonts/GeneralSans-Semibold.woff";
 import GeneralSansSemiboldTtf from "../assets/fonts/GeneralSans-Semibold.ttf";
 
+const theme = {
+  colors: {
+    primary: '#3f51b5',
+    secondary: '#f50057',
+    background: '#fafafa',
+    text: '#333',
+  },
+};
+
+const darkTheme = {
+  colors: {
+    primary: '#f5f5f5',
+    secondary: '#333',
+    background: '#333',
+    text: '#f5f5f5',
+  },
+};
+
 export const GlobalStyles = createGlobalStyle`
 @font-face {
     font-family: 'GeneralSans';

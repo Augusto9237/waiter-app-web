@@ -54,7 +54,7 @@ export const SigInContent = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   background: #ffffff;
   padding: 32px;
   @media (max-width: 700px) {
@@ -65,14 +65,16 @@ export const SigInContent = styled.div`
 export const SigInHeader = styled.header`
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex: 1;
   align-items: center;
   justify-content: center;
+
   @media (max-width: 700px) {
     background: #d73035;
     padding: 18px;
     gap: 12px;
   }
+
   h1 {
     font-weight: 600;
     font-size: 24px;
@@ -81,6 +83,7 @@ export const SigInHeader = styled.header`
       color: #ffffff;
     }
   }
+
   img {
     display: none;
     @media (max-width: 700px) {
@@ -93,7 +96,13 @@ export const SigInHeader = styled.header`
 export const SigInInputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 24px 0;
+  margin-top: -24px;
+  flex: 1;
+
+  @media (max-width: 700px) {
+      margin: 24px 0;
+    }
+
   span {
     font-weight: 500;
     font-size: 14px;
@@ -104,11 +113,13 @@ export const SigInInputContainer = styled.div`
       margin-left: 24px;
     }
   }
+  
   input {
     padding: 12px;
     border: 1px solid rgba(204, 204, 204, 0.4);
     border-radius: 8px;
     margin-bottom: 12px;
+
     @media (max-width: 700px) {
       margin: 0 24px;
       margin-bottom: 12px;

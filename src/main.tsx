@@ -14,6 +14,7 @@ import { Orders } from "./components/Orders";
 import { Menu } from "./components/Admin/Menu";
 import { Users } from "./components/Admin/Users";
 import Dashboard from "./components/Admin/Dashboard";
+import { GlobalStyles } from "./styles/GlobalStyles";
 
 const router = createBrowserRouter([
   {
@@ -53,7 +54,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  // <React.StrictMode>
-  <RouterProvider router={router} />
+   <>
+   <GlobalStyles />
+   <RouterProvider router={router} />
+   </>
   //  </React.StrictMode>
 );

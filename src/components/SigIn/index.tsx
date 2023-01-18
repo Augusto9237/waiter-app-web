@@ -18,11 +18,11 @@ export default function SigIn() {
             <h1>Acessar sua conta</h1>
           </SigInHeader>
           <SigInInputContainer>
-            <span>E-mail</span>
-            <input placeholder="Digite seu e-mail" />
+            <span>Nome</span>
+            <input placeholder="Digite seu nome" />
 
             <span>Senha</span>
-            <input placeholder="Digite sua senha" />
+            <input placeholder="Digite sua senha" type='password' />
           </SigInInputContainer>
           <FooterSigIn>
             <Button onClick={() => navigate('/admin')}>Entrar</Button>
