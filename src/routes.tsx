@@ -1,4 +1,4 @@
-import { Users } from "phosphor-react";
+
 import { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
@@ -11,10 +11,11 @@ import { OrdersPage } from "./Pages/OrdersPage";
 import { SigInPage } from "./Pages/SigIn";
 import { GlobalStyles} from "./styles/GlobalStyles";
 import { darkTheme, theme } from "./styles/Theme";
+import { Users } from "./components/Admin/Users";
 
 
 export function Routes() {
-    const [isDarkMode, setIsDarkMode] = useState(true);
+    const [isDarkMode, setIsDarkMode] = useState(false);
     const router = createBrowserRouter([
         {
             path: "/",
@@ -42,7 +43,7 @@ export function Routes() {
                 },
                 {
                     path: "users",
-                    element: <Users />,
+                    element: <Users/>,
                 }
             ]
         },
