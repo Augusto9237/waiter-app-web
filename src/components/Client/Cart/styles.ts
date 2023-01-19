@@ -4,7 +4,7 @@ export const CartContainer = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
-  background: #ffffff;
+  background: ${(props) => props.theme.colors.primary};
   position: fixed;
   bottom: 0;
   right: 0;
@@ -32,13 +32,13 @@ export const CartTotal = styled.div`
   flex: 1;
   font-weight: 400;
   font-size: 16px;
-  color: #666666;
+  color: ${(props) => props.theme.colors.text};
 
   h1 {
     font-weight: 600;
     font-size: 20px;
     line-height: 120%;
-    color: #333333;
+    color: ${(props) => props.theme.colors.text};
   }
 
   span {

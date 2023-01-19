@@ -6,11 +6,16 @@ export const CategoryContainer = styled.div`
   align-items: center;
   background: none;
   border: none;
+
+  strong {
+    color: ${(props) => props.theme.colors.text};
+  }
+  
 `;
 
 export const Icon = styled.div`
   display: flex;
-  background: #fff;
+  background: ${(props) => props.theme.colors.primary};
   width: 44px;
   height: 44px;
   border-radius: 22px;

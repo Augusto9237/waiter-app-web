@@ -23,7 +23,7 @@ export const OverlayCartModal = styled.div`
 
 export const ModalBodyCart = styled.div`
   position: relative;
-  background: #fff;
+  background: ${(props) => props.theme.colors.primary};
   width: 480px;
   border-radius: 8px;
   overflow: hidden;
@@ -58,7 +58,7 @@ export const ButtonCloseModal = styled.button`
 `;
 
 export const ModalContent = styled.div`
-  background: #fafafa;
+  background: ${(props) => props.theme.colors.background};
   width: 100%;
   padding: 24px;
 
@@ -75,7 +75,7 @@ export const ModalContent = styled.div`
     span {
       font-weight: 400;
       font-size: 16px;
-      color: #666;
+      color: ${(props) => props.theme.colors.text};
       margin-top: 8px;
     }
   }
@@ -115,7 +115,7 @@ export const QuantityContainer = styled.div`
     font-weight: 400;
     font-size: 14px;
     line-height: 150%;
-    color: #666666;
+    color: ${(props) => props.theme.colors.text};
   }
 `;
 
@@ -132,7 +132,7 @@ export const ProductDetails = styled.div`
   span {
     font-weight: 400;
     font-size: 14px;
-    color: #666666;
+    color: ${(props) => props.theme.colors.text};
   }
 `;
 
@@ -157,7 +157,7 @@ export const Actions = styled.div`
 export const FooterCart = styled.div`
   display: flex;
   min-height: 110px;
-  background: #fff;
+  background: ${(props) => props.theme.colors.primary};
   padding: 16px 24px;
   flex-direction: row;
   align-items: center;
@@ -172,7 +172,7 @@ export const PriceContainer = styled.div`
   span {
     font-weight: 400;
     font-size: 16px;
-    color: #666666;
+    color: ${(props) => props.theme.colors.text};
   }
 
   strong {

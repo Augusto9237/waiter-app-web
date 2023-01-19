@@ -4,7 +4,7 @@ import { Button } from "../../Button";
 import {
   ModalBodyCart,
   ModalContent,
-  FormCategory,
+  FormUser,
   FooterCart,
   HeaderModalCart,
   OverlayFormModal,
@@ -96,7 +96,7 @@ export function FormUserModal({
         </HeaderModalCart>
 
         <ModalContent>
-          <FormCategory>
+          <FormUser>
             <div className="input-container">
               <span>Cargo</span>
               <select name="office" id="office" value={userOffice} onChange={(e) => setUserOffice(e.target.value)}>
@@ -129,7 +129,7 @@ export function FormUserModal({
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-          </FormCategory>
+          </FormUser>
         </ModalContent>
 
         <FooterCart>

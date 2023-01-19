@@ -25,7 +25,7 @@ export const ModalTableBody = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: #fff;
+  background: ${(props) => props.theme.colors.primary};
   width: 480px;
   border-radius: 8px;
   overflow: hidden;
@@ -56,10 +56,11 @@ export const FormModal = styled.form`
 
  input{
   width: 100%;
-  background: #FFFFFF;
+  background: ${(props) => props.theme.colors.secondary};
   border: 1px solid rgba(204, 204, 204, 0.5);
   border-radius: 8px;
   padding: 16px;
+  color: ${(props) => props.theme.colors.text};
  }
 `;
 

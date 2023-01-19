@@ -26,7 +26,7 @@ export const Overlay = styled.div`
 
 export const ModalBody = styled.div`
   position: relative;
-  background: #fff;
+  background: ${(props) => props.theme.colors.primary};
   width: 480px;
   border-radius: 8px;
   overflow: hidden;
@@ -55,7 +55,7 @@ export const ButtonCloseModal = styled.button`
 `;
 
 export const ModalContent = styled.div`
-  background: #fafafa;
+  background: ${(props) => props.theme.colors.background};
   width: 100%;
   padding: 24px;
 
@@ -103,7 +103,7 @@ export const IngredientItem = styled.div`
 export const Footer = styled.div`
   display: flex;
   min-height: 110px;
-  background: #fff;
+  background: ${(props) => props.theme.colors.primary};
   padding: 16px 24px;
   flex-direction: row;
   align-items: center;

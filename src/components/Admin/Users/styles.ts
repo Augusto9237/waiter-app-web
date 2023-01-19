@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const UsersContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background: #ffffff;
-  border: 1px solid rgba(204, 204, 204, 0.4);
+  background: ${(props) => props.theme.colors.primary};
+  border: 1px solid ${(props) => props.theme.colors.secondary};
   border-radius: 8px;
   padding: 24px;
 
@@ -66,7 +66,7 @@ export const ItemUser = styled.div`
   gap: 24px;
 
   :hover {
-    background: #cccccc;
+    background: ${(props) => props.theme.colors.secondary};
   }
 
   @media (max-width: 500px) {
