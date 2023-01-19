@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Board = styled.div`
   padding: 16px;
-  border: 1px solid rgba(204, 204, 204, 0.4);
+  border: 1px solid ${(props) => props.theme.colors.border};
   border-radius: 16px;
   display: flex;
   flex-direction: column;
@@ -25,8 +25,8 @@ export const OrdersContainer = styled.div`
   margin-top: 14px;
 
   button {
-    background: #fff;
-    border: 1px solid rgba(204, 204, 204, 0.4);
+    background: ${(props) => props.theme.colors.primary};
+    border: 1px solid ${(props) => props.theme.colors.border};
     height: 84px;
     border-radius: 8px;
     display: flex;
@@ -41,7 +41,7 @@ export const OrdersContainer = styled.div`
 
     span {
       font-size: 14px;
-      color: #666;
+      color: ${(props) => props.theme.colors.text};
     }
 
     span {

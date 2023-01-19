@@ -101,9 +101,10 @@ export const FormCategory = styled.form`
     input {
     width: 100%;
     background: ${(props) => props.theme.colors.secondary};
-    border: 1px solid rgba(204, 204, 204, 0.5);
+    border: 1px solid ${(props) => props.theme.colors.border};
     border-radius: 8px;
     padding: 16px;
+    color: ${(props) => props.theme.colors.text};
   }
   
 }

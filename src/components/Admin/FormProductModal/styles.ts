@@ -96,9 +96,10 @@ export const FormProduct = styled.form`
     width: 100%;
 
     input {
-      border: 1px solid rgba(204, 204, 204, 0.5);
+      border: 1px solid ${(props) => props.theme.colors.border};
       border-radius: 8px;
       padding: 8px;
+      color: ${(props) => props.theme.colors.text};
     }
 
     .input-container-ingredientsUpdate {
