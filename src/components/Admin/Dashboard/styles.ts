@@ -30,9 +30,10 @@ export const CardContainer = styled.div`
 export const CardOrders = styled.div`
   padding: 20px;
   border-radius: 8px;
-  border: 1px solid rgba(204, 204, 204, 0.3);
-  background: #fff;
+  border: 1px solid ${(props) => props.theme.colors.secondary};
+  background: ${(props) => props.theme.colors.primary};
   flex: 1;
+
 
   @media (max-width: 850px) {
     display: flex;
@@ -100,7 +101,7 @@ export const CardOrders = styled.div`
     font-weight: 600;
     font-size: 24px;
     line-height: 140%;
-    color: #333333;
+    color: ${(props) => props.theme.colors.text};
     margin-top: 8px;
 
     @media (max-width: 850px) {
@@ -118,8 +119,8 @@ export const ListOrders = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
-  background: #fff;
-  border: 1px solid rgba(204, 204, 204, 0.3);
+  background: ${(props) => props.theme.colors.primary};
+  border: 1px solid ${(props) => props.theme.colors.secondary};
   border-radius: 8px;
 
   @media (max-width: 850px) {

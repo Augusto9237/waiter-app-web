@@ -11,15 +11,6 @@ import GeneralSansSemiboldWoff from "../assets/fonts/GeneralSans-Semibold.woff";
 import GeneralSansSemiboldTtf from "../assets/fonts/GeneralSans-Semibold.ttf";
 
 
-interface Theme {
-  background: string;
-  text: string;
-}
-
-interface Props {
-  theme: Theme;
-}
-
 
 export const GlobalStyles = createGlobalStyle`
 @font-face {
@@ -60,10 +51,9 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background: ${props => props.theme.colors.background};
-    color: #333;
+    background: ${(props) => props.theme.colors.background};
+    color: ${(props) => props.theme.colors.text};
   }
-
   
 
   button {
@@ -77,5 +67,3 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
 `;
-
-

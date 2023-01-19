@@ -66,19 +66,18 @@ export function FormUserModal({
     const route = selectedUser?._id ? `/users/${selectedUser._id}` : '/users';
     const path = selectedUser?._id ? api.patch : api.post;
 
-    const message = selectedUser?._id ? 'Usuario atualizado com sucesso!' : 'Usuario criado com sucesso!';
-
 
     await path(route, {
       name: name,
       password: password,
       office: userOffice
     })
-    .then()
+    .then(Response => {
+      toast.success(Response.data.msg);
+    })
     .catch(error => {
       toast.error(error.response.data.msg);
     });
-    toast.success(message);
     onClose();
   }
 

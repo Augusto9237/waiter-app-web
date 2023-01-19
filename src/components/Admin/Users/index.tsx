@@ -38,9 +38,14 @@ export function Users() {
     }
 
     async function handleDeleteUser(userId: string) {
-        await api.delete(`/users/${userId}`);
+        await api.delete(`/users/${userId}`)
+            .then(Response => {
+                toast.success(Response.data.msg);
+            })
+            .catch(error => {
+                toast.error(error.response.data.msg);
+            });
         setIsLoadingUsers(true);
-        toast.success('Usuario deletado com sucesso!');
     }
 
 

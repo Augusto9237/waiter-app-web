@@ -11,7 +11,7 @@ export const Container = styled.section<sidebarProps>`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #ffff;
+  background: ${(props) => props.theme.colors.primary};
   box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.2);
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
@@ -53,7 +53,7 @@ export const ButtonOpen = styled.button`
   border: none;
   background: #d73035;
   border-radius: 50%;
-  color: #ffff;
+  color: ${(props) => props.theme.colors.text};
 
   :hover{
     background: #8A1114;
@@ -76,7 +76,7 @@ export const SideBarBody = styled.main<sidebarProps>`
 
   a {
     text-decoration: none;
-    color: #333333;
+    color: ${(props) => props.theme.colors.text};
   }
 
   .sidebarIconItem {
