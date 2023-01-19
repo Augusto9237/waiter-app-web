@@ -4,7 +4,7 @@ export const UsersContainer = styled.div`
   display: flex;
   flex-direction: column;
   background: ${(props) => props.theme.colors.primary};
-  border: 1px solid ${(props) => props.theme.colors.secondary};
+  border: 1px solid ${(props) => props.theme.colors.border};
   border-radius: 8px;
   padding: 24px;
 
@@ -20,7 +20,7 @@ export const UsersButtons = styled.div`
   width: 100%;
   gap: 12px;
   padding-bottom: 8px;
-  border-bottom: 1px solid rgba(204, 204, 204, 0.4);
+  border-bottom: 1px solid ${(props) => props.theme.colors.border};
 `;
 
 export const ButtonUsers = styled.button`

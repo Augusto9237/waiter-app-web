@@ -29,7 +29,7 @@ export const SigInBody = styled.div`
   width: 100%;
   height: 500px;
   max-width: 1060px;
-  border: 1px solid rgba(204, 204, 204, 0.4);
+  border: 1px solid ${(props) => props.theme.colors.border};
   border-radius: 16px;
   overflow: hidden;
 `;
@@ -55,7 +55,7 @@ export const SigInContent = styled.div`
   flex: 1;
   flex-direction: column;
   justify-content: space-between;
-  background: #ffffff;
+  background: ${(props) => props.theme.colors.primary};
   padding: 32px;
   @media (max-width: 700px) {
     padding: 0;
@@ -78,7 +78,7 @@ export const SigInHeader = styled.header`
   h1 {
     font-weight: 600;
     font-size: 24px;
-    color: #333333;
+    color: ${(props) => props.theme.colors.text};
     @media (max-width: 700px) {
       color: #ffffff;
     }
@@ -107,7 +107,7 @@ export const SigInInputContainer = styled.div`
     font-weight: 500;
     font-size: 14px;
     margin-bottom: 6px;
-    color: #333333;
+    color: ${(props) => props.theme.colors.text};
     opacity: 0.9;
     @media (max-width: 700px) {
       margin-left: 24px;
@@ -116,9 +116,11 @@ export const SigInInputContainer = styled.div`
   
   input {
     padding: 12px;
-    border: 1px solid rgba(204, 204, 204, 0.4);
+    border: 1px solid ${(props) => props.theme.colors.border};
     border-radius: 8px;
     margin-bottom: 12px;
+    background: ${(props) => props.theme.colors.secondary};
+    color: ${(props) => props.theme.colors.text};
 
     @media (max-width: 700px) {
       margin: 0 24px;

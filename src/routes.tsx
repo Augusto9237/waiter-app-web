@@ -15,7 +15,9 @@ import { Users } from "./components/Admin/Users";
 
 
 export function Routes() {
-    const [isDarkMode, setIsDarkMode] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(true);
+
+
     const router = createBrowserRouter([
         {
             path: "/",
