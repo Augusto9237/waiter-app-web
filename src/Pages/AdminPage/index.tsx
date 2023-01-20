@@ -11,13 +11,16 @@ import { Outlet } from "react-router-dom";
 
 import { ContainerAdmin } from "./styles";
 
+interface DarkModeProps {
+  handleDarkMode: () => void;
+}
 
-export function AdminPage() {
+export function AdminPage({handleDarkMode}:DarkModeProps) {
  
 
   return (
     <>
-      <Header title="Administrador" subtitle="Acompanhe os pedidos dos clientes"/>
+      <Header title="Administrador" subtitle="Acompanhe os pedidos dos clientes" handleDarkMode={handleDarkMode}/>
       <SideBar />
       <ContainerAdmin>
         <Outlet />

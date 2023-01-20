@@ -17,6 +17,9 @@ import { Users } from "./components/Admin/Users";
 export function Routes() {
     const [isDarkMode, setIsDarkMode] = useState(false);
 
+    function handleDarkMode() {
+        setIsDarkMode(true);
+    }
 
     const router = createBrowserRouter([
         {
@@ -29,7 +32,7 @@ export function Routes() {
         },
         {
             path: "/admin",
-            element: <AdminPage />,
+            element: <AdminPage handleDarkMode={handleDarkMode} />,
             children: [
                 {
                     path: "",

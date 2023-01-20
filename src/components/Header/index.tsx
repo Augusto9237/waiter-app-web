@@ -4,9 +4,10 @@ import { Container, Content } from "./styles";
 interface HeaderProps {
   title: string;
   subtitle: string;
+  handleDarkMode: () => void;
 }
 
-export function Header({ title, subtitle }: HeaderProps) {
+export function Header({ title, subtitle, handleDarkMode }: HeaderProps) {
   return (
     <Container>
       <Content>
@@ -17,6 +18,7 @@ export function Header({ title, subtitle }: HeaderProps) {
 
         <img src={logo} alt="waiterapp" />
       </Content>
+      <button onClick={handleDarkMode}>Dark</button>
     </Container>
   );
 }
