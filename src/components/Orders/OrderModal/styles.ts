@@ -19,7 +19,7 @@ export const Overlay = styled.div`
 `;
 
 export const ModalBody = styled.div`
-  background: #fff;
+  background: ${(props) => props.theme.colors.primary};
   width: 480px;
   border-radius: 8px;
   padding: 32px;
@@ -88,7 +88,7 @@ export const OrderDetails = styled.div`
 
       .quantity {
         font-size: 14px;
-        color: #666;
+        color: ${(props) => props.theme.colors.text};
         display: block;
         min-width: 20px;
         margin-left: 12px;

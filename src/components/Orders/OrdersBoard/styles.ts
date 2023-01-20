@@ -37,6 +37,7 @@ export const OrdersContainer = styled.div`
 
     strong {
       font-weight: 500;
+      color:${(props) => props.theme.colors.text};
     }
 
     span {

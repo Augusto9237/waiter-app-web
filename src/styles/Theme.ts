@@ -5,6 +5,8 @@ export const lightTheme = {
     background: "#E6E6E6",
     border: "#D9DDE4",
     text: "#333333",
+    buttonPrimary: '#333333',
+    buttonSecondary: '#D73035'
   },
 };
 
