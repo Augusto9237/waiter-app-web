@@ -17,5 +17,7 @@ export const darkTheme = {
     background: "#101114",
     border: "#31363F",
     text: "#FFFFFF",
+    buttonPrimary: '#333333',
+    buttonSecondary: '#D73035'
   },
 };
