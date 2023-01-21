@@ -1,13 +1,17 @@
+import { Moon, Sun } from "phosphor-react";
 import logo from "../../assets/images/logo.svg";
-import { Container, Content } from "./styles";
+import { useThemeHook } from "../../context/themeHook";
+import { Container, Content, ToggleTheme } from "./styles";
 
 interface HeaderProps {
   title: string;
   subtitle: string;
-  handleDarkMode: () => void;
+  //handleDarkMode: () => void;
 }
 
-export function Header({ title, subtitle, handleDarkMode }: HeaderProps) {
+export function Header({ title, subtitle, }: HeaderProps) {
+  const { isDarkMode, handleDarkMode } = useThemeHook();
+
   return (
     <Container>
       <Content>
@@ -18,7 +22,10 @@ export function Header({ title, subtitle, handleDarkMode }: HeaderProps) {
 
         <img src={logo} alt="waiterapp" />
       </Content>
-      <button onClick={handleDarkMode}>Dark</button>
+
+      <ToggleTheme onClick={handleDarkMode}>
+        {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+      </ToggleTheme>
     </Container>
   );
 }

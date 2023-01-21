@@ -10,17 +10,12 @@ import { ClientPage } from "./Pages/Client";
 import { OrdersPage } from "./Pages/OrdersPage";
 import { SigInPage } from "./Pages/SigIn";
 import { GlobalStyles} from "./styles/GlobalStyles";
-import { darkTheme, lightTheme,} from "./styles/Theme";
 import { Users } from "./components/Admin/Users";
+import { useThemeHook } from "./context/themeHook";
 
 
 export function Routes() {
-    const [isDarkMode, setIsDarkMode] = useState(false);
-
-    function handleDarkMode() {
-        setIsDarkMode(true);
-    }
-
+    const {theme} = useThemeHook();
     const router = createBrowserRouter([
         {
             path: "/",
@@ -32,7 +27,7 @@ export function Routes() {
         },
         {
             path: "/admin",
-            element: <AdminPage handleDarkMode={handleDarkMode} />,
+            element: <AdminPage />,
             children: [
                 {
                     path: "",
@@ -58,7 +53,7 @@ export function Routes() {
         },
     ]);
     return (
-        <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+        <ThemeProvider theme={theme}>
             <GlobalStyles />
             <RouterProvider router={router} />
         </ThemeProvider>

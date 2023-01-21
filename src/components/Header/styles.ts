@@ -61,3 +61,19 @@ export const Content = styled.div`
     }
   }
 `;
+
+export const ToggleTheme = styled.button`
+  position: absolute;
+  right: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0px;
+  border-radius: 50%;
+  background: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.text};
+
+  @media (max-width: 500px) {
+    right: 0.2rem;
+  }
+`;

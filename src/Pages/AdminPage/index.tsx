@@ -15,12 +15,12 @@ interface DarkModeProps {
   handleDarkMode: () => void;
 }
 
-export function AdminPage({handleDarkMode}:DarkModeProps) {
+export function AdminPage() {
  
 
   return (
     <>
-      <Header title="Administrador" subtitle="Acompanhe os pedidos dos clientes" handleDarkMode={handleDarkMode}/>
+      <Header title="Administrador" subtitle="Acompanhe os pedidos dos clientes" />
       <SideBar />
       <ContainerAdmin>
         <Outlet />
