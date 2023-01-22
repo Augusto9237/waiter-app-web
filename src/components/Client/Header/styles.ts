@@ -34,7 +34,7 @@ export const Content = styled.div`
     border: none;
 
     span {
-      color: #d73035;
+      color: ${(props) => props.theme.colors.buttonSecondary};
       font-weight: 600;
       font-size: 16px;
     }
@@ -46,7 +46,7 @@ export const ContentHeaderClient = styled.div`
   flex-direction: column;
 
   h1 {
-    color: #333333;
+    color: ${(props) => props.theme.colors.text};
     margin-bottom: 4px;
 
     @media (max-width: 415px) {
@@ -55,7 +55,7 @@ export const ContentHeaderClient = styled.div`
   }
 
   span {
-    color: #333333;
+    color: ${(props) => props.theme.colors.text};
     font-weight: 400;
     line-height: 80%;
     opacity: 0.9;
@@ -72,7 +72,7 @@ export const LabelTable = styled.div`
   display: flex;
   width: 100%;
   max-width: 1216px;
-  background: #ffffff;
+  background: ${(props) => props.theme.colors.primary};
   border: 1px solid rgba(204, 204, 204, 0.3);
   border-radius: 8px;
   padding: 15px 16px;

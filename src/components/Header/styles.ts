@@ -7,12 +7,16 @@ export const Container = styled.header`
   height: 120px;
   align-items: center;
 
-  @media (max-width: 1220px) {
-    padding: 0 40px;
+  @media (max-width: 1350px) {
+    padding: 0 60px;
+  }
+
+  @media (max-width: 1150px) {
+    padding: 0 65px;
   }
 
   @media (max-width: 768px) {
-    padding: 0 40px;
+    padding: 0 50px;
   }
 
   @media (max-width: 500px) {
@@ -27,6 +31,10 @@ export const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 500px) {
+      padding-right: 4px;
+    }
 
   .page-details {
     h1 {
@@ -57,23 +65,8 @@ export const Content = styled.div`
 
   img {
     @media (max-width: 500px) {
-      width: 190px;
+      width: 185px;
     }
   }
 `;
 
-export const ToggleTheme = styled.button`
-  position: absolute;
-  right: 10rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 0px;
-  border-radius: 50%;
-  background: ${(props) => props.theme.colors.primary};
-  color: ${(props) => props.theme.colors.text};
-
-  @media (max-width: 500px) {
-    right: 0.2rem;
-  }
-`;

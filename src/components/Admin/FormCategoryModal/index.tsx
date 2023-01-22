@@ -83,7 +83,7 @@ export function FormCategoryModal({
           <strong>{category?._id ? 'Editar categoria' : 'Nova categoria'}</strong>
 
           <button type="button" onClick={onClose}>
-            <X size={20} />
+            <X size={20}/>
           </button>
         </HeaderModalCart>
 

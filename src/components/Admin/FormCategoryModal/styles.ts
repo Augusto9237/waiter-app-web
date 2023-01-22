@@ -35,6 +35,7 @@ export const HeaderModalCart = styled.div`
   justify-content: space-between;
   padding: 8px;
 
+
   strong {
     font-size: 24px;
   }
@@ -43,7 +44,8 @@ export const HeaderModalCart = styled.div`
     align-items: center;
     border: none;
     background: none;
-    margin: 8px;
+    margin-right: 4px;
+    color:  ${(props) => props.theme.colors.text};
   }
 `;
 
@@ -52,9 +54,10 @@ export const ButtonCloseModal = styled.button`
   width: 32px;
   height: 32px;
   color: #fff;
-  background: rgba(0, 0, 0, 0.5);
+  
   border-radius: 16px;
   margin: 24px;
+  
 `;
 
 export const ModalContent = styled.div`

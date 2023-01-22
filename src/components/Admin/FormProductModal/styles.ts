@@ -44,19 +44,11 @@ export const HeaderModalCart = styled.div`
     align-items: center;
     border: none;
     background: none;
-    margin: 8px;
+    margin-right: 4px;
+    color:  ${(props) => props.theme.colors.text};
   }
 `;
 
-export const ButtonCloseModal = styled.button`
-  border: none;
-  width: 32px;
-  height: 32px;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 16px;
-  margin: 24px;
-`;
 
 export const ModalContent = styled.div`
   background: ${(props) => props.theme.colors.background};
