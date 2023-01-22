@@ -1,5 +1,4 @@
 
-import { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import Dashboard from "./components/Admin/Dashboard";
@@ -16,6 +15,7 @@ import { useThemeHook } from "./context/themeHook";
 
 export function Routes() {
     const {theme} = useThemeHook();
+
     const router = createBrowserRouter([
         {
             path: "/",

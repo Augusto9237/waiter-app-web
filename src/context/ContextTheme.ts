@@ -9,7 +9,7 @@ interface ThemeContextData  {
 
 export const INITIAL_STATE = {};
 
-export const ThemeContext = createContext<ThemeContextData>({} as ThemeContextData);
+export const ContextTheme = createContext<ThemeContextData>({} as ThemeContextData);
 
 
 
