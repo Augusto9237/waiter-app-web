@@ -51,9 +51,9 @@ export const ButtonOpen = styled.button`
   top: 12px;
   right: -14px;
   border: none;
-  background: #d73035;
+  background: ${(props) => props.theme.colors.buttonSecondary};
   border-radius: 50%;
-  color: ${(props) => props.theme.colors.text};
+  color: #FFFF;
 
   :hover{
     background: #8A1114;
