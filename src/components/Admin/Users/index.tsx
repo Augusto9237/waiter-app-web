@@ -60,9 +60,9 @@ export function Users() {
             <FormUserModal visible={isVisibleFormUsers} onClose={onClose} selectedUser={selectedUser} />
             <UsersContainer>
                 <UsersButtons>
-                    <strong>Usuarios</strong>
+                    <strong>Usuários</strong>
                     <ButtonUsers onClick={() => setIsVisibleFormUsers(true)}>
-                        <PlusCircle size={20} /><span>Usuario</span>
+                        <PlusCircle size={20} /><span>Usuário</span>
                     </ButtonUsers>
                 </UsersButtons>
                 <ListUsers>

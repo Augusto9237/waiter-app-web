@@ -18,7 +18,7 @@ export const SpinnerContainer = styled.div`
   .loading-spinner {
     width: 50px;
     height: 50px;
-    border: 10px solid #f3f3f3; /* Light grey */
+    border: 10px solid ${(props) => props.theme.colors.secondary};
     border-top: 10px solid #D73035; /* Black */
     border-radius: 50%;
     animation: spinner 1.5s linear infinite;

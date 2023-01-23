@@ -5,7 +5,7 @@ import { api } from "../../../utils/api";
 import { formatCurrency } from "../../../utils/formatCurrency";
 import {
   CardContainer,
-  CardOrders,
+  Cards,
   IconClient,
   ListOrders,
   LoadingContainer,
@@ -69,27 +69,27 @@ export default function Dashboard() {
       {!isLoading && (
         <>
           <CardContainer>
-            <CardOrders>
+            <Cards>
               <div className="headerCard">
                 <span className="icon-avenue"><CurrencyDollar size={24} /></span>
                 <span>Receita</span>
               </div>
               <h1>{formatCurrency(totalRevenue)}</h1>
-            </CardOrders>
-            <CardOrders>
+            </Cards>
+            <Cards>
               <div className="headerCard">
                 <span className="icon-orders"><NotePencil size={24}  /></span>
                 <span>Pedidos</span>
               </div>
               <h1>{orders.length}</h1>
-            </CardOrders>
-            <CardOrders>
+            </Cards>
+            <Cards>
               <div className="headerCard">
                 <span className="icon-customers"><UsersFour size={24}  /></span>
                 <span>Clientes</span>
               </div>
               <h1>0</h1>
-            </CardOrders>
+            </Cards>
           </CardContainer>
 
           <ListOrders>

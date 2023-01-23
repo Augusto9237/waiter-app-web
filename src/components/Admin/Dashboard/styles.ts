@@ -27,7 +27,7 @@ export const CardContainer = styled.div`
   }
 `;
 
-export const CardOrders = styled.div`
+export const Cards = styled.div`
   padding: 20px;
   border-radius: 8px;
   border: 1px solid ${(props) => props.theme.colors.border};

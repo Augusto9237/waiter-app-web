@@ -47,3 +47,13 @@ export const ProductsContainer = styled.div`
     margin-bottom: 80x;
   }
 `;
+
+export const LoadingContainerProducts = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+  min-height: 65vh;
+`;
+

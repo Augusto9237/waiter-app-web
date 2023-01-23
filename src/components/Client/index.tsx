@@ -6,7 +6,8 @@ import { ProductCard } from "./ProductCard";
 import { ProductModal } from "./ProductModal";
 
 
-import { Container, ProductsContainer } from "./styles";
+import { Container, ProductsContainer, LoadingContainerProducts } from "./styles";
+import LoadingSpinner from "../LoadingSpinner";
 
 interface ClientProps {
   products: ProductType[];
@@ -36,6 +37,11 @@ export function Client({ onAddToCart, categories, onSelectCategory, products, is
         onAddToCart={onAddToCart}
       />
       <Categories categories={categories} onSelectCategory={onSelectCategory} />
+      {isLoadingProducts && (
+                        <LoadingContainerProducts>
+                            <LoadingSpinner />
+                        </LoadingContainerProducts>
+                    )}
       {!isLoadingProducts && (
         <ProductsContainer>
           {products.map((product) => {
