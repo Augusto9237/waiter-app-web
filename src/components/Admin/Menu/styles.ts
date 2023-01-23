@@ -39,7 +39,7 @@ export const ButtonAdd = styled.button`
   background: ${(props) => props.theme.colors.buttonPrimary};
   border-radius: 50px;
   padding: 8px 12px;
-  color: #fff;
+  color: ${(props) => props.theme.colors.primary};
   gap: 8px;
 
   @media (max-width: 500px) {

@@ -59,7 +59,8 @@ export const CardOrders = styled.div`
     max-width: 40px;
     align-items: center;
     padding: 8px;
-    background: rgba(136, 224, 145, 0.24);
+    background: ${(props) => props.theme.supportingColors.primary};
+    color: ${(props) => props.theme.supportingColors.textPrimary};
     max-width: 40px;
     border-radius: 8px;
     margin-right: 12px;
@@ -74,7 +75,8 @@ export const CardOrders = styled.div`
     max-width: 40px;
     align-items: center;
     padding: 8px;
-    background: rgba(255, 181, 114, 0.2);
+    background: ${(props) => props.theme.supportingColors.terciary};
+    color: ${(props) => props.theme.supportingColors.textTerciary};
     border-radius: 8px;
     margin-right: 12px;
 
@@ -88,7 +90,8 @@ export const CardOrders = styled.div`
     max-width: 40px;
     align-items: center;
     padding: 8px;
-    background: rgba(0, 209, 255, 0.25);
+    background: ${(props) => props.theme.supportingColors.secondary};
+    color: ${(props) => props.theme.supportingColors.textSecondary};
     border-radius: 8px;
     margin-right: 12px;
 
@@ -194,7 +197,7 @@ export const IconClient = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 209, 255, 0.25);
+  background: ${(props) => props.theme.supportingColors.secondary};
   border-radius: 50%;
   width: 32px;
   height: 32px;
@@ -206,9 +209,9 @@ export const IconClient = styled.div`
 
 export const StatusOrder = styled.div<adminProps>`
   background: ${(props) =>
-    (props.status === "WAITING" && "rgba(255, 181, 114, 0.2)") ||
-    (props.status === "IN_PRODUCTION" && "rgba(0, 209, 250, 0.15)") ||
-    (props.status === "DONE" && "rgba(136, 224, 145, 0.24)")};
+    (props.status === "WAITING" &&  props.theme.supportingColors.terciary) ||
+    (props.status === "IN_PRODUCTION" && props.theme.supportingColors.secondary) ||
+    (props.status === "DONE" && props.theme.supportingColors.primary)};
   border-radius: 30px;
   padding: 4px 12px;
   max-width: 200px;
@@ -219,9 +222,9 @@ export const StatusOrder = styled.div<adminProps>`
     font-size: 14px;
     line-height: 16px;
     color: ${(props) =>
-      (props.status === "WAITING" && "#FC410C") ||
-      (props.status === "IN_PRODUCTION" && " #529FF9") ||
-      (props.status === "DONE" && "#00C643")};
+      (props.status === "WAITING" && props.theme.supportingColors.textTerciary) ||
+      (props.status === "IN_PRODUCTION" && props.theme.supportingColors.textSecondary) ||
+      (props.status === "DONE" && props.theme.supportingColors.textPrimary)};
   }
 
   @media (max-width: 650px) {

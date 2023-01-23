@@ -71,21 +71,21 @@ export default function Dashboard() {
           <CardContainer>
             <CardOrders>
               <div className="headerCard">
-                <span className="icon-avenue"><CurrencyDollar size={24} color=' #11d49a' /></span>
+                <span className="icon-avenue"><CurrencyDollar size={24} /></span>
                 <span>Receita</span>
               </div>
               <h1>{formatCurrency(totalRevenue)}</h1>
             </CardOrders>
             <CardOrders>
               <div className="headerCard">
-                <span className="icon-orders"><NotePencil size={24} color="#fb8b77" /></span>
+                <span className="icon-orders"><NotePencil size={24}  /></span>
                 <span>Pedidos</span>
               </div>
               <h1>{orders.length}</h1>
             </CardOrders>
             <CardOrders>
               <div className="headerCard">
-                <span className="icon-customers"><UsersFour size={24} color='#2880f4' /></span>
+                <span className="icon-customers"><UsersFour size={24}  /></span>
                 <span>Clientes</span>
               </div>
               <h1>0</h1>

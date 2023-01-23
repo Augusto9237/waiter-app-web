@@ -138,7 +138,7 @@ export const Actions = styled.footer`
     background: ${(props) => props.theme.colors.buttonPrimary};
     border-radius: 48px;
     border: 0;
-    color: #fff;
+    color: ${(props) => props.theme.colors.primary};
     padding: 12px 24px;
     display: flex;
     align-items: center;

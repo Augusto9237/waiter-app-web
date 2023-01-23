@@ -75,7 +75,6 @@ export function FormProductModal({
   },);
 
   const newIngredients = [...ingredients, ...ingredientsUpdate];
-  console.log(newIngredients);
 
   useEffect(() => {
     if (selectedProduct?._id) {
@@ -138,8 +137,13 @@ export function FormProductModal({
       category: formData.category,
       ingredients: JSON.stringify(newIngredients),
       image: formData.image
-    }, headers);
-    toast.success(message);
+    }, headers)
+      .then(Response => {
+        toast.success(Response.data.msg);
+      })
+      .catch(error => {
+        toast.error(error.response.data.msg);
+      });
     onClose();
   };
 
