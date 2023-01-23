@@ -127,8 +127,6 @@ export function FormProductModal({
       },
     };
 
-    const message = selectedProduct?._id ? 'Produto atualizado com sucesso!' : 'Produto adicionado com sucesso!';
-
 
     await path(route, {
       name: formData.name,
