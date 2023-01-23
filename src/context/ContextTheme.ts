@@ -7,7 +7,6 @@ interface ThemeContextData  {
   handleDarkMode: () => void;
 }
 
-export const INITIAL_STATE = {};
 
 export const ContextTheme = createContext<ThemeContextData>({} as ThemeContextData);
 

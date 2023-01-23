@@ -27,7 +27,7 @@ export const ButtonUsers = styled.button`
   display: flex;
   align-items: center;
   border: none;
-  background: #333333;
+  background: ${(props) => props.theme.colors.buttonPrimary};
   border-radius: 50px;
   padding: 8px 12px;
   color: #fff;

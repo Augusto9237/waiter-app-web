@@ -8,6 +8,8 @@ import {
   ModalTableBody,
   OverlayModal,
 } from "./styles";
+import { api } from "../../../utils/api";
+import { UserType } from "../../../types/Users";
 
 interface TableModalProps {
   visibleModalTable: boolean;
@@ -38,6 +40,14 @@ export function TableModal({ visibleModalTable, onCloseModalTable, onSave }: Tab
 
 
   const [table, setTable] = useState("");
+  const [users, setUsers] = useState<UserType[]>([]);
+
+  useEffect(() => {
+    api.get("/users")
+      .then((Response) => {
+        setUsers(Response.data);
+      });
+  }, []);
 
   function handleSave() {
     onSave(table);
@@ -49,14 +59,25 @@ export function TableModal({ visibleModalTable, onCloseModalTable, onSave }: Tab
     <OverlayModal>
       <ModalTableBody>
         <header>
-          <strong>Informe seu nome</strong>
+          <strong>Iniciar Pedido</strong>
           <button onClick={onCloseModalTable}>X</button>
         </header>
-        
+
         <FormModal>
+          <div className="input-container">
+            <select name="category" >
+              <option value=''>Selecione um atendente</option>
+              {users.map((user) => {
+                return (
+                  <option key={user._id} value={user._id}>{user.name}</option>
+                );
+              })}
+            </select>
+          </div>
+
           <input
             required
-            placeholder="Seu nome"
+            placeholder="Informe o seu nome"
             type='text'
             value={table}
             onChange={(e) => setTable(e.target.value)}

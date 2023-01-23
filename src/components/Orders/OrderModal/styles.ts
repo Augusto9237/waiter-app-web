@@ -135,7 +135,7 @@ export const Actions = styled.footer`
   }
 
   .primary {
-    background: #333333;
+    background: ${(props) => props.theme.colors.buttonPrimary};
     border-radius: 48px;
     border: 0;
     color: #fff;

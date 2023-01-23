@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
-import { Client } from "../components/Client";
-import { Cart } from "../components/Client/Cart";
-import { HeaderClient } from "../components/Client/Header";
-import { TableModal } from "../components/Client/TableModal";
+import { Client } from "../../components/Client";
+import { Cart } from "../../components/Client/Cart";
+import { HeaderClient } from "../../components/Client/Header";
+import { TableModal } from "../../components/Client/TableModal";
 
-import { GlobalStyles } from "../styles/GlobalStyles";
-import { CartItem } from "../types/CartItem";
-import { ProductType } from "../types/Products";
+import { GlobalStyles } from "../../styles/GlobalStyles";
+import { CartItem } from "../../types/CartItem";
+import { ProductType } from "../../types/Products";
 
 import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
-import { Header } from "../components/Header";
-import { CategoryType } from "../types/Category";
-import { api } from "../utils/api";
-import LoadingSpinner from "../components/LoadingSpinner";
+import { Header } from "../../components/Header";
+import { CategoryType } from "../../types/Category";
+import { api } from "../../utils/api";
+import LoadingSpinner from "../../components/LoadingSpinner";
 import { useParams } from "react-router-dom";
 
 export function ClientPage() {
@@ -29,6 +29,7 @@ export function ClientPage() {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [categories, setCategories] = useState<CategoryType[]>([]);
   const [products, setProducts] = useState<ProductType[]>([]);
+  
 
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingProducts, setIsLoadingProducts] = useState(false);

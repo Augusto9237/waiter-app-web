@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const OverlayModal = styled.div`
   z-index: 50;
   flex: 1;
@@ -40,28 +39,41 @@ export const ModalTableBody = styled.div`
       font-size: 16px;
     }
 
-    button{
+    button {
       border: none;
       background: none;
     }
   }
 `;
 
-
-
 export const FormModal = styled.form`
- display: flex;
- flex: 1;
- margin: 24px 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 24px 0;
+  gap: 18px;
 
- input{
-  width: 100%;
-  background: ${(props) => props.theme.colors.secondary};
-  border: 1px solid rgba(204, 204, 204, 0.5);
-  border-radius: 8px;
-  padding: 16px;
-  color: ${(props) => props.theme.colors.text};
- }
+  input {
+    width: 100%;
+    background: ${(props) => props.theme.colors.secondary};
+    border: 1px solid rgba(204, 204, 204, 0.5);
+    border-radius: 8px;
+    padding: 16px;
+    color: ${(props) => props.theme.colors.text};
+  }
+
+  input::placeholder {
+    color: ${(props) => props.theme.colors.text};
+  }
+
+  select {
+    width: 100%;
+    background: ${(props) => props.theme.colors.secondary};
+    border: 1px solid rgba(204, 204, 204, 0.5);
+    border-radius: 8px;
+    padding: 16px;
+    color: ${(props) => props.theme.colors.text};
+  }
 `;
 
 export const Footer = styled.div`
