@@ -36,10 +36,10 @@ export const ButtonAdd = styled.button`
   display: flex;
   align-items: center;
   border: none;
-  background: ${(props) => props.theme.colors.buttonPrimary};
+  background: ${(props) => props.theme.colors.buttonSecondary};
   border-radius: 50px;
   padding: 8px 12px;
-  color: ${(props) => props.theme.colors.primary};
+  color: #ffff;
   gap: 8px;
 
   @media (max-width: 500px) {
