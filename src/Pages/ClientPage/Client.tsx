@@ -142,6 +142,7 @@ export function ClientPage() {
             categories={categories}
             onSelectCategory={handleSelectCategory}
             products={products}
+            isLoadingProducts={isLoadingProducts}
           />
 
 

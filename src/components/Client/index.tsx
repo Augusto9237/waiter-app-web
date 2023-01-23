@@ -13,9 +13,10 @@ interface ClientProps {
   onAddToCart: (product: ProductType) => void;
   categories: CategoryType[];
   onSelectCategory: (categoryId: string) => Promise<void>;
+  isLoadingProducts: boolean
 }
 
-export function Client({ onAddToCart, categories, onSelectCategory, products }: ClientProps) {
+export function Client({ onAddToCart, categories, onSelectCategory, products, isLoadingProducts }: ClientProps) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<null | ProductType>(
     null
@@ -34,19 +35,21 @@ export function Client({ onAddToCart, categories, onSelectCategory, products }: 
         product={selectedProduct}
         onAddToCart={onAddToCart}
       />
-      <Categories  categories={categories} onSelectCategory={onSelectCategory}/>
-      <ProductsContainer>
-        {products.map((product) => {
-          return (
-            <ProductCard
-              onOpenModal={() => handleOpenModal(product)}
-              product={product}
-              key={product._id}
-              onAddToCart={onAddToCart}
-            />
-          );
-        })}
-      </ProductsContainer>
+      <Categories categories={categories} onSelectCategory={onSelectCategory} />
+      {!isLoadingProducts && (
+        <ProductsContainer>
+          {products.map((product) => {
+            return (
+              <ProductCard
+                onOpenModal={() => handleOpenModal(product)}
+                product={product}
+                key={product._id}
+                onAddToCart={onAddToCart}
+              />
+            );
+          })}
+        </ProductsContainer>
+      )}
     </Container>
   );
 }
