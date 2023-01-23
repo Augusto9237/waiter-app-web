@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
+
+import { api } from "../../../utils/api";
+import { toast } from "react-toastify";
+import { X } from "phosphor-react";
+
 import { Button } from "../../Button";
+import { CategoryType } from "../../../types/Category";
 
 import {
   ModalBodyCart,
@@ -9,10 +15,6 @@ import {
   HeaderModalCart,
   OverlayFormModal,
 } from "./styles";
-import { api } from "../../../utils/api";
-import { toast } from "react-toastify";
-import { X } from "phosphor-react";
-import { CategoryType } from "../../../types/Category";
 
 interface CartModalProps {
   category?: CategoryType | null;
@@ -26,10 +28,12 @@ export function FormCategoryModal({
   onClose,
   category,
 }: CartModalProps) {
-
   if (!visible) {
     return null;
   }
+
+  const [icon, setIcon] = useState('');
+  const [name, setName] = useState('');
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
@@ -45,15 +49,11 @@ export function FormCategoryModal({
     };
   }, [onClose]);
 
-  const [icon, setIcon] = useState('');
-  const [name, setName] = useState('');
-
   useEffect(() => {
     if (category) {
       setIcon(category.icon);
       setName(category.name);
     }
-
   }, [category]);
 
 
@@ -62,17 +62,15 @@ export function FormCategoryModal({
     const route = category?._id ? `/categories/${category._id}` : '/categories';
     const path = category?._id ? api.patch : api.post;
 
-
-    await path(route, {
-      icon: icon,
-      name: name,
-    })
-      .then(Response => {
-        toast.success(Response.data.msg);
-      })
-      .catch(error => {
-        toast.error(error.response.data.msg);
+    try {
+      const response = await path(route, {
+        icon,
+        name,
       });
+      toast.success(response.data.msg);
+    } catch (error : any) {
+      toast.error(error.response.data.msg);
+    }
     onClose();
   }
 
