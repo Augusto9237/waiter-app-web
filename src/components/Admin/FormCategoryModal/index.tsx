@@ -68,8 +68,13 @@ export function FormCategoryModal({
     await path(route, {
       icon: icon,
       name: name,
-    });
-    toast.success(message);
+    })
+      .then(Response => {
+        toast.success(Response.data.msg);
+      })
+      .catch(error => {
+        toast.error(error.response.data.msg);
+      });
     onClose();
   }
 
@@ -83,7 +88,7 @@ export function FormCategoryModal({
           <strong>{category?._id ? 'Editar categoria' : 'Nova categoria'}</strong>
 
           <button type="button" onClick={onClose}>
-            <X size={20}/>
+            <X size={20} />
           </button>
         </HeaderModalCart>
 
