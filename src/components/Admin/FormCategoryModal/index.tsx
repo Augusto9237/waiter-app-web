@@ -62,8 +62,6 @@ export function FormCategoryModal({
     const route = category?._id ? `/categories/${category._id}` : '/categories';
     const path = category?._id ? api.patch : api.post;
 
-    const message = category?._id ? 'Categoria atualizada com sucesso!' : 'Categoria criada com sucesso!';
-
 
     await path(route, {
       icon: icon,
