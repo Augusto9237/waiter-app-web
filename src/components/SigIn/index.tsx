@@ -1,10 +1,28 @@
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
 import { Button } from "../Button";
-import { Container, SigInBody, ImageContainer, SigInContent, SigInHeader, SigInInputContainer, FooterSigIn} from './styles';
+import { Container, SigInBody, ImageContainer, SigInContent, SigInHeader, SigInInputContainer, FooterSigIn } from './styles';
+import { useContext, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function SigIn() {
+  const auth = useContext(AuthContext);
+
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+
   const navigate = useNavigate();
+
+  async function handleLogin() {
+    if (name && password) {
+      const isLogged = await auth.signin(name, password);
+      if (isLogged) {
+        navigate('/admin');
+      }
+    }
+
+  }
+
 
   return (
     <Container>
@@ -19,13 +37,24 @@ export default function SigIn() {
           </SigInHeader>
           <SigInInputContainer>
             <span>Nome</span>
-            <input placeholder="Digite seu nome" />
+            <input
+              placeholder="Digite seu nome"
+              value={name}
+              type='text'
+              onChange={(e) => setName(e.target.value)}
+            />
 
             <span>Senha</span>
-            <input placeholder="Digite sua senha" type='password' />
+            <input
+              placeholder="Digite sua senha"
+              value={password}
+              type='password'
+              onChange={(e) => setPassword(e.target.value)}
+            />
+
           </SigInInputContainer>
           <FooterSigIn>
-            <Button onClick={() => navigate('/admin')}>Entrar</Button>
+            <Button onClick={handleLogin}>Entrar</Button>
           </FooterSigIn>
         </SigInContent>
       </SigInBody>

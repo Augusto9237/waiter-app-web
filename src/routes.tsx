@@ -8,13 +8,14 @@ import { AdminPage } from "./Pages/AdminPage";
 import { ClientPage } from "./Pages/ClientPage/Client";
 import { OrdersPage } from "./Pages/OrdersPage";
 import { SigInPage } from "./Pages/SigInPages/SigIn";
-import { GlobalStyles} from "./styles/GlobalStyles";
+import { GlobalStyles } from "./styles/GlobalStyles";
 import { Users } from "./components/Admin/Users";
 import { useThemeHook } from "./context/themeHook";
+import { AuthProvider } from "./context/AuthProvider";
 
 
 export function Routes() {
-    const {theme} = useThemeHook();
+    const { theme } = useThemeHook();
 
     const router = createBrowserRouter([
         {
@@ -43,7 +44,7 @@ export function Routes() {
                 },
                 {
                     path: "users",
-                    element: <Users/>,
+                    element: <Users />,
                 }
             ]
         },
@@ -55,7 +56,9 @@ export function Routes() {
     return (
         <ThemeProvider theme={theme}>
             <GlobalStyles />
-            <RouterProvider router={router} />
+            <AuthProvider>
+                <RouterProvider router={router} />
+            </AuthProvider>
         </ThemeProvider>
     );
 }

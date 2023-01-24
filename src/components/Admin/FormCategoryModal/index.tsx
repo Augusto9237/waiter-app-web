@@ -36,20 +36,6 @@ export function FormCategoryModal({
   const [name, setName] = useState('');
 
   useEffect(() => {
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        onClose();
-      }
-    }
-
-    document.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [onClose]);
-
-  useEffect(() => {
     if (category) {
       setIcon(category.icon);
       setName(category.name);
@@ -76,7 +62,7 @@ export function FormCategoryModal({
 
 
   return (
-    <OverlayFormModal>
+    <OverlayFormModal onClick={onClose}>
       <ModalBodyCart>
 
         <HeaderModalCart>

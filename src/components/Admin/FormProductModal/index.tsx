@@ -49,19 +49,6 @@ export function FormProductModal({
     return null;
   }
 
-  useEffect(() => {
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        onClose();
-      }
-    }
-
-    document.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [onClose]);
 
   const [ingredients, setIngedients] = useState<Ingredients[]>([]);
   const [ingredientsUpdate, setIngedientsUpdate] = useState<Ingredients[]>([]);
@@ -148,7 +135,7 @@ export function FormProductModal({
 
 
   return (
-    <OverlayFormProductModal>
+    <OverlayFormProductModal onClick={onClose}>
       <ModalBodyCart>
 
         <HeaderModalCart>
