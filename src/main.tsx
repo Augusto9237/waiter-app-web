@@ -1,13 +1,15 @@
-import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 
-import { Routes } from "./routes";
 import { ThemeContexProvider } from "./context/themeContextProvider";
+import { BrowserRouter } from "react-router-dom";
+import { RouteApp } from "./routes";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <>
     <ThemeContexProvider>
-      <Routes />
+      <BrowserRouter>
+        <RouteApp />
+      </BrowserRouter>
     </ThemeContexProvider>
   </>
 

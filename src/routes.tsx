@@ -1,5 +1,16 @@
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+    createBrowserRouter,
+    RouterProvider,
+    Routes,
+    Route,
+    Link,
+    useNavigate,
+    useLocation,
+    Navigate,
+    Outlet
+} from "react-router-dom";
+
 import { ThemeProvider } from "styled-components";
 import Dashboard from "./components/Admin/Dashboard";
 import { Menu } from "./components/Admin/Menu";
@@ -12,9 +23,10 @@ import { GlobalStyles } from "./styles/GlobalStyles";
 import { Users } from "./components/Admin/Users";
 import { useThemeHook } from "./context/themeHook";
 import { AuthProvider } from "./context/AuthProvider";
+import { RequireAuth } from "./hooks/RequireAuth";
 
 
-export function Routes() {
+export function RouteApp() {
     const { theme } = useThemeHook();
 
     const router = createBrowserRouter([
@@ -57,7 +69,17 @@ export function Routes() {
         <ThemeProvider theme={theme}>
             <GlobalStyles />
             <AuthProvider>
-                <RouterProvider router={router} />
+                <Routes>
+                    <Route path="/client/:tableNumber" element={<ClientPage />} />
+                    <Route path="/login" element={<SigInPage />} />
+                    <Route path="/" element={<RequireAuth><AdminPage /></RequireAuth>}>
+                        <Route path="/" element={<Dashboard />} />
+                        <Route path="/orders" element={<Orders />} />
+                        <Route path="/menu" element={<Menu />} />
+                        <Route path="/users" element={<Users />} />
+                    </Route>
+                    <Route path="/orderspanel" element={<RequireAuth><OrdersPage /></RequireAuth>} />
+                </Routes>
             </AuthProvider>
         </ThemeProvider>
     );
