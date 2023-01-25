@@ -14,26 +14,26 @@ export const AuthProvider = ({ children }: AuthProps) => {
     const [loading, setLoading] = useState(false);
     const auth = useAuth();
 
-
-
     useEffect(() => {
+
         const recoveredUser = localStorage.getItem("u");
         const token = localStorage.getItem("tkn");
 
         if (recoveredUser && token) {
             setUser(JSON.parse(recoveredUser));
+
             api.defaults.headers.Authorization = `Bearer ${token}`;
-          }
+           }
         
         setLoading(false);
     }, []);
 
-
+    
 
     async function signin(name: string, password: string) {
         const data = await auth.signin(name, password);
         const decode = jwtDecode(data.token);
-
+        
         if (data.token && decode) {
             setUser(decode);
 
@@ -41,6 +41,7 @@ export const AuthProvider = ({ children }: AuthProps) => {
 
             localStorage.setItem("u", JSON.stringify(decode));
             localStorage.setItem("tkn", data.token);
+            setLoading(true);
 
             return true;
         }

@@ -1,5 +1,4 @@
 import { createContext } from "react";
-import { UserType } from "../types/Users";
 
 export type UserDecode = {
     iat: number;
