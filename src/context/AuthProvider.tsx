@@ -12,8 +12,6 @@ export const AuthProvider = ({ children }: AuthProps) => {
     const [token, setToken] = useState('');
     const auth = useAuth();
 
-    console.log(token);
-
     async function signin(name: string, password: string) {
         const data = await auth.signin(name, password);
         if (data.token) {
