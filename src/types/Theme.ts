@@ -1,4 +1,6 @@
-export interface ThemeTypes {
+import { DefaultTheme } from "styled-components";
+
+export interface ThemeTypes extends DefaultTheme {
   colors: {
     primary: string;
     secondary: string;
