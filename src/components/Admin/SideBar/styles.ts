@@ -16,12 +16,13 @@ export const Container = styled.section<sidebarProps>`
   box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.2);
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+  padding-bottom: 20px;
 
   footer{
+    display: flex;
     flex: 1;
-    background-color: blue;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
+    align-items: center;
+    justify-content:center; 
   }
 
   strong {
@@ -77,9 +78,9 @@ export const ButtonOpen = styled.button`
 `;
 
 export const SideBarBody = styled.main<sidebarProps>`
-  position: relative;
   overflow: hidden;
   display: flex;
+  flex: 1;
   flex-direction: column;
   overflow: hidden;
   gap: 6px;
@@ -137,10 +138,12 @@ export const SideBarBody = styled.main<sidebarProps>`
 
 export const ButtonLogout = styled.button`
     display: flex;
+    margin-top:10rem;
     justify-content: center;
     border: none;
     padding: 6px;
+    gap: 6px;
     align-items: center;
-    background: ${(props) => props.theme.colors.buttonSecondary};
-    color: #FFFF;
+    background-color: transparent;
+    color: ${(props) => props.theme.colors.buttonSecondary};
 `;
