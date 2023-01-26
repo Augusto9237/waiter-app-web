@@ -23,6 +23,10 @@ export const Container = styled.section<sidebarProps>`
     flex: 1;
     align-items: center;
     justify-content:center; 
+
+    @media (max-height: 400px) {
+        align-items: flex-start;
+    }
   }
 
   strong {
@@ -146,4 +150,8 @@ export const ButtonLogout = styled.button`
     align-items: center;
     background-color: transparent;
     color: ${(props) => props.theme.colors.buttonSecondary};
+
+    @media (max-height: 400px) {
+        margin-top: 0;
+    }
 `;
