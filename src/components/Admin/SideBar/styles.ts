@@ -11,6 +11,7 @@ export const Container = styled.section<sidebarProps>`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   background: ${(props) => props.theme.colors.primary};
   box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.2);
   -webkit-transition: all 0.5s;
@@ -38,20 +39,6 @@ export const Container = styled.section<sidebarProps>`
 
   @media (max-width: 600px) {
     width: ${(props) => (props.sidebarVisible ? "45px" : "160px")};
-  }
-
-  .logout{
-    position: absolute;
-    top: 82vh;
-    left: 4rem;
-    display: flex;
-    border: none;
-    max-width: 32px;
-    padding: 6px;
-    margin: 0 auto;
-    align-items: center;
-    background: ${(props) => props.theme.colors.buttonSecondary};
-    color: #FFFF;
   }
 `;
 
@@ -83,6 +70,8 @@ export const ButtonOpen = styled.button`
 `;
 
 export const SideBarBody = styled.main<sidebarProps>`
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -137,4 +126,14 @@ export const SideBarBody = styled.main<sidebarProps>`
       opacity: 1;
     }
   }
+`;
+
+export const ButtonLogout = styled.button`
+    display: flex;
+    justify-content: center;
+    border: none;
+    padding: 6px;
+    align-items: center;
+    background: ${(props) => props.theme.colors.buttonSecondary};
+    color: #FFFF;
 `;

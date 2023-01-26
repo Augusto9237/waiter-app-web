@@ -1,11 +1,11 @@
 import { CaretLeft, CaretRight, ChartPieSlice, CookingPot, NotePencil, SignOut, UsersThree } from "phosphor-react";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { ButtonOpen, Container, SideBarBody } from "./styles";
+import { ButtonOpen, Container, SideBarBody, ButtonLogout } from "./styles";
 import { AuthContext } from "../../../context/AuthContext";
 
 export default function SideBar() {
-  const {signout} = useContext(AuthContext);
+  const { signout } = useContext(AuthContext);
   const [sidebarVisible, setSidebarVisible] = useState(true);
   return (
     <Container sidebarVisible={sidebarVisible}>
@@ -44,7 +44,11 @@ export default function SideBar() {
           </div>
         </Link>
       </SideBarBody>
-      <button onClick={signout} className="logout"><SignOut size={20} /></button>
+      <ButtonLogout onClick={signout}>
+          <SignOut size={20} />
+          <strong>Sair</strong>
+        </ButtonLogout>
+
     </Container>
   );
 }
