@@ -7,21 +7,17 @@ export const Container = styled.header`
   height: 120px;
   align-items: center;
 
-  @media (max-width: 1350px) {
-    padding: 0 60px;
+  @media (max-width: 1340px) {
+    padding: 0 3rem;
   }
 
-  @media (max-width: 1150px) {
-    padding: 0 65px;
-  }
-
-  @media (max-width: 768px) {
-    padding: 0 45px;
+  @media (max-width: 1100px) {
+    padding: 0 2.5rem;
   }
 
   @media (max-width: 500px) {
-    padding: 0 20px;
     height: 120px;
+    padding: 0 1.5rem;
   }
 `;
 

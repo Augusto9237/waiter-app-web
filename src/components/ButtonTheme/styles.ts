@@ -16,15 +16,21 @@ export const Container = styled.button`
     right: 5rem;
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 1370px) {
     right: 1.2rem;
   }
 
-  @media (max-width: 600px) {
+  
+  @media (max-width: 1280px) {
     right: 1rem;
   }
 
+  @media (max-width: 800px) {
+    right: 0.8rem;
+  }
+
+
   @media (max-width: 600px) {
-    right: 0.25rem;
+    right: 0.6rem;
   }
 `;
