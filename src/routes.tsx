@@ -1,15 +1,5 @@
 
-import {
-    createBrowserRouter,
-    RouterProvider,
-    Routes,
-    Route,
-    Link,
-    useNavigate,
-    useLocation,
-    Navigate,
-    Outlet
-} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import { ThemeProvider } from "styled-components";
 import Dashboard from "./components/Admin/Dashboard";
@@ -29,42 +19,7 @@ import { RequireAuth } from "./hooks/RequireAuth";
 export function RouteApp() {
     const { theme } = useThemeHook();
 
-    const router = createBrowserRouter([
-        {
-            path: "/",
-            element: <SigInPage />,
-        },
-        {
-            path: "/orders",
-            element: <OrdersPage />,
-        },
-        {
-            path: "/admin",
-            element: <AdminPage />,
-            children: [
-                {
-                    path: "",
-                    element: <Dashboard />,
-                },
-                {
-                    path: "orders",
-                    element: <Orders />,
-                },
-                {
-                    path: "menu",
-                    element: <Menu />,
-                },
-                {
-                    path: "users",
-                    element: <Users />,
-                }
-            ]
-        },
-        {
-            path: "/client/:tableNumber",
-            element: <ClientPage />,
-        },
-    ]);
+
     return (
         <ThemeProvider theme={theme}>
             <GlobalStyles />

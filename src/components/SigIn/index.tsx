@@ -17,7 +17,7 @@ export default function SigIn() {
     if (name && password) {
       const isLogged = await auth.signin(name, password);
       if (isLogged) {
-        navigate('/admin');
+        navigate('/');
       }
     }
 

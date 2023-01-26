@@ -1,9 +1,11 @@
-import { CaretLeft, CaretRight, ChartPieSlice, CookingPot, NotePencil, UsersThree } from "phosphor-react";
-import { useState } from "react";
+import { CaretLeft, CaretRight, ChartPieSlice, CookingPot, NotePencil, SignOut, UsersThree } from "phosphor-react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { ButtonOpen, Container, SideBarBody } from "./styles";
+import { AuthContext } from "../../../context/AuthContext";
 
 export default function SideBar() {
+  const {signout} = useContext(AuthContext);
   const [sidebarVisible, setSidebarVisible] = useState(true);
   return (
     <Container sidebarVisible={sidebarVisible}>
@@ -14,34 +16,35 @@ export default function SideBar() {
       )}
 
       <SideBarBody sidebarVisible={sidebarVisible}>
-        <Link to='/admin'>
+        <Link to='/'>
           <div className="sidebarIconItem">
             <span><ChartPieSlice size={24} /></span>
             <strong>Dashboard</strong>
           </div>
         </Link>
 
-        <Link to='/admin/orders'>
+        <Link to='/orders'>
           <div className="sidebarIconItem">
             <span><NotePencil size={24} /></span>
             <strong>Pedidos</strong>
           </div>
         </Link>
 
-        <Link to='/admin/menu'>
+        <Link to='/menu'>
           <div className="sidebarIconItem">
             <span><CookingPot size={24} /></span>
             <strong>Cardápio</strong>
           </div>
         </Link>
 
-        <Link to='/admin/users'>
+        <Link to='/users'>
           <div className="sidebarIconItem">
             <span><UsersThree size={24} /></span>
             <strong>Usuários</strong>
           </div>
         </Link>
       </SideBarBody>
+      <button onClick={signout} className="logout"><SignOut size={20} /></button>
     </Container>
   );
 }

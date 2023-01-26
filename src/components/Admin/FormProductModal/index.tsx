@@ -135,7 +135,7 @@ export function FormProductModal({
 
 
   return (
-    <OverlayFormProductModal onClick={onClose}>
+    <OverlayFormProductModal>
       <ModalBodyCart>
 
         <HeaderModalCart>

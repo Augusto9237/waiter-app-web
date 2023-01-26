@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import sockectIo from "socket.io-client";
 import { Order } from "../../types/Order";
-import { api } from "../../utils/api";
 import { OrdersBoard } from "./OrdersBoard";
 import { Container, LoadingContainer } from "./styles";
 import LoadingSpinner from "../LoadingSpinner";
+import { AuthContext } from "../../context/AuthContext";
 
 export function Orders() {
-  const [orders, setOrders] = useState<Order[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const {orders, setOrders, isLoading, setIsLoading} = useContext(AuthContext);
 
   useEffect(() => {
     setIsLoading(true);
@@ -33,14 +32,6 @@ export function Orders() {
     setIsLoading(false);
   }, []);
 
-
-  useEffect(() => {
-    api.get('/orders')
-      .then(({ data }) => {
-        setOrders(data);
-      });
-      setIsLoading(false);
-  }, []);
 
   const waiting = orders.filter((order) => order.status === 'WAITING');
   const inProduction = orders.filter((order) => order.status === 'IN_PRODUCTION');

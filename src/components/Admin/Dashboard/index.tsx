@@ -1,7 +1,8 @@
 import { CurrencyDollar, NotePencil, UsersFour } from "phosphor-react";
-import { useEffect, useState } from "react";
-import { Order } from "../../../types/Order";
-import { api } from "../../../utils/api";
+import { useContext, useEffect} from "react";
+
+import sockectIo from "socket.io-client";
+
 import { formatCurrency } from "../../../utils/formatCurrency";
 import {
   CardContainer,
@@ -13,16 +14,14 @@ import {
   TableOrders,
 } from "./styles";
 
-import sockectIo from "socket.io-client";
+
 import LoadingSpinner from "../../LoadingSpinner";
-import { toast } from "react-toastify";
 import { formatDate } from "../../../utils/formatDate";
+import { AuthContext } from "../../../context/AuthContext";
+import { toast } from "react-toastify";
 
 export default function Dashboard() {
-  
-
-  const [orders, setOrders] = useState<Order[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const {orders, setOrders,isLoading, setIsLoading} = useContext(AuthContext);
 
   useEffect(() => {
     setIsLoading(true);
@@ -43,16 +42,6 @@ export default function Dashboard() {
         theme: "colored",
       });
     });
-
-    setIsLoading(false);
-  }, []);
-
-
-  useEffect(() => {
-    api.get('/orders')
-      .then(({ data }) => {
-        setOrders(data);
-      });
     setIsLoading(false);
   }, []);
 

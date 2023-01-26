@@ -62,7 +62,7 @@ export function FormCategoryModal({
 
 
   return (
-    <OverlayFormModal onClick={onClose}>
+    <OverlayFormModal >
       <ModalBodyCart>
 
         <HeaderModalCart>

@@ -39,6 +39,20 @@ export const Container = styled.section<sidebarProps>`
   @media (max-width: 600px) {
     width: ${(props) => (props.sidebarVisible ? "45px" : "160px")};
   }
+
+  .logout{
+    position: absolute;
+    top: 82vh;
+    left: 4rem;
+    display: flex;
+    border: none;
+    max-width: 32px;
+    padding: 6px;
+    margin: 0 auto;
+    align-items: center;
+    background: ${(props) => props.theme.colors.buttonSecondary};
+    color: #FFFF;
+  }
 `;
 
 export const ButtonOpen = styled.button`
