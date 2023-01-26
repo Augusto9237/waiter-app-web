@@ -44,10 +44,12 @@ export default function SideBar() {
           </div>
         </Link>
       </SideBarBody>
-      <ButtonLogout onClick={signout}>
+      <footer>
+        <ButtonLogout onClick={signout}>
           <SignOut size={20} />
           <strong>Sair</strong>
         </ButtonLogout>
+      </footer>
 
     </Container>
   );

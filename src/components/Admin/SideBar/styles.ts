@@ -17,6 +17,13 @@ export const Container = styled.section<sidebarProps>`
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 
+  footer{
+    flex: 1;
+    background-color: blue;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+
   strong {
     font-weight: 600;
     line-height: 150%;
