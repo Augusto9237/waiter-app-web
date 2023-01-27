@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Client } from "../../components/Client";
 import { Cart } from "../../components/Client/Cart";
 import { HeaderClient } from "../../components/Client/Header";
@@ -12,12 +12,13 @@ import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 import { Header } from "../../components/Header";
-import { CategoryType } from "../../types/Category";
 import { api } from "../../utils/api";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import { useParams } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 export function ClientPage() {
+  const { categories, products, setProducts, isLoadingCategories, isLoadingProducts, setIsLoadingProducts } = useContext(AuthContext);
 
   const { tableNumber } = useParams();
   const tablestring = tableNumber?.toString();
@@ -27,23 +28,7 @@ export function ClientPage() {
   const [selectedTable, setSelectedTable] = useState('');
   const [selectedClient, setSelectedClient] = useState("");
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [categories, setCategories] = useState<CategoryType[]>([]);
-  const [products, setProducts] = useState<ProductType[]>([]);
-  
 
-  const [isLoading, setIsLoading] = useState(true);
-  const [isLoadingProducts, setIsLoadingProducts] = useState(false);
-
-  useEffect(() => {
-    Promise.all([
-      api.get('/categories'),
-      api.get('/products'),
-    ]).then(([categoriesResponse, productsResponse]) => {
-      setCategories(categoriesResponse.data);
-      setProducts(productsResponse.data);
-      setIsLoading(false);
-    });
-  }, []);
 
   async function handleSelectCategory(categoryId: string) {
     const route = !categoryId ? '/products' : `/categories/${categoryId}/products`;
@@ -121,7 +106,7 @@ export function ClientPage() {
     <>
       <GlobalStyles />
       {!selectedTable && (
-        <Header title="Bem-vindo(a)" subtitle=""/>
+        <Header title="Bem-vindo(a)" subtitle="" />
       )}
       {selectedTable && (
         <HeaderClient
@@ -131,11 +116,11 @@ export function ClientPage() {
         />
       )}
 
-      {isLoading && (
+      {isLoadingCategories && isLoadingProducts && (
         <LoadingSpinner />
       )}
 
-      {!isLoading && (
+      {!isLoadingCategories && !isLoadingProducts && (
         <>
           <Client
             onAddToCart={handleAddToCart}

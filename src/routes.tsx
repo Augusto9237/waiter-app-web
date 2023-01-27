@@ -19,7 +19,6 @@ import { RequireAuth } from "./hooks/RequireAuth";
 export function RouteApp() {
     const { theme } = useThemeHook();
 
-
     return (
         <ThemeProvider theme={theme}>
             <GlobalStyles />

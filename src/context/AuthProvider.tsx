@@ -5,11 +5,9 @@ import jwtDecode from "jwt-decode";
 import { api } from "../utils/api";
 import { Order } from "../types/Order";
 
-
-
 import { useNavigate } from "react-router-dom";
-
-
+import { ProductType } from "../types/Products";
+import { CategoryType } from "../types/Category";
 interface AuthProps {
     children: ReactNode;
 }
@@ -21,6 +19,11 @@ export const AuthProvider = ({ children }: AuthProps) => {
     const [loading, setLoading] = useState(false);
     const [orders, setOrders] = useState<Order[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+
+    const [categories, setCategories] = useState<CategoryType[]>([]);
+    const [products, setProducts] = useState<ProductType[]>([]);
+    const [isLoadingProducts, setIsLoadingProducts] = useState(true);
+    const [isLoadingCategories, setIsLoadingCategories] = useState(true);
 
     const auth = useAuth();
 
@@ -38,17 +41,31 @@ export const AuthProvider = ({ children }: AuthProps) => {
     }, []);
 
 
+    useEffect(() => {
+        Promise.all([
+            api.get('/categories'),
+            api.get('/products'),
+        ]).then(([categoriesResponse, productsResponse]) => {
+            setCategories(categoriesResponse.data);
+            setProducts(productsResponse.data);
+            setIsLoadingCategories(false);
+            setIsLoadingProducts(false);
+        });
+    }, [isLoadingCategories,isLoadingProducts]);
+
+
 
     useEffect(() => {
         setIsLoading(true);
         setTimeout(() => {
-        api.get('/orders')
-          .then(({ data }) => {
-            setOrders(data);
-          });
-        }, 500);
-          setIsLoading(false);
-      }, [loading]);
+            api.get('/orders')
+                .then(({ data }) => {
+                    setOrders(data);
+                });
+        }, 400);
+        setIsLoading(false);
+
+    }, [loading]);
 
 
 
@@ -73,16 +90,33 @@ export const AuthProvider = ({ children }: AuthProps) => {
     function signout() {
         localStorage.removeItem("u");
         localStorage.removeItem("tkn");
-      
+
         setUser(null);
-       
+
         api.defaults.headers.Authorization = null;
         navigate("/login");
 
     }
 
     return (
-        <AuthContext.Provider value={{ user, authenticated, signin, signout, orders, setOrders, isLoading, setIsLoading }}>
+        <AuthContext.Provider value={{
+            user,
+            authenticated,
+            signin,
+            signout,
+            orders,
+            setOrders,
+            isLoading,
+            setIsLoading,
+            categories,
+            products,
+            setProducts,
+            setCategories,
+            isLoadingProducts,
+            isLoadingCategories,
+            setIsLoadingProducts,
+            setIsLoadingCategories
+        }}>
             {children}
         </AuthContext.Provider>
     );

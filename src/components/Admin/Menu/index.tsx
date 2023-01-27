@@ -1,5 +1,5 @@
 import { PencilSimple, PlusCircle, Trash } from "phosphor-react";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { formatCurrency } from "../../../utils/formatCurrency";
 
 
@@ -20,27 +20,17 @@ import { api } from "../../../utils/api";
 import { CategoryType } from "../../../types/Category";
 import { ProductType } from "../../../types/Products";
 import LoadingSpinner from "../../LoadingSpinner";
+import { AuthContext } from "../../../context/AuthContext";
 
 export function Menu() {
+    const { categories, products, setProducts, isLoadingCategories, isLoadingProducts, setIsLoadingProducts, setIsLoadingCategories } = useContext(AuthContext);
+
     const [isVisibleFormCategory, setIsVisibleFormCategory] = useState(false);
     const [isVisibleFormProduct, setIsVisibleFormProduct] = useState(false);
-    const [categories, setCategories] = useState<CategoryType[]>([]);
-    const [products, setProducts] = useState<ProductType[]>([]);
-    const [isLoading, setIsLoading] = useState(false);
 
     const [selectedCategory, setSelectedCategory] = useState<null | CategoryType>(null);
     const [selectedProduct, setSeletectedProduct] = useState<null | ProductType>(null);
 
-    useEffect(() => {
-        Promise.all([
-            api.get('/categories'),
-            api.get('/products'),
-        ]).then(([categoriesResponse, productsResponse]) => {
-            setCategories(categoriesResponse.data);
-            setProducts(productsResponse.data);
-            setIsLoading(false);
-        });
-    }, [isLoading]);
 
     function handleEditCategory(category: CategoryType) {
         setSelectedCategory(category);
@@ -54,12 +44,12 @@ export function Menu() {
 
     async function handleDeleteCategory(categoryId: string) {
         await api.delete(`/categories/${categoryId}`);
-        setIsLoading(true);
+        setIsLoadingCategories(true);
     }
 
     async function handleDeleteProduct(productId: string) {
         await api.delete(`/products/${productId}`);
-        setIsLoading(true);
+        setIsLoadingProducts(true);
     }
 
     function onClose() {
@@ -67,20 +57,21 @@ export function Menu() {
         setIsVisibleFormProduct(false);
         setSelectedCategory(null);
         setSeletectedProduct(null);
-        setIsLoading(true);
+        setIsLoadingCategories(true);
+        setIsLoadingProducts(true);
     }
     return (
         <>
             <FormCategoryModal visible={isVisibleFormCategory} onClose={onClose} category={selectedCategory} />
             <FormProductModal visible={isVisibleFormProduct} onClose={onClose} categories={categories} selectedProduct={selectedProduct} />
             <MenuContainer>
-                {isLoading && (
+                {isLoadingCategories && isLoadingProducts && (
                     <LoadingContainerCategory>
                         <LoadingSpinner />
                     </LoadingContainerCategory>
                 )}
 
-                {!isLoading && (
+                {!isLoadingCategories && !isLoadingProducts && (
                     <>
 
                         <MenuButtons>
