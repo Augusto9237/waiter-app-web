@@ -23,7 +23,7 @@ import LoadingSpinner from "../../LoadingSpinner";
 import { AuthContext } from "../../../context/AuthContext";
 
 export function Menu() {
-    const { categories, products, setProducts, isLoadingCategories, isLoadingProducts, setIsLoadingProducts, setIsLoadingCategories } = useContext(AuthContext);
+    const { categories, products, isLoadingCategories, isLoadingProducts, setIsLoadingProducts, setIsLoadingCategories } = useContext(AuthContext);
 
     const [isVisibleFormCategory, setIsVisibleFormCategory] = useState(false);
     const [isVisibleFormProduct, setIsVisibleFormProduct] = useState(false);
