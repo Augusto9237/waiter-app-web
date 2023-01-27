@@ -71,7 +71,6 @@ export const ButtonOpen = styled.button`
 `;
 
 export const SideBarBody = styled.main<sidebarProps>`
-  background: green;
   overflow: hidden;
   display: flex;
   flex: 1;
@@ -131,20 +130,22 @@ export const SideBarBody = styled.main<sidebarProps>`
 `;
 
 export const FooterSidebar = styled.footer`
-  background: yellow;
   display: flex;
-  flex: 1;
-  align-items: center;
+  height: 16vh;
   justify-content: center;
+  align-items: flex-start;
 
-  @media (max-height: 400px) {
-    align-items: flex-start;
-  }
+  @media (max-height: 850px) {
+    height: 18vh;
+    }
+
+  @media (max-height: 700px) {
+    height: 22vh;
+    }
 `;
 
 export const ButtonLogout = styled.button`
   display: flex;
-  margin-top: 10rem;
   justify-content: center;
   border: none;
   padding: 6px;
@@ -152,16 +153,4 @@ export const ButtonLogout = styled.button`
   align-items: center;
   background-color: transparent;
   color: ${(props) => props.theme.colors.buttonSecondary};
-
-  @media (max-width: 800px) {
-    margin-top: 18rem;
-  }
-
-  @media (max-width: 600px) {
-    margin-top: 10rem;
-  }
-
-  @media (max-width: 400px) {
-    margin-top: 2.5rem;
-  }
 `;
