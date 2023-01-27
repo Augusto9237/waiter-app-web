@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }: AuthProps) => {
           });
         }, 500);
           setIsLoading(false);
-      }, []);
+      }, [loading]);
 
 
 

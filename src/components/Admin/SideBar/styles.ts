@@ -18,17 +18,6 @@ export const Container = styled.section<sidebarProps>`
   transition: all 0.5s;
   padding-bottom: 20px;
 
-  footer{
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content:center; 
-
-    @media (max-height: 400px) {
-        align-items: flex-start;
-    }
-  }
-
   strong {
     font-weight: 600;
     line-height: 150%;
@@ -66,10 +55,10 @@ export const ButtonOpen = styled.button`
   border: none;
   background: ${(props) => props.theme.colors.buttonSecondary};
   border-radius: 50%;
-  color: #FFFF;
+  color: #ffff;
 
-  :hover{
-    background: #8A1114;
+  :hover {
+    background: #8a1114;
   }
 
   @media (min-width: 1620px) {
@@ -82,6 +71,7 @@ export const ButtonOpen = styled.button`
 `;
 
 export const SideBarBody = styled.main<sidebarProps>`
+  background: green;
   overflow: hidden;
   display: flex;
   flex: 1;
@@ -99,7 +89,7 @@ export const SideBarBody = styled.main<sidebarProps>`
     width: 100%;
     align-items: center;
     justify-content: ${(props) =>
-    props.sidebarVisible ? "flex-start" : "flex-start"};
+      props.sidebarVisible ? "flex-start" : "flex-start"};
     padding: 12px;
     padding-left: 18px;
     gap: 6px;
@@ -124,7 +114,7 @@ export const SideBarBody = styled.main<sidebarProps>`
     }
   }
   .sidebarIconItem:hover {
-    background: #FFABAD;
+    background: #ffabad;
     cursor: pointer;
     color: #d73035;
     border-left: 4px solid #d73035;
@@ -140,18 +130,38 @@ export const SideBarBody = styled.main<sidebarProps>`
   }
 `;
 
-export const ButtonLogout = styled.button`
-    display: flex;
-    margin-top:10rem;
-    justify-content: center;
-    border: none;
-    padding: 6px;
-    gap: 6px;
-    align-items: center;
-    background-color: transparent;
-    color: ${(props) => props.theme.colors.buttonSecondary};
+export const FooterSidebar = styled.footer`
+  background: yellow;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
 
-    @media (max-height: 400px) {
-        margin-top: 0;
-    }
+  @media (max-height: 400px) {
+    align-items: flex-start;
+  }
+`;
+
+export const ButtonLogout = styled.button`
+  display: flex;
+  margin-top: 10rem;
+  justify-content: center;
+  border: none;
+  padding: 6px;
+  gap: 6px;
+  align-items: center;
+  background-color: transparent;
+  color: ${(props) => props.theme.colors.buttonSecondary};
+
+  @media (max-width: 800px) {
+    margin-top: 18rem;
+  }
+
+  @media (max-width: 600px) {
+    margin-top: 10rem;
+  }
+
+  @media (max-width: 400px) {
+    margin-top: 2.5rem;
+  }
 `;

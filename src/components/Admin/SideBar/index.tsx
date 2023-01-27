@@ -1,7 +1,7 @@
 import { CaretLeft, CaretRight, ChartPieSlice, CookingPot, NotePencil, SignOut, UsersThree } from "phosphor-react";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { ButtonOpen, Container, SideBarBody, ButtonLogout } from "./styles";
+import { ButtonOpen, Container, SideBarBody, ButtonLogout,FooterSidebar } from "./styles";
 import { AuthContext } from "../../../context/AuthContext";
 
 export default function SideBar() {
@@ -44,12 +44,12 @@ export default function SideBar() {
           </div>
         </Link>
       </SideBarBody>
-      <footer>
+      <FooterSidebar>
         <ButtonLogout onClick={signout}>
           <SignOut size={20} />
           <strong>Sair</strong>
         </ButtonLogout>
-      </footer>
+      </FooterSidebar>
 
     </Container>
   );
