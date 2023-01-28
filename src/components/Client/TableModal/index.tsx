@@ -39,15 +39,13 @@ export function TableModal({ visibleModalTable, onCloseModalTable, onSave }: Tab
 
   const [table, setTable] = useState("");
 
+  const clerks = users.filter((user) => user.office === "CLERK");
 
-  function handleSave() {
+  const handleSave = () => {
     onSave(table);
-    setTable('');
+    setTable("");
     onCloseModalTable();
-  }
-
-  const clerks = users.filter((user) => user.office === 'CLERK');
-
+  };
   return (
     <OverlayModal>
       <ModalTableBody>
