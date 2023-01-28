@@ -3,7 +3,9 @@ import logo from "../../assets/images/logo.svg";
 import { Button } from "../Button";
 import { Container, SigInBody, ImageContainer, SigInContent, SigInHeader, SigInInputContainer, FooterSigIn } from './styles';
 import { useContext, useState } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext, UserDecode } from "../../context/AuthContext";
+import jwtDecode from "jwt-decode";
+import { toast } from "react-toastify";
 
 export default function SigIn() {
   const auth = useContext(AuthContext);
@@ -16,8 +18,15 @@ export default function SigIn() {
   async function handleLogin() {
     if (name && password) {
       const isLogged = await auth.signin(name, password);
+      const decode = await jwtDecode<UserDecode>(isLogged.token);
+
       if (isLogged) {
-        navigate('/');
+        if (decode.of === 'MANANGER') {
+          navigate('/');
+        } else {
+          navigate('/orderspanel');
+        }
+        toast.success(isLogged.msg);
       }
     }
 

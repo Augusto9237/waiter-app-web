@@ -36,7 +36,6 @@ export const AuthProvider = ({ children }: AuthProps) => {
             setAuthenticated(true);
             api.defaults.headers.Authorization = `Bearer ${token}`;
         }
-
         setLoading(false);
     }, []);
 
@@ -82,7 +81,7 @@ export const AuthProvider = ({ children }: AuthProps) => {
             localStorage.setItem("tkn", data.token);
             setLoading(true);
 
-            return true;
+            return data;
         }
         return false;
     }

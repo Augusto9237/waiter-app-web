@@ -10,9 +10,14 @@ export type UserDecode = {
     of: string;
 }
 
+export type Data = {
+    msg: string;
+    token: string;
+}
+
 export type AuthContextType = {
     user: UserDecode | unknown;
-    signin: (name: string, password: string) => Promise<boolean>;
+    signin: (name: string, password: string) => Promise<Data>;
     signout: () => void;
     orders: Order[];
     isLoading: boolean;
