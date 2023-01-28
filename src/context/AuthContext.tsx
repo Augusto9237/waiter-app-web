@@ -2,6 +2,7 @@ import { createContext } from "react";
 import { Order } from "../types/Order";
 import { CategoryType } from "../types/Category";
 import { ProductType } from "../types/Products";
+import { UserType } from "../types/Users";
 
 export type UserDecode = {
     iat: number;
@@ -24,6 +25,8 @@ export type AuthContextType = {
     authenticated: boolean;
     categories: CategoryType[];
     products: ProductType[];
+    users: UserType[]
+    isLoadingUsers: boolean;
     isLoadingProducts: boolean;
     isLoadingCategories: boolean;
     setProducts: React.Dispatch<React.SetStateAction<ProductType[]>>;
@@ -32,6 +35,7 @@ export type AuthContextType = {
     setIsLoadingProducts: React.Dispatch<React.SetStateAction<boolean>>;
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
     setOrders: React.Dispatch<React.SetStateAction<Order[]>>;
+    setIsLoadingUsers: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const AuthContext = createContext<AuthContextType>(null!);

@@ -6,7 +6,7 @@ export function RequireAuth({ children }: { children: JSX.Element }) {
   const { user} = useContext(AuthContext);
   const location = useLocation();
   const recoveredUser = localStorage.getItem("u");
-  console.log(location);
+  
 
   if (!user && !recoveredUser) {
     return <Navigate to="/login" state={{ from: location }} replace />;

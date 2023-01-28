@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Button } from "../../Button";
 
 
@@ -10,6 +10,7 @@ import {
 } from "./styles";
 import { api } from "../../../utils/api";
 import { UserType } from "../../../types/Users";
+import { AuthContext } from "../../../context/AuthContext";
 
 interface TableModalProps {
   visibleModalTable: boolean;
@@ -18,7 +19,7 @@ interface TableModalProps {
 }
 
 export function TableModal({ visibleModalTable, onCloseModalTable, onSave }: TableModalProps) {
-
+  const { users } = useContext(AuthContext);
 
   if (!visibleModalTable) {
     return null;
@@ -38,16 +39,8 @@ export function TableModal({ visibleModalTable, onCloseModalTable, onSave }: Tab
     };
   }, [onCloseModalTable]);
 
-
   const [table, setTable] = useState("");
-  const [users, setUsers] = useState<UserType[]>([]);
 
-  useEffect(() => {
-    api.get("/users")
-      .then((Response) => {
-        setUsers(Response.data);
-      });
-  }, []);
 
   function handleSave() {
     onSave(table);

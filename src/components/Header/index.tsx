@@ -10,7 +10,6 @@ interface HeaderProps {
 
 export function Header({ title, subtitle, }: HeaderProps) {
   
-
   return (
     <Container>
       <Content>

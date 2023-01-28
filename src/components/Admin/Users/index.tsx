@@ -1,5 +1,5 @@
 import { PencilSimple, PlusCircle, Trash } from "phosphor-react";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 
 import {
     UsersContainer,
@@ -14,23 +14,13 @@ import { FormUserModal } from "../FormUserModal";
 import { UserType } from "../../../types/Users";
 import { toast } from "react-toastify";
 import LoadingSpinner from "../../LoadingSpinner";
+import { AuthContext } from "../../../context/AuthContext";
 
 export function Users() {
+    const {users, isLoadingUsers, setIsLoadingUsers} = useContext(AuthContext);
     const [isVisibleFormUsers, setIsVisibleFormUsers] = useState(false);
-    const [users, setUsers] = useState<UserType[]>([]);
+    
     const [selectedUser, setSelectedUser] = useState<null | UserType>(null);
-    const [isLoadingUsers, setIsLoadingUsers] = useState(true);
-
-    useEffect(() => {
-        if (isLoadingUsers) {
-            api.get("/users")
-                .then((Response) => {
-                    setUsers(Response.data);
-                });
-            setIsLoadingUsers(false);
-        }
-
-    }, [isLoadingUsers]);
 
     function handleEditUser(selectedUser: UserType) {
         setSelectedUser(selectedUser);

@@ -1,7 +1,3 @@
-
-import { GlobalStyles } from "../../styles/GlobalStyles";
-
-
 import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,7 +9,6 @@ import { ContainerAdmin } from "./styles";
 
 export function AdminPage() {
  
-
   return (
     <>
       <Header title="Administrador" subtitle="Acompanhe os pedidos dos clientes" />

@@ -16,20 +16,23 @@ export default function SigIn() {
   const navigate = useNavigate();
 
   async function handleLogin() {
-    if (name && password) {
-      const isLogged = await auth.signin(name, password);
-      const decode = await jwtDecode<UserDecode>(isLogged.token);
+    try {
+      if (name && password) {
+        const isLogged = await auth.signin(name, password);
+        const decode = await jwtDecode<UserDecode>(isLogged.token);
 
-      if (isLogged) {
-        if (decode.of === 'MANANGER') {
-          navigate('/');
-        } else {
-          navigate('/orderspanel');
+        if (isLogged) {
+          if (decode.of === 'MANANGER') {
+            navigate('/');
+          } else {
+            navigate('/orderspanel');
+          }
+          toast.success(isLogged.msg);
         }
-        toast.success(isLogged.msg);
       }
+    } catch (error) {
+      toast.error("Erro ao fazer login, verifique seus dados e tente novamente.");
     }
-
   }
 
 
@@ -51,6 +54,7 @@ export default function SigIn() {
               value={name}
               type='text'
               onChange={(e) => setName(e.target.value)}
+              required
             />
 
             <span>Senha</span>
@@ -59,6 +63,7 @@ export default function SigIn() {
               value={password}
               type='password'
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
 
           </SigInInputContainer>

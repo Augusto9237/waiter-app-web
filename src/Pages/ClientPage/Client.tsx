@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Client } from "../../components/Client";
 import { Cart } from "../../components/Client/Cart";
 import { HeaderClient } from "../../components/Client/Header";
@@ -18,7 +18,7 @@ import { useParams } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
 export function ClientPage() {
-  const { categories, products, setProducts, isLoadingCategories, isLoadingProducts, setIsLoadingProducts } = useContext(AuthContext);
+  const { categories } = useContext(AuthContext);
 
   const { tableNumber } = useParams();
   const tablestring = tableNumber?.toString();
@@ -28,7 +28,20 @@ export function ClientPage() {
   const [selectedTable, setSelectedTable] = useState('');
   const [selectedClient, setSelectedClient] = useState("");
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [products, setProducts] = useState<ProductType[]>([]);
 
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingProducts, setIsLoadingProducts] = useState(false);
+
+  useEffect(() => {
+    Promise.all([
+      api.get('/products'),
+    ]).then(([productsResponse]) => {
+      setProducts(productsResponse.data);
+      setIsLoading(false);
+    });
+  }, []);
 
   async function handleSelectCategory(categoryId: string) {
     const route = !categoryId ? '/products' : `/categories/${categoryId}/products`;
@@ -116,11 +129,11 @@ export function ClientPage() {
         />
       )}
 
-      {isLoadingCategories && isLoadingProducts && (
+      {isLoading && (
         <LoadingSpinner />
       )}
 
-      {!isLoadingCategories && !isLoadingProducts && (
+      {!isLoading && (
         <>
           <Client
             onAddToCart={handleAddToCart}
