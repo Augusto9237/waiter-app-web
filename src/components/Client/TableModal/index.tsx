@@ -8,8 +8,6 @@ import {
   ModalTableBody,
   OverlayModal,
 } from "./styles";
-import { api } from "../../../utils/api";
-import { UserType } from "../../../types/Users";
 import { AuthContext } from "../../../context/AuthContext";
 
 interface TableModalProps {
@@ -48,6 +46,8 @@ export function TableModal({ visibleModalTable, onCloseModalTable, onSave }: Tab
     onCloseModalTable();
   }
 
+  const clerks = users.filter((user) => user.office === 'CLERK');
+
   return (
     <OverlayModal>
       <ModalTableBody>
@@ -60,9 +60,9 @@ export function TableModal({ visibleModalTable, onCloseModalTable, onSave }: Tab
           <div className="input-container">
             <select name="category" >
               <option value=''>Selecione um atendente</option>
-              {users.map((user) => {
+              {clerks.map((clerk) => {
                 return (
-                  <option key={user._id} value={user._id}>{user.name}</option>
+                  <option key={clerk._id} value={clerk._id}>{clerk.name}</option>
                 );
               })}
             </select>

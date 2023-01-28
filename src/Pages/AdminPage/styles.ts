@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ContainerAdmin = styled.main`
   display: flex;
   flex: 1;
-  max-height: 79vh;
+  max-height: 86vh;
   flex-direction: column;
   width: 100%;
   max-width: 1216px;
