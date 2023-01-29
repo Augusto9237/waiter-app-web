@@ -76,7 +76,7 @@ export function TableModal({ visibleModalTable, onCloseModalTable, onSave }: Tab
         </FormModal>
 
         <Footer>
-          <Button onClick={handleSave}>Salvar</Button>
+          <Button onClick={handleSave} title="Salvar"/>
         </Footer>
       </ModalTableBody>
     </OverlayModal>

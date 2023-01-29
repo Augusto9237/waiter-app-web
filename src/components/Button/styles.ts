@@ -9,6 +9,8 @@ export const ContainerButton = styled.button`
   padding: 14px 24px;
   align-items: center;
   justify-content: center;
+  gap: 6px;
+  color: #fff;
 
   :hover{
     background: #8A1114;

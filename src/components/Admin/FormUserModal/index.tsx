@@ -72,12 +72,12 @@ export function FormUserModal({
       password: password,
       office: userOffice
     })
-    .then(Response => {
-      toast.success(Response.data.msg);
-    })
-    .catch(error => {
-      toast.error(error.response.data.msg);
-    });
+      .then(Response => {
+        toast.success(Response.data.msg);
+      })
+      .catch(error => {
+        toast.error(error.response.data.msg);
+      });
     onClose();
   }
 
@@ -136,9 +136,9 @@ export function FormUserModal({
 
           <Button
             onClick={handleOk}
-          >
-            Salvar
-          </Button>
+            title="Salvar"
+          />
+          
         </FooterCart>
       </ModalBodyCart>
     </OverlayFormModal >

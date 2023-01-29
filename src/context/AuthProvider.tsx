@@ -34,14 +34,19 @@ export const AuthProvider = ({ children }: AuthProps) => {
     const auth = useAuth();
 
     useEffect(() => {
-        const recoveredUser = localStorage.getItem("u");
         const token = localStorage.getItem("tkn");
 
-        if (recoveredUser && token) {
-            setUser(JSON.parse(recoveredUser));
-            setAuthenticated(true);
-            api.defaults.headers.Authorization = `Bearer ${token}`;
+        if (token) {
+            const decodeUser = jwtDecode(token);
+
+            if (decodeUser && token) {
+                setUser(decodeUser);
+                setAuthenticated(true);
+                api.defaults.headers.Authorization = `Bearer ${token}`;
+            }
         }
+
+
         setLoading(false);
     }, []);
 
@@ -56,7 +61,7 @@ export const AuthProvider = ({ children }: AuthProps) => {
             setIsLoadingCategories(false);
             setIsLoadingProducts(false);
         });
-    }, [isLoadingCategories,isLoadingProducts]);
+    }, [isLoadingCategories, isLoadingProducts]);
 
 
 
@@ -88,12 +93,12 @@ export const AuthProvider = ({ children }: AuthProps) => {
     async function signin(name: string, password: string) {
         const data = await auth.signin(name, password);
         const decode = jwtDecode(data.token);
+
         if (data.token && decode) {
             setUser(decode);
 
             api.defaults.headers.Authorization = `Bearer ${data.token}`;
 
-            localStorage.setItem("u", JSON.stringify(decode));
             localStorage.setItem("tkn", data.token);
             setLoading(true);
 
@@ -103,7 +108,7 @@ export const AuthProvider = ({ children }: AuthProps) => {
     }
 
     function signout() {
-        localStorage.removeItem("u");
+    
         localStorage.removeItem("tkn");
 
         setUser(null);

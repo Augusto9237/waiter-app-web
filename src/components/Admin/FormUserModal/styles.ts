@@ -104,6 +104,7 @@ export const FormUser = styled.form`
       border: 1px solid rgba(204, 204, 204, 0.5);
       border-radius: 8px;
       padding: 16px;
+      color: ${(props) => props.theme.colors.text};
     }
 
     select {

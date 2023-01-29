@@ -25,7 +25,7 @@ export default function SigIn() {
           if (decode.of === 'MANANGER') {
             navigate('/');
           } else {
-            navigate('/orderspanel');
+            navigate('/pedidos');
           }
           toast.success(isLogged.msg);
         }
@@ -68,7 +68,7 @@ export default function SigIn() {
 
           </SigInInputContainer>
           <FooterSigIn>
-            <Button onClick={handleLogin}>Entrar</Button>
+            <Button onClick={handleLogin} title="Entrar"/>
           </FooterSigIn>
         </SigInContent>
       </SigInBody>

@@ -1,18 +1,20 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 import { ContainerButton } from "./styles";
 
 interface ButtonProps {
-  children: string;
+  title: string;
   onClick?: () => void;
   disabled?: boolean;
+  children?: ReactNode;
 }
 
-export function Button({ children, onClick, disabled }: ButtonProps) {
+export function Button({ title, children, onClick, disabled }: ButtonProps) {
   return (
     <ContainerButton onClick={onClick} disabled={disabled} type='submit'>
+      {children}
       <span >
-        {children}
+        {title}
       </span>
     </ContainerButton>
   );

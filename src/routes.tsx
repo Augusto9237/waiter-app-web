@@ -13,7 +13,8 @@ import { GlobalStyles } from "./styles/GlobalStyles";
 import { Users } from "./components/Admin/Users";
 import { useThemeHook } from "./context/themeHook";
 import { AuthProvider } from "./context/AuthProvider";
-import { RequireAuth } from "./hooks/RequireAuth";
+import { RequireAuthAdmin } from "./hooks/RequireAuthAdmin";
+import { RequireAuthKitchen } from "./hooks/RequireAuthKitchen";
 
 
 export function RouteApp() {
@@ -24,15 +25,16 @@ export function RouteApp() {
             <GlobalStyles />
             <AuthProvider>
                 <Routes>
-                    <Route path="/client/:tableNumber" element={<ClientPage />} />
+                    <Route path="/cliente/:tableNumber" element={<ClientPage />} />
                     <Route path="/login" element={<SigInPage />} />
-                    <Route path="/" element={<RequireAuth><AdminPage /></RequireAuth>}>
+                    <Route path="/" element={<RequireAuthAdmin><AdminPage /></RequireAuthAdmin>}>
                         <Route path="/" element={<Dashboard />} />
                         <Route path="/orders" element={<Orders />} />
                         <Route path="/menu" element={<Menu />} />
                         <Route path="/users" element={<Users />} />
                     </Route>
-                    <Route path="/orderspanel" element={<RequireAuth><OrdersPage /></RequireAuth>} />
+                    <Route path="/pedidos" element={<RequireAuthKitchen><OrdersPage /></RequireAuthKitchen>} />
+                    <Route path="*" element={<h1>Pagina não encontrada</h1>} />
                 </Routes>
             </AuthProvider>
         </ThemeProvider>
