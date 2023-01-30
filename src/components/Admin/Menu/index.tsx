@@ -21,7 +21,6 @@ import { CategoryType } from "../../../types/Category";
 import { ProductType } from "../../../types/Products";
 import LoadingSpinner from "../../LoadingSpinner";
 import { AuthContext } from "../../../context/AuthContext";
-import { Button } from "../../Button";
 
 export function Menu() {
     const { categories, products, isLoadingCategories, isLoadingProducts, setIsLoadingProducts, setIsLoadingCategories } = useContext(AuthContext);
@@ -77,11 +76,12 @@ export function Menu() {
 
                         <MenuButtons>
                             <strong>Categorias</strong>
-                            <div>
-                                <Button onClick={() => setIsVisibleFormCategory(true)} title="Categoria">
-                                    <PlusCircle size={20} />
-                                </Button>
-                            </div>
+
+                            <ButtonAdd onClick={() => setIsVisibleFormCategory(true)} title="Categoria">
+                                <PlusCircle size={20} />
+                                <span>Categoria</span>
+                            </ButtonAdd>
+
                         </MenuButtons>
                         <ListCategories>
 
@@ -111,11 +111,12 @@ export function Menu() {
                         </ListCategories>
                         <MenuButtons>
                             <strong>Produtos</strong>
-                            <div>
-                                <Button onClick={() => setIsVisibleFormProduct(true)} title="Produto">
-                                    <PlusCircle size={20} />
-                                </Button>
-                            </div>
+
+                            <ButtonAdd onClick={() => setIsVisibleFormProduct(true)} title="Produto">
+                                <PlusCircle size={20} />
+                                <span>Produto</span>
+                            </ButtonAdd>
+
                         </MenuButtons>
                         <ListProducts>
                             {products.map((product) => {
