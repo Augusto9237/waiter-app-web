@@ -153,4 +153,8 @@ export const ButtonLogout = styled.button`
   align-items: center;
   background-color: transparent;
   color: ${(props) => props.theme.colors.buttonSecondary};
+
+  strong{
+    opacity: 1;
+  }
 `;
