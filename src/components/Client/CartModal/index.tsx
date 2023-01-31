@@ -163,9 +163,9 @@ export function CartModal({
 
           <Button
             onClick={handleOk}
-            disabled={cartItems.length === 0}>
-            Confirmar pedido
-          </Button>
+            disabled={cartItems.length === 0}
+            title="Confirmar pedido"
+          />
         </FooterCart>
       </ModalBodyCart>
     </OverlayCartModal>

@@ -13,11 +13,10 @@ import { AuthContext } from "../../../context/AuthContext";
 interface TableModalProps {
   visibleModalTable: boolean;
   onCloseModalTable: () => void;
-  onSave: (table: string) => void;
+  onSave: (client: string, clerk: string) => void;
 }
 
 export function TableModal({ visibleModalTable, onCloseModalTable, onSave }: TableModalProps) {
-  const { users } = useContext(AuthContext);
 
   if (!visibleModalTable) {
     return null;
@@ -37,12 +36,15 @@ export function TableModal({ visibleModalTable, onCloseModalTable, onSave }: Tab
     };
   }, [onCloseModalTable]);
 
-  const [table, setTable] = useState("");
+  const { users } = useContext(AuthContext);
+
+  const [client, setTable] = useState("");
+  const [clerkId, setClerkId] = useState("");
 
   const clerks = users.filter((user) => user.office === "CLERK");
 
   const handleSave = () => {
-    onSave(table);
+    onSave(client, clerkId);
     setTable("");
     onCloseModalTable();
   };
@@ -56,7 +58,7 @@ export function TableModal({ visibleModalTable, onCloseModalTable, onSave }: Tab
 
         <FormModal>
           <div className="input-container">
-            <select name="category" >
+            <select name="category" onChange={(e) => setClerkId(e.target.value)} >
               <option value=''>Selecione um atendente</option>
               {clerks.map((clerk) => {
                 return (
@@ -70,7 +72,7 @@ export function TableModal({ visibleModalTable, onCloseModalTable, onSave }: Tab
             required
             placeholder="Informe o seu nome"
             type='text'
-            value={table}
+            value={client}
             onChange={(e) => setTable(e.target.value)}
           />
         </FormModal>

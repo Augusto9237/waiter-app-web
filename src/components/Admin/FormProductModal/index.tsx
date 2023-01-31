@@ -247,7 +247,7 @@ export function FormProductModal({
             </div>
             <FooterFormProduct>
 
-              <Button>Salvar</Button>
+              <Button title="Salvar"/>
             </FooterFormProduct>
           </FormProduct>
         </ModalContent>

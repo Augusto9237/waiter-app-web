@@ -1,13 +1,15 @@
 
+import { UserType } from "../../../types/Users";
 import { Container, Content, ContentHeaderClient, LabelTable } from "./styles";
 
 interface HeaderProps {
   selectedClient: string;
   selectedTable: string;
   onCancelOrder: () => void;
+  clerkInfo: UserType[];
 }
 
-export function HeaderClient({ selectedTable, selectedClient, onCancelOrder }: HeaderProps) {
+export function HeaderClient({ selectedTable, selectedClient, onCancelOrder, clerkInfo }: HeaderProps) {
   return (
     <Container>
       <Content>
@@ -15,7 +17,7 @@ export function HeaderClient({ selectedTable, selectedClient, onCancelOrder }: H
         <ContentHeaderClient>
           <h1>Pedido</h1>
           <span>Mesa: {selectedTable}</span>
-          <span>Atendente:</span>
+          <span>Atendente: {clerkInfo[0].name}</span>
         </ContentHeaderClient>
 
         <button onClick={onCancelOrder}>

@@ -27,9 +27,13 @@ export function ClientPage() {
 
   const [selectedTable, setSelectedTable] = useState('');
   const [selectedClient, setSelectedClient] = useState("");
+  const [selectedClerk, setSelectedClerk] = useState('');
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [products, setProducts] = useState<ProductType[]>([]);
 
+  const { users } = useContext(AuthContext);
+  const clerks = users.filter((user) => user.office === "CLERK");
+  const clerkInfo = clerks.filter((clerk) => clerk._id === selectedClerk);
 
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingProducts, setIsLoadingProducts] = useState(false);
@@ -53,13 +57,17 @@ export function ClientPage() {
     setIsLoadingProducts(false);
   }
 
-  function handleSaveTable(table: string) {
-    setSelectedClient(table);
+  function handleSaveTable(client: string, clerk: string) {
+    setSelectedClerk(clerk);
+    setSelectedClient(client);
     setSelectedTable(tablestring!);
   }
 
   function handleResetOrder() {
     setCartItems([]);
+    setSelectedClerk('');
+    setSelectedClerk('');
+    setSelectedTable('');
   }
 
   function handleAddToCart(product: ProductType) {
@@ -126,6 +134,7 @@ export function ClientPage() {
           selectedClient={selectedClient}
           selectedTable={selectedTable}
           onCancelOrder={handleResetOrder}
+          clerkInfo={clerkInfo}
         />
       )}
 
