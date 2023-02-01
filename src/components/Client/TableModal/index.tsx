@@ -9,14 +9,17 @@ import {
   OverlayModal,
 } from "./styles";
 import { AuthContext } from "../../../context/AuthContext";
+import { UserType } from "../../../types/Users";
+import { X } from "phosphor-react";
 
 interface TableModalProps {
   visibleModalTable: boolean;
   onCloseModalTable: () => void;
   onSave: (client: string, clerk: string) => void;
+  attendants: UserType[];
 }
 
-export function TableModal({ visibleModalTable, onCloseModalTable, onSave }: TableModalProps) {
+export function TableModal({ visibleModalTable, onCloseModalTable, onSave, attendants }: TableModalProps) {
 
   if (!visibleModalTable) {
     return null;
@@ -36,12 +39,8 @@ export function TableModal({ visibleModalTable, onCloseModalTable, onSave }: Tab
     };
   }, [onCloseModalTable]);
 
-  const { users } = useContext(AuthContext);
-
   const [client, setTable] = useState("");
   const [clerkId, setClerkId] = useState("");
-
-  const clerks = users.filter((user) => user.office === "CLERK");
 
   const handleSave = () => {
     onSave(client, clerkId);
@@ -53,14 +52,14 @@ export function TableModal({ visibleModalTable, onCloseModalTable, onSave }: Tab
       <ModalTableBody>
         <header>
           <strong>Iniciar Pedido</strong>
-          <button onClick={onCloseModalTable}>X</button>
+          <button onClick={onCloseModalTable}><X size={20} /></button>
         </header>
 
         <FormModal>
           <div className="input-container">
             <select name="category" onChange={(e) => setClerkId(e.target.value)} >
               <option value=''>Selecione um atendente</option>
-              {clerks.map((clerk) => {
+              {attendants.map((clerk) => {
                 return (
                   <option key={clerk._id} value={clerk._id}>{clerk.name}</option>
                 );

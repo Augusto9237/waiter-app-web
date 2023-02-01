@@ -100,9 +100,8 @@ export function FormCategoryModal({
 
           <Button
             onClick={handleOk}
-          >
-            Salvar
-          </Button>
+            title="Salvar"
+          />
         </FooterFormCategory>
       </ModalBodyCart>
     </OverlayFormModal>

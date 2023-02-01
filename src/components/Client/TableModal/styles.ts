@@ -37,11 +37,13 @@ export const ModalTableBody = styled.div`
     strong {
       font-weight: 600;
       font-size: 16px;
+      margin: 0 auto;
     }
 
     button {
       border: none;
       background: none;
+      color: ${(props) => props.theme.colors.text};
     }
   }
 `;

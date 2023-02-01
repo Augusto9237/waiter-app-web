@@ -16,6 +16,7 @@ import { api } from "../../utils/api";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import { UserType } from "../../types/Users";
 
 export function ClientPage() {
   const { categories } = useContext(AuthContext);
@@ -30,10 +31,8 @@ export function ClientPage() {
   const [selectedClerk, setSelectedClerk] = useState('');
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [products, setProducts] = useState<ProductType[]>([]);
-
-  const { users } = useContext(AuthContext);
-  const clerks = users.filter((user) => user.office === "CLERK");
-  const clerkInfo = clerks.filter((clerk) => clerk._id === selectedClerk);
+  const [attendants, setAtendants] = useState<UserType[]>([]);
+  const clerkInfo = attendants.filter((clerk) => clerk._id === selectedClerk);
 
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingProducts, setIsLoadingProducts] = useState(false);
@@ -41,8 +40,10 @@ export function ClientPage() {
   useEffect(() => {
     Promise.all([
       api.get('/products'),
-    ]).then(([productsResponse]) => {
+      api.get('/attendants'),
+    ]).then(([productsResponse, attendantsResponse]) => {
       setProducts(productsResponse.data);
+      setAtendants(attendantsResponse.data);
       setIsLoading(false);
     });
   }, []);
@@ -169,6 +170,7 @@ export function ClientPage() {
         visibleModalTable={isTableModalVisible}
         onCloseModalTable={() => setIsTableModalVisible(false)}
         onSave={handleSaveTable}
+        attendants={attendants}
       />
       <ToastContainer />
     </>
