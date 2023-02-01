@@ -9,6 +9,7 @@ import { CartContainer, CartContent, CartTotal } from "./styles";
 
 interface CartProps {
   selectedTable: string;
+  selectedClerk: string;
   selectedClient: string;
   cartItems: CartItem[];
   onAdd: (product: ProductType) => void;
@@ -22,6 +23,7 @@ export function Cart({
   onDecrement,
   onConfirmOrder,
   selectedTable,
+  selectedClerk,
   selectedClient,
   onOpenModalTable
 }: CartProps) {
@@ -46,13 +48,14 @@ export function Cart({
         onDecrement={onDecrement}
         onConfirmOrder={onConfirmOrder}
         selectedTable={selectedTable}
+        selectedClerk={selectedClerk}
         selectedClient={selectedClient}
       />
       <CartContainer>
         <CartContent>
           {!selectedTable &&
 
-            <Button onClick={onOpenModalTable}>Novo Pedido</Button>}
+            <Button onClick={onOpenModalTable} title="Novo Pedido"/>}
 
 
           {selectedTable && (
@@ -72,7 +75,7 @@ export function Cart({
 
               )}
 
-              <Button onClick={handleOpenModal} disabled={cartItems.length === 0}>Carrinho</Button>
+              <Button onClick={handleOpenModal} disabled={cartItems.length === 0} title="Carrinho"/>
             </>
           )}
         </CartContent>

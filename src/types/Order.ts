@@ -1,6 +1,11 @@
 export interface Order {
   _id: string;
   table: string;
+  clerk: {
+    _id: string;
+    name: string;
+    office: "CLERK";
+  };
   client: string;
   status: "WAITING" | "IN_PRODUCTION" | "DONE";
   total: number;

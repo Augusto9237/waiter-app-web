@@ -113,7 +113,7 @@ export default function Dashboard() {
 
                         <td><span>{order.table}</span></td>
                         <td>{formatCurrency(order.total)}</td>
-                        <td><span>Waiter </span></td>
+                        <td><span>{order.clerk.name}</span></td>
                         <td>
                           <StatusOrder status={order.status}>
                             {order.status === "WAITING" && "🕑"}

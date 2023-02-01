@@ -155,6 +155,7 @@ export function ClientPage() {
 
           <Cart
             selectedTable={selectedTable}
+            selectedClerk={selectedClerk}
             selectedClient={selectedClient}
             onAdd={handleAddToCart}
             onDecrement={handleDecrementCartItem}

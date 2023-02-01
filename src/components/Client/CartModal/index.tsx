@@ -25,6 +25,7 @@ interface CartModalProps {
   visible: boolean;
   cartItems: CartItem[];
   selectedTable: string;
+  selectedClerk: string;
   selectedClient: string;
   onClose: () => void;
   onAdd: (product: ProductType) => void;
@@ -40,6 +41,7 @@ export function CartModal({
   onDecrement,
   onConfirmOrder,
   selectedTable,
+  selectedClerk,
   selectedClient
 }: CartModalProps) {
   if (!visible) {
@@ -68,6 +70,7 @@ export function CartModal({
  
     await api.post('/orders', {
       table: selectedTable,
+      clerk: selectedClerk,
       client: selectedClient,
       products: cartItems.map((cartItem) => ({
         product: cartItem.product._id,
