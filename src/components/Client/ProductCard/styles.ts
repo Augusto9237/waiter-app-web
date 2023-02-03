@@ -72,6 +72,7 @@ export const ButtonAddProduct = styled.button`
   width: 24px;
   height: 24px;
   display: flex;
+  
   align-items: center;
   justify-content: center;
   border-radius: 12px;
