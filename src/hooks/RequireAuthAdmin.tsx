@@ -24,7 +24,6 @@ export function RequireAuthAdmin({ children }: { children: JSX.Element }) {
     }
     return children;
   }
-  
-  return <Navigate to="/login" state={{ from: location }} replace />;
 
+  return <Navigate to="/login" state={{ from: location }} replace />;
 }
