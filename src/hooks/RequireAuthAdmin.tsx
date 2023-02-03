@@ -5,21 +5,26 @@ import jwtDecode from "jwt-decode";
 import { toast } from "react-toastify";
 
 export function RequireAuthAdmin({ children }: { children: JSX.Element }) {
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const location = useLocation();
-  const recoveredToken = localStorage.getItem("tkn");
-  const decodeUser = jwtDecode<UserDecode>(recoveredToken!);
+  const recoveredToken: string | null = localStorage.getItem("tkn");
   
-  if (!user && !decodeUser) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
-  }
+  if (recoveredToken) {
+    const decodeUser = jwtDecode<UserDecode>(recoveredToken!);
 
-  if(decodeUser){
-    if(decodeUser.of === "KITCHEN_ASSISTANT" || decodeUser.of === "CLERK") {
-      toast.warning('Acesso negado');
+    if (!user && !decodeUser) {
       return <Navigate to="/login" state={{ from: location }} replace />;
     }
-   }
+
+    if (decodeUser) {
+      if (decodeUser.of === "KITCHEN_ASSISTANT" || decodeUser.of === "CLERK") {
+        toast.warning('Acesso negado');
+        return <Navigate to="/login" state={{ from: location }} replace />;
+      }
+    }
+    return children;
+  }
   
-  return children;
+  return <Navigate to="/login" state={{ from: location }} replace />;
+
 }
