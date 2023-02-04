@@ -1,4 +1,5 @@
 export interface Order {
+  filter?: any;
   _id: string;
   table: string;
   clerk: {

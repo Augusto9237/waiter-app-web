@@ -34,7 +34,6 @@ export const Cards = styled.div`
   background: ${(props) => props.theme.colors.primary};
   flex: 1;
 
-
   @media (max-width: 850px) {
     display: flex;
     flex-direction: column;
@@ -145,6 +144,27 @@ export const ListOrders = styled.div`
   }
 `;
 
+export const HeaderListOrders = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const FilterOrders = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  select{
+    border: 1px solid ${(props) => props.theme.colors.border};
+    background: ${(props) => props.theme.colors.secondary};
+    color: ${(props) => props.theme.colors.text};
+    padding: 4px;
+    border-radius: 8px;
+  }
+`;
+
 export const TableOrders = styled.div`
   display: flex;
   flex: 1;
@@ -209,8 +229,9 @@ export const IconClient = styled.div`
 
 export const StatusOrder = styled.div<adminProps>`
   background: ${(props) =>
-    (props.status === "WAITING" &&  props.theme.supportingColors.terciary) ||
-    (props.status === "IN_PRODUCTION" && props.theme.supportingColors.secondary) ||
+    (props.status === "WAITING" && props.theme.supportingColors.terciary) ||
+    (props.status === "IN_PRODUCTION" &&
+      props.theme.supportingColors.secondary) ||
     (props.status === "DONE" && props.theme.supportingColors.primary)};
   border-radius: 30px;
   padding: 4px 12px;
@@ -222,8 +243,10 @@ export const StatusOrder = styled.div<adminProps>`
     font-size: 14px;
     line-height: 16px;
     color: ${(props) =>
-      (props.status === "WAITING" && props.theme.supportingColors.textTerciary) ||
-      (props.status === "IN_PRODUCTION" && props.theme.supportingColors.textSecondary) ||
+      (props.status === "WAITING" &&
+        props.theme.supportingColors.textTerciary) ||
+      (props.status === "IN_PRODUCTION" &&
+        props.theme.supportingColors.textSecondary) ||
       (props.status === "DONE" && props.theme.supportingColors.textPrimary)};
   }
 

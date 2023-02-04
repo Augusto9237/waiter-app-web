@@ -1,5 +1,5 @@
 import { CurrencyDollar, NotePencil, UsersFour } from "phosphor-react";
-import { useContext, useEffect} from "react";
+import { useContext, useEffect, useState } from "react";
 
 import sockectIo from "socket.io-client";
 
@@ -12,6 +12,8 @@ import {
   LoadingContainer,
   StatusOrder,
   TableOrders,
+  HeaderListOrders,
+  FilterOrders
 } from "./styles";
 
 
@@ -20,8 +22,11 @@ import { formatDate } from "../../../utils/formatDate";
 import { AuthContext } from "../../../context/AuthContext";
 import { toast } from "react-toastify";
 
+
 export default function Dashboard() {
-  const {orders, setOrders,isLoading, setIsLoading} = useContext(AuthContext);
+  const { orders, setOrders, isLoading, setIsLoading } = useContext(AuthContext);
+  const [filter, setFilter] = useState('');
+
 
   useEffect(() => {
     setIsLoading(true);
@@ -45,9 +50,13 @@ export default function Dashboard() {
     setIsLoading(false);
   }, []);
 
+
+
   const totalRevenue = orders.reduce(function (accumulator, object) {
     return accumulator + object.total;
   }, 0);
+
+
 
   return (
     <>
@@ -68,14 +77,14 @@ export default function Dashboard() {
             </Cards>
             <Cards>
               <div className="headerCard">
-                <span className="icon-orders"><NotePencil size={24}  /></span>
+                <span className="icon-orders"><NotePencil size={24} /></span>
                 <span>Pedidos</span>
               </div>
               <h1>{orders.length}</h1>
             </Cards>
             <Cards>
               <div className="headerCard">
-                <span className="icon-customers"><UsersFour size={24}  /></span>
+                <span className="icon-customers"><UsersFour size={24} /></span>
                 <span>Clientes</span>
               </div>
               <h1>0</h1>
@@ -83,7 +92,22 @@ export default function Dashboard() {
           </CardContainer>
 
           <ListOrders>
-            <strong>Relatorio de Pedidos</strong>
+
+            <HeaderListOrders>
+              <strong>Relatorio de Pedidos</strong>
+
+              <FilterOrders>
+                <span>Filtrar</span>
+                <select onChange={(e) => setFilter(e.target.value)}>
+                  <option value=''>Todos</option>
+                  <option value='client'>Cliente</option>
+                  <option value='table'>Mesa</option>
+                  <option value='clerk'>Atendente</option>
+                </select>
+              </FilterOrders>
+
+            </HeaderListOrders>
+
             <TableOrders>
               <table>
                 <thead>
