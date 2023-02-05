@@ -1,3 +1,4 @@
+/* eslint-disable no-inner-declarations */
 import { CurrencyDollar, NotePencil, UsersFour } from "phosphor-react";
 import { useContext, useEffect, useState } from "react";
 
@@ -21,13 +22,15 @@ import LoadingSpinner from "../../LoadingSpinner";
 import { formatDate } from "../../../utils/formatDate";
 import { AuthContext } from "../../../context/AuthContext";
 import { toast } from "react-toastify";
+import { Order } from "../../../types/Order";
+
 
 
 export default function Dashboard() {
   const { orders, setOrders, isLoading, setIsLoading } = useContext(AuthContext);
   const [filter, setFilter] = useState('');
-
-
+  const [filteredOrders, setFilteredOrders] = useState<Order[] | []>([]);
+  
   useEffect(() => {
     setIsLoading(true);
     const sokect = sockectIo('http://localhost:3001', {
@@ -50,6 +53,40 @@ export default function Dashboard() {
     setIsLoading(false);
   }, []);
 
+  useEffect(() => {
+    setFilteredOrders(orders);
+    if (filter === 'client') {
+      function sumByClient(orders: Order[]): Order[] {
+        const result: Order[] | any = {};
+        orders.forEach((order) => {
+          if (!result[order.client]) {
+            result[order.client] = { ...order, total: 0 };
+          }
+          result[order.client].total += order.total;
+        });
+        return Object.values(result);
+      }
+
+      const result: Order[] | any = sumByClient(Object.values(orders).flat());
+      setFilteredOrders(result);
+    }
+
+    if (filter === 'table') {
+      function sumByClient(orders: Order[]): Order[] | unknown {
+        const result: Order[] | any = {};
+        orders.forEach((order) => {
+          if (!result[order.table]) {
+            result[order.table] = { ...order, total: 0 };
+          }
+          result[order.table].total += order.total;
+        });
+        return Object.values(result);
+      }
+
+      const result: Order[] | any = sumByClient(Object.values(orders).flat());
+      setFilteredOrders(result);
+    }
+  }, [filter, orders]);
 
 
   const totalRevenue = orders.reduce(function (accumulator, object) {
@@ -102,7 +139,6 @@ export default function Dashboard() {
                   <option value=''>Todos</option>
                   <option value='client'>Cliente</option>
                   <option value='table'>Mesa</option>
-                  <option value='clerk'>Atendente</option>
                 </select>
               </FilterOrders>
 
@@ -121,7 +157,7 @@ export default function Dashboard() {
                   </tr>
                 </thead>
                 <tbody>
-                  {orders.map((order) => {
+                  {filteredOrders.map((order) => {
 
                     return (
                       <tr key={order._id}>
