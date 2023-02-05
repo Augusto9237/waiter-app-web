@@ -28,9 +28,9 @@ import { Order } from "../../../types/Order";
 
 export default function Dashboard() {
   const { orders, setOrders, isLoading, setIsLoading } = useContext(AuthContext);
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = useState<string | null>(null);
   const [filteredOrders, setFilteredOrders] = useState<Order[] | []>([]);
-  
+
   useEffect(() => {
     setIsLoading(true);
     const sokect = sockectIo('http://localhost:3001', {
@@ -55,43 +55,33 @@ export default function Dashboard() {
 
   useEffect(() => {
     setFilteredOrders(orders);
-    if (filter === 'client') {
-      function sumByClient(orders: Order[]): Order[] {
-        const result: Order[] | any = {};
-        orders.forEach((order) => {
-          if (!result[order.client]) {
-            result[order.client] = { ...order, total: 0 };
-          }
-          result[order.client].total += order.total;
-        });
-        return Object.values(result);
-      }
 
-      const result: Order[] | any = sumByClient(Object.values(orders).flat());
+    if (filter) {
+      const groupKey = filter === 'client' ? 'client' : 'table';
+      function sumBy(orders: Order[], key: keyof Order): Order[] {
+        const result: Order[] = [];
+        orders.forEach((order) => {
+          const orderWithSameKey = result.find(o => o[key] === order[key]);
+          if (orderWithSameKey) {
+            orderWithSameKey.total += order.total;
+          } else {
+            result.push({ ...order, total: order.total });
+          }
+        });
+        return result;
+      }
+      const result = sumBy(Object.values(orders).flat(), groupKey);
       setFilteredOrders(result);
     }
-
-    if (filter === 'table') {
-      function sumByClient(orders: Order[]): Order[] | unknown {
-        const result: Order[] | any = {};
-        orders.forEach((order) => {
-          if (!result[order.table]) {
-            result[order.table] = { ...order, total: 0 };
-          }
-          result[order.table].total += order.total;
-        });
-        return Object.values(result);
-      }
-
-      const result: Order[] | any = sumByClient(Object.values(orders).flat());
-      setFilteredOrders(result);
+    if(filter == 'all') {
+      setFilteredOrders(orders);
     }
   }, [filter, orders]);
-
 
   const totalRevenue = orders.reduce(function (accumulator, object) {
     return accumulator + object.total;
   }, 0);
+
 
 
 
@@ -136,7 +126,7 @@ export default function Dashboard() {
               <FilterOrders>
                 <span>Filtrar</span>
                 <select onChange={(e) => setFilter(e.target.value)}>
-                  <option value=''>Todos</option>
+                  <option value='all'>Todos</option>
                   <option value='client'>Cliente</option>
                   <option value='table'>Mesa</option>
                 </select>
