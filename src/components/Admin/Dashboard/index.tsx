@@ -23,8 +23,7 @@ import { formatDate } from "../../../utils/formatDate";
 import { AuthContext } from "../../../context/AuthContext";
 import { toast } from "react-toastify";
 import { Order } from "../../../types/Order";
-
-
+import { Link } from "react-router-dom";
 
 export default function Dashboard() {
   const { orders, setOrders, isLoading, setIsLoading } = useContext(AuthContext);
@@ -73,7 +72,7 @@ export default function Dashboard() {
       const result = sumBy(Object.values(orders).flat(), groupKey);
       setFilteredOrders(result);
     }
-    if(filter == 'all') {
+    if (filter == 'all') {
       setFilteredOrders(orders);
     }
   }, [filter, orders]);
@@ -81,9 +80,6 @@ export default function Dashboard() {
   const totalRevenue = orders.reduce(function (accumulator, object) {
     return accumulator + object.total;
   }, 0);
-
-
-
 
   return (
     <>
@@ -164,15 +160,39 @@ export default function Dashboard() {
                         <td><span>{order.table}</span></td>
                         <td>{formatCurrency(order.total)}</td>
                         <td><span>{order.clerk.name}</span></td>
-                        <td>
-                          <StatusOrder status={order.status}>
-                            {order.status === "WAITING" && "🕑"}
-                            {order.status === "IN_PRODUCTION" && "👩‍🍳"}
-                            {order.status === "DONE" && "✅"}
-                            <span>{order.status === "WAITING" && "  Fila de espera"}
-                              {order.status === "IN_PRODUCTION" && "Em produção"}
-                              {order.status === "DONE" && "Pronto"}</span>
-                          </StatusOrder>
+                        <td className="status-container">
+                          {filter === null && (
+                            <StatusOrder status={order.status}>
+                              {order.status === "WAITING" && "🕑"}
+                              {order.status === "IN_PRODUCTION" && "👩‍🍳"}
+                              {order.status === "DONE" && "✅"}
+                              <span>{order.status === "WAITING" && "  Fila de espera"}
+                                {order.status === "IN_PRODUCTION" && "Em produção"}
+                                {order.status === "DONE" && "Pronto"}</span>
+                            </StatusOrder>
+                          )}
+                          {filter === 'all' && (
+                            <StatusOrder status={order.status}>
+                              {order.status === "WAITING" && "🕑"}
+                              {order.status === "IN_PRODUCTION" && "👩‍🍳"}
+                              {order.status === "DONE" && "✅"}
+                              <span>{order.status === "WAITING" && "  Fila de espera"}
+                                {order.status === "IN_PRODUCTION" && "Em produção"}
+                                {order.status === "DONE" && "Pronto"}</span>
+                            </StatusOrder>
+                          )}
+
+                          {filter === 'client' && (
+                            <Link to={`/orders/${order.client}`}>
+                              <NotePencil size={24} />
+                            </Link>
+                          )}
+
+                          {filter === 'table' && (
+                            <Link to={`/orders/${order.table}`}>
+                              <NotePencil size={24} />
+                            </Link>
+                          )}
                         </td>
                       </tr>
                     );

@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import sockectIo from "socket.io-client";
 import { Order } from "../../types/Order";
@@ -6,10 +6,13 @@ import { OrdersBoard } from "./OrdersBoard";
 import { Container, LoadingContainer } from "./styles";
 import LoadingSpinner from "../LoadingSpinner";
 import { AuthContext } from "../../context/AuthContext";
+import { useParams } from "react-router-dom";
 
 export function Orders() {
-  const {orders, setOrders, isLoading, setIsLoading} = useContext(AuthContext);
-
+  const { orders, setOrders, isLoading, setIsLoading } = useContext(AuthContext);
+  const [filteredOrders, setFilteredOrders] = useState<Order[] | []>([]);
+  const { filter } = useParams();
+  
   useEffect(() => {
     setIsLoading(true);
     const sokect = sockectIo('http://localhost:3001', {
@@ -32,10 +35,23 @@ export function Orders() {
     setIsLoading(false);
   }, []);
 
+  useEffect(() => {
+    setFilteredOrders(orders);
+    if (filter) {
+      setFilteredOrders(
+        orders.filter(order => {
+          const filterString = filter?.toString();
+          return order.client === filterString || order.table === filterString;
+        })
+      );
+    }
+  }, [filter, orders]);
 
-  const waiting = orders.filter((order) => order.status === 'WAITING');
-  const inProduction = orders.filter((order) => order.status === 'IN_PRODUCTION');
-  const done = orders.filter((order) => order.status === 'DONE');
+
+
+  const waiting = filteredOrders.filter((order) => order.status === 'WAITING');
+  const inProduction = filteredOrders.filter((order) => order.status === 'IN_PRODUCTION');
+  const done = filteredOrders.filter((order) => order.status === 'DONE');
 
   function handleCancelOrder(orderId: string) {
     setOrders((prevState) => prevState.filter(order => order._id !== orderId));

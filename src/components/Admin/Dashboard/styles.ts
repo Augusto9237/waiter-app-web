@@ -202,6 +202,10 @@ export const TableOrders = styled.div`
         gap: 16px;
       }
 
+      a{
+        color: ${(props) => props.theme.colors.buttonSecondary};
+      }
+
       @media (max-width: 850px) {
         padding: 8px;
       }

@@ -30,6 +30,7 @@ export function RouteApp() {
                     <Route path="/" element={<RequireAuthAdmin><AdminPage /></RequireAuthAdmin>}>
                         <Route path="/" element={<Dashboard />} />
                         <Route path="/orders" element={<Orders />} />
+                        <Route path="/orders/:filter" element={<Orders />} />
                         <Route path="/menu" element={<Menu />} />
                         <Route path="/users" element={<Users />} />
                     </Route>
