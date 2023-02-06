@@ -2,8 +2,6 @@
 
 import { X } from "phosphor-react";
 import {
-  ModalContent,
-  FooterModal,
   OverlayFormModal,
   ModalBody,
   HeaderModal,
@@ -15,7 +13,6 @@ interface CartModalProps {
   onClose: () => void;
   title: string;
   children: ReactNode;
-  button: JSX.Element;
 }
 
 export function Modal({
@@ -23,7 +20,7 @@ export function Modal({
   onClose,
   title,
   children,
-  button
+
 }: CartModalProps) {
   if (!visible) {
     return null;
@@ -42,14 +39,7 @@ export function Modal({
             <X size={20} />
           </button>
         </HeaderModal>
-
-        <ModalContent>
-          {children}
-        </ModalContent>
-
-        <FooterModal>
-          {button}
-        </FooterModal>
+        {children}
       </ModalBody>
     </OverlayFormModal>
   );

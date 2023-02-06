@@ -1,54 +1,5 @@
 import styled from "styled-components";
 
-
-export const OverlayFormModal = styled.div`
-  z-index: 50;
-  flex: 1;
-  left: 0px;
-  top: 0px;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(4.5px);
-  width: 100%;
-  height: 100vh;
-  position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  @media (max-width: 415px) {
-    padding: 2%;
-    overflow-y: auto;
-  }
-`;
-
-export const ModalBodyCart = styled.div`
-  position: relative;
-  background: ${(props) => props.theme.colors.primary};
-  width: 480px;
-  border-radius: 8px;
-  overflow: hidden;
-`;
-
-export const HeaderModalCart = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px;
-
-
-  strong {
-    font-size: 24px;
-  }
-  button {
-    display: flex;
-    align-items: center;
-    border: none;
-    background: none;
-    margin-right: 4px;
-    color:  ${(props) => props.theme.colors.text};
-  }
-`;
-
 export const ButtonCloseModal = styled.button`
   border: none;
   width: 32px;
@@ -60,7 +11,7 @@ export const ButtonCloseModal = styled.button`
   
 `;
 
-export const ModalContent = styled.div`
+export const ContentForm = styled.div`
   background: ${(props) => props.theme.colors.background};
   width: 100%;
   padding: 24px;
@@ -84,7 +35,7 @@ export const ModalContent = styled.div`
   }
 `;
 
-export const FormCategory = styled.form`
+export const FormCategoryContainer = styled.form`
   display: flex;
   flex-direction: column;
   gap: 24px;

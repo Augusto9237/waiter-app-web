@@ -24,8 +24,6 @@ import { toast } from "react-toastify";
 import { Order } from "../../../types/Order";
 import { Link } from "react-router-dom";
 import { groupAndCountClients } from "../../../utils/groupAndCountClients";
-import { Modal } from "../../Modal";
-import { Button } from "../../Button";
 
 
 export default function Dashboard() {

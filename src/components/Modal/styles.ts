@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const OverlayFormModal = styled.div`
   z-index: 50;
   flex: 1;
@@ -11,9 +10,11 @@ export const OverlayFormModal = styled.div`
   width: 100%;
   height: 100vh;
   position: fixed;
+  padding: 18px 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: auto;
 
   @media (max-width: 415px) {
     padding: 2%;
@@ -35,7 +36,6 @@ export const HeaderModal = styled.div`
   justify-content: space-between;
   padding: 8px;
 
-
   strong {
     font-size: 24px;
   }
@@ -45,7 +45,7 @@ export const HeaderModal = styled.div`
     border: none;
     background: none;
     margin-right: 4px;
-    color:  ${(props) => props.theme.colors.text};
+    color: ${(props) => props.theme.colors.text};
   }
 `;
 
@@ -54,10 +54,9 @@ export const ButtonCloseModal = styled.button`
   width: 32px;
   height: 32px;
   color: #fff;
-  
+
   border-radius: 16px;
   margin: 24px;
-  
 `;
 
 export const ModalContent = styled.div`
@@ -94,7 +93,6 @@ export const FooterModal = styled.form`
     flex-direction: column;
     gap: 8px;
 
-  
     span {
       font-weight: 600;
       font-size: 16px;
@@ -102,18 +100,15 @@ export const FooterModal = styled.form`
     }
 
     input {
-    width: 100%;
-    background: ${(props) => props.theme.colors.secondary};
-    border: 1px solid ${(props) => props.theme.colors.border};
-    border-radius: 8px;
-    padding: 16px;
-    color: ${(props) => props.theme.colors.text};
+      width: 100%;
+      background: ${(props) => props.theme.colors.secondary};
+      border: 1px solid ${(props) => props.theme.colors.border};
+      border-radius: 8px;
+      padding: 16px;
+      color: ${(props) => props.theme.colors.text};
+    }
   }
-  
-}
-
 `;
-
 
 export const FooterFormCategory = styled.div`
   display: flex;
@@ -123,4 +118,3 @@ export const FooterFormCategory = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
-

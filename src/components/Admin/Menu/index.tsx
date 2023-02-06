@@ -14,13 +14,15 @@ import {
     ItemProduct,
     LoadingContainerCategory,
 } from "./styles";
-import { FormCategoryModal } from "../FormCategoryModal";
-import { FormProductModal } from "../FormProductModal";
+
+import { FormProduct } from "../FormProduct";
 import { api } from "../../../utils/api";
 import { CategoryType } from "../../../types/Category";
 import { ProductType } from "../../../types/Products";
 import LoadingSpinner from "../../LoadingSpinner";
 import { AuthContext } from "../../../context/AuthContext";
+import { Modal } from "../../Modal";
+import { FormCategory } from "../FormCategoryModal";
 
 export function Menu() {
     const { categories, products, isLoadingCategories, isLoadingProducts, setIsLoadingProducts, setIsLoadingCategories } = useContext(AuthContext);
@@ -62,8 +64,15 @@ export function Menu() {
     }
     return (
         <>
-            <FormCategoryModal visible={isVisibleFormCategory} onClose={onClose} category={selectedCategory} />
-            <FormProductModal visible={isVisibleFormProduct} onClose={onClose} categories={categories} selectedProduct={selectedProduct} />
+            <Modal visible={isVisibleFormCategory} onClose={onClose} title={selectedCategory ? 'Editar categoria' : 'Nova categoria'}>
+                <FormCategory category={selectedCategory} onClose={onClose} />
+            </Modal>
+
+            <Modal visible={isVisibleFormProduct} onClose={onClose} title={selectedProduct ? 'Editar produto' : 'Novo produto'}>
+                <FormProduct onClose={onClose} categories={categories} selectedProduct={selectedProduct} />
+            </Modal>
+
+
             <MenuContainer>
                 {isLoadingCategories && isLoadingProducts && (
                     <LoadingContainerCategory>

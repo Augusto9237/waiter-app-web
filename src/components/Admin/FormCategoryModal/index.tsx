@@ -2,35 +2,28 @@ import { useEffect, useState } from "react";
 
 import { api } from "../../../utils/api";
 import { toast } from "react-toastify";
-import { X } from "phosphor-react";
+
 
 import { Button } from "../../Button";
 import { CategoryType } from "../../../types/Category";
 
 import {
-  ModalBodyCart,
-  ModalContent,
-  FormCategory,
+  ContentForm,
+  FormCategoryContainer,
   FooterFormCategory,
-  HeaderModalCart,
-  OverlayFormModal,
 } from "./styles";
 
 interface CartModalProps {
   category?: CategoryType | null;
-  visible: boolean;
   onClose: () => void;
 
 }
 
-export function FormCategoryModal({
-  visible,
+export function FormCategory({
+ 
   onClose,
   category,
 }: CartModalProps) {
-  if (!visible) {
-    return null;
-  }
 
   const [icon, setIcon] = useState('');
   const [name, setName] = useState('');
@@ -54,7 +47,7 @@ export function FormCategoryModal({
         name,
       });
       toast.success(response.data.msg);
-    } catch (error : any) {
+    } catch (error: any) {
       toast.error(error.response.data.msg);
     }
     onClose();
@@ -62,48 +55,37 @@ export function FormCategoryModal({
 
 
   return (
-    <OverlayFormModal >
-      <ModalBodyCart>
 
-        <HeaderModalCart>
-          <div />
-          <strong>{category?._id ? 'Editar categoria' : 'Nova categoria'}</strong>
+    <>
+      <ContentForm>
+        <FormCategoryContainer>
+          <div className="input-container">
+            <span>Icone</span>
+            <input
+              placeholder="Insira um icone"
+              value={icon}
+              onChange={(e) => setIcon(e.target.value)}
+            />
+          </div>
 
-          <button type="button" onClick={onClose}>
-            <X size={20} />
-          </button>
-        </HeaderModalCart>
+          <div className="input-container">
+            <span>Nome</span>
+            <input
+              placeholder="Digite um nome"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+        </FormCategoryContainer>
+      </ContentForm>
 
-        <ModalContent>
-          <FormCategory>
-            <div className="input-container">
-              <span>Icone</span>
-              <input
-                placeholder="Insira um icone"
-                value={icon}
-                onChange={(e) => setIcon(e.target.value)}
-              />
-            </div>
+      <FooterFormCategory>
 
-            <div className="input-container">
-              <span>Nome</span>
-              <input
-                placeholder="Digite um nome"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-          </FormCategory>
-        </ModalContent>
-
-        <FooterFormCategory>
-
-          <Button
-            onClick={handleOk}
-            title="Salvar"
-          />
-        </FooterFormCategory>
-      </ModalBodyCart>
-    </OverlayFormModal>
+        <Button
+          onClick={handleOk}
+          title="Salvar"
+        />
+      </FooterFormCategory>
+    </>
   );
 }
