@@ -27,9 +27,8 @@ export function Modal({
   }
 
 
-
   return (
-    <OverlayFormModal >
+    <OverlayFormModal>
       <ModalBody>
         <HeaderModal>
           <div />

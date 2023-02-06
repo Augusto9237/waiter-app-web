@@ -1,28 +1,11 @@
 import styled from "styled-components";
 
-export const Overlay = styled.div`
-  left: 0px;
-  top: 0px;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(4.5px);
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
 
-  @media (max-width: 415px) {
-    padding: 0 20px;
-  }
-`;
-
-export const ModalBody = styled.div`
-  background: ${(props) => props.theme.colors.primary};
+export const ContainerOrderDetail = styled.div`
+  background: ${(props) => props.theme.colors.secondary};
   width: 480px;
   border-radius: 8px;
-  padding: 32px;
+  padding: 28px;
 
   @media (max-width: 415px) {
     padding: 22px;
@@ -30,24 +13,22 @@ export const ModalBody = styled.div`
 
   header {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 8px;
-
+    flex-direction: column;
+    padding-bottom: 20px;
+    gap: 4px;
 
     strong {
       font-size: 24px;
     }
 
-    button {
-      border: 0;
-      background: transparent;
-      line-height: 0;
+    span{
+      font-size: 16px;
+      font-weight: 500;
     }
   }
 
   .status-container {
-    margin-top: 32px;
+    margin-top: 8px;
 
     small {
       font-size: 14px;

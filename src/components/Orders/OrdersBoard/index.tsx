@@ -4,6 +4,7 @@ import { Order } from "../../../types/Order";
 import { api } from "../../../utils/api";
 import { OrderModal } from "../OrderModal";
 import { Board, OrdersContainer } from "./styles";
+import { Modal } from "../../Modal";
 
 interface OrderBoardProps {
   icon: string;
@@ -44,7 +45,7 @@ export function OrdersBoard({ icon, title, orders, onCancelOrder, onChangeOrderS
 
   async function handleCancelOrder() {
     setIsLoading(true);
-    
+
     await new Promise(resolve => setTimeout(resolve, 1000));
     await api.delete(`/orders/${selectedOrder?._id}`);
 
@@ -56,14 +57,15 @@ export function OrdersBoard({ icon, title, orders, onCancelOrder, onChangeOrderS
 
   return (
     <Board>
-      <OrderModal
-        onCancelOrder={handleCancelOrder}
-        onChangeOrderStatus={handleChangeOrderStatus}
-        order={selectedOrder}
-        visible={isModalVisible}
-        isLoading={isLoading}
-        onClose={handleCloseModal}
-      />
+      <Modal title="Pedido" visible={isModalVisible} onClose={handleCloseModal}>
+        <OrderModal
+          onCancelOrder={handleCancelOrder}
+          onChangeOrderStatus={handleChangeOrderStatus}
+          order={selectedOrder}
+          isLoading={isLoading}
+        />
+      </Modal>
+
       <header>
         <span>{icon}</span>
         <strong>{title}</strong>

@@ -23,6 +23,7 @@ export const OverlayFormModal = styled.div`
 `;
 
 export const ModalBody = styled.div`
+  z-index: 10;
   position: relative;
   background: ${(props) => props.theme.colors.primary};
   width: 480px;
