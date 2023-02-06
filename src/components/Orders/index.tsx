@@ -48,7 +48,6 @@ export function Orders() {
   }, [filter, orders]);
 
 
-
   const waiting = filteredOrders.filter((order) => order.status === 'WAITING');
   const inProduction = filteredOrders.filter((order) => order.status === 'IN_PRODUCTION');
   const done = filteredOrders.filter((order) => order.status === 'DONE');

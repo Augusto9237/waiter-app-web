@@ -10,7 +10,7 @@ export const OverlayFormProductModal = styled.div`
   width: 100%;
   height: 100vh;
   position: fixed;
-  padding: 16px 0;
+  padding: 18px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,6 +28,7 @@ export const ModalBodyCart = styled.div`
   width: 480px;
   border-radius: 8px;
   overflow: hidden;
+  margin: auto 0px;
 `;
 
 export const HeaderModalCart = styled.div`

@@ -88,8 +88,8 @@ export const ItemCategory = styled.div`
         border: none;
         display: flex;
         align-items: center;
-        background: rgba(0, 209, 255, 0.52);
-        color: #2f80ed;
+        background: ${(props) => props.theme.supportingColors.secondary};
+        color: ${(props) => props.theme.supportingColors.textSecondary};
         padding: 2px;
         border-radius: 4px;
       }
@@ -164,8 +164,8 @@ export const ItemProduct = styled.div`
       border: none;
       display: flex;
       align-items: center;
-      background: rgba(0, 209, 255, 0.52);
-      color: #2f80ed;
+      background: ${(props) => props.theme.supportingColors.secondary};
+      color: ${(props) => props.theme.supportingColors.textSecondary};
       padding: 2px;
       border-radius: 4px;
     }

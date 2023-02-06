@@ -17,13 +17,16 @@ import {
   FilterOrders
 } from "./styles";
 
-
 import LoadingSpinner from "../../LoadingSpinner";
 import { formatDate } from "../../../utils/formatDate";
 import { AuthContext } from "../../../context/AuthContext";
 import { toast } from "react-toastify";
 import { Order } from "../../../types/Order";
 import { Link } from "react-router-dom";
+import { groupAndCountClients } from "../../../utils/groupAndCountClients";
+import { Modal } from "../../Modal";
+import { Button } from "../../Button";
+
 
 export default function Dashboard() {
   const { orders, setOrders, isLoading, setIsLoading } = useContext(AuthContext);
@@ -77,6 +80,7 @@ export default function Dashboard() {
     }
   }, [filter, orders]);
 
+  const totalCountClients = groupAndCountClients(orders);
   const totalRevenue = orders.reduce(function (accumulator, object) {
     return accumulator + object.total;
   }, 0);
@@ -110,7 +114,7 @@ export default function Dashboard() {
                 <span className="icon-customers"><UsersFour size={24} /></span>
                 <span>Clientes</span>
               </div>
-              <h1>0</h1>
+              <h1>{totalCountClients.length}</h1>
             </Cards>
           </CardContainer>
 

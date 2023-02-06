@@ -137,7 +137,6 @@ export function FormProductModal({
   return (
     <OverlayFormProductModal>
       <ModalBodyCart>
-
         <HeaderModalCart>
           <div />
           <strong>{selectedProduct?._id ? 'Editar produto' : 'Novo produto'}</strong>
