@@ -96,7 +96,7 @@ export default function Dashboard() {
             <Cards>
               <div className="headerCard">
                 <span className="icon-avenue"><CurrencyDollar size={24} /></span>
-                <span>Receita</span>
+                <span>Faturamento</span>
               </div>
               <h1>{formatCurrency(totalRevenue)}</h1>
             </Cards>

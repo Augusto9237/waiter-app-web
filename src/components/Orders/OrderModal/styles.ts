@@ -4,7 +4,6 @@ import styled from "styled-components";
 export const ContainerOrderDetail = styled.div`
   background: ${(props) => props.theme.colors.secondary};
   width: 480px;
-  border-radius: 8px;
   padding: 28px;
 
   @media (max-width: 415px) {
