@@ -1,4 +1,3 @@
-WaiterApp
 WaiterApp é um aplicativo web e mobile, desenvolvido em React Native e React Js, que permite aos clientes enviarem seus pedidos de forma fácil e rápida. Além disso, o atendente também pode enviar o pedido, por meio de um aplicativo mobile, para que o processo seja ainda mais ágil.
 
 Banco de Dados
