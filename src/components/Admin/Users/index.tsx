@@ -10,16 +10,17 @@ import {
     LoadingContainerUsers,
 } from "./styles";
 import { api } from "../../../utils/api";
-import { FormUserModal } from "../FormUserModal";
+import { FormUser } from "../FormUser";
 import { UserType } from "../../../types/Users";
 import { toast } from "react-toastify";
 import LoadingSpinner from "../../LoadingSpinner";
 import { AuthContext } from "../../../context/AuthContext";
+import { Modal } from "../../Modal";
 
 export function Users() {
-    const {users, isLoadingUsers, setIsLoadingUsers} = useContext(AuthContext);
+    const { users, isLoadingUsers, setIsLoadingUsers } = useContext(AuthContext);
     const [isVisibleFormUsers, setIsVisibleFormUsers] = useState(false);
-    
+
     const [selectedUser, setSelectedUser] = useState<null | UserType>(null);
 
     function handleEditUser(selectedUser: UserType) {
@@ -47,7 +48,9 @@ export function Users() {
 
     return (
         <>
-            <FormUserModal visible={isVisibleFormUsers} onClose={onClose} selectedUser={selectedUser} />
+            <Modal visible={isVisibleFormUsers} title={selectedUser? 'Editar usuário': 'Adicionar usuario'} onClose={onClose}>
+                <FormUser onClose={onClose} selectedUser={selectedUser} />
+            </Modal>
             <UsersContainer>
                 <UsersButtons>
                     <strong>Usuários</strong>

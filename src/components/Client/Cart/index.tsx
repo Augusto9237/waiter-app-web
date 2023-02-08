@@ -4,8 +4,9 @@ import { CartItem } from "../../../types/CartItem";
 import { ProductType } from "../../../types/Products";
 import { formatCurrency } from "../../../utils/formatCurrency";
 import { Button } from "../../Button";
-import { CartModal } from "../CartModal";
+import { CartCheckout } from "../CartCheckout";
 import { CartContainer, CartContent, CartTotal } from "./styles";
+import { Modal } from "../../Modal";
 
 interface CartProps {
   selectedTable: string;
@@ -33,6 +34,9 @@ export function Cart({
     setIsModalVisible(true);
   }
 
+  function handleClose(){
+    setIsModalVisible(false);
+  }
 
   const total = cartItems.reduce((acc, cartItem) => {
     return acc + cartItem.quantity * cartItem.product.price;
@@ -40,22 +44,24 @@ export function Cart({
 
   return (
     <>
-      <CartModal
-        onClose={() => setIsModalVisible(false)}
-        cartItems={cartItems}
-        visible={isModalVisible}
-        onAdd={onAdd}
-        onDecrement={onDecrement}
-        onConfirmOrder={onConfirmOrder}
-        selectedTable={selectedTable}
-        selectedClerk={selectedClerk}
-        selectedClient={selectedClient}
-      />
+      <Modal title="Itens do Pedido" visible={isModalVisible} onClose={handleClose} >
+        <CartCheckout
+          
+          cartItems={cartItems}
+          onClose={handleClose}
+          onAdd={onAdd}
+          onDecrement={onDecrement}
+          onConfirmOrder={onConfirmOrder}
+          selectedTable={selectedTable}
+          selectedClerk={selectedClerk}
+          selectedClient={selectedClient}
+        />
+      </Modal>
       <CartContainer>
         <CartContent>
           {!selectedTable &&
 
-            <Button onClick={onOpenModalTable} title="Novo Pedido"/>}
+            <Button onClick={onOpenModalTable} title="Novo Pedido" />}
 
 
           {selectedTable && (
@@ -75,7 +81,7 @@ export function Cart({
 
               )}
 
-              <Button onClick={handleOpenModal} disabled={cartItems.length === 0} title="Carrinho"/>
+              <Button onClick={handleOpenModal} disabled={cartItems.length === 0} title="Carrinho" />
             </>
           )}
         </CartContent>

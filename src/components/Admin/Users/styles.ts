@@ -131,5 +131,5 @@ export const LoadingContainerUsers = styled.div`
   align-items: center;
   flex: 1;
   height: 100%;
-  min-height: 65vh;
+  min-height: 50vh;
 `;

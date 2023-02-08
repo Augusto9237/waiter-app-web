@@ -22,7 +22,7 @@ import { ProductType } from "../../../types/Products";
 import LoadingSpinner from "../../LoadingSpinner";
 import { AuthContext } from "../../../context/AuthContext";
 import { Modal } from "../../Modal";
-import { FormCategory } from "../FormCategoryModal";
+import { FormCategory } from "../FormCategory";
 
 export function Menu() {
     const { categories, products, isLoadingCategories, isLoadingProducts, setIsLoadingProducts, setIsLoadingCategories } = useContext(AuthContext);
