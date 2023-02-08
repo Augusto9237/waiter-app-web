@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Client } from "../../components/Client";
 import { Cart } from "../../components/Client/Cart";
 import { HeaderClient } from "../../components/Client/Header";
-import { TableModal } from "../../components/Client/TableModal";
+import { Table } from "../../components/Client/Table";
 
 import { GlobalStyles } from "../../styles/GlobalStyles";
 import { CartItem } from "../../types/CartItem";
@@ -17,6 +17,7 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { UserType } from "../../types/Users";
+import { Modal } from "../../components/Modal";
 
 export function ClientPage() {
   const { categories } = useContext(AuthContext);
@@ -62,6 +63,7 @@ export function ClientPage() {
     setSelectedClerk(clerk);
     setSelectedClient(client);
     setSelectedTable(tablestring!);
+    setIsTableModalVisible(false);
   }
 
   function handleResetOrder() {
@@ -166,12 +168,13 @@ export function ClientPage() {
           />
         </>
       )}
-      <TableModal
-        visibleModalTable={isTableModalVisible}
-        onCloseModalTable={() => setIsTableModalVisible(false)}
-        onSave={handleSaveTable}
-        attendants={attendants}
-      />
+      <Modal title="Iniciar pedido" visible={isTableModalVisible} onClose={() => setIsTableModalVisible(false)}>
+        <Table
+          
+          onSave={handleSaveTable}
+          attendants={attendants}
+        />
+      </Modal>
       <ToastContainer />
     </>
   );
