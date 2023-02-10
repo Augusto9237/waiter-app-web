@@ -1,5 +1,5 @@
 /* eslint-disable no-inner-declarations */
-import { CurrencyDollar, NotePencil, UsersFour } from "phosphor-react";
+import { CurrencyDollar, NotePencil, UsersFour, Wallet } from "phosphor-react";
 import { useContext, useEffect, useState } from "react";
 
 import sockectIo from "socket.io-client";
@@ -93,13 +93,7 @@ export default function Dashboard() {
       {!isLoading && (
         <>
           <CardContainer>
-            <Cards>
-              <div className="headerCard">
-                <span className="icon-avenue"><CurrencyDollar size={24} /></span>
-                <span>Faturamento</span>
-              </div>
-              <h1>{formatCurrency(totalRevenue)}</h1>
-            </Cards>
+
             <Cards>
               <div className="headerCard">
                 <span className="icon-orders"><NotePencil size={24} /></span>
@@ -111,6 +105,20 @@ export default function Dashboard() {
               <div className="headerCard">
                 <span className="icon-customers"><UsersFour size={24} /></span>
                 <span>Clientes</span>
+              </div>
+              <h1>{totalCountClients.length}</h1>
+            </Cards>
+            <Cards>
+              <div className="headerCard">
+                <span className="icon-avenue"><CurrencyDollar size={24} /></span>
+                <span>Faturamento</span>
+              </div>
+              <h1>{formatCurrency(totalRevenue)}</h1>
+            </Cards>
+            <Cards>
+              <div className="headerCard">
+                <span className="icon-customers"><Wallet size={24} /></span>
+                <span>Receita</span>
               </div>
               <h1>{totalCountClients.length}</h1>
             </Cards>
