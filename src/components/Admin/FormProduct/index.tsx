@@ -35,7 +35,6 @@ interface ModalFormProps {
 }
 
 
-
 export function FormProduct({
   onClose,
   categories,
@@ -55,6 +54,7 @@ export function FormProduct({
   },);
 
   const newIngredients = [...ingredients, ...ingredientsUpdate];
+  console.log(newIngredients);
 
   useEffect(() => {
     if (selectedProduct?._id) {
@@ -198,17 +198,17 @@ export function FormProduct({
                 onChange={event => {
                   setTimeout(() => {
                     setIngedients([...ingredients, { icon: event.target.value, name: '' }]);
-                  }, 2500);
+                  }, 1500);
                 }} />
 
               <label htmlFor={`input-${index}`}>Nome</label>
               <input type="text" id={`input-${index}`} name='name' onChange={event => {
                 const newItems = [...ingredients];
-                newItems[newItems.length - 1].name = event.target.value;
-                setTimeout(() => {
+                if (newItems.length) {
+                  newItems[newItems.length - 1].name = event.target.value;
                   setIngedients(newItems);
-                }, 2500);
-              }} />
+                }
+              }}/>
               <button type="button" onClick={handleDelInput} className='button-ingredients' disabled={inputCount > 0 ? false : true}>
                 <MinusCircle size={20} />
               </button>

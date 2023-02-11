@@ -1,4 +1,4 @@
-import { PencilSimple, PlusCircle, Trash } from "phosphor-react";
+import {  PlusCircle, } from "phosphor-react";
 import { useContext, useState } from "react";
 import { formatCurrency } from "../../../utils/formatCurrency";
 
@@ -23,6 +23,8 @@ import LoadingSpinner from "../../LoadingSpinner";
 import { AuthContext } from "../../../context/AuthContext";
 import { Modal } from "../../Modal";
 import { FormCategory } from "../FormCategory";
+import { ButtonEdit } from "../ButtonEdit";
+import { DeleteButton } from "../DeleteButton";
 
 export function Menu() {
     const { categories, products, isLoadingCategories, isLoadingProducts, setIsLoadingProducts, setIsLoadingCategories } = useContext(AuthContext);
@@ -101,16 +103,8 @@ export function Menu() {
                                         <ItemCategory key={category._id}>
                                             <Category icon={category.icon} name={category.name} />
                                             <div className="edit-category">
-                                                <button
-                                                    className="edit-button"
-                                                    onClick={() => handleEditCategory(category)}>
-                                                    <PencilSimple size={20} />
-                                                </button>
-                                                <button
-                                                    className="delete-button"
-                                                    onClick={() => handleDeleteCategory(category._id)}>
-                                                    <Trash size={20} />
-                                                </button>
+                                                <ButtonEdit onClick={() => handleEditCategory(category)} />
+                                                <DeleteButton onClick={() => handleDeleteCategory(category._id)} />
                                             </div>
                                         </ItemCategory>
                                     );
@@ -138,12 +132,8 @@ export function Menu() {
                                         <span>{product.name}</span>
                                         <strong>{formatCurrency(product.price)}</strong>
                                         <div className="edit-product">
-                                            <button className="edit-button" onClick={() => handleEditProduct(product)}>
-                                                <PencilSimple size={20} />
-                                            </button>
-                                            <button className="delete-button"
-                                                onClick={() => handleDeleteProduct(product._id)}
-                                            ><Trash size={20} /></button>
+                                            <ButtonEdit onClick={() => handleEditProduct(product)} />
+                                            <DeleteButton onClick={() => handleDeleteProduct(product._id)} />
                                         </div>
                                     </ItemProduct>
 

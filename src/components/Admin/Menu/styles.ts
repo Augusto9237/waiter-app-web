@@ -84,16 +84,6 @@ export const ItemCategory = styled.div`
       margin-top: 6px;
       gap: 14px;
 
-      .edit-button {
-        border: none;
-        display: flex;
-        align-items: center;
-        background: ${(props) => props.theme.supportingColors.secondary};
-        color: ${(props) => props.theme.supportingColors.textSecondary};
-        padding: 2px;
-        border-radius: 4px;
-      }
-
       .delete-button {
         border: none;
         display: flex;
@@ -159,25 +149,6 @@ export const ItemProduct = styled.div`
     align-items: center;
     padding: 0 8px;
     gap: 14px;
-
-    .edit-button {
-      border: none;
-      display: flex;
-      align-items: center;
-      background: ${(props) => props.theme.supportingColors.secondary};
-      color: ${(props) => props.theme.supportingColors.textSecondary};
-      padding: 2px;
-      border-radius: 4px;
-    }
-
-    .delete-button {
-      border: none;
-      display: flex;
-      align-items: center;
-      background: rgba(255, 0, 0, 0.3);
-      color: #eb5757;
-      padding: 2.5px;
-      border-radius: 4px;
-    }
+  
   }
 `;
