@@ -34,6 +34,9 @@ export default function Dashboard() {
   const [filteredOrders, setFilteredOrders] = useState<Order[] | []>([]);
   const [isVisiblePayement, setIsVisiblePayment] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState<null | Order>(null);
+  const [filterPayment, setFilterPayment] = useState('');
+
+
   useEffect(() => {
     setIsLoading(true);
     const sokect = sockectIo('http://localhost:3001', {
@@ -87,9 +90,16 @@ export default function Dashboard() {
   }, 0);
 
 
-  function handleOpenModal(order: Order) {
+  function handleConfirmPaymentTable(order: Order, filterPayment: string) {
     setIsVisiblePayment(true);
     setSelectedOrder(order);
+    setFilterPayment(filterPayment);
+  }
+
+  function handleConfirmPaymentClient(order: Order, filterPayment: string) {
+    setIsVisiblePayment(true);
+    setSelectedOrder(order);
+    setFilterPayment(filterPayment);
   }
 
   return (
@@ -102,7 +112,7 @@ export default function Dashboard() {
       {!isLoading && (
         <>
           <Modal visible={isVisiblePayement} onClose={() => setIsVisiblePayment(false)} title="Efetuar pagamento" >
-            <ConfirmPayment order={selectedOrder} />
+            <ConfirmPayment order={selectedOrder} filterPayment={filterPayment} />
           </Modal>
           <CardContainer>
             <Cards>
@@ -208,7 +218,7 @@ export default function Dashboard() {
                               <Link to={`/orders/${order.client}`}>
                                 <NotePencil size={24} />
                               </Link>
-                              <button onClick={() => handleOpenModal(order)}>
+                              <button onClick={() => handleConfirmPaymentClient(order, order.client)}>
                                 <Wallet size={24} />
                               </button>
                             </>
@@ -219,7 +229,7 @@ export default function Dashboard() {
                               <Link to={`/orders/${order.table}`}>
                                 <NotePencil size={24} />
                               </Link>
-                              <button onClick={() => handleOpenModal(order)}>
+                              <button onClick={() => handleConfirmPaymentTable(order, order.table)}>
                                 <Wallet size={24} />
                               </button>
                             </>

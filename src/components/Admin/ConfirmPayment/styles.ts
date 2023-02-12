@@ -13,7 +13,6 @@ export const ContainerOrderDetail = styled.div`
   header {
     display: flex;
     flex-direction: column;
-    padding-bottom: 20px;
     gap: 4px;
 
     strong {
@@ -44,7 +43,7 @@ export const ContainerOrderDetail = styled.div`
 `;
 
 export const OrderDetails = styled.div`
-  margin-top: 32px;
+  margin-top: 24px;
 
   > strong {
     font-weight: 500;
