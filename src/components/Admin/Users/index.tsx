@@ -1,4 +1,4 @@
-import { PencilSimple, PlusCircle, Trash } from "phosphor-react";
+import { PlusCircle} from "phosphor-react";
 import { useContext, useState } from "react";
 
 import {
@@ -16,6 +16,8 @@ import { toast } from "react-toastify";
 import LoadingSpinner from "../../LoadingSpinner";
 import { AuthContext } from "../../../context/AuthContext";
 import { Modal } from "../../Modal";
+import { ButtonEdit } from "../ButtonEdit";
+import { DeleteButton } from "../DeleteButton";
 
 export function Users() {
     const { users, isLoadingUsers, setIsLoadingUsers } = useContext(AuthContext);
@@ -48,7 +50,7 @@ export function Users() {
 
     return (
         <>
-            <Modal visible={isVisibleFormUsers} title={selectedUser? 'Editar usuário': 'Adicionar usuario'} onClose={onClose}>
+            <Modal visible={isVisibleFormUsers} title={selectedUser ? 'Editar usuário' : 'Adicionar usuario'} onClose={onClose}>
                 <FormUser onClose={onClose} selectedUser={selectedUser} />
             </Modal>
             <UsersContainer>
@@ -78,14 +80,9 @@ export function Users() {
                                         {user.office === 'KITCHEN_ASSISTANT' && "Aux. de Cozinha"}
                                         {user.office === 'MANANGER' && "Gerente"}</span>
                                     <span>*****</span>
-                                    <div className="edit-product">
-                                        <button className="edit-button" onClick={() => handleEditUser(user)}>
-                                            <PencilSimple size={20} />
-                                        </button>
-
-                                        <button className="delete-button" onClick={() => handleDeleteUser(user._id)}>
-                                            <Trash size={20} />
-                                        </button>
+                                    <div className="edit-user">
+                                        <ButtonEdit onClick={() => handleEditUser(user)} />
+                                        <DeleteButton onClick={() => handleDeleteUser(user._id)} />
                                     </div>
                                 </ItemUser>
                             )

@@ -7,7 +7,7 @@ export interface Order {
     office: "CLERK";
   };
   client: string;
-  status: "WAITING" | "IN_PRODUCTION" | "DONE";
+  status: "WAITING" | "IN_PRODUCTION" | "DONE" | "PAID_OUT";
   total: number;
   createdAt: Date;
   products: {

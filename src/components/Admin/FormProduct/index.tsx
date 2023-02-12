@@ -54,7 +54,6 @@ export function FormProduct({
   },);
 
   const newIngredients = [...ingredients, ...ingredientsUpdate];
-  console.log(newIngredients);
 
   useEffect(() => {
     if (selectedProduct?._id) {
@@ -198,7 +197,7 @@ export function FormProduct({
                 onChange={event => {
                   setTimeout(() => {
                     setIngedients([...ingredients, { icon: event.target.value, name: '' }]);
-                  }, 1500);
+                  }, 1000);
                 }} />
 
               <label htmlFor={`input-${index}`}>Nome</label>

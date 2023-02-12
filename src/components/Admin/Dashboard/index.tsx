@@ -24,13 +24,16 @@ import { toast } from "react-toastify";
 import { Order } from "../../../types/Order";
 import { Link } from "react-router-dom";
 import { groupAndCountClients } from "../../../utils/groupAndCountClients";
+import { Modal } from "../../Modal";
+import { ConfirmPayment } from "../ConfirmPayment";
 
 
 export default function Dashboard() {
   const { orders, setOrders, isLoading, setIsLoading } = useContext(AuthContext);
   const [filter, setFilter] = useState<string | null>(null);
   const [filteredOrders, setFilteredOrders] = useState<Order[] | []>([]);
-
+  const [isVisiblePayement, setIsVisiblePayment] = useState(false);
+  const [selectedOrder, setSelectedOrder] = useState<null | Order>(null);
   useEffect(() => {
     setIsLoading(true);
     const sokect = sockectIo('http://localhost:3001', {
@@ -83,6 +86,12 @@ export default function Dashboard() {
     return accumulator + object.total;
   }, 0);
 
+
+  function handleOpenModal(order: Order) {
+    setIsVisiblePayment(true);
+    setSelectedOrder(order);
+  }
+
   return (
     <>
       {isLoading && (
@@ -92,8 +101,10 @@ export default function Dashboard() {
       )}
       {!isLoading && (
         <>
+          <Modal visible={isVisiblePayement} onClose={() => setIsVisiblePayment(false)} title="Efetuar pagamento" >
+            <ConfirmPayment order={selectedOrder} />
+          </Modal>
           <CardContainer>
-
             <Cards>
               <div className="headerCard">
                 <span className="icon-orders"><NotePencil size={24} /></span>
@@ -193,15 +204,25 @@ export default function Dashboard() {
                           )}
 
                           {filter === 'client' && (
-                            <Link to={`/orders/${order.client}`}>
-                              <NotePencil size={24} />
-                            </Link>
+                            <>
+                              <Link to={`/orders/${order.client}`}>
+                                <NotePencil size={24} />
+                              </Link>
+                              <button onClick={() => handleOpenModal(order)}>
+                                <Wallet size={24} />
+                              </button>
+                            </>
                           )}
 
                           {filter === 'table' && (
-                            <Link to={`/orders/${order.table}`}>
-                              <NotePencil size={24} />
-                            </Link>
+                            <>
+                              <Link to={`/orders/${order.table}`}>
+                                <NotePencil size={24} />
+                              </Link>
+                              <button onClick={() => handleOpenModal(order)}>
+                                <Wallet size={24} />
+                              </button>
+                            </>
                           )}
                         </td>
                       </tr>

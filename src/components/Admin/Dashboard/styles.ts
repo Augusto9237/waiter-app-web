@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface adminProps {
-  status: "WAITING" | "IN_PRODUCTION" | "DONE";
+  status: "WAITING" | "IN_PRODUCTION" | "DONE" | "PAID_OUT";
 }
 
 export const LoadingContainer = styled.div`
@@ -156,7 +156,7 @@ export const FilterOrders = styled.div`
   align-items: center;
   gap: 12px;
 
-  select{
+  select {
     border: 1px solid ${(props) => props.theme.colors.border};
     background: ${(props) => props.theme.colors.secondary};
     color: ${(props) => props.theme.colors.text};
@@ -202,7 +202,7 @@ export const TableOrders = styled.div`
         gap: 16px;
       }
 
-      a{
+      a {
         color: ${(props) => props.theme.colors.buttonSecondary};
       }
 
@@ -236,7 +236,8 @@ export const StatusOrder = styled.div<adminProps>`
     (props.status === "WAITING" && props.theme.supportingColors.terciary) ||
     (props.status === "IN_PRODUCTION" &&
       props.theme.supportingColors.secondary) ||
-    (props.status === "DONE" && props.theme.supportingColors.primary)};
+    (props.status === "DONE" && props.theme.supportingColors.primary) ||
+    (props.status === "PAID_OUT" && props.theme.supportingColors.primary)};
   border-radius: 30px;
   padding: 4px 12px;
   max-width: 200px;

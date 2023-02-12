@@ -83,16 +83,6 @@ export const ItemCategory = styled.div`
       border-radius: 8px;
       margin-top: 6px;
       gap: 14px;
-
-      .delete-button {
-        border: none;
-        display: flex;
-        align-items: center;
-        background: rgba(255, 0, 0, 0.3);
-        color: #eb5757;
-        padding: 2.5px;
-        border-radius: 4px;
-      }
     }
   }
 `;
@@ -149,6 +139,5 @@ export const ItemProduct = styled.div`
     align-items: center;
     padding: 0 8px;
     gap: 14px;
-  
   }
 `;

@@ -96,7 +96,7 @@ export const ItemUser = styled.div`
     font-size: 18px;
   }
 
-  .edit-product {
+  .edit-user {
     display: flex;
     justify-content: center;
     align-items: center;
