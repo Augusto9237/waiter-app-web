@@ -3,7 +3,7 @@ import { AuthContext } from "../../../context/AuthContext";
 import { Order } from "../../../types/Order";
 import { formatCurrency } from "../../../utils/formatCurrency";
 
-import { Actions, ContainerOrderDetail, OrderDetails } from "./styles";
+import { Actions, ContainerOrderDetail, OrderDetails, SubtotalContent } from "./styles";
 interface ConfirmPaymentProps {
   order: Order | null;
   filterPayment: string;
@@ -46,8 +46,10 @@ export function ConfirmPayment({ order, filterPayment }: ConfirmPaymentProps) {
                     <span className="quantity">{quantity}x</span>
                     <div className="product-details">
                       <strong>{product.name}</strong>
-                      <span>{formatCurrency(product.price)}</span>
-                      <span>{formatCurrency(product.price * quantity)}</span>
+                      <SubtotalContent>
+                        <span>{formatCurrency(product.price)}</span>
+                        <span>{formatCurrency(product.price * quantity)}</span>
+                      </SubtotalContent>
                     </div>
                   </div>
                 ))}

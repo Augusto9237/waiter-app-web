@@ -14,7 +14,9 @@ import {
   StatusOrder,
   TableOrders,
   HeaderListOrders,
-  FilterOrders
+  FilterOrders,
+  ActionFilterContainer,
+  ButtonPayment
 } from "./styles";
 
 import LoadingSpinner from "../../LoadingSpinner";
@@ -178,7 +180,7 @@ export default function Dashboard() {
 
                     return (
                       <tr key={order._id}>
-                        <td>
+                        <td id="clientContainer">
                           <div className="client-info">
                             <IconClient>🙎‍♂️</IconClient>
                             <span>{order.client}</span>
@@ -214,25 +216,25 @@ export default function Dashboard() {
                           )}
 
                           {filter === 'client' && (
-                            <>
+                            <ActionFilterContainer>
                               <Link to={`/orders/${order.client}`}>
                                 <NotePencil size={24} />
                               </Link>
-                              <button onClick={() => handleConfirmPaymentClient(order, order.client)}>
+                              <ButtonPayment onClick={() => handleConfirmPaymentClient(order, order.client)}>
                                 <Wallet size={24} />
-                              </button>
-                            </>
+                              </ButtonPayment>
+                            </ActionFilterContainer>
                           )}
 
                           {filter === 'table' && (
-                            <>
+                            <ActionFilterContainer>
                               <Link to={`/orders/${order.table}`}>
                                 <NotePencil size={24} />
                               </Link>
-                              <button onClick={() => handleConfirmPaymentTable(order, order.table)}>
+                              <ButtonPayment onClick={() => handleConfirmPaymentTable(order, order.table)}>
                                 <Wallet size={24} />
-                              </button>
-                            </>
+                              </ButtonPayment>
+                            </ActionFilterContainer>
                           )}
                         </td>
                       </tr>

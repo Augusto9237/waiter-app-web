@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const ContainerOrderDetail = styled.div`
   background: ${(props) => props.theme.colors.secondary};
   width: 480px;
@@ -19,7 +18,7 @@ export const ContainerOrderDetail = styled.div`
       font-size: 24px;
     }
 
-    span{
+    span {
       font-size: 16px;
       font-weight: 500;
     }
@@ -103,6 +102,11 @@ export const OrderDetails = styled.div`
       opacity: 0.8;
     }
   }
+`;
+
+export const SubtotalContent = styled.div`
+  display: flex;
+  gap: 12px;
 `;
 
 export const Actions = styled.footer`

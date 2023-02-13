@@ -177,6 +177,10 @@ export const TableOrders = styled.div`
   table {
     width: 100%;
 
+   tbody td#clientContainer{
+      width: 200px;
+    }
+
     th {
       border-bottom: 1px solid ${(props) => props.theme.colors.border};
       font-weight: 600;
@@ -215,6 +219,20 @@ export const TableOrders = styled.div`
       }
     }
   }
+`;
+
+export const ActionFilterContainer = styled.div`
+  display: flex;
+  align-items: center;
+  max-width: fit-content;
+  margin: 0 auto;
+  gap: 8px;
+`;
+
+export const ButtonPayment = styled.button`
+  border: none;
+  background: transparent;
+  color: ${(props) => props.theme.colors.buttonSecondary};
 `;
 
 export const IconClient = styled.div`
