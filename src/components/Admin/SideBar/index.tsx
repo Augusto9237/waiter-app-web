@@ -1,12 +1,18 @@
 import { CaretLeft, CaretRight, ChartPieSlice, CookingPot, NotePencil, SignOut, UsersThree } from "phosphor-react";
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
-import { ButtonOpen, Container, SideBarBody, ButtonLogout,FooterSidebar } from "./styles";
+import { Link, NavLink } from "react-router-dom";
+import { ButtonOpen, Container, SideBarBody, ButtonLogout, FooterSidebar } from "./styles";
 import { AuthContext } from "../../../context/AuthContext";
 
 export default function SideBar() {
   const { signout } = useContext(AuthContext);
   const [sidebarVisible, setSidebarVisible] = useState(true);
+
+  const activeStyle = {
+    backgroundColor: "#ffabad",
+    color: '#d73035'
+  };
+
   return (
     <Container sidebarVisible={sidebarVisible}>
       {sidebarVisible ? (
@@ -15,34 +21,42 @@ export default function SideBar() {
         <ButtonOpen onClick={() => setSidebarVisible(true)}><CaretLeft size={20} /></ButtonOpen>
       )}
 
-      <SideBarBody sidebarVisible={sidebarVisible}>
-        <Link to='/'>
+      <SideBarBody sidebarVisible={sidebarVisible} >
+        <NavLink to='/' style={({ isActive }) =>
+          isActive ? activeStyle : undefined
+        }>
           <div className="sidebarIconItem">
             <span><ChartPieSlice size={24} /></span>
             <strong>Dashboard</strong>
           </div>
-        </Link>
+        </NavLink>
 
-        <Link to='/orders'>
+        <NavLink to='/orders' style={({ isActive }) =>
+          isActive ? activeStyle : undefined
+        }>
           <div className="sidebarIconItem">
             <span><NotePencil size={24} /></span>
             <strong>Pedidos</strong>
           </div>
-        </Link>
+        </NavLink>
 
-        <Link to='/menu'>
+        <NavLink to='/menu' style={({ isActive }) =>
+          isActive ? activeStyle : undefined
+        }>
           <div className="sidebarIconItem">
             <span><CookingPot size={24} /></span>
             <strong>Cardápio</strong>
           </div>
-        </Link>
+        </NavLink>
 
-        <Link to='/users'>
+        <NavLink to='/users' style={({ isActive }) =>
+          isActive ? activeStyle : undefined
+        }>
           <div className="sidebarIconItem">
             <span><UsersThree size={24} /></span>
             <strong>Usuários</strong>
           </div>
-        </Link>
+        </NavLink>
       </SideBarBody>
       <FooterSidebar>
         <ButtonLogout onClick={signout}>

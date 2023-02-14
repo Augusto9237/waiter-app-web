@@ -83,6 +83,10 @@ export const SideBarBody = styled.main<sidebarProps>`
     color: ${(props) => props.theme.colors.text};
   }
 
+  a:active {
+    background: #ffabad;
+  }
+
   .sidebarIconItem {
     display: flex;
     width: 100%;
@@ -112,6 +116,7 @@ export const SideBarBody = styled.main<sidebarProps>`
       align-items: center;
     }
   }
+
   .sidebarIconItem:hover {
     background: #ffabad;
     cursor: pointer;
@@ -137,11 +142,11 @@ export const FooterSidebar = styled.footer`
 
   @media (max-height: 850px) {
     height: 18vh;
-    }
+  }
 
   @media (max-height: 700px) {
     height: 22vh;
-    }
+  }
 `;
 
 export const ButtonLogout = styled.button`
@@ -154,7 +159,7 @@ export const ButtonLogout = styled.button`
   background-color: transparent;
   color: ${(props) => props.theme.colors.buttonSecondary};
 
-  strong{
+  strong {
     opacity: 1;
   }
 `;
