@@ -170,7 +170,6 @@ export function ClientPage() {
       )}
       <Modal title="Iniciar pedido" visible={isTableModalVisible} onClose={() => setIsTableModalVisible(false)}>
         <Table
-          
           onSave={handleSaveTable}
           attendants={attendants}
         />
