@@ -21,6 +21,12 @@ export const UsersButtons = styled.div`
   gap: 12px;
   padding-bottom: 8px;
   border-bottom: 1px solid ${(props) => props.theme.colors.border};
+
+  .ContentButtonAdd{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
 `;
 
 export const ButtonUsers = styled.button`
@@ -38,14 +44,7 @@ export const ButtonUsers = styled.button`
     justify-content: center;
   }
 
-  span {
-    font-size: 14px;
-    line-height: 100%;
-
-    @media (max-width: 500px) {
-      display: none;
-    }
-  }
+ 
 `;
 
 export const ListUsers = styled.div`

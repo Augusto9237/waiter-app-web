@@ -1,16 +1,19 @@
 import { CaretLeft, CaretRight, ChartPieSlice, CookingPot, NotePencil, SignOut, UsersThree } from "phosphor-react";
 import { useContext, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { ButtonOpen, Container, SideBarBody, ButtonLogout, FooterSidebar } from "./styles";
 import { AuthContext } from "../../../context/AuthContext";
+import { darkTheme, lightTheme } from "../../../styles/Theme";
+import { useThemeHook } from "../../../context/themeHook";
 
 export default function SideBar() {
   const { signout } = useContext(AuthContext);
+  const { isDarkMode } = useThemeHook();
   const [sidebarVisible, setSidebarVisible] = useState(true);
 
   const activeStyle = {
-    backgroundColor: "#ffabad",
-    color: '#d73035'
+    backgroundColor: isDarkMode ? darkTheme.colors.secondary : lightTheme.colors.secondary,
+    color: isDarkMode ? darkTheme.colors.buttonSecondary : lightTheme.colors.buttonSecondary,
   };
 
   return (

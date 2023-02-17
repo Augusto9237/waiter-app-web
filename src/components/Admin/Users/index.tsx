@@ -1,4 +1,4 @@
-import { PlusCircle} from "phosphor-react";
+import { PlusCircle } from "phosphor-react";
 import { useContext, useState } from "react";
 
 import {
@@ -18,6 +18,7 @@ import { AuthContext } from "../../../context/AuthContext";
 import { Modal } from "../../Modal";
 import { ButtonEdit } from "../ButtonEdit";
 import { DeleteButton } from "../DeleteButton";
+import { Button } from "../../Button";
 
 export function Users() {
     const { users, isLoadingUsers, setIsLoadingUsers } = useContext(AuthContext);
@@ -56,9 +57,13 @@ export function Users() {
             <UsersContainer>
                 <UsersButtons>
                     <strong>Usuários</strong>
-                    <ButtonUsers onClick={() => setIsVisibleFormUsers(true)}>
-                        <PlusCircle size={20} /><span>Usuário</span>
-                    </ButtonUsers>
+                    <div>
+                        <Button onClick={() => setIsVisibleFormUsers(true)}>
+                            <div className="ContentButtonAdd">
+                                <PlusCircle size={20} /><span>Usuário</span>
+                            </div>
+                        </Button>
+                    </div>
                 </UsersButtons>
                 <ListUsers>
                     {isLoadingUsers && (

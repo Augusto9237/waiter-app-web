@@ -1,4 +1,4 @@
-import {  PlusCircle, } from "phosphor-react";
+import { PlusCircle, } from "phosphor-react";
 import { useContext, useState } from "react";
 import { formatCurrency } from "../../../utils/formatCurrency";
 
@@ -7,7 +7,6 @@ import { Category } from "../../Client/Category";
 import {
     MenuContainer,
     MenuButtons,
-    ButtonAdd,
     ListCategories,
     ItemCategory,
     ListProducts,
@@ -25,6 +24,7 @@ import { Modal } from "../../Modal";
 import { FormCategory } from "../FormCategory";
 import { ButtonEdit } from "../ButtonEdit";
 import { DeleteButton } from "../DeleteButton";
+import { Button } from "../../Button";
 
 export function Menu() {
     const { categories, products, isLoadingCategories, isLoadingProducts, setIsLoadingProducts, setIsLoadingCategories } = useContext(AuthContext);
@@ -88,10 +88,14 @@ export function Menu() {
                         <MenuButtons>
                             <strong>Categorias</strong>
 
-                            <ButtonAdd onClick={() => setIsVisibleFormCategory(true)} title="Categoria">
-                                <PlusCircle size={20} />
-                                <span>Categoria</span>
-                            </ButtonAdd>
+                            <div>
+                                <Button onClick={() => setIsVisibleFormCategory(true)}>
+                                    <div className="ContentButtonAdd">
+                                        <PlusCircle size={20} />
+                                        <span>Categoria</span>
+                                    </div>
+                                </Button>
+                            </div>
 
                         </MenuButtons>
                         <ListCategories>
@@ -115,10 +119,14 @@ export function Menu() {
                         <MenuButtons>
                             <strong>Produtos</strong>
 
-                            <ButtonAdd onClick={() => setIsVisibleFormProduct(true)} title="Produto">
-                                <PlusCircle size={20} />
-                                <span>Produto</span>
-                            </ButtonAdd>
+                            <div>
+                                <Button onClick={() => setIsVisibleFormProduct(true)}>
+                                    <div className="ContentButtonAdd">
+                                        <PlusCircle size={20} />
+                                        <span>Produto</span>
+                                    </div>
+                                </Button>
+                            </div>
 
                         </MenuButtons>
                         <ListProducts>

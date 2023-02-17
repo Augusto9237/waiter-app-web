@@ -3,7 +3,7 @@ import React, { ReactNode } from "react";
 import { ContainerButton } from "./styles";
 
 interface ButtonProps {
-  title: string;
+  title?: string;
   onClick?: () => void;
   disabled?: boolean;
   children?: ReactNode;

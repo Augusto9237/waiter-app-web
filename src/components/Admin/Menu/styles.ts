@@ -30,32 +30,14 @@ export const MenuButtons = styled.div`
   gap: 12px;
   padding-bottom: 8px;
   border-bottom: 1px solid ${(props) => props.theme.colors.border};
-`;
 
-export const ButtonAdd = styled.button`
-  display: flex;
-  align-items: center;
-  border: none;
-  background: ${(props) => props.theme.colors.buttonSecondary};
-  border-radius: 50px;
-  padding: 8px 12px;
-  color: #ffff;
-  gap: 8px;
-
-  @media (max-width: 500px) {
-    padding: 0.3rem;
-    justify-content: center;
-  }
-
-  span {
-    font-size: 14px;
-    line-height: 100%;
-
-    @media (max-width: 500px) {
-      display: none;
-    }
+  .ContentButtonAdd {
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 `;
+
 
 export const ListCategories = styled.div`
   display: flex;
