@@ -18,6 +18,7 @@ import { useParams } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { UserType } from "../../types/Users";
 import { Modal } from "../../components/Modal";
+import { BottomBar } from "../../components/Client/BottomBar";
 
 export function ClientPage() {
   const { categories } = useContext(AuthContext);
@@ -155,8 +156,7 @@ export function ClientPage() {
             isLoadingProducts={isLoadingProducts}
           />
 
-
-          <Cart
+          <BottomBar
             selectedTable={selectedTable}
             selectedClerk={selectedClerk}
             selectedClient={selectedClient}

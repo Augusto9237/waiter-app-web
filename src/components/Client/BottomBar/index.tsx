@@ -5,8 +5,13 @@ import { ProductType } from "../../../types/Products";
 import { formatCurrency } from "../../../utils/formatCurrency";
 import { Button } from "../../Button";
 import { CartCheckout } from "../CartCheckout";
-import { CartContainer, CartContent, CartTotal } from "./styles";
+import { BottomBarContainer, CartContent, BottomBarContentButtons } from "./styles";
 import { Modal } from "../../Modal";
+import { Link } from "react-router-dom";
+
+import { AiFillHome } from "react-icons/ai";
+import { FaShoppingCart, FaWallet } from "react-icons/fa";
+import { ConfirmAccount } from "../ConfirmAccount";
 
 interface CartProps {
   selectedTable: string;
@@ -29,12 +34,13 @@ export function BottomBar({
   onOpenModalTable
 }: CartProps) {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalAccount, setIsModalAccount] = useState(false);
 
   function handleOpenModal() {
     setIsModalVisible(true);
   }
 
-  function handleClose(){
+  function handleClose() {
     setIsModalVisible(false);
   }
 
@@ -46,7 +52,6 @@ export function BottomBar({
     <>
       <Modal title="Itens do Pedido" visible={isModalVisible} onClose={handleClose} >
         <CartCheckout
-          
           cartItems={cartItems}
           onClose={handleClose}
           onAdd={onAdd}
@@ -57,35 +62,41 @@ export function BottomBar({
           selectedClient={selectedClient}
         />
       </Modal>
-      <CartContainer>
+      <Modal visible={isModalAccount} onClose={() => setIsModalAccount(false)} title="Conta" >
+        <ConfirmAccount />
+      </Modal>
+      <BottomBarContainer>
         <CartContent>
           {!selectedTable &&
 
             <Button onClick={onOpenModalTable} title="Novo Pedido" />}
 
+          {selectedTable &&
+            <BottomBarContentButtons>
+              <Link to=''>
+                <button>
+                  <AiFillHome size={26} />
+                </button>
+              </Link>
 
-          {selectedTable && (
-            <>
-              {cartItems.length > 0 ? (
 
-                <CartTotal >
-                  <span>Total</span>
-                  <h1>{formatCurrency(total)}</h1>
-                </CartTotal>
+              <button onClick={() => setIsModalVisible(true)}>
+                {cartItems.length > 0 && (
+                  <span>{cartItems.length}</span>
+                )}
+                <FaShoppingCart size={24} />
+              </button>
 
-              ) : (
 
-                <CartTotal >
-                  <span>Seu carrinho está vazio</span>
-                </CartTotal>
-
-              )}
-
-              <Button onClick={handleOpenModal} disabled={cartItems.length === 0} title="Carrinho" />
-            </>
-          )}
+              <Link to=''>
+                <button onClick={() => setIsModalAccount(true)}>
+                  <FaWallet size={24} />
+                </button>
+              </Link>
+            </BottomBarContentButtons>
+          }
         </CartContent>
-      </CartContainer>
+      </BottomBarContainer>
     </>
   );
 }

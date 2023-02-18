@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CartContainer = styled.div`
+export const BottomBarContainer = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
@@ -11,7 +11,7 @@ export const CartContainer = styled.div`
   left: 0;
 
   min-height: 80px;
-  padding: 22px;
+  padding: 16px;
 
   @media (max-height: 415px) {
     height: 80px;
@@ -46,4 +46,29 @@ export const CartTotal = styled.div`
     font-size: 16px;
     line-height: 150%;
   }
+`;
+
+export const BottomBarContentButtons = styled.div`
+   display: flex;
+   flex: 1;
+   justify-content: space-between;
+   padding: 0 16px;
+
+   button{
+    padding: 8px;
+    position: relative;
+    border: none;
+    background: transparent;
+    color: ${(props) => props.theme.colors.buttonSecondary};
+
+    span{
+      position: absolute;
+      top: 2px;
+      right: 0;
+      background-color: white;
+      border-radius: 50%;
+      width: 16px;
+      font-size: 13px;
+    }
+   }
 `;

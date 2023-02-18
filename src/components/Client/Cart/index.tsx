@@ -7,6 +7,7 @@ import { Button } from "../../Button";
 import { CartCheckout } from "../CartCheckout";
 import { CartContainer, CartContent, CartTotal } from "./styles";
 import { Modal } from "../../Modal";
+import { ConfirmAccount } from "../ConfirmAccount";
 
 interface CartProps {
   selectedTable: string;
@@ -29,12 +30,13 @@ export function Cart({
   onOpenModalTable
 }: CartProps) {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  
 
   function handleOpenModal() {
     setIsModalVisible(true);
   }
 
-  function handleClose(){
+  function handleClose() {
     setIsModalVisible(false);
   }
 
@@ -46,7 +48,7 @@ export function Cart({
     <>
       <Modal title="Itens do Pedido" visible={isModalVisible} onClose={handleClose} >
         <CartCheckout
-          
+
           cartItems={cartItems}
           onClose={handleClose}
           onAdd={onAdd}
