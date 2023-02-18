@@ -25,7 +25,7 @@ export function RouteApp() {
             <GlobalStyles />
             <AuthProvider>
                 <Routes>
-                    <Route path="/cliente/:tableNumber" element={<ClientPage />} />
+                    <Route path="/client/:tableNumber" element={<ClientPage />} />
                     <Route path="/login" element={<SigInPage />} />
                     <Route path="/" element={<RequireAuthAdmin><AdminPage /></RequireAuthAdmin>}>
                         <Route path="/" element={<Dashboard />} />
