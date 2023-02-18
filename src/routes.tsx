@@ -15,6 +15,8 @@ import { useThemeHook } from "./context/themeHook";
 import { AuthProvider } from "./context/AuthProvider";
 import { RequireAuthAdmin } from "./hooks/RequireAuthAdmin";
 import { RequireAuthKitchen } from "./hooks/RequireAuthKitchen";
+import { Client } from "./components/Client";
+import { ConfirmAccount } from "./components/Client/ConfirmAccount";
 
 
 export function RouteApp() {
@@ -25,7 +27,9 @@ export function RouteApp() {
             <GlobalStyles />
             <AuthProvider>
                 <Routes>
-                    <Route path="/client/:tableNumber" element={<ClientPage />} />
+                    <Route path="/client/:tableNumber" element={<ClientPage />}>
+                    <Route path="/client/:tableNumber/account" element={<ConfirmAccount/>} />
+                    </Route>
                     <Route path="/login" element={<SigInPage />} />
                     <Route path="/" element={<RequireAuthAdmin><AdminPage /></RequireAuthAdmin>}>
                         <Route path="/" element={<Dashboard />} />
