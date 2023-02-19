@@ -1,6 +1,4 @@
 import { useContext, useState } from "react";
-import { Client } from "../../components/Client";
-import { Cart } from "../../components/Client/Cart";
 import { HeaderClient } from "../../components/Client/Header";
 import { Table } from "../../components/Client/Table";
 
