@@ -14,7 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Header } from "../../components/Header";
 import { api } from "../../utils/api";
 import LoadingSpinner from "../../components/LoadingSpinner";
-import { Outlet, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { UserType } from "../../types/Users";
 import { Modal } from "../../components/Modal";
@@ -148,9 +148,15 @@ export function ClientPage() {
 
       {!isLoading && (
         <>
-          <Outlet/>
+          <Client
+            onAddToCart={handleAddToCart}
+            categories={categories}
+            onSelectCategory={handleSelectCategory}
+            products={products}
+            isLoadingProducts={isLoadingProducts}
+          />
 
-          <BottomBar
+          <Cart
             selectedTable={selectedTable}
             selectedClerk={selectedClerk}
             selectedClient={selectedClient}
