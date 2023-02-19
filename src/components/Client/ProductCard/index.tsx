@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { ClientContext } from "../../../context/ClientContext";
 import { ProductType } from "../../../types/Products";
 import { formatCurrency } from "../../../utils/formatCurrency";
 import {
@@ -10,15 +12,16 @@ import {
 
 interface ProductCardProps {
   product: null | ProductType;
-  onAddToCart: (product: ProductType) => void;
   onOpenModal: (product: ProductType) => void;
 }
 
 export function ProductCard({
   product,
-  onAddToCart,
   onOpenModal,
 }: ProductCardProps) {
+
+  const {handleAddToCart } = useContext(ClientContext);
+
   return (
     <>
       <ProductCardContainer>
@@ -34,7 +37,7 @@ export function ProductCard({
           </strong>
         </ProductDetails>
 
-        <ButtonAddProduct onClick={() => onAddToCart(product!)}>
+        <ButtonAddProduct onClick={() => handleAddToCart(product!)}>
           <span>+</span>
         </ButtonAddProduct>
       </ProductCardContainer>

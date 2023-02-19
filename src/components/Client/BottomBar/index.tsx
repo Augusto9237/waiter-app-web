@@ -1,8 +1,5 @@
-import { useState } from "react";
-import { CartItem } from "../../../types/CartItem";
+import { useContext, useState } from "react";
 
-import { ProductType } from "../../../types/Products";
-import { formatCurrency } from "../../../utils/formatCurrency";
 import { Button } from "../../Button";
 import { CartCheckout } from "../CartCheckout";
 import { BottomBarContainer, CartContent, BottomBarContentButtons } from "./styles";
@@ -11,42 +8,29 @@ import { Link } from "react-router-dom";
 
 import { AiFillHome } from "react-icons/ai";
 import { FaShoppingCart, FaWallet } from "react-icons/fa";
-import { ConfirmAccount } from "../ConfirmAccount";
-
+import { ClientContext } from "../../../context/ClientContext";
 interface CartProps {
   selectedTable: string;
   selectedClerk: string;
   selectedClient: string;
-  cartItems: CartItem[];
-  onAdd: (product: ProductType) => void;
-  onDecrement: (product: ProductType) => void;
   onConfirmOrder: () => void;
   onOpenModalTable: () => void;
 }
 export function BottomBar({
-  cartItems,
-  onAdd,
-  onDecrement,
   onConfirmOrder,
   selectedTable,
   selectedClerk,
   selectedClient,
   onOpenModalTable
 }: CartProps) {
+  const { cartItems, handleAddToCart, handleDecrementCartItem} = useContext(ClientContext);
+ 
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [isModalAccount, setIsModalAccount] = useState(false);
-
-  function handleOpenModal() {
-    setIsModalVisible(true);
-  }
 
   function handleClose() {
     setIsModalVisible(false);
   }
 
-  const total = cartItems.reduce((acc, cartItem) => {
-    return acc + cartItem.quantity * cartItem.product.price;
-  }, 0);
 
   return (
     <>
@@ -54,16 +38,13 @@ export function BottomBar({
         <CartCheckout
           cartItems={cartItems}
           onClose={handleClose}
-          onAdd={onAdd}
-          onDecrement={onDecrement}
+          onAdd={handleAddToCart}
+          onDecrement={handleDecrementCartItem}
           onConfirmOrder={onConfirmOrder}
           selectedTable={selectedTable}
           selectedClerk={selectedClerk}
           selectedClient={selectedClient}
         />
-      </Modal>
-      <Modal visible={isModalAccount} onClose={() => setIsModalAccount(false)} title="Conta" >
-        <ConfirmAccount />
       </Modal>
       <BottomBarContainer>
         <CartContent>
@@ -88,8 +69,8 @@ export function BottomBar({
               </button>
 
 
-              <Link to=''>
-                <button onClick={() => setIsModalAccount(true)}>
+              <Link to={`/client/${selectedTable}/account`}>
+                <button >
                   <FaWallet size={24} />
                 </button>
               </Link>

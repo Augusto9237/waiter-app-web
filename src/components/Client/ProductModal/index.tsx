@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { ClientContext } from "../../../context/ClientContext";
 import { ProductType } from "../../../types/Products";
 import { formatCurrency } from "../../../utils/formatCurrency";
 import { Button } from "../../Button";
@@ -19,18 +20,18 @@ interface ProductModalProps {
   visible: boolean;
   onClose: () => void;
   product: null | ProductType;
-  onAddToCart: (product: ProductType) => void;
 }
 
 export function ProductModal({
   visible,
   onClose,
   product,
-  onAddToCart,
 }: ProductModalProps) {
   if (!visible || !product) {
     return null;
   }
+
+  const {handleAddToCart } = useContext(ClientContext);
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
@@ -46,8 +47,8 @@ export function ProductModal({
     };
   }, [onClose]);
 
-  function handleAddToCart() {
-    onAddToCart(product!);
+  function addToCart() {
+    handleAddToCart(product!);
     onClose();
   }
 
@@ -84,7 +85,7 @@ export function ProductModal({
             <strong>{formatCurrency(product.price)}</strong>
           </PriceContainer>
 
-          <Button onClick={handleAddToCart}>Adicionar ao pedido</Button>
+          <Button onClick={addToCart}>Adicionar ao pedido</Button>
         </Footer>
       </ModalBody>
     </Overlay>

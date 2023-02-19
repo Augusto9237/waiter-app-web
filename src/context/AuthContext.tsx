@@ -25,7 +25,7 @@ export type AuthContextType = {
     authenticated: boolean;
     categories: CategoryType[];
     products: ProductType[];
-    users: UserType[]
+    users: UserType[];
     isLoadingUsers: boolean;
     isLoadingProducts: boolean;
     isLoadingCategories: boolean;

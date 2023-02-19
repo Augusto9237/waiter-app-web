@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const ContainerOrderDetail = styled.div`
   background: ${(props) => props.theme.colors.secondary};
   padding: 28px;
+  border-radius: 8px;
 
   @media (max-width: 415px) {
     padding: 22px;

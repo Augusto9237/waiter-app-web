@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Button } from "../../Button";
 
 import {
@@ -7,16 +7,16 @@ import {
 } from "./styles";
 
 import { UserType } from "../../../types/Users";
+import { ClientContext } from "../../../context/ClientContext";
 
 interface TableModalProps {
-
-
   onSave: (client: string, clerk: string) => void;
   attendants: UserType[];
 }
 
-export function Table({ onSave, attendants }: TableModalProps) {
-
+export function Table({ onSave }: TableModalProps) {
+  const { attendants} = useContext(ClientContext);
+ 
   const [client, setTable] = useState("");
   const [clerkId, setClerkId] = useState("");
 

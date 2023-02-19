@@ -15,6 +15,9 @@ import { useThemeHook } from "./context/themeHook";
 import { AuthProvider } from "./context/AuthProvider";
 import { RequireAuthAdmin } from "./hooks/RequireAuthAdmin";
 import { RequireAuthKitchen } from "./hooks/RequireAuthKitchen";
+import { ConfirmAccount } from "./components/Client/ConfirmAccount";
+import { ClientProvider } from "./context/ClientProvider";
+import { Client } from "./components/Client";
 
 
 export function RouteApp() {
@@ -24,19 +27,25 @@ export function RouteApp() {
         <ThemeProvider theme={theme}>
             <GlobalStyles />
             <AuthProvider>
-                <Routes>
-                    <Route path="/client/:tableNumber" element={<ClientPage />} />
-                    <Route path="/login" element={<SigInPage />} />
-                    <Route path="/" element={<RequireAuthAdmin><AdminPage /></RequireAuthAdmin>}>
-                        <Route path="/" element={<Dashboard />} />
-                        <Route path="/orders" element={<Orders />} />
-                        <Route path="/orders/:filter" element={<Orders />} />
-                        <Route path="/menu" element={<Menu />} />
-                        <Route path="/users" element={<Users />} />
-                    </Route>
-                    <Route path="/pedidos" element={<RequireAuthKitchen><OrdersPage /></RequireAuthKitchen>} />
-                    <Route path="*" element={<h1>Pagina não encontrada</h1>} />
-                </Routes>
+                <ClientProvider>
+                    <Routes>
+                        <Route path="/client/:tableNumber" element={<ClientPage />}>
+                            <Route path="/client/:tableNumber" element={<Client />} />
+                            <Route path="/client/:tableNumber/account" element={<ConfirmAccount />} />
+                        </Route>
+
+                        <Route path="/login" element={<SigInPage />} />
+                        <Route path="/" element={<RequireAuthAdmin><AdminPage /></RequireAuthAdmin>}>
+                            <Route path="/" element={<Dashboard />} />
+                            <Route path="/orders" element={<Orders />} />
+                            <Route path="/orders/:filter" element={<Orders />} />
+                            <Route path="/menu" element={<Menu />} />
+                            <Route path="/users" element={<Users />} />
+                        </Route>
+                        <Route path="/pedidos" element={<RequireAuthKitchen><OrdersPage /></RequireAuthKitchen>} />
+                        <Route path="*" element={<h1>Pagina não encontrada</h1>} />
+                    </Routes>
+                </ClientProvider>
             </AuthProvider>
         </ThemeProvider>
     );
