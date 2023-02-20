@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const ContainerOrderDetail = styled.div`
+export const ContainerConfirmAccount = styled.div`
   background: ${(props) => props.theme.colors.secondary};
-  padding: 28px;
+  padding: 24px;
   border-radius: 8px;
 
   @media (max-width: 415px) {
@@ -11,9 +11,7 @@ export const ContainerOrderDetail = styled.div`
 
   header {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
-
+    justify-content: center;
     strong {
       font-size: 24px;
     }

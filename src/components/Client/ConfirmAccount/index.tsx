@@ -2,21 +2,23 @@
 import { Order } from "../../../types/Order";
 import { formatCurrency } from "../../../utils/formatCurrency";
 
-import { Actions, ContainerOrderDetail, OrderDetails, SubtotalContent } from "./styles";
+import { Actions, ContainerConfirmAccount, OrderDetails, SubtotalContent } from "./styles";
 interface ConfirmPaymentProps {
   order: Order | null;
   filterPayment: string;
 }
 
-
 export function ConfirmAccount() {
 
-
   return (
-    <ContainerOrderDetail>
+    <ContainerConfirmAccount>
+      <header>
+        <strong>Sua conta</strong>
+      </header>
+
       <OrderDetails>
         <strong>Itens</strong>
-      
+
         <div className="total">
           <span>Total</span>
           <strong>{formatCurrency(100)}</strong>
@@ -29,9 +31,9 @@ export function ConfirmAccount() {
           type="button"
           className="secondary"
         >
-         <span>Fechar a conta</span>
+          <span>Fechar a conta</span>
         </button>
       </Actions>
-    </ContainerOrderDetail>
+    </ContainerConfirmAccount>
   );
 }
