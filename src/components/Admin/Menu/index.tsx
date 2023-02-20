@@ -89,7 +89,7 @@ export function Menu() {
                             <strong>Categorias</strong>
 
                             <div>
-                                <Button onClick={() => setIsVisibleFormCategory(true)}>
+                                <Button onClick={() => setIsVisibleFormCategory(true)} px={'8px'} >
                                     <div className="ContentButtonAdd">
                                         <PlusCircle size={20} />
                                         <span>Categoria</span>
@@ -120,7 +120,7 @@ export function Menu() {
                             <strong>Produtos</strong>
 
                             <div>
-                                <Button onClick={() => setIsVisibleFormProduct(true)}>
+                                <Button onClick={() => setIsVisibleFormProduct(true)} px={'8px'}>
                                     <div className="ContentButtonAdd">
                                         <PlusCircle size={20} />
                                         <span>Produto</span>

@@ -6,7 +6,6 @@ export const ContainerButton = styled.button`
   flex: 1;
   background: ${({ disabled }) => (disabled ? "#999" : "#d73035")};
   border-radius: 48px;
-  padding: 12px;
   align-items: center;
   justify-content: center;
   gap: 6px;

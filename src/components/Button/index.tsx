@@ -7,11 +7,12 @@ interface ButtonProps {
   onClick?: () => void;
   disabled?: boolean;
   children?: ReactNode;
+  px?: string;
 }
 
-export function Button({ title, children, onClick, disabled }: ButtonProps) {
+export function Button({ title, children, onClick, disabled, px }: ButtonProps) {
   return (
-    <ContainerButton onClick={onClick} disabled={disabled} type='submit'>
+    <ContainerButton onClick={onClick} disabled={disabled} type='submit' style={{ padding: (px? `${px}` : '12px') }}>
       {children}
       <span >
         {title}

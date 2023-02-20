@@ -57,7 +57,7 @@ export function Users() {
                 <UsersButtons>
                     <strong>Usuários</strong>
                     <div>
-                        <Button onClick={() => setIsVisibleFormUsers(true)}>
+                        <Button onClick={() => setIsVisibleFormUsers(true)} px={'8px'}>
                             <div className="ContentButtonAdd">
                                 <PlusCircle size={20} /><span>Usuário</span>
                             </div>
