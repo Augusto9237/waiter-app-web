@@ -70,7 +70,7 @@ export const AuthProvider = ({ children }: AuthProps) => {
         setTimeout(() => {
             api.get('/orders')
                 .then(({ data }) => {
-                    setOrders(data);
+                    setOrders(data.orders);
                 });
         }, 400);
         setIsLoading(false);
