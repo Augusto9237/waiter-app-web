@@ -3,6 +3,7 @@ import { Order } from "../types/Order";
 import { CategoryType } from "../types/Category";
 import { ProductType } from "../types/Products";
 import { UserType } from "../types/Users";
+import { PaginationType } from "../types/Pagination";
 
 export type UserDecode = {
     iat: number;
@@ -26,6 +27,7 @@ export type AuthContextType = {
     categories: CategoryType[];
     products: ProductType[];
     users: UserType[];
+    pagination: PaginationType;
     isLoadingUsers: boolean;
     isLoadingProducts: boolean;
     isLoadingCategories: boolean;

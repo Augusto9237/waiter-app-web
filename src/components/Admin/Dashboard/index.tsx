@@ -28,6 +28,7 @@ import { Link } from "react-router-dom";
 import { groupAndCountClients } from "../../../utils/groupAndCountClients";
 import { Modal } from "../../Modal";
 import { ConfirmPayment } from "../ConfirmPayment";
+import { Pagination } from "../../Pagination";
 
 
 export default function Dashboard() {
@@ -243,6 +244,9 @@ export default function Dashboard() {
                 </tbody>
               </table>
             </TableOrders>
+            {filteredOrders.length > 0 && (
+              <Pagination />
+            )}
           </ListOrders>
         </>
       )}

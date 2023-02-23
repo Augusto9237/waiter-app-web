@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { ProductType } from "../types/Products";
 import { CategoryType } from "../types/Category";
 import { UserType } from "../types/Users";
+import { PaginationType } from "../types/Pagination";
 interface AuthProps {
     children: ReactNode;
 }
@@ -30,7 +31,8 @@ export const AuthProvider = ({ children }: AuthProps) => {
 
     const [users, setUsers] = useState<UserType[]>([]);
     const [isLoadingUsers, setIsLoadingUsers] = useState(true);
-
+    const [pagination, setPagination] = useState<PaginationType>(null!);
+    
     const auth = useAuth();
 
     useEffect(() => {
@@ -69,8 +71,9 @@ export const AuthProvider = ({ children }: AuthProps) => {
         setIsLoading(true);
         setTimeout(() => {
             api.get('/orders')
-                .then(({ data }) => {
-                    setOrders(data.orders);
+                .then((Response) => {
+                    setOrders(Response.data.orders);
+                    setPagination(Response.data.pagination);
                 });
         }, 400);
         setIsLoading(false);
@@ -138,7 +141,8 @@ export const AuthProvider = ({ children }: AuthProps) => {
             isLoadingProducts,
             isLoadingCategories,
             setIsLoadingProducts,
-            setIsLoadingCategories
+            setIsLoadingCategories,
+            pagination
         }}>
             {children}
         </AuthContext.Provider>
