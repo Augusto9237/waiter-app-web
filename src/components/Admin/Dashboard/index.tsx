@@ -87,9 +87,9 @@ export default function Dashboard() {
   }, [filter, orders]);
 
   const totalCountClients = groupAndCountClients(orders);
-  const totalRevenue = orders.reduce(function (accumulator, object) {
-    return accumulator + object.total;
-  }, 0);
+  // const totalRevenue = orders.reduce(function (accumulator, object) {
+  //   return accumulator + object.total;
+  // }, 0) || 0;
 
 
   function handleConfirmPaymentTable(order: Order, filterPayment: string) {
@@ -136,7 +136,7 @@ export default function Dashboard() {
                 <span className="icon-avenue"><CurrencyDollar size={24} /></span>
                 <span>Faturamento</span>
               </div>
-              <h1>{formatCurrency(totalRevenue)}</h1>
+              {/* <h1>{formatCurrency(totalRevenue)}</h1> */}
             </Cards>
             <Cards>
               <div className="headerCard">
@@ -176,70 +176,76 @@ export default function Dashboard() {
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredOrders.map((order) => {
+                  {filteredOrders.length > 0 ? (
+                    <>
+                      {
+                        filteredOrders.map((order) => {
 
-                    return (
-                      <tr key={order._id}>
-                        <td id="clientContainer">
-                          <div className="client-info">
-                            <IconClient>🙎‍♂️</IconClient>
-                            <span>{order.client}</span>
-                          </div>
-                        </td>
-                        <td>
-                          {formatDate(new Date(order.createdAt))}
-                        </td>
+                          return (
+                            <tr key={order._id}>
+                              <td id="clientContainer">
+                                <div className="client-info">
+                                  <IconClient>🙎‍♂️</IconClient>
+                                  <span>{order.client}</span>
+                                </div>
+                              </td>
+                              <td>
+                                {formatDate(new Date(order.createdAt))}
+                              </td>
 
-                        <td><span>{order.table}</span></td>
-                        <td>{formatCurrency(order.total)}</td>
-                        <td><span>{order.clerk.name}</span></td>
-                        <td className="status-container">
-                          {filter === null && (
-                            <StatusOrder status={order.status}>
-                              {order.status === "WAITING" && "🕑"}
-                              {order.status === "IN_PRODUCTION" && "👩‍🍳"}
-                              {order.status === "DONE" && "✅"}
-                              <span>{order.status === "WAITING" && "  Fila de espera"}
-                                {order.status === "IN_PRODUCTION" && "Em produção"}
-                                {order.status === "DONE" && "Pronto"}</span>
-                            </StatusOrder>
-                          )}
-                          {filter === 'all' && (
-                            <StatusOrder status={order.status}>
-                              {order.status === "WAITING" && "🕑"}
-                              {order.status === "IN_PRODUCTION" && "👩‍🍳"}
-                              {order.status === "DONE" && "✅"}
-                              <span>{order.status === "WAITING" && "  Fila de espera"}
-                                {order.status === "IN_PRODUCTION" && "Em produção"}
-                                {order.status === "DONE" && "Pronto"}</span>
-                            </StatusOrder>
-                          )}
+                              <td><span>{order.table}</span></td>
+                              <td>{formatCurrency(order.total)}</td>
+                              <td><span>{order.clerk.name}</span></td>
+                              <td className="status-container">
+                                {filter === null && (
+                                  <StatusOrder status={order.status}>
+                                    {order.status === "WAITING" && "🕑"}
+                                    {order.status === "IN_PRODUCTION" && "👩‍🍳"}
+                                    {order.status === "DONE" && "✅"}
+                                    <span>{order.status === "WAITING" && "  Fila de espera"}
+                                      {order.status === "IN_PRODUCTION" && "Em produção"}
+                                      {order.status === "DONE" && "Pronto"}</span>
+                                  </StatusOrder>
+                                )}
+                                {filter === 'all' && (
+                                  <StatusOrder status={order.status}>
+                                    {order.status === "WAITING" && "🕑"}
+                                    {order.status === "IN_PRODUCTION" && "👩‍🍳"}
+                                    {order.status === "DONE" && "✅"}
+                                    <span>{order.status === "WAITING" && "  Fila de espera"}
+                                      {order.status === "IN_PRODUCTION" && "Em produção"}
+                                      {order.status === "DONE" && "Pronto"}</span>
+                                  </StatusOrder>
+                                )}
 
-                          {filter === 'client' && (
-                            <ActionFilterContainer>
-                              <Link to={`/orders/${order.client}`}>
-                                <NotePencil size={24} />
-                              </Link>
-                              <ButtonPayment onClick={() => handleConfirmPaymentClient(order, order.client)}>
-                                <Wallet size={24} />
-                              </ButtonPayment>
-                            </ActionFilterContainer>
-                          )}
+                                {filter === 'client' && (
+                                  <ActionFilterContainer>
+                                    <Link to={`/orders/${order.client}`}>
+                                      <NotePencil size={24} />
+                                    </Link>
+                                    <ButtonPayment onClick={() => handleConfirmPaymentClient(order, order.client)}>
+                                      <Wallet size={24} />
+                                    </ButtonPayment>
+                                  </ActionFilterContainer>
+                                )}
 
-                          {filter === 'table' && (
-                            <ActionFilterContainer>
-                              <Link to={`/orders/${order.table}`}>
-                                <NotePencil size={24} />
-                              </Link>
-                              <ButtonPayment onClick={() => handleConfirmPaymentTable(order, order.table)}>
-                                <Wallet size={24} />
-                              </ButtonPayment>
-                            </ActionFilterContainer>
-                          )}
-                        </td>
-                      </tr>
-                    );
-                  })}
+                                {filter === 'table' && (
+                                  <ActionFilterContainer>
+                                    <Link to={`/orders/${order.table}`}>
+                                      <NotePencil size={24} />
+                                    </Link>
+                                    <ButtonPayment onClick={() => handleConfirmPaymentTable(order, order.table)}>
+                                      <Wallet size={24} />
+                                    </ButtonPayment>
+                                  </ActionFilterContainer>
+                                )}
+                              </td>
+                            </tr>
+                          );
+                        })
+                      }
+                    </>
+                  ) : null}
                 </tbody>
               </table>
             </TableOrders>
