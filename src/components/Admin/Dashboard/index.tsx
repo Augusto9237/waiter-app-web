@@ -87,9 +87,9 @@ export default function Dashboard() {
   }, [filter, orders]);
 
   const totalCountClients = groupAndCountClients(orders);
-  // const totalRevenue = orders.reduce(function (accumulator, object) {
-  //   return accumulator + object.total;
-  // }, 0) || 0;
+  const totalRevenue = orders.length > 0 ? orders.reduce(function (accumulator, object) {
+    return accumulator + object.total;
+  }, 0) : 0;
 
 
   function handleConfirmPaymentTable(order: Order, filterPayment: string) {
@@ -136,7 +136,7 @@ export default function Dashboard() {
                 <span className="icon-avenue"><CurrencyDollar size={24} /></span>
                 <span>Faturamento</span>
               </div>
-              {/* <h1>{formatCurrency(totalRevenue)}</h1> */}
+              <h1>{formatCurrency(totalRevenue ? totalRevenue : 0)}</h1>
             </Cards>
             <Cards>
               <div className="headerCard">

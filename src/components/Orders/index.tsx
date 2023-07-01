@@ -11,8 +11,11 @@ import { useParams } from "react-router-dom";
 export function Orders() {
   const { orders, setOrders, isLoading, setIsLoading } = useContext(AuthContext);
   const [filteredOrders, setFilteredOrders] = useState<Order[] | []>([]);
+  const [waiting, setWaiting] = useState<Order[] | []>([]);
+  const [inProduction, setInProduction] = useState<Order[] | []>([]);
+  const [done, setDone] = useState<Order[] | []>([]);
   const { filter } = useParams();
-  
+
   useEffect(() => {
     setIsLoading(true);
     const sokect = sockectIo('http://localhost:3001', {
@@ -47,10 +50,20 @@ export function Orders() {
     }
   }, [filter, orders]);
 
+  useEffect(() => {
+    if (filteredOrders) {
+      const waiting = filteredOrders ? filteredOrders.filter((order) => order.status === 'WAITING') : [];
+      const inProduction = filteredOrders.filter((order) => order.status === 'IN_PRODUCTION');
+      const done = filteredOrders.filter((order) => order.status === 'DONE');
 
-  const waiting = filteredOrders.filter((order) => order.status === 'WAITING');
-  const inProduction = filteredOrders.filter((order) => order.status === 'IN_PRODUCTION');
-  const done = filteredOrders.filter((order) => order.status === 'DONE');
+      setWaiting(waiting);
+      setInProduction(inProduction);
+      setDone(done);
+    }
+  }, [orders]);
+
+
+
 
   function handleCancelOrder(orderId: string) {
     setOrders((prevState) => prevState.filter(order => order._id !== orderId));
